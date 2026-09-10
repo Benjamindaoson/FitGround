@@ -1,0 +1,913 @@
+{
+  "generated_at": "2026-09-10T22:48:09.674430+00:00",
+  "validation": {
+    "total_rows": 105000,
+    "train_rows": 100000,
+    "eval_rows": 5000,
+    "unique_sample_id": 105000,
+    "duplicate_sample_id": 0,
+    "null_sample_id": 0,
+    "schema_columns": [
+      "sample_id",
+      "source_dataset",
+      "source_split",
+      "source_shard_id",
+      "source_row_id",
+      "person_image_ref",
+      "garment_image_ref",
+      "target_image_ref",
+      "person_image_identity",
+      "garment_image_identity",
+      "target_image_identity",
+      "person_sha256",
+      "garment_sha256",
+      "target_sha256",
+      "person_phash",
+      "garment_phash",
+      "target_phash",
+      "person_format",
+      "garment_format",
+      "target_format",
+      "person_width",
+      "person_height",
+      "garment_width",
+      "garment_height",
+      "target_width",
+      "target_height",
+      "body_height_cm",
+      "body_bust_cm",
+      "body_waist_cm",
+      "body_hips_cm",
+      "garment_bust_cm",
+      "garment_length_cm",
+      "garment_sleeve_cm",
+      "bust_ease_cm",
+      "bust_ease_ratio",
+      "garment_length_height_ratio",
+      "quality_status",
+      "quality_flags",
+      "duplicate_person_sha256",
+      "duplicate_garment_sha256",
+      "duplicate_target_sha256",
+      "duplicate_person_garment_pair",
+      "duplicate_record_exact",
+      "leakage_train_eval_person",
+      "leakage_train_eval_garment",
+      "leakage_train_eval_target",
+      "leakage_train_eval_pair",
+      "usable_for_fitground"
+    ],
+    "person_hash_coverage": 0.9999904761904762,
+    "garment_hash_coverage": 1.0,
+    "target_hash_coverage": 1.0,
+    "quality_sum_check": 105000,
+    "usable_invalid_consistency": 105000
+  },
+  "distribution": {
+    "ALL": {
+      "body_height_cm": {
+        "count": 105000,
+        "missing": 0,
+        "mean": 172.12120182931082,
+        "std": 8.786753713141813,
+        "min": 149.76600646972656,
+        "p1": 151.35800170898438,
+        "p5": 157.68499755859375,
+        "p25": 168.13099670410156,
+        "median": 171.3990020751953,
+        "p75": 176.9600067138672,
+        "p95": 187.35000610351562,
+        "p99": 195.71600341796875,
+        "max": 195.71600341796875
+      },
+      "body_bust_cm": {
+        "count": 105000,
+        "missing": 0,
+        "mean": 105.10656876017252,
+        "std": 10.726719103894101,
+        "min": 82.71890258789062,
+        "p1": 84.0470962524414,
+        "p5": 89.97450256347656,
+        "p25": 96.02010345458984,
+        "median": 103.3499984741211,
+        "p75": 108.9010009765625,
+        "p95": 126.01300048828125,
+        "p99": 141.02000427246094,
+        "max": 147.0449981689453
+      },
+      "body_waist_cm": {
+        "count": 105000,
+        "missing": 0,
+        "mean": 91.38641622830346,
+        "std": 13.970097563855813,
+        "min": 61.2036018371582,
+        "p1": 63.724098205566406,
+        "p5": 71.99559783935547,
+        "p25": 80.243896484375,
+        "median": 89.2217025756836,
+        "p75": 96.4999008178711,
+        "p95": 117.7239990234375,
+        "p99": 136.99200439453125,
+        "max": 142.31300354003906
+      },
+      "body_hips_cm": {
+        "count": 105000,
+        "missing": 0,
+        "mean": 106.63406258973622,
+        "std": 9.565344631199794,
+        "min": 87.5521011352539,
+        "p1": 89.18830108642578,
+        "p5": 92.95089721679688,
+        "p25": 100.2040023803711,
+        "median": 105.15599822998047,
+        "p75": 109.65899658203125,
+        "p95": 126.07599639892578,
+        "p99": 129.5850067138672,
+        "max": 152.27000427246094
+      },
+      "garment_bust_cm": {
+        "count": 105000,
+        "missing": 0,
+        "mean": 114.4942799991426,
+        "std": 13.062216253624833,
+        "min": 87.43486785888672,
+        "p1": 93.49258422851562,
+        "p5": 96.24263534545898,
+        "p25": 104.59770965576172,
+        "median": 112.9541244506836,
+        "p75": 122.91929626464844,
+        "p95": 138.2198944091797,
+        "p99": 152.1355438232422,
+        "max": 197.25389099121094
+      },
+      "garment_length_cm": {
+        "count": 105000,
+        "missing": 0,
+        "mean": 53.86815587683178,
+        "std": 8.594885877060088,
+        "min": 31.922155380249023,
+        "p1": 36.48478282928467,
+        "p5": 41.35907611846924,
+        "p25": 48.5271110534668,
+        "median": 52.0628547668457,
+        "p75": 58.13628387451172,
+        "p95": 70.7796844482422,
+        "p99": 78.4852066040039,
+        "max": 96.23037719726562
+      },
+      "garment_sleeve_cm": {
+        "count": 105000,
+        "missing": 0,
+        "mean": 30.17717084858304,
+        "std": 18.198437832870052,
+        "min": 0.0,
+        "p1": 0.0,
+        "p5": 0.0,
+        "p25": 17.241334915161133,
+        "median": 22.817319869995117,
+        "p75": 50.03951644897461,
+        "p95": 58.10946044921874,
+        "p99": 63.577041854858386,
+        "max": 82.12307739257812
+      },
+      "bust_ease_cm": {
+        "count": 105000,
+        "missing": 0,
+        "mean": 9.387711238970075,
+        "std": 10.754263496478789,
+        "min": -14.996788024902344,
+        "p1": -13.330952453613282,
+        "p5": -7.77669067382812,
+        "p25": 4.1474456787109375,
+        "median": 6.703521728515625,
+        "p75": 15.754951477050781,
+        "p95": 29.06109390258786,
+        "p99": 37.899175415039,
+        "max": 86.65958404541016
+      },
+      "bust_ease_ratio": {
+        "count": 105000,
+        "missing": 0,
+        "mean": 0.09298063606421259,
+        "std": 0.10640609692752437,
+        "min": -0.1423629073556003,
+        "p1": -0.11579005581012386,
+        "p5": -0.0700575588007338,
+        "p25": 0.039999985710871634,
+        "median": 0.06304840075152403,
+        "p75": 0.15345591718504598,
+        "p95": 0.2899999800869346,
+        "p99": 0.38886372254903573,
+        "max": 0.923284593101965
+      },
+      "garment_length_height_ratio": {
+        "count": 105000,
+        "missing": 0,
+        "mean": 0.31321721358409305,
+        "std": 0.04882508283041942,
+        "min": 0.17868616273544108,
+        "p1": 0.2141081443746465,
+        "p5": 0.24026263107553153,
+        "p25": 0.2854470840872938,
+        "median": 0.3037871748773431,
+        "p75": 0.3350923105610455,
+        "p95": 0.4118410164246322,
+        "p99": 0.4496539297024035,
+        "max": 0.5595090140423576
+      }
+    },
+    "train": {
+      "body_height_cm": {
+        "count": 100000,
+        "missing": 0,
+        "mean": 172.12582945236207,
+        "std": 8.790549822659706,
+        "min": 149.76600646972656,
+        "p1": 151.35800170898438,
+        "p5": 157.68499755859375,
+        "p25": 168.13099670410156,
+        "median": 171.3990020751953,
+        "p75": 176.9600067138672,
+        "p95": 190.56399536132812,
+        "p99": 195.71600341796875,
+        "max": 195.71600341796875
+      },
+      "body_bust_cm": {
+        "count": 100000,
+        "missing": 0,
+        "mean": 105.11789628349304,
+        "std": 10.726505388825005,
+        "min": 82.71890258789062,
+        "p1": 84.0470962524414,
+        "p5": 89.97450256347656,
+        "p25": 96.02010345458984,
+        "median": 103.3499984741211,
+        "p75": 108.9010009765625,
+        "p95": 126.01300048828125,
+        "p99": 141.02000427246094,
+        "max": 147.0449981689453
+      },
+      "body_waist_cm": {
+        "count": 100000,
+        "missing": 0,
+        "mean": 91.4011177268219,
+        "std": 13.969879665258976,
+        "min": 61.2036018371582,
+        "p1": 63.724098205566406,
+        "p5": 71.99559783935547,
+        "p25": 80.243896484375,
+        "median": 89.2217025756836,
+        "p75": 96.4999008178711,
+        "p95": 117.7239990234375,
+        "p99": 136.99200439453125,
+        "max": 142.31300354003906
+      },
+      "body_hips_cm": {
+        "count": 100000,
+        "missing": 0,
+        "mean": 106.64071035377502,
+        "std": 9.567577668251241,
+        "min": 87.5521011352539,
+        "p1": 89.18830108642578,
+        "p5": 92.95089721679688,
+        "p25": 100.36000061035156,
+        "median": 105.15599822998047,
+        "p75": 109.65899658203125,
+        "p95": 126.07599639892578,
+        "p99": 129.5850067138672,
+        "max": 152.27000427246094
+      },
+      "garment_bust_cm": {
+        "count": 100000,
+        "missing": 0,
+        "mean": 114.51374594543456,
+        "std": 13.072324289210647,
+        "min": 87.49529266357422,
+        "p1": 93.5123291015625,
+        "p5": 96.25593910217285,
+        "p25": 104.59770965576172,
+        "median": 113.01932907104492,
+        "p75": 122.91929626464844,
+        "p95": 138.2198944091797,
+        "p99": 152.1355438232422,
+        "max": 197.25389099121094
+      },
+      "garment_length_cm": {
+        "count": 100000,
+        "missing": 0,
+        "mean": 53.86802429517746,
+        "std": 8.59399744080496,
+        "min": 31.922155380249023,
+        "p1": 36.46884536743164,
+        "p5": 41.35502891540527,
+        "p25": 48.52815246582031,
+        "median": 52.06492614746094,
+        "p75": 58.13632106781006,
+        "p95": 70.77980041503906,
+        "p99": 78.49597930908203,
+        "max": 96.23037719726562
+      },
+      "garment_sleeve_cm": {
+        "count": 100000,
+        "missing": 0,
+        "mean": 30.191814957056046,
+        "std": 18.196846412863266,
+        "min": 0.0,
+        "p1": 0.0,
+        "p5": 0.0,
+        "p25": 17.24340581893921,
+        "median": 22.82838535308838,
+        "p75": 50.03989887237549,
+        "p95": 58.12797164916992,
+        "p99": 63.60915855407711,
+        "max": 82.12307739257812
+      },
+      "bust_ease_cm": {
+        "count": 100000,
+        "missing": 0,
+        "mean": 9.395849661941527,
+        "std": 10.760943993648183,
+        "min": -14.996788024902344,
+        "p1": -13.273887405395508,
+        "p5": -7.755475616455076,
+        "p25": 4.134002685546875,
+        "median": 6.699222564697266,
+        "p75": 15.772857666015625,
+        "p95": 29.095504760742188,
+        "p99": 37.93140800476073,
+        "max": 86.65958404541016
+      },
+      "bust_ease_ratio": {
+        "count": 100000,
+        "missing": 0,
+        "mean": 0.09304323649065002,
+        "std": 0.10644580902128782,
+        "min": -0.1423629073556003,
+        "p1": -0.11564005617666277,
+        "p5": -0.0700575588007338,
+        "p25": 0.039999979192222763,
+        "median": 0.06304062708520305,
+        "p75": 0.15393090350203545,
+        "p95": 0.28999998363345036,
+        "p99": 0.3893562696492168,
+        "max": 0.923284593101965
+      },
+      "garment_length_height_ratio": {
+        "count": 100000,
+        "missing": 0,
+        "mean": 0.3132083982530635,
+        "std": 0.04881806479632241,
+        "min": 0.17868616273544108,
+        "p1": 0.2140308060877295,
+        "p5": 0.24022584077179715,
+        "p25": 0.28547062253979893,
+        "median": 0.30377724386282856,
+        "p75": 0.3350699230682693,
+        "p95": 0.4117645730366627,
+        "p99": 0.449681809032987,
+        "max": 0.5595090140423576
+      }
+    },
+    "eval": {
+      "body_height_cm": {
+        "count": 5000,
+        "missing": 0,
+        "mean": 172.02864936828612,
+        "std": 8.710839699200747,
+        "min": 149.76600646972656,
+        "p1": 151.35800170898438,
+        "p5": 157.68499755859375,
+        "p25": 168.13099670410156,
+        "median": 171.33299255371094,
+        "p75": 176.9600067138672,
+        "p95": 185.59300231933594,
+        "p99": 195.71600341796875,
+        "max": 195.71600341796875
+      },
+      "body_bust_cm": {
+        "count": 5000,
+        "missing": 0,
+        "mean": 104.8800182937622,
+        "std": 10.729554168788994,
+        "min": 82.71890258789062,
+        "p1": 84.0470962524414,
+        "p5": 89.97450256347656,
+        "p25": 96.02010345458984,
+        "median": 103.3499984741211,
+        "p75": 108.76799774169922,
+        "p95": 126.01300048828125,
+        "p99": 141.02000427246094,
+        "max": 147.0449981689453
+      },
+      "body_waist_cm": {
+        "count": 5000,
+        "missing": 0,
+        "mean": 91.09238625793456,
+        "std": 13.972603794190293,
+        "min": 61.2036018371582,
+        "p1": 63.43470001220703,
+        "p5": 70.97789764404297,
+        "p25": 80.243896484375,
+        "median": 89.2217025756836,
+        "p75": 96.4999008178711,
+        "p95": 117.7239990234375,
+        "p99": 141.15199279785156,
+        "max": 142.31300354003906
+      },
+      "body_hips_cm": {
+        "count": 5000,
+        "missing": 0,
+        "mean": 106.50110730895996,
+        "std": 9.520551622106897,
+        "min": 87.5521011352539,
+        "p1": 89.18830108642578,
+        "p5": 92.95270195007325,
+        "p25": 100.10199737548828,
+        "median": 105.15599822998047,
+        "p75": 109.65899658203125,
+        "p95": 124.69200134277344,
+        "p99": 129.5850067138672,
+        "max": 152.27000427246094
+      },
+      "garment_bust_cm": {
+        "count": 5000,
+        "missing": 0,
+        "mean": 114.10496107330323,
+        "std": 12.853484496397801,
+        "min": 87.43486785888672,
+        "p1": 93.43046157836915,
+        "p5": 95.80094909667969,
+        "p25": 104.38175964355469,
+        "median": 112.51969528198242,
+        "p75": 122.43610000610352,
+        "p95": 137.28329467773438,
+        "p99": 149.8894213867188,
+        "max": 172.60804748535156
+      },
+      "garment_length_cm": {
+        "count": 5000,
+        "missing": 0,
+        "mean": 53.870787509918216,
+        "std": 8.613496149610395,
+        "min": 32.769588470458984,
+        "p1": 36.69574413299561,
+        "p5": 41.39301815032959,
+        "p25": 48.500648498535156,
+        "median": 52.0506477355957,
+        "p75": 58.12366580963135,
+        "p95": 70.76777000427246,
+        "p99": 78.07055702209476,
+        "max": 90.08356475830078
+      },
+      "garment_sleeve_cm": {
+        "count": 5000,
+        "missing": 0,
+        "mean": 29.884288679122925,
+        "std": 18.229589305978056,
+        "min": 0.0,
+        "p1": 0.0,
+        "p5": 0.0,
+        "p25": 17.203752040863037,
+        "median": 22.558076858520508,
+        "p75": 50.02761459350586,
+        "p95": 57.740089416503906,
+        "p99": 62.44948719024662,
+        "max": 79.61761474609375
+      },
+      "bust_ease_cm": {
+        "count": 5000,
+        "missing": 0,
+        "mean": 9.224942779541015,
+        "std": 10.619524615258205,
+        "min": -14.892967224121094,
+        "p1": -13.438796997070312,
+        "p5": -7.899234008789061,
+        "p25": 4.338186264038086,
+        "median": 6.820919036865234,
+        "p75": 15.249048233032227,
+        "p95": 28.547114944458027,
+        "p99": 37.00373596191408,
+        "max": 61.71650695800781
+      },
+      "bust_ease_ratio": {
+        "count": 5000,
+        "missing": 0,
+        "mean": 0.0917286275354641,
+        "std": 0.10561149612126541,
+        "min": -0.13707685705994882,
+        "p1": -0.11619679641584729,
+        "p5": -0.07050366517373056,
+        "p25": 0.04042752471239318,
+        "median": 0.06321955369128965,
+        "p75": 0.14999997178921806,
+        "p95": 0.28999992665196694,
+        "p99": 0.3865074092474536,
+        "max": 0.6091128110624717
+      },
+      "garment_length_height_ratio": {
+        "count": 5000,
+        "missing": 0,
+        "mean": 0.313393520204684,
+        "std": 0.048969794823622945,
+        "min": 0.18917351867937332,
+        "p1": 0.21537591366834163,
+        "p5": 0.24049827809907637,
+        "p25": 0.2846274859095388,
+        "median": 0.3040244131407871,
+        "p75": 0.3361987389074481,
+        "p95": 0.4129773608131815,
+        "p99": 0.44883830305427685,
+        "max": 0.5267313601087485
+      }
+    },
+    "train_vs_eval_shift": {
+      "body_height_cm": {
+        "ks_statistic": 0.010709999999999886,
+        "wasserstein_distance": 0.1260782255554195
+      },
+      "body_bust_cm": {
+        "ks_statistic": 0.013950000000000018,
+        "wasserstein_distance": 0.24677751091003375
+      },
+      "body_waist_cm": {
+        "ks_statistic": 0.01690999999999998,
+        "wasserstein_distance": 0.3280805200958249
+      },
+      "body_hips_cm": {
+        "ks_statistic": 0.011259999999999937,
+        "wasserstein_distance": 0.15705810386657798
+      },
+      "garment_bust_cm": {
+        "ks_statistic": 0.015159999999999951,
+        "wasserstein_distance": 0.41037343383789077
+      },
+      "garment_length_cm": {
+        "ks_statistic": 0.007600000000000051,
+        "wasserstein_distance": 0.06941774644851681
+      },
+      "garment_sleeve_cm": {
+        "ks_statistic": 0.012460000000000027,
+        "wasserstein_distance": 0.3153833414554595
+      },
+      "bust_ease_cm": {
+        "ks_statistic": 0.013069999999999915,
+        "wasserstein_distance": 0.24747266456604028
+      },
+      "bust_ease_ratio": {
+        "ks_statistic": 0.012109999999999954,
+        "wasserstein_distance": 0.00220301132937345
+      },
+      "garment_length_height_ratio": {
+        "ks_statistic": 0.008849999999999997,
+        "wasserstein_distance": 0.00043890948272574156
+      }
+    }
+  },
+  "quantization": {
+    "OBSERVED": {
+      "ALL": {
+        "n": 105000,
+        "unique_raw": 29387,
+        "unique_rounded_3dp": 716,
+        "unique_rounded_2dp": 87,
+        "unique_rounded_1dp": 11,
+        "top_levels_2dp": [
+          {
+            "value": 0.05,
+            "count": 21998
+          },
+          {
+            "value": 0.11,
+            "count": 3729
+          },
+          {
+            "value": 0.13,
+            "count": 3258
+          },
+          {
+            "value": 0.04,
+            "count": 3236
+          },
+          {
+            "value": 0.1,
+            "count": 3133
+          },
+          {
+            "value": 0.12,
+            "count": 3054
+          },
+          {
+            "value": 0.09,
+            "count": 2960
+          },
+          {
+            "value": 0.06,
+            "count": 2817
+          },
+          {
+            "value": 0.03,
+            "count": 2780
+          },
+          {
+            "value": 0.14,
+            "count": 2657
+          },
+          {
+            "value": 0.07,
+            "count": 2638
+          },
+          {
+            "value": 0.08,
+            "count": 2590
+          },
+          {
+            "value": -0.02,
+            "count": 2509
+          },
+          {
+            "value": 0.2,
+            "count": 2268
+          },
+          {
+            "value": -0.0,
+            "count": 2235
+          }
+        ],
+        "top_level_mass_2dp": 0.20950476190476192
+      },
+      "train": {
+        "n": 100000,
+        "unique_raw": 28661,
+        "unique_rounded_3dp": 713,
+        "unique_rounded_2dp": 87,
+        "unique_rounded_1dp": 11,
+        "top_levels_2dp": [
+          {
+            "value": 0.05,
+            "count": 20927
+          },
+          {
+            "value": 0.11,
+            "count": 3573
+          },
+          {
+            "value": 0.13,
+            "count": 3096
+          },
+          {
+            "value": 0.04,
+            "count": 3085
+          },
+          {
+            "value": 0.1,
+            "count": 2980
+          },
+          {
+            "value": 0.12,
+            "count": 2889
+          },
+          {
+            "value": 0.09,
+            "count": 2820
+          },
+          {
+            "value": 0.06,
+            "count": 2679
+          },
+          {
+            "value": 0.03,
+            "count": 2654
+          },
+          {
+            "value": 0.14,
+            "count": 2542
+          },
+          {
+            "value": 0.07,
+            "count": 2503
+          },
+          {
+            "value": 0.08,
+            "count": 2435
+          },
+          {
+            "value": -0.02,
+            "count": 2402
+          },
+          {
+            "value": 0.2,
+            "count": 2160
+          },
+          {
+            "value": 0.0,
+            "count": 2122
+          }
+        ],
+        "top_level_mass_2dp": 0.20927
+      },
+      "eval": {
+        "n": 5000,
+        "unique_raw": 3191,
+        "unique_rounded_3dp": 532,
+        "unique_rounded_2dp": 72,
+        "unique_rounded_1dp": 8,
+        "top_levels_2dp": [
+          {
+            "value": 0.05,
+            "count": 1071
+          },
+          {
+            "value": 0.12,
+            "count": 165
+          },
+          {
+            "value": 0.13,
+            "count": 162
+          },
+          {
+            "value": 0.11,
+            "count": 156
+          },
+          {
+            "value": 0.08,
+            "count": 155
+          },
+          {
+            "value": 0.1,
+            "count": 153
+          },
+          {
+            "value": 0.04,
+            "count": 151
+          },
+          {
+            "value": 0.09,
+            "count": 140
+          },
+          {
+            "value": 0.06,
+            "count": 138
+          },
+          {
+            "value": 0.07,
+            "count": 135
+          },
+          {
+            "value": 0.03,
+            "count": 126
+          },
+          {
+            "value": 0.14,
+            "count": 115
+          },
+          {
+            "value": -0.0,
+            "count": 113
+          },
+          {
+            "value": 0.17,
+            "count": 111
+          },
+          {
+            "value": 0.2,
+            "count": 108
+          }
+        ],
+        "top_level_mass_2dp": 0.2142
+      }
+    },
+    "INTERPRETED": "Discrete concentration in bust_ease_ratio at rounded 1dp/2dp levels",
+    "HYPOTHESIS": "May reflect preset garment scaling in data generation",
+    "VERIFICATION_STATUS": "NOT VERIFIED from official generation documentation"
+  },
+  "image_integrity": {
+    "total_samples": 105000,
+    "modalities": {
+      "person": {
+        "checked": 105000,
+        "missing_hash": 1,
+        "unexpected_dimensions": 1,
+        "non_png_format": 0,
+        "expected_768x1024_rgb_png_compliant": 104998
+      },
+      "cloth": {
+        "checked": 105000,
+        "missing_hash": 0,
+        "unexpected_dimensions": 0,
+        "non_png_format": 0,
+        "expected_768x1024_rgb_png_compliant": 105000
+      },
+      "target": {
+        "checked": 105000,
+        "missing_hash": 0,
+        "unexpected_dimensions": 0,
+        "non_png_format": 0,
+        "expected_768x1024_rgb_png_compliant": 105000
+      }
+    }
+  },
+  "quality": {
+    "ALL": {
+      "total": 105000,
+      "VALID": 98252,
+      "SUSPICIOUS": 6747,
+      "INVALID": 1,
+      "usable_for_fitground": 104999
+    },
+    "train": {
+      "total": 100000,
+      "VALID": 93579,
+      "SUSPICIOUS": 6421,
+      "INVALID": 0,
+      "usable_for_fitground": 100000
+    },
+    "eval": {
+      "total": 5000,
+      "VALID": 4673,
+      "SUSPICIOUS": 326,
+      "INVALID": 1,
+      "usable_for_fitground": 4999
+    },
+    "flag_counts": {
+      "sleeveless_garment": 8459,
+      "possible_duplicate": 6677,
+      "possible_train_eval_leakage": 639,
+      "extreme_bust_ease_ratio_0.609": 6,
+      "extreme_bust_ease_ratio_0.575": 6,
+      "extreme_bust_ease_ratio_0.557": 4,
+      "extreme_bust_ease_ratio_0.588": 4,
+      "extreme_bust_ease_ratio_0.562": 3,
+      "extreme_bust_ease_62.0cm": 3,
+      "extreme_bust_ease_ratio_0.734": 3,
+      "extreme_bust_ease_ratio_0.632": 3,
+      "extreme_bust_ease_61.7cm": 2,
+      "extreme_bust_ease_ratio_0.567": 2,
+      "extreme_bust_ease_ratio_0.570": 2,
+      "extreme_bust_ease_ratio_0.577": 2,
+      "extreme_bust_ease_86.7cm": 2,
+      "extreme_bust_ease_ratio_0.923": 2,
+      "extreme_bust_ease_ratio_0.625": 2,
+      "extreme_bust_ease_63.3cm": 2,
+      "extreme_bust_ease_ratio_0.653": 2,
+      "extreme_bust_ease_ratio_0.591": 2,
+      "extreme_bust_ease_ratio_0.627": 2,
+      "extreme_bust_ease_ratio_0.618": 2,
+      "extreme_bust_ease_ratio_0.584": 2,
+      "missing_person_image": 1,
+      "extreme_bust_ease_ratio_0.592": 1,
+      "extreme_bust_ease_ratio_0.572": 1,
+      "extreme_bust_ease_ratio_0.616": 1,
+      "extreme_bust_ease_ratio_0.613": 1,
+      "extreme_bust_ease_ratio_0.585": 1,
+      "extreme_bust_ease_ratio_0.568": 1,
+      "extreme_bust_ease_ratio_0.566": 1,
+      "extreme_bust_ease_ratio_0.621": 1,
+      "extreme_bust_ease_63.0cm": 1,
+      "extreme_bust_ease_ratio_0.660": 1,
+      "extreme_bust_ease_ratio_0.631": 1,
+      "extreme_bust_ease_ratio_0.647": 1,
+      "extreme_bust_ease_63.2cm": 1,
+      "extreme_bust_ease_ratio_0.658": 1,
+      "extreme_bust_ease_ratio_0.589": 1,
+      "extreme_bust_ease_ratio_0.608": 1,
+      "extreme_bust_ease_ratio_0.564": 1,
+      "extreme_bust_ease_ratio_0.605": 1,
+      "extreme_bust_ease_68.5cm": 1,
+      "extreme_bust_ease_ratio_0.722": 1,
+      "extreme_bust_ease_ratio_0.576": 1,
+      "extreme_bust_ease_ratio_0.573": 1,
+      "extreme_bust_ease_ratio_0.581": 1,
+      "extreme_bust_ease_70.2cm": 1,
+      "extreme_bust_ease_ratio_0.644": 1,
+      "extreme_bust_ease_ratio_0.665": 1,
+      "extreme_bust_ease_ratio_0.601": 1,
+      "extreme_bust_ease_66.6cm": 1,
+      "extreme_bust_ease_69.0cm": 1,
+      "extreme_bust_ease_ratio_0.817": 1,
+      "extreme_bust_ease_ratio_0.551": 1,
+      "extreme_bust_ease_ratio_0.552": 1,
+      "extreme_bust_ease_60.7cm": 1,
+      "extreme_bust_ease_ratio_0.672": 1,
+      "extreme_bust_ease_62.7cm": 1,
+      "extreme_bust_ease_ratio_0.624": 1,
+      "extreme_bust_ease_69.4cm": 1,
+      "extreme_bust_ease_ratio_0.789": 1
+    },
+    "usable_definition": "usable_for_fitground=True iff quality_status != INVALID. SUSPICIOUS samples remain usable unless explicitly excluded downstream."
+  },
+  "duplicate_leakage": {
+    "exact_record_duplicate": 0,
+    "exact_person_image_sha256": 3399,
+    "exact_cloth_image_sha256": 3225,
+    "exact_target_image_sha256": 3278,
+    "exact_person_cloth_pair": 0,
+    "cross_split_leakage_person_image": 342,
+    "cross_split_leakage_cloth_image": 293,
+    "cross_split_leakage_target_image": 297,
+    "cross_split_leakage_pair": 0,
+    "semantic_person_identity_verified": false,
+    "semantic_identity_note": "Semantic person-identity leakage is NOT VERIFIED by SHA256/pHash alone. FIT manifest has no reliable person_id metadata.",
+    "near_duplicate_status": "DEFERRED_TO_LOCAL_GPU_SPLIT_DESIGN_STAGE",
+    "phash_available": true
+  }
+}

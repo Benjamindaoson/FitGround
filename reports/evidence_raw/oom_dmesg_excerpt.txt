@@ -1,0 +1,8 @@
+OOM dmesg excerpt — pre-streaming-redesign failure (2026-09-10 ~13:54 UTC)
+Source: dmesg -T
+
+[Thu Sep 10 13:54:36 2026] oom-kill: ... task=python,pid=298204
+[Thu Sep 10 13:54:36 2026] Out of memory: Killed process 298204 (python)
+  total-vm:5880432kB, anon-rss:1076568kB (~1.05 GB)
+
+No OOM events recorded after bounded-memory streaming redesign (~16:19 UTC start).

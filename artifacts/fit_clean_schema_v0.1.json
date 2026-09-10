@@ -1,0 +1,293 @@
+{
+  "version": "v0.1",
+  "dataset_source": "Yuanhao-Harry-Wang/fitvto-100k",
+  "dataset_revision": "5563646729edf148ed2b32c4b9c794d51a1bc828",
+  "sample_id_contract": "{source_split}/{source_shard_id}/{source_row_id:04d}",
+  "columns": [
+    {
+      "name": "sample_id",
+      "dtype": "string",
+      "nullable": false,
+      "meaning": "Deterministic ID: {split}/{shard_id}/{row_id:04d}",
+      "derivation": "make_sample_id(source_split, source_shard_id, source_row_id)",
+      "example": "eval/eval-00000-of-00020/0000",
+      "required_downstream": true
+    },
+    {
+      "name": "source_dataset",
+      "dtype": "string",
+      "nullable": false,
+      "meaning": "HF dataset slug",
+      "example": "fitvto-100k",
+      "required_downstream": true
+    },
+    {
+      "name": "source_split",
+      "dtype": "string",
+      "nullable": false,
+      "meaning": "train or eval",
+      "required_downstream": true
+    },
+    {
+      "name": "source_shard_id",
+      "dtype": "string",
+      "nullable": false,
+      "meaning": "Parquet shard stem without extension",
+      "required_downstream": true
+    },
+    {
+      "name": "source_row_id",
+      "dtype": "int32",
+      "nullable": false,
+      "meaning": "0-based row index within shard",
+      "required_downstream": true
+    },
+    {
+      "name": "person_image_ref",
+      "dtype": "string",
+      "nullable": false,
+      "meaning": "Traceability ref to raw parquet person image",
+      "required_downstream": true
+    },
+    {
+      "name": "garment_image_ref",
+      "dtype": "string",
+      "nullable": false,
+      "meaning": "Traceability ref to cloth image (garment)",
+      "required_downstream": true
+    },
+    {
+      "name": "target_image_ref",
+      "dtype": "string",
+      "nullable": false,
+      "meaning": "Traceability ref to try-on target image",
+      "required_downstream": true
+    },
+    {
+      "name": "person_image_identity",
+      "dtype": "string",
+      "nullable": false,
+      "meaning": "person:{sha256}",
+      "required_downstream": true
+    },
+    {
+      "name": "garment_image_identity",
+      "dtype": "string",
+      "nullable": false,
+      "meaning": "cloth:{sha256}",
+      "required_downstream": true
+    },
+    {
+      "name": "target_image_identity",
+      "dtype": "string",
+      "nullable": false,
+      "meaning": "target:{sha256}",
+      "required_downstream": true
+    },
+    {
+      "name": "person_sha256",
+      "dtype": "string",
+      "nullable": true,
+      "meaning": "SHA256 of embedded person PNG bytes",
+      "required_downstream": true
+    },
+    {
+      "name": "garment_sha256",
+      "dtype": "string",
+      "nullable": true,
+      "meaning": "SHA256 of embedded cloth PNG bytes",
+      "required_downstream": true
+    },
+    {
+      "name": "target_sha256",
+      "dtype": "string",
+      "nullable": true,
+      "meaning": "SHA256 of embedded target PNG bytes",
+      "required_downstream": true
+    },
+    {
+      "name": "person_phash",
+      "dtype": "string",
+      "nullable": true,
+      "meaning": "Perceptual hash (pHash) of person image",
+      "required_downstream": false
+    },
+    {
+      "name": "garment_phash",
+      "dtype": "string",
+      "nullable": true,
+      "meaning": "pHash of cloth image",
+      "required_downstream": false
+    },
+    {
+      "name": "target_phash",
+      "dtype": "string",
+      "nullable": true,
+      "meaning": "pHash of target image",
+      "required_downstream": false
+    },
+    {
+      "name": "body_height_cm",
+      "dtype": "float64",
+      "nullable": true,
+      "unit": "cm",
+      "source_field": "body_height",
+      "required_downstream": true
+    },
+    {
+      "name": "body_bust_cm",
+      "dtype": "float64",
+      "nullable": true,
+      "unit": "cm",
+      "source_field": "body_bust",
+      "required_downstream": true
+    },
+    {
+      "name": "body_waist_cm",
+      "dtype": "float64",
+      "nullable": true,
+      "unit": "cm",
+      "source_field": "body_waist",
+      "required_downstream": true
+    },
+    {
+      "name": "body_hips_cm",
+      "dtype": "float64",
+      "nullable": true,
+      "unit": "cm",
+      "source_field": "body_hips",
+      "required_downstream": true
+    },
+    {
+      "name": "garment_bust_cm",
+      "dtype": "float64",
+      "nullable": true,
+      "unit": "cm",
+      "source_field": "garment_bust",
+      "required_downstream": true
+    },
+    {
+      "name": "garment_length_cm",
+      "dtype": "float64",
+      "nullable": true,
+      "unit": "cm",
+      "source_field": "garment_length",
+      "required_downstream": true
+    },
+    {
+      "name": "garment_sleeve_cm",
+      "dtype": "float64",
+      "nullable": true,
+      "unit": "cm",
+      "source_field": "garment_sleeve_length",
+      "quality_rule": "0.0 = sleeveless (flag only, not invalid)",
+      "required_downstream": true
+    },
+    {
+      "name": "bust_ease_cm",
+      "dtype": "float64",
+      "nullable": true,
+      "unit": "cm",
+      "derivation": "garment_bust_cm - body_bust_cm",
+      "required_downstream": true
+    },
+    {
+      "name": "bust_ease_ratio",
+      "dtype": "float64",
+      "nullable": true,
+      "derivation": "bust_ease_cm / body_bust_cm",
+      "required_downstream": true
+    },
+    {
+      "name": "garment_length_height_ratio",
+      "dtype": "float64",
+      "nullable": true,
+      "derivation": "garment_length_cm / body_height_cm",
+      "required_downstream": true
+    },
+    {
+      "name": "quality_status",
+      "dtype": "string",
+      "nullable": false,
+      "meaning": "VALID | SUSPICIOUS | INVALID",
+      "required_downstream": true
+    },
+    {
+      "name": "quality_flags",
+      "dtype": "list<string>",
+      "nullable": true,
+      "meaning": "Non-fatal flags e.g. sleeveless_garment, possible_duplicate",
+      "required_downstream": true
+    },
+    {
+      "name": "duplicate_person_sha256",
+      "dtype": "bool",
+      "nullable": false,
+      "meaning": "IMAGE-LEVEL exact SHA256 duplicate",
+      "required_downstream": true
+    },
+    {
+      "name": "duplicate_garment_sha256",
+      "dtype": "bool",
+      "nullable": false,
+      "meaning": "IMAGE-LEVEL cloth SHA256 duplicate",
+      "required_downstream": true
+    },
+    {
+      "name": "duplicate_target_sha256",
+      "dtype": "bool",
+      "nullable": false,
+      "meaning": "IMAGE-LEVEL target SHA256 duplicate",
+      "required_downstream": true
+    },
+    {
+      "name": "duplicate_person_garment_pair",
+      "dtype": "bool",
+      "nullable": false,
+      "meaning": "Same person+cloth SHA256 pair appears >1",
+      "required_downstream": true
+    },
+    {
+      "name": "duplicate_record_exact",
+      "dtype": "bool",
+      "nullable": false,
+      "meaning": "Exact person+cloth+target SHA256 triple duplicate",
+      "required_downstream": true
+    },
+    {
+      "name": "leakage_train_eval_person",
+      "dtype": "bool",
+      "nullable": false,
+      "meaning": "Same person IMAGE SHA256 in train and eval",
+      "required_downstream": true
+    },
+    {
+      "name": "leakage_train_eval_garment",
+      "dtype": "bool",
+      "nullable": false,
+      "meaning": "Same cloth IMAGE SHA256 in train and eval",
+      "required_downstream": true
+    },
+    {
+      "name": "leakage_train_eval_target",
+      "dtype": "bool",
+      "nullable": false,
+      "meaning": "Same target IMAGE SHA256 in train and eval",
+      "required_downstream": true
+    },
+    {
+      "name": "leakage_train_eval_pair",
+      "dtype": "bool",
+      "nullable": false,
+      "meaning": "Same person+cloth pair across splits",
+      "required_downstream": true
+    },
+    {
+      "name": "usable_for_fitground",
+      "dtype": "bool",
+      "nullable": false,
+      "meaning": "True iff quality_status != INVALID",
+      "required_downstream": true
+    }
+  ]
+}

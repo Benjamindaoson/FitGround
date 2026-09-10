@@ -1,0 +1,134 @@
+version: v0.1
+frozen_at: "2026-09-10T22:48:31+00:00"
+description: >
+  Machine-readable quality contract for FIT-Clean v0.1.
+  Any rule change requires quality_rules_v0.2.yaml — do not silently edit v0.1.
+
+usable_for_fitground_definition: >
+  usable_for_fitground = True iff quality_status != INVALID.
+  SUSPICIOUS samples remain usable unless explicitly excluded downstream.
+
+status_levels:
+  VALID:
+    meaning: All core images decodable, measurements present and physically plausible.
+    usable_for_fitground: true
+  SUSPICIOUS:
+    meaning: Usable but flagged for review (extreme ease, unusual dimensions, duplicates, leakage).
+    usable_for_fitground: true
+  INVALID:
+    meaning: Missing/corrupt image or missing/impossible measurement — exclude from modeling.
+    usable_for_fitground: false
+
+measurement_bounds_cm:
+  body_height_cm: { min: 120.0, max: 230.0, invalid_if_outside: true }
+  body_bust_cm: { min: 60.0, max: 180.0, invalid_if_outside: true }
+  body_waist_cm: { min: 50.0, max: 180.0, invalid_if_outside: true }
+  body_hips_cm: { min: 60.0, max: 200.0, invalid_if_outside: true }
+  garment_bust_cm: { min: 50.0, max: 250.0, invalid_if_outside: true }
+  garment_length_cm: { min: 10.0, max: 200.0, invalid_if_outside: true }
+  garment_sleeve_cm: { min: 0.0, max: 100.0, invalid_if_outside: true }
+
+image_expectations:
+  width: 768
+  height: 1024
+  format: PNG
+  color_mode: RGB
+
+flags:
+  - name: missing_person_image
+    condition: person image bytes absent
+    threshold: null
+    severity: INVALID
+    action: exclude sample
+    usable_for_fitground_effect: false
+
+  - name: missing_garment_image
+    condition: garment/cloth image bytes absent
+    threshold: null
+    severity: INVALID
+    action: exclude sample
+    usable_for_fitground_effect: false
+
+  - name: missing_target_image
+    condition: target image bytes absent
+    threshold: null
+    severity: INVALID
+    action: exclude sample
+    usable_for_fitground_effect: false
+
+  - name: corrupt_person_image
+    condition: person image not decodable
+    threshold: null
+    severity: INVALID
+    action: exclude sample
+    usable_for_fitground_effect: false
+
+  - name: corrupt_garment_image
+    condition: garment image not decodable
+    threshold: null
+    severity: INVALID
+    action: exclude sample
+    usable_for_fitground_effect: false
+
+  - name: corrupt_target_image
+    condition: target image not decodable
+    threshold: null
+    severity: INVALID
+    action: exclude sample
+    usable_for_fitground_effect: false
+
+  - name: missing_{field}
+    condition: core measurement field is null
+    threshold: null
+    severity: INVALID
+    action: exclude sample
+    usable_for_fitground_effect: false
+
+  - name: impossible_{field}_{value}
+    condition: measurement outside hard bounds in measurement_bounds_cm
+    threshold: see measurement_bounds_cm
+    severity: INVALID
+    action: exclude sample
+    usable_for_fitground_effect: false
+
+  - name: unusual_{role}_dimensions_{w}x{h}
+    condition: image width/height != 768x1024
+    threshold: "768x1024"
+    severity: SUSPICIOUS
+    action: flag for review
+    usable_for_fitground_effect: true
+
+  - name: sleeveless_garment
+    condition: garment_sleeve_cm == 0
+    threshold: 0.0
+    severity: informational
+    action: annotate only — valid sleeveless garment
+    usable_for_fitground_effect: true
+
+  - name: extreme_bust_ease_{value}cm
+    condition: bust_ease_cm outside suspicious band
+    threshold: { low: -30.0, high: 60.0 }
+    severity: SUSPICIOUS
+    action: flag for review
+    usable_for_fitground_effect: true
+
+  - name: extreme_bust_ease_ratio_{value}
+    condition: bust_ease_ratio outside suspicious band
+    threshold: { low: -0.25, high: 0.55 }
+    severity: SUSPICIOUS
+    action: flag for review
+    usable_for_fitground_effect: true
+
+  - name: possible_duplicate
+    condition: exact image SHA256 or record duplicate within split
+    threshold: exact SHA256 match
+    severity: SUSPICIOUS
+    action: annotate — do not delete
+    usable_for_fitground_effect: true
+
+  - name: possible_train_eval_leakage
+    condition: exact image SHA256 or pair appears in both train and eval
+    threshold: exact SHA256 / pair overlap
+    severity: SUSPICIOUS
+    action: annotate — preserve official eval split
+    usable_for_fitground_effect: true

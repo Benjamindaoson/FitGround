@@ -1,0 +1,2 @@
+sample_id,source_split,source_shard_id,source_row_id,body_height_cm,body_bust_cm,garment_bust_cm,bust_ease_cm,bust_ease_ratio,garment_sleeve_cm,quality_status,quality_flags,person_sha256,garment_sha256,target_sha256
+eval/eval-00000-of-00020/0076,eval,eval-00000-of-00020,76,184.34300231933594,94.34390258789062,105.66516876220703,11.321266174316406,0.11999997735698428,16.92323112487793,INVALID,['missing_person_image'],,97e34c73863b60ce19cebb68747f328d5cf333d137a00d11b69e6c8c14cffa87,4e5e85728457e639d44383f6ff3543021c935634c15cbac9205ba191b08b53bc

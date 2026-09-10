@@ -1,0 +1,32 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# Large / local data — never commit
+data/raw/
+data/interim/
+data/cache/
+data/materialized/
+data/processed/*
+!data/processed/
+!data/processed/fit_clean_v0.1.parquet
+!data/samples/
+
+# Local image evidence (metadata CSVs in reports/evidence_samples/ are OK)
+reports/evidence_samples/*.png
+
+# Verbose runtime logs (may mention HF_TOKEN env var name only)
+reports/*.log
+
+# HF cache if placed in project
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db

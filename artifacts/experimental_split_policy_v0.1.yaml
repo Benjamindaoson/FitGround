@@ -1,0 +1,42 @@
+version: v0.1
+frozen_manifest: data/processed/fit_clean_v0.1.parquet
+manifest_not_modified: true
+source_revision: 5563646729edf148ed2b32c4b9c794d51a1bc828
+determinism:
+  official_eval_order: sorted sample_id ascending
+  leakage_controlled_eval_order: sorted sample_id ascending
+  pair_id: sha256(sorted(anchor, counterfactual))[:24] with cf_ prefix
+  anchor_rule: lower bust_ease_cm, then lower garment_bust_cm, then sample_id
+  random_seed: 0
+  rng_used_in_split_assignment: false
+official_eval:
+  definition: FIT official eval split, unmodified 5K (minus the single INVALID row
+    if present in usable filters downstream)
+  source_split: eval
+  n_sample_ids: 5000
+  why: Preserve the public FIT eval protocol for comparability.
+leakage_controlled_eval:
+  definition: official eval sample_ids that do not carry exact-image train/eval overlap
+    flags
+  exclusion_rule: Drop eval rows where any of leakage_train_eval_person, leakage_train_eval_garment,
+    leakage_train_eval_target, leakage_train_eval_pair is True
+  n_sample_ids: 4684
+  n_excluded_exact_image_overlap: 316
+  why: Isolate eval from known exact-image contamination without rewriting FIT-Clean
+    v0.1.
+image_overlap_policy:
+  exact_sha256: annotated in FIT-Clean v0.1; excluded from leakage_controlled_eval
+  near_duplicate_phash: NOT VERIFIED at dataset scale; DEFERRED_TO_GPU
+  semantic_person_identity: NOT VERIFIED. FIT has no person_id. Same-sha256 is image
+    identity only. Do not claim semantic identity isolation.
+counterfactual_pairs:
+  eligible_for_official_eval_protocol: pairs whose members are both source_split=eval
+  eligible_for_leakage_controlled_protocol: eval-eval pairs where neither member is
+    in the exact-image overlap exclusion set
+  cross_split_pairs: flagged; not used as official eval items
+  n_pairs_touching_official_eval_ids: 171
+train:
+  definition: source_split=train
+  n_rows: 100000
+  pair_use: train-train pairs may be used for diagnostic analysis; not for claiming
+    eval performance

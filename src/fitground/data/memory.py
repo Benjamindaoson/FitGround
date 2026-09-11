@@ -3,14 +3,56 @@
 from __future__ import annotations
 
 import gc
+import sys
 from dataclasses import dataclass, field
 
 # 1.5 GiB hard stop — stay below OOM on 3.8GiB VPS.
 RSS_LIMIT_BYTES = int(1.5 * 1024**3)
 
 
+def _windows_rss_bytes() -> int:
+    import ctypes
+    from ctypes import wintypes
+
+    class PROCESS_MEMORY_COUNTERS(ctypes.Structure):
+        _fields_ = [
+            ("cb", wintypes.DWORD),
+            ("PageFaultCount", wintypes.DWORD),
+            ("PeakWorkingSetSize", ctypes.c_size_t),
+            ("WorkingSetSize", ctypes.c_size_t),
+            ("QuotaPeakPagedPoolUsage", ctypes.c_size_t),
+            ("QuotaPagedPoolUsage", ctypes.c_size_t),
+            ("QuotaPeakNonPagedPoolUsage", ctypes.c_size_t),
+            ("QuotaNonPagedPoolUsage", ctypes.c_size_t),
+            ("PagefileUsage", ctypes.c_size_t),
+            ("PeakPagefileUsage", ctypes.c_size_t),
+        ]
+
+    kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    psapi = ctypes.WinDLL("psapi", use_last_error=True)
+    kernel32.GetCurrentProcess.restype = ctypes.c_void_p
+    psapi.GetProcessMemoryInfo.argtypes = [
+        ctypes.c_void_p,
+        ctypes.POINTER(PROCESS_MEMORY_COUNTERS),
+        wintypes.DWORD,
+    ]
+    psapi.GetProcessMemoryInfo.restype = wintypes.BOOL
+    counters = PROCESS_MEMORY_COUNTERS()
+    counters.cb = ctypes.sizeof(PROCESS_MEMORY_COUNTERS)
+    ok = psapi.GetProcessMemoryInfo(
+        kernel32.GetCurrentProcess(),
+        ctypes.byref(counters),
+        counters.cb,
+    )
+    if not ok:
+        return 0
+    return int(counters.WorkingSetSize)
+
+
 def current_rss_bytes() -> int:
-    """Current resident set size from /proc/self/status (Linux)."""
+    """Current resident set size (Linux /proc or Windows working set)."""
+    if sys.platform == "win32":
+        return _windows_rss_bytes()
     try:
         with open("/proc/self/status", encoding="ascii") as fh:
             for line in fh:

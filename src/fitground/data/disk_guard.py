@@ -5,6 +5,8 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 
+from fitground.config import PROJECT_ROOT
+
 DISK_RESERVE_BYTES = 20 * 1024**3  # 20 GiB safety margin
 
 
@@ -12,13 +14,13 @@ class DiskSpaceError(RuntimeError):
     pass
 
 
-def free_bytes(path: Path = Path("/workspace")) -> int:
+def free_bytes(path: Path = PROJECT_ROOT) -> int:
     return shutil.disk_usage(path).free
 
 
 def require_disk_headroom(
     reserve_bytes: int = DISK_RESERVE_BYTES,
-    path: Path = Path("/workspace"),
+    path: Path = PROJECT_ROOT,
 ) -> int:
     free = free_bytes(path)
     if free < reserve_bytes:
@@ -28,7 +30,7 @@ def require_disk_headroom(
     return free
 
 
-def disk_status(path: Path = Path("/workspace")) -> dict[str, int | float]:
+def disk_status(path: Path = PROJECT_ROOT) -> dict[str, int | float]:
     usage = shutil.disk_usage(path)
     return {
         "total_bytes": usage.total,

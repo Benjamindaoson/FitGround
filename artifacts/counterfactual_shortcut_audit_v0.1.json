@@ -1,0 +1,69 @@
+{
+  "n_pairs": 1731,
+  "verdict": "PARTIAL_CONFOUND",
+  "issues": [
+    "delta_bust_ease_ratio has very few 1dp values; a model could latch onto a handful of preset-like ease steps instead of continuous measurement.",
+    "Almost no pairs share a cloth image; garment appearance is an uncontrolled confound for TIER C-dominant designs."
+  ],
+  "notes": [
+    "Pair direction (anchor=tighter, CF=looser) is defined by construction and is not a hidden label. Shortcut risk is whether discrete ease presets, identity, shard, or quality flags can replace measurement-grounded reasoning."
+  ],
+  "unique_anchor_ease_ratio_1dp": 6,
+  "unique_cf_ease_ratio_1dp": 8,
+  "unique_delta_ease_ratio_1dp": 5,
+  "unique_delta_ease_ratio_2dp": 40,
+  "frac_delta_ease_on_0.05_grid": 0.03755054881571346,
+  "frac_delta_ease_on_0.1_grid": 0.03755054881571346,
+  "frac_same_person_image": 1.0,
+  "frac_same_cloth_image": 0.0,
+  "frac_leakage_any": 0.1022530329289428,
+  "frac_cross_split": 0.0999422299248989,
+  "frac_duplicate_contamination": 1.0,
+  "n_unique_person_images_in_pairs": 1689,
+  "n_unique_cloth_images_in_pairs": 3399,
+  "split_purity_from_ease_1dp": 0.9055085515436804,
+  "shard_purity_from_ease_1dp": 0.15976260709077858,
+  "quality_purity_from_ease_1dp": 1.0,
+  "intervention_types": {
+    "garment_bust_and_length_and_sleeve": 1574,
+    "garment_bust_and_length": 79,
+    "garment_length_and_sleeve": 65,
+    "garment_bust_and_sleeve": 6,
+    "garment_sleeve_only": 6,
+    "garment_length_only": 1
+  },
+  "tiers": {
+    "C": 1729,
+    "B": 2
+  },
+  "delta_bust_ease_cm": {
+    "min": 0.0,
+    "p25": 4.641620635986328,
+    "median": 9.0986328125,
+    "p75": 15.85293197631836,
+    "max": 46.90289306640625,
+    "mean": 10.785031380920586
+  },
+  "delta_garment_bust_cm": {
+    "min": 0.0,
+    "p25": 4.641620635986328,
+    "median": 9.0986328125,
+    "p75": 15.85293197631836,
+    "max": 46.90289306640625,
+    "mean": 10.785031380920586
+  },
+  "control_score": {
+    "min": 0.26,
+    "p25": 0.42,
+    "median": 0.42,
+    "p75": 0.42,
+    "max": 0.7,
+    "mean": 0.40424032351242056
+  },
+  "ease_bin_pairs": {
+    "moderate_positive": 941,
+    "large_positive": 163,
+    "negative": 401,
+    "near_zero": 226
+  }
+}

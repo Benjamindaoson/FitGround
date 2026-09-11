@@ -4,12 +4,20 @@ from pathlib import Path
 
 import pytest
 
+from fitground.config import EVAL_SHARD_COUNT, RAW_FIT_DIR
 from fitground.data.eval_pipeline import (
     _eval_shard_paths,
     load_eval_measurements,
     process_shard_streaming,
 )
 from fitground.data.memory import MemoryTracker, current_rss_bytes
+
+_EVAL_DIR = RAW_FIT_DIR / "data"
+_EVAL_SHARDS_PRESENT = len(sorted(_EVAL_DIR.glob("eval-*-of-*.parquet"))) == EVAL_SHARD_COUNT
+pytestmark = pytest.mark.skipif(
+    not _EVAL_SHARDS_PRESENT,
+    reason="eval shards not materialized on this machine",
+)
 
 
 @pytest.fixture

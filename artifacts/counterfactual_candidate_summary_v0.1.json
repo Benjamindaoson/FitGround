@@ -1,0 +1,26 @@
+{
+  "n_pairs": 1731,
+  "by_tier": {
+    "C": 1729,
+    "B": 2
+  },
+  "n_unique_pair_id": 1731,
+  "n_self_pairs": 0,
+  "n_same_target": 0,
+  "n_cross_split": 173,
+  "n_leakage_any": 177,
+  "mean_control_score": 0.40424032351242056,
+  "intervention_types": {
+    "garment_bust_and_length_and_sleeve": 1574,
+    "garment_bust_and_length": 79,
+    "garment_length_and_sleeve": 65,
+    "garment_bust_and_sleeve": 6,
+    "garment_sleeve_only": 6,
+    "garment_length_only": 1
+  },
+  "pair_split": {
+    "train_train": 1557,
+    "cross_split": 173,
+    "eval_eval": 1
+  }
+}

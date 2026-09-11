@@ -27,6 +27,10 @@ reports/*.log
 # HF cache if placed in project
 .cache/
 
+# Local agent / materialize caches — never commit
+cache/
+materialized/
+
 # OS
 .DS_Store
 Thumbs.db

@@ -26,7 +26,7 @@ V0.1 candidate actions are deliberately small: bust circumference delta, shoulde
 - **Correction lattice:** a current state plus alternative actions, simulated outcomes, side effects, utility, and oracle correction when simulation exists.
 - **Physics-based simulated verifier:** creates and checks before/modification/after evidence. It is not real-world ground truth.
 
-The existing runtime architecture audit diagram is available at [FITGROUND_EXISTING_RUNTIME_ARCHITECTURE.html](/D:/FitGround/docs/architecture/FITGROUND_EXISTING_RUNTIME_ARCHITECTURE.html).
+The existing runtime architecture audit diagram is available at [FITGROUND_EXISTING_RUNTIME_ARCHITECTURE.html](docs/architecture/FITGROUND_EXISTING_RUNTIME_ARCHITECTURE.html).
 
 ## Existing Assets
 
@@ -42,13 +42,13 @@ The local repository is prepared for pre-GPU correction work. It has **no config
 
 ## Evidence / Validation
 
-- [Product Contract](/D:/FitGround/docs/FITGROUND_PRODUCT_CONTRACT_v0.1.md)
-- [Technical Contract](/D:/FitGround/docs/FITGROUND_TECHNICAL_CONTRACT_v0.1.md)
-- [Codebase Audit](/D:/FitGround/reports/FITGROUND_V0_1_CODEBASE_AUDIT.md)
-- [Migration Matrix](/D:/FitGround/reports/FITGROUND_V0_1_MIGRATION_MATRIX.md)
-- [Pre-GPU Readiness](/D:/FitGround/reports/FITGROUND_V0_1_PRE_GPU_READINESS.md)
-- [Data Foundation](/D:/FitGround/docs/FITGROUND_DATA_FOUNDATION_v0.1.md)
-- [Matching Dataset Scout](/D:/FitGround/reports/FITGROUND_V0_1_MATCHING_DATASET_SCOUT.md)
+- [Product Contract](docs/FITGROUND_PRODUCT_CONTRACT_v0.1.md)
+- [Technical Contract](docs/FITGROUND_TECHNICAL_CONTRACT_v0.1.md)
+- [Codebase Audit](reports/FITGROUND_V0_1_CODEBASE_AUDIT.md)
+- [Migration Matrix](reports/FITGROUND_V0_1_MIGRATION_MATRIX.md)
+- [Pre-GPU Readiness](reports/FITGROUND_V0_1_PRE_GPU_READINESS.md)
+- [Data Foundation](docs/FITGROUND_DATA_FOUNDATION_v0.1.md)
+- [Matching Dataset Scout](reports/FITGROUND_V0_1_MATCHING_DATASET_SCOUT.md)
 
 ## Quick Start
 

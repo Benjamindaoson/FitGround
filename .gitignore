@@ -31,6 +31,17 @@ reports/*.log
 cache/
 materialized/
 
+# Upstream source copies and raw P0 data — preserve source URLs/revisions only
+external/
+data/external/
+
+# Local analysis/runtime state
+.codegraph/
+.codex/
+tmp/
+docs/superpowers/
+artifacts/*.log
+
 # OS
 .DS_Store
 Thumbs.db

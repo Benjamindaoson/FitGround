@@ -717,42 +717,9 @@ def make_figures(lattice_rows, physics_rows, visual, ood, failure, calib, trivia
             fig.savefig(folder / name, bbox_inches="tight")
         plt.close(fig)
 
-    # 01 architecture
-    fig, ax = plt.subplots(figsize=(11, 3.2))
-    ax.axis("off")
-    boxes = [
-        "Pattern\nparameter",
-        "Measured\ngeometry",
-        "Warp\ncloth/body",
-        "Fit\nmetrics",
-        "Counterfactual\ncorrection",
-        "Decision\nutility",
-        "Designer\nworkspace",
-    ]
-    for i, t in enumerate(boxes):
-        ax.add_patch(plt.Rectangle((i * 1.45, 0.3), 1.3, 1.4, fill=True, facecolor="#e7efe8", edgecolor="#1c1915"))
-        ax.text(i * 1.45 + 0.65, 1.0, t, ha="center", va="center", fontsize=8)
-        if i < len(boxes) - 1:
-            ax.annotate("", xy=((i + 1) * 1.45, 1.0), xytext=(i * 1.45 + 1.3, 1.0), arrowprops=dict(arrowstyle="->"))
-    ax.set_xlim(-0.1, 10.2)
-    ax.set_ylim(0, 2)
-    ax.set_title("FitGround intervention loop")
-    save(fig, "01_system_architecture.png")
-    shutil.copyfile(FIG_FINAL / "01_system_architecture.png", FIGURES / "01_system_architecture.png")
-
-    fig, ax = plt.subplots(figsize=(11, 3.2))
-    ax.axis("off")
-    ax.set_title("Intervention pipeline: intended Δ is never copied into realized Δ")
-    ax.text(
-        0.5,
-        0.5,
-        "shirt.width.v  →  serialize panels  →  after-minus-before cm  →  Warp XPBD  →  clearance/contact  →  rank",
-        ha="center",
-        va="center",
-        fontsize=10,
-        wrap=True,
-    )
-    save(fig, "02_intervention_pipeline.png")
+    # Architecture / pipeline / hero / experiment-problem diagrams live in
+    # scripts/draw_story_figures.py so a GPU re-run cannot replace them with
+    # empty boxes. They are regenerated at the end of this function.
 
     # 03 bust calibration
     bust_rows = (calib.get("rows") or {}).get("bust_circumference_delta_cm") or [
@@ -879,17 +846,14 @@ def make_figures(lattice_rows, physics_rows, visual, ood, failure, calib, trivia
     ax.set_title("Decision regret (utility)")
     save(fig, "12_decision_regret.png")
 
-    fig, ax = plt.subplots(figsize=(8, 3.5))
-    ax.axis("off")
-    ax.set_title("Hero cases")
-    ax.text(
-        0.5,
-        0.5,
-        "1 chest tight  2 material split  3 waist side-effect  4 OOD abstain  5 shoulder NO-GO",
-        ha="center",
-        va="center",
-    )
-    save(fig, "13_hero_cases.png")
+    import importlib.util
+
+    story = Path(__file__).resolve().parents[1] / "draw_story_figures.py"
+    spec = importlib.util.spec_from_file_location("draw_story_figures", story)
+    mod = importlib.util.module_from_spec(spec)
+    assert spec and spec.loader
+    spec.loader.exec_module(mod)
+    mod.draw_all()
 
     fig, ax = plt.subplots(figsize=(7, 4))
     buckets = failure.get("by_bucket") or {}
@@ -916,6 +880,7 @@ def make_figures(lattice_rows, physics_rows, visual, ood, failure, calib, trivia
         "12_decision_regret.png": "12_decision_regret.png",
         "13_hero_cases.png": "13_hero_cases.png",
         "14_failure_gallery.png": "14_failure_gallery.png",
+        "15_experiment_problems.png": "15_experiment_problems.png",
     }
     for name in mapping:
         src = FIG_FINAL / name

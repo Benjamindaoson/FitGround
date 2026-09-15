@@ -95,11 +95,25 @@ def measure_specification(spec_path):
     }
 
 
-def generate_pattern(width_v, out_dir, tag):
-    body = BodyParameters(str(BODY_PATH))
+def set_design_param(design, dotted_name, value):
+    """Set design['shirt']['width']['v'] from a name like 'shirt.width'."""
+    cur = design
+    parts = dotted_name.split(".")
+    for part in parts:
+        cur = cur[part]
+    cur["v"] = value
+
+
+def generate_pattern(width_v, out_dir, tag, body_path=None, extra_params=None):
+    body = BodyParameters(str(body_path or BODY_PATH))
     design = load_design()
     before = copy.deepcopy(design)
     design["shirt"]["width"]["v"] = float(width_v)
+    if extra_params:
+        for name, value in extra_params.items():
+            if name in ("shirt.width", "width"):
+                continue
+            set_design_param(design, name, value)
     piece = MetaGarment("t-shirt", body, design)
     pattern = piece.assembly()
     out_dir = Path(out_dir)

@@ -1,0 +1,142 @@
+# GPU E0 — Controlled Counterfactual Generation Pilot
+# DESIGN ONLY. This file does not authorize VLM/LoRA/RM/DPO/GRPO training.
+
+version: v0.2
+pilot_id: GPU_E0
+name: Controlled Counterfactual Generation Pilot
+status: DESIGN_FROZEN
+ready_for_execution: YES_STAGE_1_ONLY
+
+questions_only:
+  - Can we stably generate same body + same garment design at multiple measurement conditions?
+  - Are controlled variables actually unchanged?
+  - Is the measurement ladder monotonic and physically reasonable?
+  - Does target geometry / visible fit change?
+  - Does garment appearance still leak the intervention?
+  - Is the process deterministic / reproducible?
+
+not_questions:
+  - VLM accuracy
+  - Whether to train LoRA / RM / DPO / GRPO
+  - Full FIT-100K regeneration
+
+stages:
+  stage_1:
+    name: GarmentCode cross-drape ladders
+    authorized_if_ready: true
+    backend: public GarmentCode + FIT-documented cross-drape
+    outputs:
+      - sewing patterns
+      - draped meshes
+      - synthetic renders I_s
+      - Track A canonical cloth
+      - Track B size-specific cloth render
+      - ladder metadata
+      - contact sheets
+    sim2real: false
+  stage_2:
+    name: Photoreal Sim2Real + VLM try-off
+    authorized_if_ready: false
+    blocked_reason: Official FIT f_texture / f_paired / try-off code and checkpoints are not public.
+    may_be_reconsidered_after: GPU_E0_STAGE_1_GO
+
+scale:
+  n_bodies: 3
+  n_garment_designs: 5
+  n_measurement_levels: 3
+  n_conditions: 45
+  n_ladders: 15
+  rationale: >
+    3×5×3 is the minimum factorial that can show body generalization,
+    design generalization, and an ordered fit ladder without a large
+    GPU spend. Do not inflate to look round. If FIT cross-drape
+    requires a well-fitted reference pattern p_ref per (body, design),
+    that is an extra intermediate artifact, not a 46th condition.
+  pose_policy: pin one pose_id per ladder; prefer A-pose if reposing code is unavailable
+  fabric_policy: one physics material for all 45 conditions
+  gender_policy: do not mix incompatible body/design programs inside a ladder
+
+tracks:
+  primary: TRACK_A_MEASUREMENT_ISOLATED
+  secondary: TRACK_B_NATURALISTIC
+  both_generated_in_e0: true
+
+acceptance_criteria:
+  generation_success_rate:
+    metric: fraction of 45 conditions with valid pattern + drape + render + complete metadata
+    GO: ">= 0.90"
+    PARTIAL: ">= 0.70 and < 0.90"
+    NO_GO: "< 0.70"
+  control_variable_consistency:
+    metric: within-ladder identity of required CONTROLLED fields
+    GO: all 15 ladders pass identical body/design/pose/fabric/texture/camera/seed/body measurements
+    PARTIAL: at most 2 ladders fail a non-identity control (e.g. camera), documented
+    NO_GO: any ladder changes body_id or garment_design_id across conditions
+  measurement_monotonicity:
+    metric: TIGHT < REGULAR < LOOSE on garment_bust_cm and bust_ease_cm
+    GO: all complete ladders strictly monotonic on both keys
+    PARTIAL: bust monotonic; ease ties or length/sleeve inversions documented as vector intervention
+    NO_GO: ease or bust not ordered TIGHT < LOOSE
+  target_uniqueness:
+    metric: distinct target_mesh_sha256 (or render hash if mesh unavailable) per condition in a ladder
+    GO: 3 distinct targets in every complete ladder
+    PARTIAL: distinct TIGHT vs LOOSE; REGULAR collides with one neighbor
+    NO_GO: all three targets identical
+  target_fit_change_visibility:
+    metric: human contact-sheet sanity (not VLM self-label)
+    GO: ">= 80% of complete ladders — LOOSE visually looser than REGULAR, and TIGHT vs LOOSE distinguishable"
+    PARTIAL: ">= 50% and < 80%, or TIGHT≈REGULAR but LOOSE clearly looser (author tightness limitation)"
+    NO_GO: "< 50% or no human-visible fit change on LOOSE vs REGULAR"
+  visual_leakage_severity:
+    track_a:
+      GO: >
+        Canonical cloth images in a ladder do not differ by absolute
+        scale (bbox-normalized width/height of garment silhouette
+        within 5% across conditions). Appearance-only ranking must
+        not recover size_level at > chance on the 15 ladders.
+      PARTIAL: scale-normalized but length/sleeve proportions still leak
+      NO_GO: Track A cloth remains a near-perfect size oracle
+    track_b:
+      expected: leakage is allowed; Track B cannot alone prove measurement grounding
+      GO_for_track_b: size-specific cloth is physically consistent with the pattern
+      does_not_rescue_track_a: true
+  reproducibility:
+    metric: rerun 1 ladder (3 conditions) with same seeds
+    GO: sewing pattern files and draped mesh hashes match
+    PARTIAL: visually same drape; hashes differ (GPU numeric noise)
+    NO_GO: second run produces a different size ordering
+  metadata_completeness:
+    metric: required ladder + condition fields present
+    GO: 100% of successful conditions
+    PARTIAL: missing optional confound fields only
+    NO_GO: missing measurement vector or control IDs on successful rows
+
+overall_pilot_rule: >
+  Overall GPU E0 = GO only if generation_success_rate, control_variable_consistency,
+  measurement_monotonicity, target_uniqueness, target_fit_change_visibility,
+  reproducibility, and metadata_completeness are all GO, AND Track A visual
+  leakage is GO or PARTIAL (not NO-GO).
+  Overall = NO-GO if any of those core criteria is NO-GO, or Track A leakage is NO-GO
+  and no viable Track A redesign is specified.
+  Overall = PARTIAL otherwise.
+  PARTIAL still forbids VLM training.
+
+human_visual_protocol:
+  artifact: contact sheet per ladder
+  panels:
+    - person / body render
+    - Track A canonical cloth
+    - Track B size-specific cloth (TIGHT / REGULAR / LOOSE)
+    - target TIGHT
+    - target REGULAR
+    - target LOOSE
+    - measurement table and ease values
+  checklist:
+    - waist_chest_looseness
+    - drape
+    - wrinkle_or_tension
+    - silhouette
+    - length
+    - sleeve_behavior
+  labeller: human
+  forbidden: VLM self-labeling of GO/NO-GO

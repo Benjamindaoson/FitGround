@@ -1,0 +1,100 @@
+# Controlled Fit Ladder schema v0.2
+# Experimental unit for GPU E0. Design only — no generation in this phase.
+
+version: v0.2
+unit_name: ControlledFitLadder
+definition: >
+  One experimental unit is one ladder: a single body, garment design,
+  pose, fabric, texture, camera, and render seed, crossed with an
+  ordered measurement-vector intervention TIGHT → REGULAR → LOOSE.
+
+ordered_conditions: [TIGHT, REGULAR, LOOSE]
+intervention_type: measurement_vector
+not_the_intervention: [size_label_S_M_L, garment_design_change, person_swap]
+
+required_ladder_ids:
+  - ladder_id
+  - body_id
+  - garment_design_id
+  - pose_id
+  - fabric_id
+  - texture_id
+  - camera_id
+  - render_seed
+
+required_condition_fields:
+  - condition_id
+  - size_level
+  - source_body_id
+  - garment_bust_cm
+  - garment_length_cm
+  - garment_sleeve_cm
+  - body_height_cm
+  - body_bust_cm
+  - body_waist_cm
+  - body_hips_cm
+  - bust_ease_cm
+  - bust_ease_ratio
+  - garment_length_height_ratio
+  - delta_garment_bust_cm
+  - delta_bust_ease_cm
+  - delta_garment_length_cm
+  - delta_garment_sleeve_cm
+  - target_artifact_id
+  - target_mesh_sha256
+  - sewing_pattern_id
+
+required_track_artifacts:
+  track_a_canonical_cloth_id: measurement_isolated_cloth
+  track_b_size_specific_cloth_id: naturalistic_cloth
+
+confound_metadata_optional:
+  - lighting_id
+  - background_id
+  - sim2real_checkpoint
+  - sim2real_seed
+  - vlm_tryoff_model
+  - boxmesh_realignment_used
+  - simulation_success
+  - quality_flags
+
+within_ladder_invariants:
+  must_be_identical:
+    - body_id
+    - garment_design_id
+    - pose_id
+    - fabric_id
+    - texture_id
+    - camera_id
+    - render_seed
+    - body_height_cm
+    - body_bust_cm
+    - body_waist_cm
+    - body_hips_cm
+  must_change:
+    - size_level
+    - garment_bust_cm
+    - bust_ease_cm
+    - source_body_id
+    - target_artifact_id
+
+monotonicity:
+  primary_order_keys: [bust_ease_cm, garment_bust_cm]
+  rule: TIGHT < REGULAR < LOOSE on both primary keys
+  secondary_recorded_not_required_univariate:
+    - garment_length_cm
+    - garment_sleeve_cm
+
+size_level_operationalization:
+  TIGHT: >
+    Pattern drafted on a smaller source body than the target
+    (author cross-drape). Target: negative or near-zero bust_ease_cm
+    relative to REGULAR. Visual tightness may be weak (author limitation).
+  REGULAR: >
+    Pattern drafted on a source body matched to the target
+    (made-to-measure / well-fitted reference).
+  LOOSE: >
+    Pattern drafted on a larger source body than the target.
+    Must be visually looser than REGULAR.
+
+delta_reference: REGULAR

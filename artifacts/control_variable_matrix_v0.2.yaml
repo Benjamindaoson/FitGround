@@ -1,0 +1,206 @@
+# Control Variable Matrix v0.2
+# FitGround Phase 2.5 — Controlled Counterfactual Generation
+# Evidence: reports/FIT_GENERATION_MECHANISM_AUDIT.md
+# Do not treat INFERRED as VERIFIED.
+
+version: v0.2
+frozen_at: "2026-09-11"
+status: FROZEN_FOR_GPU_E0_DESIGN
+audit_verdict: PARTIAL
+official_fit_generation_code_released: false
+garmentcode_revision: "d449629979028123a5c4dc9e732a2ec19b7fce31"
+fit_paper: "Karras, Wang, Li, Kemelmacher-Shlizerman, SIGGRAPH 2026, arXiv:2604.08526"
+
+roles:
+  INDEPENDENT: "Manipulated intervention"
+  CONTROLLED: "Held fixed within a Controlled Fit Ladder"
+  OUTCOME: "Dependent visual/geometric result"
+  NUISANCE: "Varying but not of scientific interest; must be recorded"
+  UNOBSERVED: "Not captured in metadata or not controllable with public tools"
+
+can_hold_fixed_values: [YES, NO, PARTIAL, UNKNOWN]
+
+variables:
+  - name: body_identity
+    role: CONTROLLED
+    can_hold_fixed: "YES"
+    control_mechanism: >
+      Pin parametric body_id / body mesh for the entire ladder.
+      FIT documents 168 body shapes; Phase 2 observed 105 unique body
+      vectors in released FIT-100K (inherited fact, not re-measured here).
+    verification_source: VERIFIED_FROM_DOCS
+    residual_confound: >
+      Semantic photoreal identity still passes through unpublished
+      Sim2Real (f_paired). 3D body identity ≠ photoreal face identity.
+
+  - name: body_measurements
+    role: CONTROLLED
+    can_hold_fixed: "YES"
+    control_mechanism: >
+      Same body_id implies constant height, bust, waist, hips (cm)
+      from the parametric body. Do not resample body size inside a ladder.
+    verification_source: VERIFIED_FROM_DOCS
+    residual_confound: None at 3D stage if body_id is pinned.
+
+  - name: pose
+    role: CONTROLLED
+    can_hold_fixed: PARTIAL
+    control_mechanism: >
+      Pin pose_id. Default FIT dataset randomly samples 528 poses after
+      A-pose simulation. E0 must override that default. Public reposing
+      code is not released; A-pose-only ladders are the conservative
+      executable path.
+    verification_source: VERIFIED_FROM_DOCS
+    residual_confound: >
+      If reposing is unavailable, ladders are A-pose only and may not
+      match FIT-100K pose diversity. Random FIT pose sampling would
+      invalidate the ladder.
+
+  - name: garment_design_identity
+    role: CONTROLLED
+    can_hold_fixed: "YES"
+    control_mechanism: >
+      Freeze GarmentCode design-parameter YAML. Use pattern_fitter.py
+      rather than pattern_sampler.py so design does not resample.
+    verification_source: VERIFIED_FROM_CODE
+    residual_confound: >
+      Size-specific sewing patterns still change panel dimensions.
+      Design identity ≠ pixel-identical cloth image.
+
+  - name: garment_geometry
+    role: INDEPENDENT
+    can_hold_fixed: "NO"
+    control_mechanism: >
+      Pattern geometry is generated for a source body then cross-draped
+      onto the target. Geometry change is the physical carrier of the
+      size intervention.
+    verification_source: VERIFIED_FROM_DOCS
+    residual_confound: >
+      Geometry change is multivariate (bust/length/sleeve typically
+      move together). Not a pure bust-only mesh edit.
+
+  - name: garment_size
+    role: INDEPENDENT
+    can_hold_fixed: "NO"
+    control_mechanism: >
+      Operationalized as source-body size used to draft the pattern,
+      then recorded as measurement vector M1/M2/M3. Coarse S/M/L
+      labels are not the intervention.
+    verification_source: VERIFIED_FROM_DOCS
+    residual_confound: Source-body grading ≠ independent cm sliders.
+
+  - name: garment_measurements
+    role: INDEPENDENT
+    can_hold_fixed: "NO"
+    control_mechanism: >
+      Extract garment_bust_cm, garment_length_cm, garment_sleeve_cm
+      from the 2D sewing pattern. Record full vector and deltas versus
+      REGULAR. Treat as measurement-vector intervention.
+    verification_source: VERIFIED_FROM_DOCS
+    residual_confound: >
+      Authors report width/length/sleeve correlation. Univariate bust
+      do() is not assumed.
+
+  - name: fabric_material
+    role: CONTROLLED
+    can_hold_fixed: PARTIAL
+    control_mechanism: >
+      Freeze Warp/GarmentCode sim-config material at 3D stage.
+      FIT photoreal fabrics (72 types) are text-prompt tokens at
+      Sim2Real, not physics parameters.
+    verification_source: VERIFIED_FROM_DOCS
+    residual_confound: Prompt-fabric can still change drape appearance after Sim2Real.
+
+  - name: texture
+    role: CONTROLLED
+    can_hold_fixed: PARTIAL
+    control_mechanism: >
+      3D: freeze sim texture settings. Photoreal: freeze prompt + seed
+      if Sim2Real is ever run. Seed contract for Flux/VLM is unpublished.
+    verification_source: UNKNOWN
+    residual_confound: Diffusion can inpaint pockets/seams/logos from text.
+
+  - name: color
+    role: CONTROLLED
+    can_hold_fixed: PARTIAL
+    control_mechanism: Same as texture / prompt token.
+    verification_source: UNKNOWN
+    residual_confound: Sim2Real color jitter.
+
+  - name: camera
+    role: CONTROLLED
+    can_hold_fixed: PARTIAL
+    control_mechanism: >
+      Freeze GarmentCode front-camera block for 3D renders.
+      FIT photoreal camera is not an explicit control.
+    verification_source: VERIFIED_FROM_CODE
+    residual_confound: Sim2Real may reframe; cropped vs full-body not pinned in public FIT code.
+
+  - name: lighting
+    role: CONTROLLED
+    can_hold_fixed: UNKNOWN
+    control_mechanism: >
+      3D renderer lights if present in sim config. Photoreal lighting
+      is absorbed into Flux.
+    verification_source: UNKNOWN
+    residual_confound: Photoreal shading changes can masquerade as fit change.
+
+  - name: render_seed
+    role: CONTROLLED
+    can_hold_fixed: PARTIAL
+    control_mechanism: >
+      GarmentCode dataset_properties YAML stores sampler seed and
+      supports --replicate. Warp GPU determinism not verified.
+      Flux / Nano Banana Pro seeds not documented.
+    verification_source: VERIFIED_FROM_CODE
+    residual_confound: Bit-exact photoreal reproducibility is UNKNOWN.
+
+  - name: background
+    role: CONTROLLED
+    can_hold_fixed: PARTIAL
+    control_mechanism: >
+      3D: empty/studio background in renderer. Photoreal: identity map
+      is supposed to keep background from I_try-on, but that is
+      unpublished Sim2Real behavior.
+    verification_source: VERIFIED_FROM_DOCS
+    residual_confound: VLM try-off uses plain white; person/target backgrounds may still vary.
+
+  - name: sim2real_seed_style
+    role: NUISANCE
+    can_hold_fixed: UNKNOWN
+    control_mechanism: >
+      Not executable in GPU E0 Stage 1. If Stage 2 is ever authorized,
+      pin LoRA checkpoint, guidance, steps, and seed — none are public.
+    verification_source: UNKNOWN
+    residual_confound: Dominant residual if photoreal triplets are used as outcomes.
+
+  - name: target_geometry
+    role: OUTCOME
+    can_hold_fixed: "NO"
+    control_mechanism: >
+      Draped 3D garment on the fixed body is the geometric outcome.
+      Must change monotonically along the ladder. Pixel target image
+      is a rendering of this geometry (3D) or Sim2Real of its normals.
+    verification_source: VERIFIED_FROM_DOCS
+    residual_confound: Tight sizes may look identical (author limitation).
+
+  - name: cloth_input_image
+    role: NUISANCE
+    can_hold_fixed: PARTIAL
+    control_mechanism: >
+      TRACK A: canonical / bbox-normalized garment representation;
+      measurements carried in metadata.
+      TRACK B: size-specific official-style try-off or size-specific
+      3D garment render.
+      Official FIT I_g cannot be held size-invariant.
+    verification_source: VERIFIED_FROM_DOCS
+    residual_confound: >
+      Largest residual in released FIT-100K and in Track B.
+      Track A may still leak proportional silhouette (length/sleeve ratios)
+      after scale normalization.
+
+notes:
+  - Released FIT-100K does not expose these control IDs per row.
+  - GPU E0 must write them into ladder metadata even when a field is UNKNOWN.
+  - Independent variable for v0.2 is the garment measurement vector
+    (and induced ease), not garment design and not S/M/L labels.

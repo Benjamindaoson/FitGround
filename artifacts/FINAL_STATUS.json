@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-09-15T14:50:00Z",
+  "host": "daka5svhri0c73etu4ug-fitground",
+  "gpu": "NVIDIA GeForce RTX 4090 24GB",
+  "matrix": {
+    "FitGround Core": "PASS",
+    "Warp CUDA": "PASS",
+    "PyTorch CUDA": "PARTIAL",
+    "SMPL assets": "BLOCKED",
+    "GarmentCode physics": "PASS",
+    "Bust calibration": "PARTIAL",
+    "Shoulder calibration": "NOT_RUN",
+    "Sleeve calibration": "NOT_RUN",
+    "Correction lattice": "PARTIAL",
+    "Classical baseline": "PASS",
+    "Vision baseline": "NOT_RUN",
+    "Multimodal baseline": "NOT_RUN",
+    "Transition SFT": "NOT_JUSTIFIED",
+    "Decision SFT": "NOT_JUSTIFIED",
+    "RLVR": "NOT_JUSTIFIED",
+    "Demo": "PASS"
+  },
+  "notes": {
+    "PyTorch CUDA": "2.11+cu126 and 2.5.1+cu124 wheels need nvidia-* packages that resolve to pypi.nvidia.com (timeout). Warp CUDA is the physics runtime.",
+    "SMPL assets": "HARD_BLOCKER_LICENSED_ASSET for SMPL-X VTON bodies. Static mean_all.obj used for physics.",
+    "Bust calibration": "Pattern measurement GO-quality; G4 waist coupling keeps overall PARTIAL. Physics+render PASS for +1/+2/+3.",
+    "SFT/RLVR": "Lattice has 3 verified bust actions. Not enough for MLLM SFT."
+  }
+}

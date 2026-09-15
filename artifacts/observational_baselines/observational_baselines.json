@@ -1,0 +1,43 @@
+{
+  "task": "observational_forward_prediction_of_garment_bust_cm",
+  "warning": "This is NOT a controlled intervention. Images are not local. Do not treat as correction ground truth.",
+  "n_rows_usable": 104999,
+  "split": {
+    "n_people": 103289,
+    "n_train_people": 72302,
+    "n_val_people": 15493,
+    "n_test_people": 15494
+  },
+  "split_unit": "person_sha256",
+  "B0": {
+    "rule": "garment_bust = body_bust + median_train_ease",
+    "median_train_ease_cm": 6.812126159667969,
+    "test_rmse_cm": 10.942447244084109,
+    "test_mae_cm": 8.110471560302393
+  },
+  "B1": {
+    "rule": "OLS garment_bust ~ body_bust + body_waist + body_hips + body_height",
+    "coef": {
+      "body_bust_cm": 0.9219440883916108,
+      "body_waist_cm": -0.18399989562515653,
+      "body_hips_cm": 0.04240711561424128,
+      "body_height_cm": 0.07015187000461262,
+      "intercept": 17.837911465794424
+    },
+    "test_rmse_cm": 10.267039342413137,
+    "test_mae_cm": 8.080634882812333
+  },
+  "B2_vision": {
+    "status": "NOT_RUN",
+    "reason": "fit_clean image binaries are not on disk; only path refs to FIT-100K"
+  },
+  "B3_multimodal": {
+    "status": "NOT_RUN",
+    "reason": "no local images; not justified to download FIT-100K"
+  },
+  "intervention_regret": "NOT_RUN",
+  "simulation_verified_first_pass_correction_rate": "NOT_RUN",
+  "n_train": 73488,
+  "n_val": 15759,
+  "n_test": 15752
+}

@@ -1,0 +1,83 @@
+{
+  "lattice_id": "chest_case_tshirt_mean_all_v0.1",
+  "state_id": "tshirt_mean_all_baseline",
+  "body_bust_cm": 99.8407,
+  "baseline_garment_bust_cm": 104.83273500000001,
+  "target_garment_bust_cm": 107.83273500000001,
+  "target_definition": "explicit CHEST_CASE: increase ease by 3cm relative to baseline pattern measurement",
+  "candidates": [
+    {
+      "action_id": "bust_plus_1cm",
+      "action_family": "bust_circumference_delta_cm",
+      "intended_delta_cm": 1.0,
+      "realized_delta_cm": 0.9999999999999858,
+      "pattern_parameter": "shirt.width.v",
+      "after_bust_cm": 105.832735,
+      "target_error_cm": 2.000000000000014,
+      "side_sleeve_length_cm": 0.2031607145574057,
+      "waist_delta_cm": 0.9999999999999858,
+      "utility": -2.251580357278717,
+      "simulation_status": "SIMULATED",
+      "render_status": "RENDERED",
+      "render_front": "/root/workspace/projects/FitGround/reports/figures/bust_plus_1cm_render_front.png"
+    },
+    {
+      "action_id": "bust_plus_2cm",
+      "action_family": "bust_circumference_delta_cm",
+      "intended_delta_cm": 2.0,
+      "realized_delta_cm": 1.9999999999999716,
+      "pattern_parameter": "shirt.width.v",
+      "after_bust_cm": 106.83273499999999,
+      "target_error_cm": 1.0000000000000284,
+      "side_sleeve_length_cm": 0.42711822825084766,
+      "waist_delta_cm": 1.9999999999999716,
+      "utility": -1.5135591141254523,
+      "simulation_status": "SIMULATED",
+      "render_status": "RENDERED",
+      "render_front": "/root/workspace/projects/FitGround/reports/figures/bust_plus_2cm_render_front.png"
+    },
+    {
+      "action_id": "bust_plus_3cm",
+      "action_family": "bust_circumference_delta_cm",
+      "intended_delta_cm": 3.0,
+      "realized_delta_cm": 3.0,
+      "pattern_parameter": "shirt.width.v",
+      "after_bust_cm": 107.83273500000001,
+      "target_error_cm": 0.0,
+      "side_sleeve_length_cm": 0.5802189851872797,
+      "waist_delta_cm": 3.0,
+      "utility": -0.7401094925936398,
+      "simulation_status": "SIMULATED",
+      "render_status": "RENDERED",
+      "render_front": "/root/workspace/projects/FitGround/reports/figures/bust_plus_3cm_render_front.png"
+    },
+    {
+      "action_id": "shoulder_plus_1cm",
+      "action_family": "shoulder_width_delta_cm",
+      "intended_delta_cm": 1.0,
+      "realized_delta_cm": null,
+      "utility": null,
+      "simulation_status": "NOT_RUN",
+      "verification_status": "NOT_VERIFIED",
+      "note": "no measured garment parameter mapping"
+    },
+    {
+      "action_id": "sleeve_minus_1cm",
+      "action_family": "sleeve_length_delta_cm",
+      "intended_delta_cm": -1.0,
+      "realized_delta_cm": null,
+      "utility": null,
+      "simulation_status": "NOT_RUN",
+      "verification_status": "NOT_VERIFIED",
+      "note": "not calibrated in this run"
+    }
+  ],
+  "ranking": [
+    "bust_plus_3cm",
+    "bust_plus_2cm",
+    "bust_plus_1cm"
+  ],
+  "oracle_action": "bust_plus_3cm",
+  "verification_status": "PARTIAL",
+  "note": "Utility uses pattern-measured realized_delta_cm plus physics SIMULATED/RENDERED evidence for bust +1/+2/+3. Shoulder/sleeve controls are NOT_VERIFIED."
+}

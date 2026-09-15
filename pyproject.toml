@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fitground"
+version = "0.1.0"
+description = "AI-powered multimodal fit correction contracts and evidence tooling"
+requires-python = ">=3.11"
+dependencies = [
+  "datasets>=3.0",
+  "huggingface-hub>=0.30",
+  "imagehash>=4.3",
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "pillow>=10.0",
+  "pyarrow>=15.0",
+  "pyyaml>=6.0",
+  "requests>=2.31",
+  "scipy>=1.11",
+  "seaborn>=0.13",
+  "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = ["mypy>=1.10", "pytest>=8.0", "ruff>=0.6", "types-requests>=2.31"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

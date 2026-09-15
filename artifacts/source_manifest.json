@@ -1,0 +1,1759 @@
+{
+  "generated_at": "2026-09-10T17:17:20.289121+00:00",
+  "dataset_identifier": "Yuanhao-Harry-Wang/fitvto-100k",
+  "dataset_revision": "5563646729edf148ed2b32c4b9c794d51a1bc828",
+  "dataset_revision_pinned": "5563646729edf148ed2b32c4b9c794d51a1bc828",
+  "license": "cc-by-nc-nd-4.0",
+  "train_shard_count": 406,
+  "eval_shard_count": 20,
+  "train_shards": [
+    {
+      "filename": "data/train-00000-of-00406.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 504216699,
+      "row_count": 247
+    },
+    {
+      "filename": "data/train-00001-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00002-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00003-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00004-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00005-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00006-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00007-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00008-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00009-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00010-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00011-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00012-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00013-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00014-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00015-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00016-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00017-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00018-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00019-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00020-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00021-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00022-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00023-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00024-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00025-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00026-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00027-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00028-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00029-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00030-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00031-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00032-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00033-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00034-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00035-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00036-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00037-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00038-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00039-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00040-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00041-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00042-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00043-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00044-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00045-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00046-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00047-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00048-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00049-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00050-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00051-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00052-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00053-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00054-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00055-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00056-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00057-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00058-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00059-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00060-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00061-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00062-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00063-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00064-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00065-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00066-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00067-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00068-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00069-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00070-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00071-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00072-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00073-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00074-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00075-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00076-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00077-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00078-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00079-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00080-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00081-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00082-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00083-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00084-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00085-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00086-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00087-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00088-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00089-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00090-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00091-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00092-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00093-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00094-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00095-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00096-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00097-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00098-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00099-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00100-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00101-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00102-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00103-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00104-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00105-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00106-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00107-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00108-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00109-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00110-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00111-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00112-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00113-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00114-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00115-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00116-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00117-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00118-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00119-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00120-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00121-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00122-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00123-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00124-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00125-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00126-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00127-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00128-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00129-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00130-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00131-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00132-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00133-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00134-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00135-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00136-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00137-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00138-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00139-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00140-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00141-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00142-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00143-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00144-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00145-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00146-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00147-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00148-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00149-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00150-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00151-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00152-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00153-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00154-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00155-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00156-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00157-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00158-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00159-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00160-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00161-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00162-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00163-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00164-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00165-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00166-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00167-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00168-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00169-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00170-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00171-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00172-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00173-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00174-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00175-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00176-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00177-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00178-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00179-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00180-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00181-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00182-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00183-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00184-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00185-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00186-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00187-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00188-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00189-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00190-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00191-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00192-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00193-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00194-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00195-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00196-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00197-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00198-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00199-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00200-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00201-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00202-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00203-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00204-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00205-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00206-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00207-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00208-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00209-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00210-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00211-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00212-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00213-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00214-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00215-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00216-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00217-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00218-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00219-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00220-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00221-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00222-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00223-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00224-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00225-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00226-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00227-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00228-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00229-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00230-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00231-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00232-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00233-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00234-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00235-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00236-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00237-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00238-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00239-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00240-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00241-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00242-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00243-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00244-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00245-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00246-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00247-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00248-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00249-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00250-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00251-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00252-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00253-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00254-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00255-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00256-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00257-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00258-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00259-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00260-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00261-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00262-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00263-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00264-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00265-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00266-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00267-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00268-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00269-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00270-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00271-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00272-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00273-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00274-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00275-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00276-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00277-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00278-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00279-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00280-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00281-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00282-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00283-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00284-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00285-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00286-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00287-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00288-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00289-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00290-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00291-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00292-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00293-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00294-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00295-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00296-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00297-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00298-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00299-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00300-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00301-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00302-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00303-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00304-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00305-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00306-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00307-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00308-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00309-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00310-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00311-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00312-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00313-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00314-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00315-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00316-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00317-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00318-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00319-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00320-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00321-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00322-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00323-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00324-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00325-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00326-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00327-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00328-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00329-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00330-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00331-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00332-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00333-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00334-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00335-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00336-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00337-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00338-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00339-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00340-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00341-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00342-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00343-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00344-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00345-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00346-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00347-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00348-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00349-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00350-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00351-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00352-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00353-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00354-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00355-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00356-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00357-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00358-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00359-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00360-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00361-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00362-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00363-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00364-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00365-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00366-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00367-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00368-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00369-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00370-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00371-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00372-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00373-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00374-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00375-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00376-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00377-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00378-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00379-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00380-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00381-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00382-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00383-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00384-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00385-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00386-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00387-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00388-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00389-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00390-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00391-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00392-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00393-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00394-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00395-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00396-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00397-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00398-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00399-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00400-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00401-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00402-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00403-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00404-of-00406.parquet",
+      "hf_size_bytes": null
+    },
+    {
+      "filename": "data/train-00405-of-00406.parquet",
+      "hf_size_bytes": null
+    }
+  ],
+  "eval_shards": [
+    {
+      "filename": "data/eval-00000-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 499827823,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00001-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 505599293,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00002-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 498197552,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00003-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 496083632,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00004-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 510177398,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00005-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 507553084,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00006-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 506351247,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00007-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 506244122,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00008-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 501879839,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00009-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 503048655,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00010-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 501389334,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00011-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 501052440,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00012-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 502926980,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00013-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 506052837,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00014-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 495781705,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00015-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 496529654,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00016-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 508933179,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00017-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 511171787,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00018-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 502175382,
+      "row_count": 250
+    },
+    {
+      "filename": "data/eval-00019-of-00020.parquet",
+      "hf_size_bytes": null,
+      "observed_bytes": 499442441,
+      "row_count": 250
+    }
+  ]
+}

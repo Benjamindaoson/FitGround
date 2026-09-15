@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "wp_is_cuda_available": true,
+  "device": "cuda:0",
+  "kernel_ok": true,
+  "kernel_output": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "expected": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "error": null,
+  "warp_file": "/root/workspace/external/FitVTON-source-tree/NvidiaWarp-GarmentCode/warp/__init__.py",
+  "warp_version": "1.0.0-beta.6",
+  "library_path": "/root/workspace/external/FitVTON-source-tree/NvidiaWarp-GarmentCode/warp/bin/warp.so",
+  "library_exists": true,
+  "cwd": "/tmp",
+  "cuda_devices": [
+    "cuda:0"
+  ],
+  "runtime_s": 0.31067538261413574,
+  "library_sha256": "9e61637a8868fd7813e75d1601119c8aa91b76f0d2e766a6296fcfee8edb2c8c",
+  "library_size_bytes": 108606704,
+  "nvcc": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Tue_Oct_29_23:50:19_PDT_2024\nCuda compilation tools, release 12.6, V12.6.85\nBuild cuda_12.6.r12.6/compiler.35059454_0\n",
+  "nvidia_smi": "NVIDIA GeForce RTX 4090, 580.95.05, 24564 MiB",
+  "CUDA_HOME": "/root/workspace/conda/envs/flux"
+}

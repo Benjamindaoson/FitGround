@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "FitGround Existing Runtime Architecture (Audit Baseline)",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "viewBox": [1380, 760]
+  },
+  "components": [
+    {"id":"fitdata","type":"external","label":"FIT Dataset","sublabel":"source shards","pos":[35,310],"size":[150,64]},
+    {"id":"runner","type":"backend","label":"Pipeline Runners","sublabel":"run_pipeline / run_fit_stream","pos":[220,310],"size":[170,64]},
+    {"id":"stream","type":"backend","label":"FIT-Clean Stream","sublabel":"normalize + checkpoints","pos":[440,310],"size":[170,64]},
+    {"id":"quality","type":"backend","label":"Quality and Identity","sublabel":"images, hashes, duplicate checks","pos":[440,130],"size":[185,64]},
+    {"id":"manifest","type":"database","label":"FIT-Clean Manifest","sublabel":"Parquet + measurement features","pos":[660,310],"size":[180,64]},
+    {"id":"counterfactual","type":"backend","label":"Legacy Counterfactual","sublabel":"matched before/after pairs","pos":[890,160],"size":[190,64]},
+    {"id":"materialize","type":"backend","label":"Pilot Materializer","sublabel":"visual pair sanity sheets","pos":[890,430],"size":[190,64]},
+    {"id":"reports","type":"database","label":"Evidence and Reports","sublabel":"audits + frozen contracts","pos":[1140,310],"size":[190,64]}
+  ],
+  "connections": [
+    {"id":"dataset-runner","from":"fitdata","to":"runner","label":"download shards","variant":"emphasis","labelAt":[195,388]},
+    {"id":"runner-stream","from":"runner","to":"stream","label":"stream raw rows","labelAt":[415,388]},
+    {"id":"stream-quality","from":"stream","to":"quality","label":"audit assets","fromSide":"top","toSide":"bottom"},
+    {"id":"quality-manifest","from":"quality","to":"manifest","label":"validated rows","fromSide":"right","toSide":"top"},
+    {"id":"stream-manifest","from":"stream","to":"manifest","label":"write manifest","labelAt":[635,388]},
+    {"id":"manifest-counterfactual","from":"manifest","to":"counterfactual","label":"matched candidates","fromSide":"top","toSide":"left"},
+    {"id":"manifest-materialize","from":"manifest","to":"materialize","label":"selected sample IDs","fromSide":"bottom","toSide":"left"},
+    {"id":"manifest-reports","from":"manifest","to":"reports","label":"closure audits"},
+    {"id":"counterfactual-reports","from":"counterfactual","to":"reports","label":"pair evidence"},
+    {"id":"materialize-reports","from":"materialize","to":"reports","label":"pilot metadata"}
+  ],
+  "cards": [
+    {"dot":"cyan","title":"Observed primary flow","items":["FIT data is streamed into a FIT-Clean parquet manifest.","The manifest feeds audit reports and measurement-matched counterfactual pairs."]},
+    {"dot":"amber","title":"Audit finding","items":["No local GarmentCode, renderer, physics simulator, or GPU correction runner implementation was found.","Existing counterfactual records are observed matched pairs, not intervention lattices."]},
+    {"dot":"slate","title":"Trust boundary","items":["FIT-Clean provenance hashes and frozen evidence remain immutable historical inputs.","Simulation results must be added only by a future verified GPU workflow."]}
+  ]
+}

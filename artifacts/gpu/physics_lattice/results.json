@@ -1,0 +1,68 @@
+{
+  "bust_plus_1cm": {
+    "tag": "bust_plus_1cm",
+    "spec": "/root/workspace/projects/FitGround/artifacts/bust_atomic_calibration/bust_plus_1cm/patterns/t-shirt__bust_plus_1cm_mut/t-shirt__bust_plus_1cm_mut_specification.json",
+    "status": "PASS",
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_1cm/bust_plus_1cm_sim.obj",
+    "renders": [
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_1cm/bust_plus_1cm_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_1cm/bust_plus_1cm_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_1cm/bust_plus_1cm_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_1cm/bust_plus_1cm_render_front_bodymask.png"
+    ],
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_1cm",
+    "sim_sha256": "70cc2741b203547e1df94cd2172124df3b073c1ec051d040fd5bbcfd13db386e",
+    "runtime_s": 12.17897343635559
+  },
+  "bust_plus_3cm": {
+    "tag": "bust_plus_3cm",
+    "spec": "/root/workspace/projects/FitGround/artifacts/bust_atomic_calibration/bust_plus_3cm/patterns/t-shirt__bust_plus_3cm_mut/t-shirt__bust_plus_3cm_mut_specification.json",
+    "status": "PASS",
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_3cm/bust_plus_3cm_sim.obj",
+    "renders": [
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_3cm/bust_plus_3cm_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_3cm/bust_plus_3cm_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_3cm/bust_plus_3cm_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_3cm/bust_plus_3cm_render_front_bodymask.png"
+    ],
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_3cm",
+    "sim_sha256": "fa382709b19b323076a61e15ed05c82e475abcd2d9fb141b06f6de41122c780c",
+    "runtime_s": 11.205425262451172
+  },
+  "baseline": {
+    "tag": "baseline",
+    "spec": "/root/workspace/projects/FitGround/artifacts/bust_atomic_calibration/bust_plus_1cm/patterns/t-shirt__bust_plus_1cm_base/t-shirt__bust_plus_1cm_base_specification.json",
+    "status": "PASS",
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/baseline/baseline_sim.obj",
+    "renders": [
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/baseline/baseline_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/baseline/baseline_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/baseline/baseline_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/baseline/baseline_render_back.png"
+    ],
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/baseline",
+    "sim_sha256": "72a99e8e06f9134ba7d2cb2ae60c7008af0f8a530f036e55a5b2f8e649cad7ca",
+    "runtime_s": 11.556296348571777
+  },
+  "bust_plus_2cm": {
+    "tag": "bust_plus_2cm",
+    "status": "PASS",
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_2cm/bust_plus_2cm_sim.obj",
+    "renders": [
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_2cm/bust_plus_2cm_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_2cm/bust_plus_2cm_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_2cm/bust_plus_2cm_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/gpu/physics_lattice/bust_plus_2cm/bust_plus_2cm_render_front_bodymask.png"
+    ],
+    "runtime_s": 11.73755145072937,
+    "sim_sha256": "5282db309f4ca01fae5e262b7d5bf62143ce9c1de86d9c762b677cf7ec993cf2"
+  }
+}

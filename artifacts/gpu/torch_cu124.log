@@ -1,0 +1,16 @@
+Looking in indexes: https://download.pytorch.org/whl/cu124
+Collecting torch==2.5.1
+  Downloading torch-2.5.1%2Bcu124-cp310-cp310-linux_x86_64.whl (908.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 908.3/908.3 MB 25.4 MB/s  0:00:31
+Collecting torchvision==0.20.1
+  Downloading torchvision-0.20.1%2Bcu124-cp310-cp310-linux_x86_64.whl (7.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.3/7.3 MB 38.3 MB/s  0:00:00
+Requirement already satisfied: filelock in ./workspace/conda/envs/flux/lib/python3.10/site-packages (from torch==2.5.1) (3.32.6)
+Requirement already satisfied: typing-extensions>=4.8.0 in ./workspace/conda/envs/flux/lib/python3.10/site-packages (from torch==2.5.1) (4.16.0)
+Requirement already satisfied: networkx in ./workspace/conda/envs/flux/lib/python3.10/site-packages (from torch==2.5.1) (3.4.2)
+Requirement already satisfied: jinja2 in ./workspace/conda/envs/flux/lib/python3.10/site-packages (from torch==2.5.1) (3.1.6)
+Requirement already satisfied: fsspec in ./workspace/conda/envs/flux/lib/python3.10/site-packages (from torch==2.5.1) (2026.7.0)
+Collecting nvidia-cuda-nvrtc-cu12==12.4.127 (from torch==2.5.1)
+  WARNING: Retrying (Retry(total=7, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<HTTPSConnection(host='pypi.nvidia.com', port=443) at 0x7f067e4be980>, 'Connection to pypi.nvidia.com timed out. (connect timeout=120.0)')': /nvidia-cuda-nvrtc-cu12/nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl
+  WARNING: Retrying (Retry(total=6, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<HTTPSConnection(host='pypi.nvidia.com', port=443) at 0x7f067e4bebf0>, 'Connection to pypi.nvidia.com timed out. (connect timeout=120.0)')': /nvidia-cuda-nvrtc-cu12/nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl
+  WARNING: Retrying (Retry(total=5, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ConnectTimeoutError(<HTTPSConnection(host='pypi.nvidia.com', port=443) at 0x7f067e4be350>, 'Connection to pypi.nvidia.com timed out. (connect timeout=120.0)')': /nvidia-cuda-nvrtc-cu12/nvidia_cuda_nvrtc_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl

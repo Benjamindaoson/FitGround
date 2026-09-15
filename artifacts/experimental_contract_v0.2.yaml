@@ -1,0 +1,233 @@
+version: v0.2
+status: FROZEN
+frozen_at: "2026-09-11"
+does_not_modify: experimental_contract_v0.1
+authorizes:
+  - diagnostic analysis
+  - GPU E0 Stage 1 generation pilot design execution (later GPU machine)
+does_not_authorize:
+  - VLM training
+  - LoRA
+  - RM
+  - DPO
+  - GRPO
+  - full benchmark training
+  - GPU E0 Stage 2 Sim2Real unless Stage 1 is GO and FIT code becomes available
+
+research_question: >
+  Does a multimodal model respond correctly to controlled interventions
+  in body–garment measurement relations when major visual and identity
+  confounders are held fixed or explicitly controlled?
+
+motivation: >
+  Phase 2 showed released FIT-100K cannot identify measurement-grounded
+  counterfactual effects without garment-appearance confounding.
+  The scientific object must move from observational garment swaps to
+  a do(measurement) ladder with explicit controls.
+
+phase_2_negative_finding:
+  COUNTERFACTUAL_FEASIBILITY: PARTIAL
+  tier_a_same_person_same_cloth_groups: 0
+  tier_b: {exact: 1, near: 1}
+  tier_c_groups: 1689
+  tier_c_pairs: 1729
+  multivariable_pairs: "1574 / 1731"
+  same_cloth_measurement_inconsistency: 0
+  pixel_level_fit_change: NOT_VERIFIED
+  semantic_identity_leakage: NOT_VERIFIED
+  near_image_duplicate: DEFERRED
+
+observational_limitation: >
+  Released FIT-100K TIER C identifies
+  P(Y | different garment, different measurement).
+  Garment visual appearance co-varies with the measurement intervention.
+  That is not P(Y | do(measurement change), controlled context).
+
+controlled_generation_rationale: >
+  Official FIT paper documents GarmentCode cross-draping that can hold
+  body and design while changing size. Official generation code is not
+  public. GPU E0 Stage 1 uses public GarmentCode plus the documented
+  cross-drape procedure. Photoreal Sim2Real is out of scope until code exists.
+
+primary_hypothesis: >
+  Under a Controlled Fit Ladder (fixed body, design, pose, fabric, camera),
+  changing the garment measurement vector from TIGHT to LOOSE produces
+  ordered, human-visible target-fit change, and (in later model tests,
+  not authorized now) a multimodal model’s outputs will track the
+  measurement relation rather than cloth appearance alone.
+
+null_hypothesis: >
+  After controls, remaining visual garment-appearance differences fully
+  explain any target or model-output change; measurements add no
+  independent contribution, or the ladder is not a valid intervention.
+
+independent_variable: >
+  Garment measurement vector M = (garment_bust_cm, garment_length_cm,
+  garment_sleeve_cm) and induced relational measurements
+  (bust_ease_cm, bust_ease_ratio, garment_length_height_ratio),
+  ordered TIGHT < REGULAR < LOOSE.
+  Not S/M/L labels. Not garment design identity.
+
+controlled_variables:
+  - body_identity
+  - body_measurements
+  - pose
+  - garment_design_identity
+  - fabric_material
+  - texture
+  - camera
+  - render_seed
+  - background
+
+outcome: >
+  GPU E0 outcome = draped target geometry and visible fit on contact sheets.
+  Later model outcome (not authorized) = response to measurement interventions
+  under shortcut attacks.
+
+primary_endpoint_e0: >
+  Overall GPU E0 GO under artifacts/gpu_e0_pilot_v0.2.yaml:
+  generation success, control consistency, measurement monotonicity,
+  target uniqueness, human-visible fit change, reproducibility,
+  metadata completeness, and Track A leakage not NO-GO.
+
+primary_endpoint_future_models: >
+  Not authorized. If later authorized, primary endpoint is a paired
+  ladder-level measurement-contribution test: performance of
+  Vision+Measurement vs Appearance-only and vs shuffled/wrong/counterfactual
+  measurements, not raw VLM accuracy.
+
+failure_criterion: >
+  If Track A cloth remains a size oracle, or targets do not change, or
+  controls do not hold, the benchmark cannot support measurement-grounding
+  claims. High VLM accuracy alone is never a success criterion.
+
+experimental_unit:
+  name: ControlledFitLadder
+  schema: artifacts/controlled_fit_ladder_schema_v0.2.yaml
+
+intervention:
+  type: measurement_vector
+  ordered_levels: [TIGHT, REGULAR, LOOSE]
+  mechanism: FIT-documented cross-drape (pattern from source body A onto target body B)
+  recorded_deltas:
+    - delta_garment_bust_cm
+    - delta_bust_ease_cm
+    - delta_garment_length_cm
+    - delta_garment_sleeve_cm
+  univariate_bust_claim: FORBIDDEN_UNLESS_E0_SHOWS_OTHER_DIMS_FIXED
+
+tracks:
+  primary:
+    id: TRACK_A_MEASUREMENT_ISOLATED
+    input: canonical or bbox-normalized garment representation + measurement vector + size-specific simulated target
+    goal: remove absolute-size signal from the cloth image
+    official_fit_support: NOT_A_DOCUMENTED_FIT_OUTPUT
+    fitground_support: CONDITIONALLY_FEASIBLE_AT_3D_STAGE
+    physical_consistency: >
+      Canonical cloth is a design-identity token, not the physical
+      size-specific pattern image. Image–measurement split is intentional.
+    mismatch_risk: true
+  secondary:
+    id: TRACK_B_NATURALISTIC
+    input: size-specific garment render or try-off + matching measurements + matching target
+    goal: physically consistent naturalistic performance
+    cannot_alone_prove: measurement_grounding
+    official_fit_analogy: VLM try-off from sized I_try-on
+
+gpu_e0:
+  spec: artifacts/gpu_e0_pilot_v0.2.yaml
+  scale: {bodies: 3, designs: 5, levels: 3, conditions: 45, ladders: 15}
+
+evaluation_policy:
+  official_eval_policy: >
+    FIT official eval split (5,000) remains the released FIT-100K split.
+    It is observational. It is not the Controlled Fit Ladder test set.
+  leakage_controlled_policy: >
+    Any future model eval on released FIT-100K must still honor v0.1
+    leakage-controlled exclusions if those artifacts are restored.
+    GPU E0 ladders are a new generated set and must not mix identities
+    with released eval in a way that is undocumented.
+  e0_eval: human contact sheets + metadata invariants; no VLM judge
+
+shortcut_tests:
+  attacks:
+    - Appearance-only
+    - Measurement-only
+    - Vision + Measurement
+    - Vision + shuffled measurements
+    - Vision + wrong measurements
+    - Vision + counterfactual measurements
+    - Garment-image-only
+    - Target-image-only diagnostic
+    - Quantization-only
+    - Design-ID proxy
+    - Body-ID proxy
+  rule: >
+    If appearance-only solves the task, the benchmark does not prove
+    measurement grounding. The critical comparisons are (1) independent
+    contribution of measurements and (2) correct physical change under
+    measurement perturbation. Shortcut tests are designed now, executed
+    only after a later training authorization that does not exist yet.
+
+statistical_plan:
+  design: paired / repeated-measures over ladders
+  unit_of_analysis: ladder (15 in E0), not independent images
+  e0:
+    success_rates: binomial Wilson 95% CI
+    monotonicity: all-or-nothing per ladder; report count
+    human_visibility: ladder-level binary; Wilson CI
+    bootstrap: 10_000 resamples of ladders for CIs on rates
+  future_model_if_authorized:
+    paired_comparison: Wilcoxon signed-rank or paired bootstrap on ladder scores
+    effect_size: paired rank-biserial / Cohen's dz
+    multiple_comparison: Holm on the pre-registered shortcut family
+    chance_baseline:
+      three_way_size: 1/3
+      pairwise_order: 1/2
+    ranking_metric: Kendall tau of predicted vs TIGHT<REGULAR<LOOSE
+    calibration: Brier / ECE only if model emits probabilities
+  method_lock: methods chosen before seeing GPU E0 results; do not switch after unblinding
+
+secondary_metrics:
+  - per-dimension deltas (bust, length, sleeve)
+  - drape-failure rate
+  - Track A bbox scale variation
+  - human checklist item rates
+
+ablations_design_only:
+  items:
+    - Track A vs Track B
+    - A-pose vs (if available) pinned casual pose
+    - with vs without box-mesh realignment
+  not_run_in_this_phase: true
+
+reproducibility:
+  garmentcode_revision_pin: "d449629979028123a5c4dc9e732a2ec19b7fce31"
+  fit_hf_revision_pin: "5563646729edf148ed2b32c4b9c794d51a1bc828"
+  e0_must_log: [design_yaml_hash, body_id, pose_id, sim_config_hash, seeds, mesh_sha256]
+  photoreal_bit_exact: NOT_REQUIRED_FOR_STAGE_1
+
+known_limitations:
+  - Official FIT generation code not released
+  - Track A is a FitGround overlay, not an official FIT mode
+  - Intervention is a measurement vector, not univariate bust
+  - Tightness poorly differentiated in GarmentCode (authors)
+  - Pixel-level fit on released FIT-100K still NOT VERIFIED
+  - Sim2Real stochasticity unquantified
+  - Public GarmentCode does not ship FIT box-mesh realignment
+
+go_nogo_logic:
+  CONTROLLED_COUNTERFACTUAL_GENERATION: PARTIAL
+  READY_FOR_GPU_E0: "YES"
+  READY_FOR_GPU_E0_means: Stage 1 generation pilot only
+  training_authorization: DENIED until GPU E0 overall GO and a later contract says otherwise
+
+gpu_handoff:
+  read_first: docs/context/PHASE_2_5_CONTEXT.md
+  then:
+    - reports/FIT_GENERATION_MECHANISM_AUDIT.md
+    - artifacts/experimental_contract_v0.2.yaml
+    - artifacts/control_variable_matrix_v0.2.yaml
+    - artifacts/controlled_fit_ladder_schema_v0.2.yaml
+    - artifacts/gpu_e0_pilot_v0.2.yaml
+  only_allowed_gpu_task: GPU E0 Stage 1 Controlled Counterfactual Generation Pilot

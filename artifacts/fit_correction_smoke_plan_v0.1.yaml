@@ -1,0 +1,31 @@
+# V0.1 plan only. No outcome below has been simulated locally.
+plan_id: fit_correction_smoke_plan_v0.1
+status: NOT_RUN
+simulator: NOT_CONFIGURED
+action_families:
+  - bust_circumference_delta_cm
+  - shoulder_width_delta_cm
+  - sleeve_length_delta_cm
+cases:
+  CHEST_CASE:
+    current_state: REQUIRED_AT_GPU
+    candidates:
+      - {action_family: bust_circumference_delta_cm, intended_delta_cm: 1.0, role: treatment}
+      - {action_family: bust_circumference_delta_cm, intended_delta_cm: 2.0, role: treatment}
+      - {action_family: bust_circumference_delta_cm, intended_delta_cm: 3.0, role: treatment}
+      - {action_family: shoulder_width_delta_cm, intended_delta_cm: 1.0, role: control}
+      - {action_family: sleeve_length_delta_cm, intended_delta_cm: -1.0, role: control}
+  SHOULDER_CASE:
+    current_state: REQUIRED_AT_GPU
+    candidates:
+      - {action_family: shoulder_width_delta_cm, intended_delta_cm: 1.0, role: treatment}
+      - {action_family: shoulder_width_delta_cm, intended_delta_cm: 2.0, role: treatment}
+      - {action_family: bust_circumference_delta_cm, intended_delta_cm: 2.0, role: control}
+      - {action_family: sleeve_length_delta_cm, intended_delta_cm: -1.0, role: control}
+  SLEEVE_CASE:
+    current_state: REQUIRED_AT_GPU
+    candidates:
+      - {action_family: sleeve_length_delta_cm, intended_delta_cm: -1.0, role: treatment}
+      - {action_family: sleeve_length_delta_cm, intended_delta_cm: -2.0, role: treatment}
+      - {action_family: bust_circumference_delta_cm, intended_delta_cm: 2.0, role: control}
+      - {action_family: shoulder_width_delta_cm, intended_delta_cm: 1.0, role: control}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fit_correction_v0.1.schema.json",
+  "title": "FitGround V0.1 Correction Contracts",
+  "definitions": {
+    "VerificationStatus": {"enum": ["NOT_VERIFIED", "VERIFIED", "FAILED"]},
+    "SimulationStatus": {"enum": ["NOT_RUN", "SIMULATED", "FAILED"]},
+    "RenderStatus": {"enum": ["NOT_RUN", "RENDERED", "FAILED", "NOT_APPLICABLE"]},
+    "CurrentFitState": {
+      "type": "object",
+      "required": ["state_id", "body", "garment", "visual_assets", "material", "garment_type", "fit_intent", "region_fit_state", "provenance"],
+      "properties": {
+        "state_id": {"type": "string", "minLength": 1},
+        "body": {"type": "object", "minProperties": 1},
+        "garment": {"type": "object", "minProperties": 1},
+        "visual_assets": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "material": {"type": "object", "minProperties": 1},
+        "garment_type": {"type": "string", "minLength": 1},
+        "fit_intent": {"type": "string", "minLength": 1},
+        "region_fit_state": {"type": "object", "minProperties": 1},
+        "provenance": {"type": "object", "minProperties": 1}
+      }
+    },
+    "CandidateCorrection": {
+      "type": "object",
+      "required": ["action_family", "intended_delta_cm", "realized_delta_cm", "source_pattern_parameters", "verification_status"],
+      "properties": {
+        "candidate_id": {"type": ["string", "null"]},
+        "action_family": {"enum": ["bust_circumference_delta_cm", "shoulder_width_delta_cm", "sleeve_length_delta_cm"]},
+        "intended_delta_cm": {"type": "number", "not": {"const": 0}},
+        "realized_delta_cm": {"type": ["number", "null"]},
+        "source_pattern_parameters": {"type": "object"},
+        "verification_status": {"$ref": "#/definitions/VerificationStatus"}
+      }
+    },
+    "PredictedFitOutcome": {
+      "type": "object",
+      "required": ["candidate_id", "region_before", "region_after", "direction", "magnitude", "side_effects", "confidence", "simulation_status", "render_status", "reproducibility", "hashes", "provenance"],
+      "properties": {
+        "candidate_id": {"type": "string", "minLength": 1},
+        "region_before": {"type": "object", "minProperties": 1},
+        "region_after": {"type": ["object", "null"]},
+        "direction": {"type": ["string", "null"]},
+        "magnitude": {"type": ["number", "null"]},
+        "side_effects": {"type": "array"},
+        "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "simulation_status": {"$ref": "#/definitions/SimulationStatus"},
+        "render_status": {"$ref": "#/definitions/RenderStatus"},
+        "reproducibility": {"type": "object"},
+        "hashes": {"type": "object", "additionalProperties": {"type": "string"}},
+        "provenance": {"type": "object", "minProperties": 1}
+      }
+    },
+    "CauseHypothesis": {
+      "type": "object",
+      "required": ["cause", "supporting_evidence", "confidence", "verification_status"],
+      "properties": {
+        "cause": {"type": "string", "minLength": 1},
+        "supporting_evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "verification_status": {"$ref": "#/definitions/VerificationStatus"}
+      }
+    },
+    "CorrectionLattice": {
+      "type": "object",
+      "required": ["lattice_id", "state_id", "candidate_actions", "outcomes", "utilities", "oracle_action", "ranking", "verification_status", "provenance"],
+      "properties": {
+        "lattice_id": {"type": "string", "minLength": 1},
+        "state_id": {"type": "string", "minLength": 1},
+        "candidate_actions": {"type": "array", "minItems": 1, "items": {"$ref": "#/definitions/CandidateCorrection"}},
+        "outcomes": {"type": "array", "items": {"$ref": "#/definitions/PredictedFitOutcome"}},
+        "utilities": {"type": "object", "additionalProperties": {"type": ["number", "null"]}},
+        "oracle_action": {"type": ["string", "null"]},
+        "ranking": {"type": ["array", "null"], "items": {"type": "string"}, "uniqueItems": true},
+        "verification_status": {"$ref": "#/definitions/VerificationStatus"},
+        "provenance": {"type": "object", "required": ["git_sha", "environment", "seed", "source_assets", "artifact_paths"]}
+      }
+    }
+  }
+}

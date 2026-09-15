@@ -1,0 +1,80 @@
+version: v0.1
+status: FROZEN_PARTIAL
+date: "2026-09-11"
+fit_clean: data/processed/fit_clean_v0.1.parquet
+fit_clean_sha256: 6b998bc4c62b53fe6a4d119cb351a49f140fa1733b432a5d8dd4f1b6a401d177
+source_revision: 5563646729edf148ed2b32c4b9c794d51a1bc828
+manifest_modified: false
+feasibility_verdict: PARTIAL
+research_question: >
+  When person image and body measurements are held fixed, do multimodal fit
+  judgments track garment/ease measurement change or garment appearance and
+  other shortcuts?
+hypothesis:
+  H1: person-held TIER C pair direction tracks ease above chance and above an appearance-only baseline
+  H0: pair direction is explained by appearance, quantization, or leakage
+experimental_unit: person-held garment-alternative pair
+anchor_rule: lower bust_ease_cm, then lower garment_bust_cm, then sample_id
+counterfactual: the other member of the unordered pair
+independent_variable: delta_garment_bust_cm (== delta_bust_ease_cm when body held)
+controlled_variables:
+  person_image: held
+  body_vector: held
+  cloth_image: NOT held
+  target_image: must differ
+outcome: try-on target image and pairwise fit scores
+pair_construction:
+  cli: scripts/build_counterfactual_candidates.py
+  table: data/processed/counterfactual_candidates_v0.1.parquet
+  n_pairs: 1731
+  tier_b: 2
+  tier_c: 1729
+  tier_a: 0
+  tier_d: 0
+train_split: source_split=train
+official_eval: FIT 5K unmodified
+leakage_controlled_eval:
+  n: 4684
+  excluded_exact_image_overlap: 316
+shortcut_controls:
+  - withhold sample_id shard split from models
+  - report cloth-appearance confound
+  - do not use 1dp ease_ratio as IV
+  - isolate exact-image leakage
+metrics:
+  - pair_direction_accuracy
+  - delta_score_vs_delta_ease_spearman
+  - stratified_by_ease_bin
+  - appearance_only_baseline
+primary_endpoint: person-held pair direction accuracy vs chance and appearance baseline
+ablations:
+  - tier_b_qualitative
+  - single_variable_n7
+  - drop_large_ease_tails
+  - appearance_baseline
+  - leakage_clean_subset
+failure_criteria:
+  - not_above_chance
+  - appearance_baseline_explains_effect
+  - accuracy_concentrated_in_few_ease_bins
+  - treating_official_5k_as_pair_eval
+  - visual_targets_do_not_show_fit_change
+statistical_tests:
+  - binomial_vs_0.5
+  - spearman
+  - 95pct_ci
+random_seeds:
+  split_assignment: null
+  visual_pilot: 0
+  gpu_probe: [0, 1, 2]
+gpu:
+  vlm_training: false
+  lora: false
+  reward_model: false
+  dpo: false
+  grpo: false
+  first_authorized_experiment: >
+    Frozen-encoder person-held target ranking probe after visual sanity check.
+    DEFERRED_TO_GPU. Not executed in this phase.
+semantic_identity_leakage: NOT_VERIFIED
+near_duplicate_phash_full_dataset: DEFERRED_TO_GPU

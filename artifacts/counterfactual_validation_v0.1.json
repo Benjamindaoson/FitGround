@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "n_pairs": 1731,
+  "n_unique_pair_id": 1731,
+  "n_self_pairs": 0,
+  "n_duplicate_unordered": 0,
+  "n_pair_id_mismatch": 0,
+  "n_delta_mismatch": 0,
+  "n_same_target": 0
+}

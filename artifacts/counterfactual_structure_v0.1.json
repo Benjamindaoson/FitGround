@@ -1,0 +1,392 @@
+{
+  "n_rows": 105000,
+  "n_usable": 104999,
+  "n_train": 100000,
+  "n_eval": 5000,
+  "A_same_person_same_cloth": {
+    "group_key": [
+      "person_sha256",
+      "cloth_sha256=garment_sha256"
+    ],
+    "size": {
+      "n_groups": 104999,
+      "n_rows": 104999,
+      "n_groups_gt1": 0,
+      "n_rows_in_gt1": 0,
+      "min": 1,
+      "p50": 1.0,
+      "p90": 1.0,
+      "p99": 1.0,
+      "max": 1,
+      "size_histogram_head": {
+        "1": 104999
+      }
+    },
+    "groups_with_gt1_row": 0,
+    "groups_with_different_target": 0,
+    "groups_with_different_garment_measurements": 0,
+    "groups_with_different_body_measurements": 0,
+    "tier_a_groups": 0,
+    "body_constant_in_multi": null,
+    "garment_variation_types": {},
+    "note": "No (person_sha256, garment_sha256) group has more than one row. TIER A exact same-person-image + same-cloth-image counterfactuals do not exist."
+  },
+  "B_same_person": {
+    "group_key": [
+      "person_sha256"
+    ],
+    "size": {
+      "n_groups": 103289,
+      "n_rows": 104999,
+      "n_groups_gt1": 1689,
+      "n_rows_in_gt1": 3399,
+      "min": 1,
+      "p50": 1.0,
+      "p90": 1.0,
+      "p99": 2.0,
+      "max": 3,
+      "size_histogram_head": {
+        "1": 101600,
+        "2": 1668,
+        "3": 21
+      }
+    },
+    "unique_person_images": 103289,
+    "body_consistency_issues": 0,
+    "body_consistency_issue_rows": 0,
+    "groups_body_constant_and_multi": 1689,
+    "groups_with_different_cloth": 1689,
+    "groups_with_different_target": 1689,
+    "groups_with_garment_measurement_variation": 1689,
+    "groups_with_ease_variation": 1628,
+    "groups_with_multiple_garment_phash": 1688,
+    "tier_c_groups": 1689,
+    "tier_c_rows": 3399,
+    "max_garments_per_person": 3,
+    "garment_family": {
+      "phash_hamming_max_for_family": 4,
+      "groups_with_exact_garment_phash_family": 1,
+      "groups_with_near_garment_phash_family": 1,
+      "pairs_exact_garment_phash_different_sha256": 1,
+      "pairs_near_garment_phash": 1,
+      "pairs_exact_phash_and_measurement_diff": 1,
+      "pairs_exact_phash_and_target_diff": 1,
+      "pairs_near_phash_and_measurement_diff": 1,
+      "within_person_cloth_phash_hamming_hist_head": {
+        "0": 1,
+        "4": 1,
+        "6": 6,
+        "8": 23,
+        "10": 50,
+        "12": 42,
+        "14": 72,
+        "16": 119,
+        "18": 128,
+        "20": 139,
+        "22": 177,
+        "24": 162,
+        "26": 189,
+        "28": 166,
+        "30": 148,
+        "32": 127
+      },
+      "tier_b_groups": 1,
+      "tier_b_near_groups": 1
+    }
+  },
+  "C_same_cloth": {
+    "group_key": [
+      "cloth_sha256=garment_sha256"
+    ],
+    "size": {
+      "n_groups": 103372,
+      "n_rows": 104999,
+      "n_groups_gt1": 1598,
+      "n_rows_in_gt1": 3225,
+      "min": 1,
+      "p50": 1.0,
+      "p90": 1.0,
+      "p99": 2.0,
+      "max": 3,
+      "size_histogram_head": {
+        "1": 101774,
+        "2": 1569,
+        "3": 29
+      }
+    },
+    "unique_cloth_images": 103372,
+    "garment_measurement_inconsistency_groups": 0,
+    "garment_measurement_inconsistency_rows": 0,
+    "groups_with_different_person": 1598,
+    "groups_with_different_target": 0,
+    "groups_with_body_variation": 0,
+    "groups_garment_measurements_constant": 1598,
+    "same_cloth_diff_measurement_diff_body_groups": 0,
+    "same_cloth_constant_measurement_diff_body_groups": 0,
+    "inconsistent_garment_variation_types": {},
+    "interpretation_note": "If the same cloth SHA256 has different garment_*_cm values, either the measurement is an instance-level intervention (not a property of the cloth image) or the metadata is inconsistent. Distinguishing these requires checking whether garment values track body size or discrete presets."
+  },
+  "D_same_target": {
+    "group_key": [
+      "target_sha256"
+    ],
+    "size": {
+      "n_groups": 103345,
+      "n_rows": 104999,
+      "n_groups_gt1": 1624,
+      "n_rows_in_gt1": 3278,
+      "min": 1,
+      "p50": 1.0,
+      "p90": 1.0,
+      "p99": 2.0,
+      "max": 3,
+      "size_histogram_head": {
+        "1": 101721,
+        "2": 1594,
+        "3": 30
+      }
+    },
+    "unique_target_images": 103345,
+    "duplicate_target_groups": 1624,
+    "duplicate_target_rows": 3278,
+    "cross_split_duplicate_targets": 146,
+    "duplicate_targets_with_different_person": 1624,
+    "duplicate_targets_with_different_cloth": 26,
+    "leakage_risk": "Repeated target SHA256 can create identity shortcuts if a model memorizes the try-on image. Cross-split duplicates are leakage. Pairs that share a target are invalid counterfactuals."
+  },
+  "E_measurement_vectors": {
+    "n_complete_measurement_rows": 104999,
+    "unique_values_raw": {
+      "body_height_cm": 105,
+      "body_bust_cm": 104,
+      "body_waist_cm": 105,
+      "body_hips_cm": 104,
+      "garment_bust_cm": 20396,
+      "garment_length_cm": 50865,
+      "garment_sleeve_cm": 58521,
+      "bust_ease_cm": 29360,
+      "bust_ease_ratio": 29387,
+      "garment_length_height_ratio": 59438
+    },
+    "unique_values_1dp": {
+      "body_height_cm": 86,
+      "body_bust_cm": 89,
+      "body_waist_cm": 96,
+      "body_hips_cm": 90,
+      "garment_bust_cm": 825,
+      "garment_length_cm": 593,
+      "garment_sleeve_cm": 638,
+      "bust_ease_cm": 694,
+      "bust_ease_ratio": 11,
+      "garment_length_height_ratio": 5
+    },
+    "unique_values_2dp": {
+      "body_height_cm": 103,
+      "body_bust_cm": 101,
+      "body_waist_cm": 105,
+      "body_hips_cm": 102,
+      "garment_bust_cm": 5719,
+      "garment_length_cm": 4879,
+      "garment_sleeve_cm": 5614,
+      "bust_ease_cm": 5577,
+      "bust_ease_ratio": 87,
+      "garment_length_height_ratio": 39
+    },
+    "grid_occupancy": {
+      "body_height_cm": {
+        "frac_on_0.01": 0.0,
+        "frac_on_0.05": 0.0,
+        "frac_on_0.1": 0.0,
+        "frac_on_0.5": 0.0,
+        "frac_on_1.0": 0.0
+      },
+      "body_bust_cm": {
+        "frac_on_0.01": 0.0,
+        "frac_on_0.05": 0.0,
+        "frac_on_0.1": 0.0,
+        "frac_on_0.5": 0.0,
+        "frac_on_1.0": 0.0
+      },
+      "body_waist_cm": {
+        "frac_on_0.01": 0.0,
+        "frac_on_0.05": 0.0,
+        "frac_on_0.1": 0.0,
+        "frac_on_0.5": 0.0,
+        "frac_on_1.0": 0.0
+      },
+      "body_hips_cm": {
+        "frac_on_0.01": 0.0,
+        "frac_on_0.05": 0.0,
+        "frac_on_0.1": 0.0,
+        "frac_on_0.5": 0.0,
+        "frac_on_1.0": 0.0
+      },
+      "garment_bust_cm": {
+        "frac_on_0.01": 9.523900227621216e-06,
+        "frac_on_0.05": 9.523900227621216e-06,
+        "frac_on_0.1": 9.523900227621216e-06,
+        "frac_on_0.5": 9.523900227621216e-06,
+        "frac_on_1.0": 9.523900227621216e-06
+      },
+      "garment_length_cm": {
+        "frac_on_0.01": 0.0,
+        "frac_on_0.05": 0.0,
+        "frac_on_0.1": 0.0,
+        "frac_on_0.5": 0.0,
+        "frac_on_1.0": 0.0
+      },
+      "garment_sleeve_cm": {
+        "frac_on_0.01": 0.0805817198259031,
+        "frac_on_0.05": 0.0805817198259031,
+        "frac_on_0.1": 0.0805817198259031,
+        "frac_on_0.5": 0.0805817198259031,
+        "frac_on_1.0": 0.0805817198259031
+      },
+      "bust_ease_cm": {
+        "frac_on_0.01": 0.0016095391384679855,
+        "frac_on_0.05": 0.0016095391384679855,
+        "frac_on_0.1": 0.0016095391384679855,
+        "frac_on_0.5": 0.0016095391384679855,
+        "frac_on_1.0": 0.0016095391384679855
+      },
+      "bust_ease_ratio": {
+        "frac_on_0.01": 0.005704816236345108,
+        "frac_on_0.05": 0.003142887075115001,
+        "frac_on_0.1": 0.002561929161230107,
+        "frac_on_0.5": 0.0016095391384679855,
+        "frac_on_1.0": 0.0016095391384679855
+      },
+      "garment_length_height_ratio": {
+        "frac_on_0.01": 0.0,
+        "frac_on_0.05": 0.0,
+        "frac_on_0.1": 0.0,
+        "frac_on_0.5": 0.0,
+        "frac_on_1.0": 0.0
+      }
+    },
+    "bust_ease_ratio_top_1dp": {
+      "0.1": 38767,
+      "-0.0": 31066,
+      "0.2": 17485,
+      "-0.1": 8190,
+      "0.3": 7496,
+      "0.4": 1616,
+      "0.5": 301,
+      "0.6": 64,
+      "0.7": 10,
+      "0.9": 2,
+      "0.8": 2
+    },
+    "bust_ease_ratio_top_2dp": {
+      "0.05": 21998,
+      "0.11": 3729,
+      "0.13": 3258,
+      "0.04": 3236,
+      "0.1": 3133,
+      "0.12": 3053,
+      "0.09": 2960,
+      "0.06": 2817,
+      "0.03": 2780,
+      "0.14": 2657,
+      "0.07": 2638,
+      "0.08": 2590,
+      "-0.02": 2509,
+      "0.2": 2268,
+      "-0.0": 2235,
+      "0.16": 2195,
+      "0.17": 2194,
+      "0.01": 2136,
+      "0.02": 2108,
+      "0.15": 1955
+    },
+    "bust_ease_ratio_unique_1dp": 11,
+    "bust_ease_ratio_unique_2dp": 87,
+    "body_exact": {
+      "n_rows": 104999,
+      "n_unique_vectors": 105,
+      "n_repeated_vectors": 105,
+      "n_rows_on_repeated_vectors": 104999,
+      "max_vector_frequency": 2801,
+      "mean_vector_frequency": 999.9904761904762
+    },
+    "garment_exact": {
+      "n_rows": 104999,
+      "n_unique_vectors": 64468,
+      "n_repeated_vectors": 27769,
+      "n_rows_on_repeated_vectors": 68300,
+      "max_vector_frequency": 114,
+      "mean_vector_frequency": 1.6286995098343364
+    },
+    "relational_exact": {
+      "n_rows": 104999,
+      "n_unique_vectors": 61983,
+      "n_repeated_vectors": 26658,
+      "n_rows_on_repeated_vectors": 69674,
+      "max_vector_frequency": 81,
+      "mean_vector_frequency": 1.6939967410418986
+    },
+    "body_plus_garment_exact": {
+      "n_rows": 104999,
+      "n_unique_vectors": 66215,
+      "n_repeated_vectors": 27699,
+      "n_rows_on_repeated_vectors": 66483,
+      "max_vector_frequency": 23,
+      "mean_vector_frequency": 1.5857283092954768
+    },
+    "quantized_unique_body_1dp": 105,
+    "quantized_unique_garment_1dp": 62675,
+    "quantized_unique_relational_2dp": 38208,
+    "near_body_radius_1cm": {
+      "radius": 1.0,
+      "n_unique": 105,
+      "n_near_pairs": 0,
+      "n_unique_with_neighbor": 0,
+      "method": "cKDTree.query_pairs_on_unique_vectors"
+    },
+    "near_body_radius_2cm": {
+      "radius": 2.0,
+      "n_unique": 105,
+      "n_near_pairs": 6,
+      "n_unique_with_neighbor": 12,
+      "method": "cKDTree.query_pairs_on_unique_vectors"
+    },
+    "near_garment_radius_1cm": {
+      "radius": 1.0,
+      "n_unique": 64468,
+      "n_near_pairs": 456277,
+      "n_unique_with_neighbor": 56683,
+      "method": "cKDTree.query_pairs_on_unique_vectors"
+    },
+    "near_garment_radius_2cm": {
+      "radius": 2.0,
+      "n_unique": 64468,
+      "n_near_pairs": 2680914,
+      "n_unique_with_neighbor": 63427,
+      "method": "cKDTree.query_pairs_on_unique_vectors"
+    },
+    "near_relational_radius_0.02": {
+      "radius": 0.02,
+      "n_unique": 61983,
+      "n_near_pairs": 1097148,
+      "n_unique_with_neighbor": 55992,
+      "method": "cKDTree.query_pairs_on_unique_vectors"
+    },
+    "preset_like_hypothesis": "Discrete unique-value counts and grid occupancy are OBSERVED. Official FIT documentation does not confirm garment scaling presets; that remains HYPOTHESIZED until visual/docs verification."
+  },
+  "tier_summary": {
+    "tier_a_groups": 0,
+    "tier_b_groups_exact_phash_family": 1,
+    "tier_b_groups_near_phash_family": 1,
+    "tier_c_groups_same_person_diff_garment": 1689,
+    "same_cloth_diff_measurement_diff_body_groups": 0,
+    "same_cloth_constant_measurement_diff_body_groups": 0,
+    "priority": [
+      "TIER A: same person image + same cloth image + different measurement + different target",
+      "TIER B: same person + garment phash family + controlled measurement variation",
+      "TIER C: same person + measurement-varying garment alternatives (cloth image also changes)",
+      "TIER D: nearest-neighbor matching (deferred unless A/B insufficient)"
+    ]
+  },
+  "strongest_available_unit": "B_SPARSE_THEN_C",
+  "tier_d_policy": "Do not construct TIER D unless TIER A and TIER B are both empty/insufficient."
+}

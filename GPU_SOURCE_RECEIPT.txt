@@ -1,0 +1,5 @@
+Repository: https://github.com/Benjamindaoson/FitGround
+Source commit: c1dcca938e1e5d0f308ca496a12574a024831ab1
+Archive SHA256: fc45534e856b2c116ac84551b3860defabef24fdff63954907489087082630cd
+Acquisition method: GitHub codeload source archive
+Reason: DAMODEL GitHub git transport unstable

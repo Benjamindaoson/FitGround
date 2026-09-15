@@ -1,0 +1,8 @@
+{
+  "status": "HARD_BLOCKER_LICENSED_ASSET",
+  "parametric_smpl": "MISSING",
+  "parametric_smplx": "MISSING",
+  "static_obj_bodies": "PRESENT",
+  "pose_npz": "PRESENT",
+  "unblock_path": "Register at smpl.is.tue.mpg.de and smpl-x.is.tue.mpg.de, place files under GarmentCodeV2/human_model_files/"
+}

@@ -1,0 +1,12 @@
+{
+  "source_log": "reports/fit_stream_run.log",
+  "note": "Full log retained locally; excerpt of final checkpoint event below",
+  "final_event": {
+    "completed_train": 406,
+    "completed_eval": 20,
+    "status": "checkpointed",
+    "rss_peak_bytes": 1110065152,
+    "rss_bytes_at_exit": 1072414720
+  },
+  "pipeline_process_at_gap_audit": "not running (completed normally)"
+}

@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "notes": [
+    "Static mean_all.obj body, smpl_body=False. SMPL pkl not used.",
+    "max_sim_steps=80 (smoke). Did not reach static equilibrium (654/7158 non-static).",
+    "Body-cloth intersections=0. Self-intersections=14 (not marked fail).",
+    "First-run Warp kernel compile dominated runtime."
+  ],
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "body": "assets/bodies/mean_all.obj",
+  "garment": "t-shirt.yaml Shirt, tiny width perturbation",
+  "sim_mesh": "/root/workspace/projects/FitGround/artifacts/gpu/garmentcodev2_physics_smoke/debug3_sim.obj",
+  "box_mesh": "/root/workspace/projects/FitGround/artifacts/gpu/garmentcodev2_physics_smoke/debug3_boxmesh.obj",
+  "renders": [
+    "/root/workspace/projects/FitGround/artifacts/gpu/garmentcodev2_physics_smoke/debug3_render_front.png",
+    "/root/workspace/projects/FitGround/artifacts/gpu/garmentcodev2_physics_smoke/debug3_render_back.png"
+  ],
+  "files": {
+    "debug3_boxmesh.obj": {
+      "sha256": "3f4d7adc499bf3b3fd121419ae81652153b6826a4fa05081fbd652d81c1cc645",
+      "bytes": 1069683
+    },
+    "debug3_material.mtl": {
+      "sha256": "76ef2b992e111e027969b958ff69cf3c358a8ad99997c397aa9ed59e5f6ae9f3",
+      "bytes": 188
+    },
+    "debug3_orig_lens.pickle": {
+      "sha256": "faee1888c238b50abade91b1a73adbacd9eae5cc5c5afc9b6516264a664330ad",
+      "bytes": 117560
+    },
+    "debug3_render_back.png": {
+      "sha256": "4671c05039920ef42cfbb980c729e145c3319df58a925f26df7845225a677777",
+      "bytes": 166047
+    },
+    "debug3_render_front.png": {
+      "sha256": "b2baf1743566de9bea33d5593abaa294ec45fe4c1afd4b33df9624fe426067e1",
+      "bytes": 172496
+    },
+    "debug3_render_front_bodymask.png": {
+      "sha256": "f97454ffc0df0fe9bf09fa17317737e67ca5886da4b5d83b51874caa023bcb6c",
+      "bytes": 5217
+    },
+    "debug3_render_front_mask.png": {
+      "sha256": "8b0ff1b1bfb369e2a63b09e5079f39a6c632e50d06ff380c00bf858a55b8f984",
+      "bytes": 2516
+    },
+    "debug3_sim.obj": {
+      "sha256": "a7e078e26c2aaccab156e7c63ea95139355306845f3c172b073c79ac220a5b7c",
+      "bytes": 1166942
+    },
+    "debug3_sim_segmentation.txt": {
+      "sha256": "a962a8b0781869af8f19c394297eea2831f303272bef40576124b5f176d0c0b3",
+      "bytes": 92287
+    },
+    "debug3_texture.png": {
+      "sha256": "c388c54ee1f72f27b41a919bb64c1bc3d9c248ceb71ca29af34c82eff98adba6",
+      "bytes": 47568
+    },
+    "debug3_texture_fabric.png": {
+      "sha256": "a2d50d5e7912428804644f170121fd16cb2a16c8147cb37af4dc9f9eb902d8ea",
+      "bytes": 2157733
+    },
+    "debug3_vertex_labels.yaml": {
+      "sha256": "38ac48e7dd61d2003dfa51f1c3538e8ee715ecb80edc8aa80070d478b998cfc4",
+      "bytes": 784
+    },
+    "t-shirt__physics_smoke_tiny_mut_pattern.png": {
+      "sha256": "e73595b35b136395dfed8171bb2adc7d31c02b30cae0663e757ca9abecd3a986",
+      "bytes": 14705
+    },
+    "t-shirt__physics_smoke_tiny_mut_pattern.svg": {
+      "sha256": "a375de090f11d6b947009774f671e8749e0427ddb2e5a36ab33dbec83a6e4bc0",
+      "bytes": 4086
+    },
+    "t-shirt__physics_smoke_tiny_mut_specification.json": {
+      "sha256": "895571d86b194449153bced7b99943eb2aff85ce0bc52461d97786a7aa538ede",
+      "bytes": 18269
+    }
+  },
+  "runtime_s": 84.612,
+  "max_sim_steps": 80,
+  "seed": 0
+}

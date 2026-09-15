@@ -1,0 +1,119 @@
+{
+  "action_family": "bust_circumference_delta_cm",
+  "intended_delta_cm": 1.0,
+  "verification_status": "VERIFIED",
+  "error": null,
+  "state_id": "tshirt_mean_all_baseline",
+  "action_id": "bust_plus_1cm",
+  "parameter_name": "shirt.width.v",
+  "baseline_width_v": 1.05,
+  "mutated_width_v": 1.0600159554169792,
+  "parameter_delta": 0.010015955416979248,
+  "body_bust_cm": 99.8407,
+  "named_pattern_parameters_before": {
+    "shirt.width.v": 1.05,
+    "shirt.length.v": 1.2,
+    "shirt.flare.v": 1.0,
+    "sleeve.length.v": 0.3
+  },
+  "named_pattern_parameters_after": {
+    "shirt.width.v": 1.0600159554169792,
+    "shirt.length.v": 1.2,
+    "shirt.flare.v": 1.0,
+    "sleeve.length.v": 0.3
+  },
+  "garment_measurement_before": {
+    "bust_circumference_cm": 104.83273500000001,
+    "waist_cm": 104.83273500000001,
+    "length_cm": 49.94076049824885,
+    "sleeve_length_cm": 21.06146554666354,
+    "shoulder_width_cm": 50.059905,
+    "torso_panel_dx": {
+      "left_ftorso": 27.386415000000003,
+      "right_ftorso": 27.386415000000003,
+      "left_btorso": 25.0299525,
+      "right_btorso": 25.0299525
+    },
+    "torso_panel_dy": {
+      "left_ftorso": 49.96306251835827,
+      "right_ftorso": 49.96306251835827,
+      "left_btorso": 49.918458478139435,
+      "right_btorso": 49.918458478139435
+    },
+    "sleeve_panel_dy": {
+      "left_sleeve_f": 21.061465546663545,
+      "left_sleeve_b": 21.061465546663538,
+      "right_sleeve_f": 21.061465546663545,
+      "right_sleeve_b": 21.061465546663538
+    },
+    "panel_names": [
+      "left_sleeve_b",
+      "left_sleeve_f",
+      "left_btorso",
+      "left_ftorso",
+      "right_sleeve_b",
+      "right_sleeve_f",
+      "right_ftorso",
+      "right_btorso"
+    ],
+    "missing_torso_panels": [],
+    "spec_sha256": "ce81fb1c49a59fa8c04ec3f6919fc1201e87aa517f0bbae30fff5daaf50e7ec7"
+  },
+  "garment_measurement_after": {
+    "bust_circumference_cm": 105.832735,
+    "waist_cm": 105.832735,
+    "length_cm": 50.04013489228761,
+    "sleeve_length_cm": 21.165251867182185,
+    "shoulder_width_cm": 50.53742669205544,
+    "torso_panel_dx": {
+      "left_ftorso": 27.64765415397228,
+      "right_ftorso": 27.64765415397228,
+      "left_btorso": 25.26871334602772,
+      "right_btorso": 25.26871334602772
+    },
+    "torso_panel_dy": {
+      "left_ftorso": 50.06690444887752,
+      "right_ftorso": 50.06690444887752,
+      "left_btorso": 50.013365335697685,
+      "right_btorso": 50.013365335697685
+    },
+    "sleeve_panel_dy": {
+      "left_sleeve_f": 21.16525186718219,
+      "left_sleeve_b": 21.165251867182185,
+      "right_sleeve_f": 21.16525186718219,
+      "right_sleeve_b": 21.165251867182185
+    },
+    "panel_names": [
+      "left_btorso",
+      "left_sleeve_b",
+      "left_sleeve_f",
+      "left_ftorso",
+      "right_btorso",
+      "right_sleeve_b",
+      "right_sleeve_f",
+      "right_ftorso"
+    ],
+    "missing_torso_panels": [],
+    "spec_sha256": "d5e235ffaa127710e8d5c170fa490423ea8fa355fe7b65089d1034904e00ff9b"
+  },
+  "realized_delta_cm": 0.9999999999999858,
+  "calibration_error_cm": 1.4210854715202004e-14,
+  "waist_delta_cm": 0.9999999999999858,
+  "shoulder_delta_cm": 0.47752169205543993,
+  "sleeve_delta_cm": 0.103786320518644,
+  "length_delta_cm": 0.0993743940387617,
+  "baseline_folder": "/root/workspace/projects/FitGround/artifacts/bust_atomic_calibration/bust_plus_1cm/patterns/t-shirt__bust_plus_1cm_base",
+  "mutated_folder": "/root/workspace/projects/FitGround/artifacts/bust_atomic_calibration/bust_plus_1cm/patterns/t-shirt__bust_plus_1cm_mut",
+  "baseline_spec": "/root/workspace/projects/FitGround/artifacts/bust_atomic_calibration/bust_plus_1cm/patterns/t-shirt__bust_plus_1cm_base/t-shirt__bust_plus_1cm_base_specification.json",
+  "mutated_spec": "/root/workspace/projects/FitGround/artifacts/bust_atomic_calibration/bust_plus_1cm/patterns/t-shirt__bust_plus_1cm_mut/t-shirt__bust_plus_1cm_mut_specification.json",
+  "self_intersecting": false,
+  "simulation_status": "NOT_RUN",
+  "render_status": "NOT_RUN",
+  "runtime_s": 6.709366083145142,
+  "seed": 0,
+  "source_hashes": {
+    "t-shirt.yaml": "edb80d740c9fea59b548c2d41c39e1ac22a50e1c59e727b7d0b75637175d4083",
+    "mean_all.yaml": "aed8c58d445a732a45f8bc9e042d36f7d8c57d8df7a6ef24061f1caa08e794c6",
+    "worker.py": "d18c6e9728a23b193d63041cf3b1439924c26f05fdcaf490648a2b3f895d32cd"
+  }
+}

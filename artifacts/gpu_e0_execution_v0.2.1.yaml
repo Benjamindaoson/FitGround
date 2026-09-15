@@ -1,0 +1,411 @@
+# GPU E0 Execution Addendum v0.2.1
+# Execution freeze only. Does not rewrite Experimental Contract v0.2.
+# DESIGN / PROTOCOL LOCK. This file does not authorize VLM/LoRA/RM/DPO/GRPO.
+
+version: v0.2.1
+document_id: GPU_E0_EXECUTION_ADDENDUM
+status: FROZEN
+frozen_at: "2026-09-11"
+type: execution_addendum
+not_a_new_experimental_contract: true
+
+does_not_modify:
+  - FIT-Clean v0.1
+  - Experimental Contract v0.1
+  - Experimental Contract v0.2
+  - artifacts/gpu_e0_pilot_v0.2.yaml
+  - artifacts/experimental_contract_v0.2.yaml
+  - artifacts/control_variable_matrix_v0.2.yaml
+  - artifacts/controlled_fit_ladder_schema_v0.2.yaml
+
+human_readable: docs/GPU_E0_EXECUTION_ADDENDUM_v0.2.1.md
+
+authorizes:
+  - GPU E0 Stage 1 Controlled Counterfactual Generation Pilot
+does_not_authorize:
+  - VLM training
+  - LoRA
+  - RM
+  - DPO
+  - GRPO
+  - GPU E0 Stage 2 Sim2Real
+  - rewriting frozen v0.1 / v0.2 / FIT-Clean
+  - choosing leakage metrics after unblinding
+  - treating S/M/L as the intervention
+  - describing E0 as do(garment_bust=...) unless code directly sets that measurement
+
+scale:
+  n_bodies: 3
+  n_garment_designs: 5
+  n_measurement_levels: 3
+  n_conditions: 45
+  n_ladders: 15
+
+# ---------------------------------------------------------------------------
+# 1. CAUSAL WORDING
+# ---------------------------------------------------------------------------
+causal_wording:
+  scientific_object: measurement_grounding
+  generation_mechanism_must_be_accurate: true
+  primitive_do_garment_bust: FORBIDDEN_UNLESS_CODE_DIRECTLY_SETS_THAT_CM
+
+  physical_intervention:
+    symbol: Z
+    name: garment_sizing_or_source_body_sizing_condition
+    labels: [TIGHT, REGULAR, LOOSE]
+    labels_mean: sizing conditions, not independently set bust-centimeter values
+    operationalization:
+      TIGHT: draft frozen design on a smaller source body than the target
+      REGULAR: draft on a source body matched to the target
+      LOOSE: draft on a larger source body than the target
+    then: drape the resulting pattern on the fixed target body (FIT-documented cross-drape)
+
+  mediator_realized_treatment:
+    symbols: [G, M]
+    G: pattern geometry (size-specific 2D sewing pattern / panel dimensions)
+    M: realized garment measurement vector extracted from the pattern
+    M_fields:
+      - garment_bust_cm
+      - garment_length_cm
+      - garment_sleeve_cm
+    induced:
+      - bust_ease_cm
+      - bust_ease_ratio
+      - garment_length_height_ratio
+    note: >
+      M is realized, not atomically set. Do not describe M as the primitive
+      do-operator unless a later implementation directly sets a named
+      pattern measurement while holding other dimensions fixed.
+
+  outcome:
+    symbol: Y
+    name: draped_target_geometry_and_visible_fit
+    e0_artifacts:
+      - draped meshes
+      - synthetic target renders
+      - blinded human fit ratings
+
+  held_fixed_within_ladder:
+    - target body identity
+    - body measurements
+    - design YAML
+    - pose
+    - fabric
+    - camera
+    - render_seed
+
+  roles:
+    generator_independent_variable: Z
+    targeted_recorded_treatment: M
+    e0_outcome: Y
+
+  permitted_summary: >
+    Intervene on source-body sizing Z so that the realized measurement
+    vector M is ordered TIGHT < REGULAR < LOOSE on garment_bust_cm and
+    bust_ease_cm, and test whether target geometry / visible fit Y
+    follows that order.
+
+  forbidden_summary:
+    - Apply do(garment_bust=...)
+    - Directly set bust/length/sleeve sliders as the default claim
+    - Official photoreal I_g is independent of size
+
+  v0_2_shorthand_reading:
+    measurement_vector_intervention: >
+      Intervene on Z; record realized M; do not pretend M was set atomically.
+    independent_variable_measurement_vector_M: >
+      Targeted / recorded treatment. Primitive intervention is Z.
+      Identification target remains M.
+    do_measurement_change: >
+      Shorthand for controlled sizing plus realized M, not a bust-cm
+      Pearl intervention unless code sets that cm.
+    track_a_measurement_isolated: >
+      Isolation is a claim to be tested by the leakage audit, not a
+      property assumed from bbox-normalization.
+
+  cloth_images:
+    track_a: design-identity token plus leakage probe; not Z
+    track_b: naturalistic covariate of G; not Z
+    official_I_g: downstream of sized try-on try-off; not size-isolated
+
+# ---------------------------------------------------------------------------
+# 2. TRACK A SIZE-LEAKAGE TEST
+# ---------------------------------------------------------------------------
+track_a_size_leakage_test:
+  frozen_before_seeing_gpu_results: true
+  unit_of_analysis: ladder
+  n_ladders_target: 15
+  naming_rule: >
+    If Track A cloth appearance alone stably recovers TIGHT / REGULAR /
+    LOOSE, Track A must not be called measurement-isolated.
+
+  input:
+    images: Track A canonical / bbox-normalized cloth only
+    n_per_ladder: 3
+  forbidden_at_test_time:
+    - size labels
+    - measurement tables
+    - Track B cloths
+    - target / person renders
+    - generation logs
+
+  foreground_extraction:
+    retune_after_unblinding: false
+    steps:
+      - convert to grayscale
+      - if alpha exists: foreground = alpha > 0; else Otsu, polarity whose mean row-index is closer to image center
+      - keep largest connected component; drop components < 0.5% of canvas pixels
+      - silhouette mask = that component
+    unextractable: LEAKAGE_UNSCORABLE
+    unextractable_rule: >
+      Exclude the ladder from leakage denominators. That ladder cannot
+      support a Track A isolation claim.
+
+  descriptor_family_locked: true
+  do_not_add_drop_or_replace_after_unblinding: true
+  descriptors:
+    - {id: D1, name: bbox_width_px, definition: width of silhouette axis-aligned bbox}
+    - {id: D2, name: bbox_height_px, definition: height of silhouette axis-aligned bbox}
+    - {id: D3, name: bbox_aspect_ratio, definition: D1 / D2}
+    - {id: D4, name: bbox_width_rel, definition: D1 / canvas width}
+    - {id: D5, name: bbox_height_rel, definition: D2 / canvas height}
+    - {id: D6, name: fg_area_ratio, definition: foreground pixels / canvas pixels}
+    - {id: D7, name: fg_fill_of_bbox, definition: foreground pixels / (D1 * D2)}
+    - {id: D8, name: perimeter_px, definition: perimeter of largest-component contour}
+    - {id: D9, name: compactness, definition: 4 * pi * area / perimeter^2}
+    - {id: D10, name: perimeter_over_sqrt_area, definition: perimeter / sqrt(area)}
+    - {id: D11, name: centroid_y_rel, definition: "centroid y inside bbox / bbox height (0 = top)"}
+    - {id: D12, name: upper_half_area_ratio, definition: foreground pixels in upper 50% of bbox / foreground pixels}
+    - {id: D13, name: width_at_q25_rel, definition: silhouette width at 25% of bbox height / bbox width}
+    - {id: D14, name: width_at_q50_rel, definition: silhouette width at 50% of bbox height / bbox width}
+    - {id: D15, name: width_at_q75_rel, definition: silhouette width at 75% of bbox height / bbox width}
+    - {id: D16, name: y_of_max_width_rel, definition: y of maximum silhouette width / bbox height}
+
+  blocks:
+    absolute_scale:
+      descriptors: [D1, D2]
+      inherited_from: artifacts/gpu_e0_pilot_v0.2.yaml visual_leakage_severity.track_a
+      rule: max/min of D1 and of D2 across the three conditions <= 1.05
+      note: bbox-normalization check, not the isolation claim
+    bbox_width_height_ratio:
+      descriptors: [D3]
+    foreground_area_ratio:
+      descriptors: [D6, D7]
+    silhouette_perimeter:
+      descriptors: [D8, D9, D10, D7]
+    length_sleeve_proportional_cues:
+      descriptors: [D3, D6, D7, D11, D12, D13, D14, D15, D16]
+
+  missing_descriptor_rule: >
+    Store NA. Impute training-fold median inside the classifier only.
+    Do not delete the descriptor from the frozen family.
+
+  condition_ordering_recoverability:
+    size_encoding: {TIGHT: 0, REGULAR: 1, LOOSE: 2}
+    primary_automated:
+      features: [D3, D4, D5, D6, D7, D9, D10, D11, D12, D13, D14, D15, D16]
+      excluded_from_classifier: [D1, D2]
+      model: multinomial_logistic_regression
+      penalty: l2
+      C: 1.0
+      solver: lbfgs
+      max_iter: 200
+      standardize: training_ladders_only
+      cv: leave_one_ladder_out
+      metric: three_way_accuracy
+      chance: 0.3333333333
+    secondary_automated:
+      per_descriptor: true
+      kendall_tau_within_ladder: true
+      direction_rule: >
+        Do not pick a global sign after unblinding. Estimate direction
+        on each LOO training set and apply it to the held-out ladder.
+      exact_order_match: tau_equals_1_after_train_set_direction
+      exact_order_null: binomial(n_complete_ladders, 1/6)
+      pairwise_tight_vs_loose_chance: 0.5
+      multiple_comparison: Holm over the descriptor family
+    forbidden_after_unblinding:
+      - CNN substitute
+      - PCA substitute
+      - best-leaking-feature as the official metric
+
+  human_cloth_only:
+    sheet: BLIND_CLOTH_A_SHEET
+    hide_labels: true
+    hide_measurements: true
+    task: order three cloths from smallest-looking garment to largest-looking garment
+    pairwise: which cloth looks larger, with Indistinguishable
+    chance_exact_order: 0.1666666667
+    chance_tight_vs_loose: 0.5
+
+  gates:
+    NO_GO_if_any:
+      H1: human majority exact TIGHT<REGULAR<LOOSE cloth order rate >= 0.80
+      H2: human majority TIGHT vs LOOSE pairwise rate >= 0.90 AND exact-order rate >= 0.50
+      A1: LOO three-way accuracy >= 0.80
+      A2: any frozen descriptor after Holm has exact-order rate >= 0.80
+    PARTIAL_if_not_NO_GO_and_any:
+      - LOO accuracy Wilson 95% CI excludes 1/3
+      - any Holm-significant descriptor exact-order test
+      - human TIGHT vs LOOSE pairwise Wilson CI excludes 1/2
+      - 5% bbox-scale rule fails on some but not all ladders while recoverability is below NO-GO
+      - scale-normalized but length/sleeve proportions still leak
+    GO_requires_all:
+      - 5% bbox-scale rule holds on all complete ladders
+      - human exact-order Wilson CI includes 1/6
+      - human TIGHT-LOOSE pairwise Wilson CI includes 1/2
+      - LOO three-way Wilson CI includes 1/3
+      - no Holm-significant descriptor exact-order test
+
+  naming:
+    GO: measurement-isolated
+    PARTIAL: partially scale-normalized, residual proportional leakage
+    NO_GO: appearance-leaking / not measurement-isolated
+    track_b_cannot_rescue_track_a: true
+
+# ---------------------------------------------------------------------------
+# 3. HUMAN VISIBILITY PROTOCOL
+# ---------------------------------------------------------------------------
+human_visibility_protocol:
+  scores: artifacts/gpu_e0_pilot_v0.2.yaml target_fit_change_visibility
+  frozen_before_seeing_images: true
+  forbidden: VLM self-labeling
+  unit_of_analysis: ladder
+  not_iid_images: true
+
+  artifacts:
+    DIAGNOSTIC_SHEET:
+      contents: v0.2 labeled contact sheet with TIGHT/REGULAR/LOOSE names and measurement table
+      use: engineering QA only
+      used_for_visibility_GO: false
+    BLIND_FIT_SHEET:
+      contents: three target images, random order, anonymous codes
+      hide_size_labels: true
+      hide_measurements: true
+      hide_track_a_b_size_cues: true
+      used_for_visibility_GO: true
+    BLIND_CLOTH_A_SHEET:
+      contents: three Track A cloths, random order, no labels
+      use: leakage test only
+
+  blinding:
+    condition_order: independently randomized per ladder and per rater
+    permutation_keys: sealed until that rater submits the ladder
+    hide: [TIGHT, REGULAR, LOOSE, garment_measurements, body_measurements, ease, deltas]
+    independent_raters: true
+    practice_ladder: optional, excluded from the official 15
+
+  rubric_frozen: true
+  core_questions:
+    - id: which_more_loose
+      pairwise_for: every pair of {A, B, C}
+      options: [Left more loose, Right more loose, Indistinguishable]
+    - id: obviously_looser
+      options: [Clear, Subtle, No difference]
+  after_unblinding:
+    visibility_critical_pair: actual LOOSE vs REGULAR
+    distinguishability_pair: actual TIGHT vs LOOSE
+
+  checklist:
+    - {item: chest_waist_looseness, rank_1: tightest, rank_3: loosest}
+    - {item: drape, rank_1: closest hang, rank_3: most pooling / hanging away}
+    - {item: wrinkle_or_tension, rank_1: dominant tension/drag, rank_3: dominant excess fold}
+    - {item: silhouette, rank_1: closest to body, rank_3: stands farthest away / boxy}
+    - {item: length, rank_1: shortest appearance, rank_3: longest appearance}
+    - {item: sleeve, rank_1: tightest/shortest appearance, rank_3: loosest/longest appearance}
+  ties_allowed_as: TIE
+  anchors:
+    more_loose:
+      - more unfilled volume at chest/waist
+      - more break/pooling
+      - fewer stretch/tension lines
+      - silhouette stands farther from the body
+    more_tight:
+      - closer to skin
+      - more tension/drag
+      - less spare fold at chest/waist
+    author_limitation: TIGHT vs REGULAR may look similar; this does not relax LOOSE vs REGULAR
+  do_not_score: which has the larger bust measurement
+
+  raters:
+    preferred_n: 3
+    grades:
+      "3": PUBLICATION_ELIGIBLE_if_agreement_rules_pass
+      "1": PILOT_ONLY
+      "2": PILOT_ONLY
+    publication_grade_requires_n: 3
+    PILOT_ONLY_must_not_be_cited_as_publication_grade_human_validation: true
+
+  disagreement_and_aggregation:
+    map_codes_via: sealed permutation
+    pairwise_n3:
+      majority_wins: true
+      majority_threshold: 2
+      three_way_split_or_majority_indistinguishable: Indistinguishable
+      majority_opposite_order: REVERSED
+    ranks_n3:
+      aggregator: median
+      all_three_ranks_differ: UNRESOLVED
+    n1: take the single score; tag PILOT_ONLY
+    n2: require exact agreement else UNRESOLVED; still PILOT_ONLY
+    ladder_pass_requires_all:
+      - "LOOSE vs REGULAR = LOOSE more loose (not Indistinguishable, not REVERSED)"
+      - "TIGHT vs LOOSE not Indistinguishable and not REVERSED"
+      - "chest/waist looseness median rank(LOOSE) >= rank(REGULAR); UNRESOLVED fails"
+    obviousness:
+      recorded_on_every_pair: true
+      primary_visible_levels: [Clear, Subtle]
+      secondary_obvious_only_level: Clear
+      do_not_choose_primary_after_seeing_scores: true
+    agreement_reporting_required:
+      - pairwise percent agreement on LOOSE vs REGULAR
+      - pairwise percent agreement on TIGHT vs LOOSE
+      - Fleiss kappa (N=3) or Cohen kappa (N=2) on LOOSE vs REGULAR
+    low_agreement:
+      rule: "N=3 and Fleiss kappa < 0.20 on visibility-critical pair"
+      effect: publication-grade human validation denied; cap human criterion at PARTIAL; tag LOW_AGREEMENT
+    missing_or_unresolved_ladders: fail in numerator; remain in denominator of complete generated ladders
+
+  v0_2_visibility_cutoffs_unchanged:
+    GO: ">= 0.80 of complete ladders pass"
+    PARTIAL: ">= 0.50 and < 0.80, or TIGHT≈REGULAR but LOOSE vs REGULAR visible on a majority of ladders"
+    NO_GO: "< 0.50, or LOOSE is not looser than REGULAR on the aggregated critical pair for a majority of ladders"
+    PILOT_ONLY_rates_are: PILOT_SIGNAL
+
+# ---------------------------------------------------------------------------
+# 4. CONTRACT ERRATA (record, do not rewrite v0.2)
+# ---------------------------------------------------------------------------
+contract_errata:
+  rewrite_frozen_v0_2: false
+  items:
+    - id: official_I_g_not_size_independent
+      v0_2_already_states: true
+      reading_rule: >
+        Official photoreal I_g is obtained from sized try-on try-off.
+        Do not assume I_g is independent of size.
+        Track A exists because official I_g is not size-isolated.
+    - id: bootstrap_is_resamples_not_ladders
+      v0_2_markdown_phrase: "10,000-ladder bootstrap"
+      v0_2_yaml_already_correct: "10_000 resamples of ladders for CIs on rates"
+      reading_rule: >
+        Means 10,000 bootstrap resamples at the ladder level.
+        Does not mean 10,000 ladders.
+      e0_n_ladders: 15
+      unit_of_analysis: ladder
+
+# ---------------------------------------------------------------------------
+# READINESS
+# ---------------------------------------------------------------------------
+gpu_e0_execution_ready: "YES"
+gpu_e0_execution_ready_means: Stage 1 generation pilot only
+training_authorization: DENIED
+stage_2_authorization: DENIED
+
+next_allowed_task:
+  name: GPU E0 Stage 1 Controlled Counterfactual Generation Pilot
+  scale: 3 bodies × 5 designs × 3 levels
+  n_conditions: 45
+  n_ladders: 15
+  only: true
+
+stop_after_this_addendum: true

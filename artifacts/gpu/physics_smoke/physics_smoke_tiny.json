@@ -1,0 +1,136 @@
+{
+  "action_family": "bust_circumference_delta_cm",
+  "intended_delta_cm": 0.001,
+  "verification_status": "FAILED",
+  "error": null,
+  "state_id": "tshirt_mean_all_baseline",
+  "action_id": "physics_smoke_tiny",
+  "parameter_name": "shirt.width.v",
+  "baseline_width_v": 1.05,
+  "mutated_width_v": 1.050010015955417,
+  "parameter_delta": 1.0015955416979248e-05,
+  "body_bust_cm": 99.8407,
+  "named_pattern_parameters_before": {
+    "shirt.width.v": 1.05,
+    "shirt.length.v": 1.2,
+    "shirt.flare.v": 1.0,
+    "sleeve.length.v": 0.3
+  },
+  "named_pattern_parameters_after": {
+    "shirt.width.v": 1.050010015955417,
+    "shirt.length.v": 1.2,
+    "shirt.flare.v": 1.0,
+    "sleeve.length.v": 0.3
+  },
+  "garment_measurement_before": {
+    "bust_circumference_cm": 104.83273500000001,
+    "waist_cm": 104.83273500000001,
+    "length_cm": 49.94076049824885,
+    "sleeve_length_cm": 21.06146554666354,
+    "shoulder_width_cm": 50.059905,
+    "torso_panel_dx": {
+      "left_ftorso": 27.386415000000003,
+      "right_ftorso": 27.386415000000003,
+      "left_btorso": 25.0299525,
+      "right_btorso": 25.0299525
+    },
+    "torso_panel_dy": {
+      "left_ftorso": 49.96306251835827,
+      "right_ftorso": 49.96306251835827,
+      "left_btorso": 49.918458478139435,
+      "right_btorso": 49.918458478139435
+    },
+    "sleeve_panel_dy": {
+      "left_sleeve_f": 21.061465546663545,
+      "left_sleeve_b": 21.061465546663538,
+      "right_sleeve_f": 21.061465546663545,
+      "right_sleeve_b": 21.061465546663538
+    },
+    "panel_names": [
+      "left_btorso",
+      "left_ftorso",
+      "left_sleeve_b",
+      "left_sleeve_f",
+      "right_ftorso",
+      "right_sleeve_b",
+      "right_sleeve_f",
+      "right_btorso"
+    ],
+    "missing_torso_panels": [],
+    "spec_sha256": "9e0f7f1db6437396e17083f74e90890bf167cbdc9db23ec7ec69e03e062eef3b"
+  },
+  "garment_measurement_after": {
+    "bust_circumference_cm": 104.833735,
+    "waist_cm": 104.833735,
+    "length_cm": 49.940859877699346,
+    "sleeve_length_cm": 21.079389814867433,
+    "shoulder_width_cm": 50.060382521692055,
+    "torso_panel_dx": {
+      "left_ftorso": 27.386676239153978,
+      "right_ftorso": 27.386676239153978,
+      "left_btorso": 25.030191260846028,
+      "right_btorso": 25.030191260846028
+    },
+    "torso_panel_dy": {
+      "left_ftorso": 49.963166370372015,
+      "right_ftorso": 49.963166370372015,
+      "left_btorso": 49.918553385026684,
+      "right_btorso": 49.918553385026684
+    },
+    "sleeve_panel_dy": {
+      "left_sleeve_f": 21.07938981486744,
+      "left_sleeve_b": 21.07938981486743,
+      "right_sleeve_f": 21.07938981486744,
+      "right_sleeve_b": 21.07938981486743
+    },
+    "panel_names": [
+      "right_btorso",
+      "right_sleeve_b",
+      "right_sleeve_f",
+      "right_ftorso",
+      "left_btorso",
+      "left_sleeve_b",
+      "left_sleeve_f",
+      "left_ftorso"
+    ],
+    "missing_torso_panels": [],
+    "spec_sha256": "895571d86b194449153bced7b99943eb2aff85ce0bc52461d97786a7aa538ede"
+  },
+  "realized_delta_cm": 0.000999999999990564,
+  "calibration_error_cm": 9.436028347575842e-15,
+  "waist_delta_cm": 0.000999999999990564,
+  "shoulder_delta_cm": 0.00047752169205494965,
+  "sleeve_delta_cm": 0.017924268203891813,
+  "length_delta_cm": 9.937945049642849e-05,
+  "baseline_folder": "/root/workspace/projects/FitGround/artifacts/gpu/physics_smoke/patterns/t-shirt__physics_smoke_tiny_base",
+  "mutated_folder": "/root/workspace/projects/FitGround/artifacts/gpu/physics_smoke/patterns/t-shirt__physics_smoke_tiny_mut",
+  "baseline_spec": "/root/workspace/projects/FitGround/artifacts/gpu/physics_smoke/patterns/t-shirt__physics_smoke_tiny_base/t-shirt__physics_smoke_tiny_base_specification.json",
+  "mutated_spec": "/root/workspace/projects/FitGround/artifacts/gpu/physics_smoke/patterns/t-shirt__physics_smoke_tiny_mut/t-shirt__physics_smoke_tiny_mut_specification.json",
+  "self_intersecting": false,
+  "simulation_status": "FAILED",
+  "render_status": "NOT_RUN",
+  "physics": {
+    "simulation_status": "FAILED",
+    "render_status": "NOT_RUN",
+    "sim_error": "AttributeError: 'NoneType' object has no attribute 'any'",
+    "render_error": null,
+    "runtime_s": 2.539705276489258,
+    "max_sim_steps": 250,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/gpu/physics_smoke/sim/physics_smoke_tiny",
+    "sim_mesh": null,
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/gpu/physics_smoke/sim/physics_smoke_tiny/physics_smoke_tiny_boxmesh.obj",
+    "render_files": [],
+    "sim_mesh_sha256": null,
+    "box_mesh_sha256": "c63b00cd27544836a4a2a33babd438444dde9489c038208fd43b2b721a20ecc5",
+    "traceback": "NoneType: None\n"
+  },
+  "mesh": null,
+  "render": [],
+  "runtime_s": 13.480901718139648,
+  "seed": 0,
+  "source_hashes": {
+    "t-shirt.yaml": "edb80d740c9fea59b548c2d41c39e1ac22a50e1c59e727b7d0b75637175d4083",
+    "mean_all.yaml": "aed8c58d445a732a45f8bc9e042d36f7d8c57d8df7a6ef24061f1caa08e794c6",
+    "worker.py": "d18c6e9728a23b193d63041cf3b1439924c26f05fdcaf490648a2b3f895d32cd"
+  }
+}

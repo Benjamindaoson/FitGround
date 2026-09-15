@@ -1,0 +1,6 @@
+{
+  "python": "3.10.21 | packaged by conda-forge | (main, Aug 21 2026, 22:42:31) [GCC 14.4.0]",
+  "numpy": "2.2.6",
+  "warp": "1.0.0-beta.6",
+  "torch": "No module named 'torch'"
+}

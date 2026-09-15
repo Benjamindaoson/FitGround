@@ -1,0 +1,84 @@
+{
+  "schema_version": "fitground-p0-source-acquisition-v0.1",
+  "observed_at": "2026-09-15T02:49:13.8780212+08:00",
+  "overall_status": "IN_PROGRESS",
+  "acquisition_policy": {
+    "authentication": "anonymous_public_download_only",
+    "implicit_huggingface_token": false,
+    "full_garmentcodedata_v2": "NOT_ACQUIRED",
+    "fit_100k": "NOT_ACQUIRED",
+    "other_large_non_p0_datasets": "NOT_ACQUIRED"
+  },
+  "sources": [
+    {
+      "id": "fitvton_source",
+      "official_uri": "https://github.com/ZenoNing/FitVTON",
+      "commit": "17078c64cc6f6984466bc31916e40421d97f3280",
+      "acquisition_mode": "github_commit_archive",
+      "archive_path": "external/FitVTON-source.zip",
+      "archive_sha256": "4eff42cb4837da904ba78f3f05265b16e15b6cee2d39d118e2076e8d5b796466",
+      "extracted_path": "external/FitVTON-source-tree/ZenoNing-FitVTON-17078c6",
+      "status": "COMPLETE",
+      "role": "candidate GarmentCodeV2/Warp pipeline bootstrap",
+      "correction_limit": "Existing body-variation controls are not calibrated V0.1 garment-correction actions."
+    },
+    {
+      "id": "garmentcode_source",
+      "official_uri": "https://github.com/maria-korosteleva/GarmentCode",
+      "commit": "d449629979028123a5c4dc9e732a2ec19b7fce31",
+      "acquisition_mode": "github_commit_archive",
+      "archive_path": "external/GarmentCode-source.zip",
+      "archive_sha256": "9a30e5d20ae1f2a04aef2ee82ada43bd6af5a18053615b02188799612d9cd3c0",
+      "extracted_path": "external/GarmentCode-source-tree/maria-korosteleva-GarmentCode-d449629",
+      "status": "COMPLETE",
+      "role": "parametric garment and calibration substrate",
+      "correction_limit": "No V0.1 action-to-pattern mapping or realized measurement is verified."
+    },
+    {
+      "id": "fitting_effect_dataset",
+      "official_uri": "https://huggingface.co/datasets/ZenoNing/FittingEffectDataset",
+      "revision": "a1de636764dd7ce848737752e918ab3eec02ff03",
+      "local_path": "data/external/FittingEffectDataset",
+      "expected_payload_files": 703,
+      "expected_payload_bytes": 111269810,
+      "observed_payload_files": 703,
+      "observed_payload_bytes": 111269810,
+      "observed_triplet_csv_data_rows": 3350,
+      "status": "COMPLETE",
+      "role": "real-visual try-on evaluation/probe",
+      "correction_limit": "No intended/realized correction deltas or side-effect labels were inferred."
+    },
+    {
+      "id": "garmentcode_vton_dataset",
+      "official_uri": "https://huggingface.co/datasets/ZenoNing/GarmentCodeVTONDataset",
+      "revision": "f51b54db869fc4b1a7f32b017cdbfa80cb22956a",
+      "local_path": "data/external/GarmentCodeVTONDataset",
+      "expected_payload_files": 51880,
+      "expected_payload_bytes": 5337085718,
+      "observed_payload_files": 1162,
+      "observed_payload_bytes": 129602546,
+      "status": "IN_PROGRESS",
+      "resume": {
+        "client": "huggingface_hub.snapshot_download",
+        "token": false,
+        "max_workers": 32,
+        "local_metadata": "data/external/GarmentCodeVTONDataset/.cache/huggingface"
+      },
+      "role": "synthetic visual and pipeline-bootstrap asset",
+      "correction_limit": "It is not a calibrated correction lattice and must not supply fabricated realized deltas."
+    }
+  ],
+  "transport_note": "Shallow Git clone attempts were stopped after network transport stalled before a readable HEAD. Their incomplete directories remain untouched as failure residue; verified fixed-commit GitHub archives were used instead.",
+  "failure_residue_paths": [
+    "external/FitVTON",
+    "external/FitVTON-source"
+  ],
+  "background_continuation": {
+    "started_at": "2026-09-15T02:47:11+08:00",
+    "purpose": "Resume only the incomplete GarmentCodeVTONDataset snapshot from its existing local metadata.",
+    "stdout_log": "artifacts/p0_gcvton_download_v2.stdout.log",
+    "stderr_log": "artifacts/p0_gcvton_download_v2.stderr.log",
+    "completion_assertion": "None. The process must still be checked against expected_payload_files and expected_payload_bytes before the receipt becomes COMPLETE."
+  },
+  "completion_gate": "Set overall_status to COMPLETE only after GarmentCodeVTONDataset observed payload count and bytes equal the expected public-revision totals."
+}

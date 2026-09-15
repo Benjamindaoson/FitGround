@@ -1,0 +1,10 @@
+{
+  "required_bytes_full": 212586373905,
+  "required_bytes_train": 202588693900,
+  "required_bytes_eval": 9997680005,
+  "available_bytes": 84894900224,
+  "shortfall_bytes_full": 127691473681,
+  "can_download_full": false,
+  "can_download_eval": true,
+  "strategy": "eval_persistent_train_ephemeral"
+}

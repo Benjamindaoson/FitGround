@@ -1,0 +1,47 @@
+Looking in indexes: https://download.pytorch.org/whl/cu126
+Collecting torch==2.11.0+cu126
+  Using cached torch-2.11.0%2Bcu126-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (29 kB)
+Collecting torchvision==0.26.0+cu126
+  Using cached torchvision-0.26.0%2Bcu126-cp310-cp310-manylinux_2_28_x86_64.whl.metadata (5.5 kB)
+Downloading torch-2.11.0%2Bcu126-cp310-cp310-manylinux_2_28_x86_64.whl (830.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 830.4/830.4 MB 24.6 MB/s  0:00:30
+Downloading torchvision-0.26.0%2Bcu126-cp310-cp310-manylinux_2_28_x86_64.whl (7.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.3/7.3 MB 37.9 MB/s  0:00:00
+Installing collected packages: torchvision, torch
+
+Successfully installed torch-2.11.0+cu126 torchvision-0.26.0+cu126
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+TORCH_WHEEL_EXIT=0
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting filelock
+  Using cached filelock-3.32.6-py3-none-any.whl (100 kB)
+Collecting typing-extensions
+  Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Collecting sympy
+  Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Collecting networkx
+  Using cached networkx-3.4.2-py3-none-any.whl (1.7 MB)
+Collecting jinja2
+  Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Collecting fsspec
+  Using cached fsspec-2026.7.0-py3-none-any.whl (206 kB)
+Requirement already satisfied: setuptools in ./conda/envs/flux/lib/python3.10/site-packages (84.0.0)
+Collecting mpmath<1.4,>=1.1.0 (from sympy)
+  Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Collecting MarkupSafe>=2.0 (from jinja2)
+  Using cached markupsafe-3.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (20 kB)
+Installing collected packages: mpmath, typing-extensions, sympy, networkx, MarkupSafe, fsspec, filelock, jinja2
+
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+torch 2.11.0+cu126 requires cuda-bindings<13,>=12.9.4; platform_system == "Linux", which is not installed.
+torch 2.11.0+cu126 requires cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==12.6.3; platform_system == "Linux", which is not installed.
+torch 2.11.0+cu126 requires nvidia-cudnn-cu12==9.10.2.21; platform_system == "Linux", which is not installed.
+torch 2.11.0+cu126 requires nvidia-cusparselt-cu12==0.7.1; platform_system == "Linux", which is not installed.
+torch 2.11.0+cu126 requires nvidia-nccl-cu12==2.28.9; platform_system == "Linux", which is not installed.
+torch 2.11.0+cu126 requires nvidia-nvshmem-cu12==3.4.5; platform_system == "Linux", which is not installed.
+torch 2.11.0+cu126 requires triton==3.6.0; platform_system == "Linux", which is not installed.
+torch 2.11.0+cu126 requires setuptools<82, but you have setuptools 84.0.0 which is incompatible.
+Successfully installed MarkupSafe-3.0.3 filelock-3.32.6 fsspec-2026.7.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.4.2 sympy-1.14.0 typing-extensions-4.16.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+TORCH_DEPS_EXIT=0
+TORCH_IMPORT_FAIL <class 'ImportError'> libcudnn.so.9: cannot open shared object file: No such file or directory

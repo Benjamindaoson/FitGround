@@ -4,11 +4,14 @@ import hashlib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FROZEN_SHA256 = {
-    "docs/FIT_CLEAN_DATA_CONTRACT.md": "20b51326b7f666df4a628c63b74ae70799a61d2f1d290273e6f84063cb375ef1",
-    "docs/EXPERIMENTAL_CONTRACT_v0.1.md": "b19805ac7f2998db40d5b19615dc86c508f8f3e57f29eab32c6d4d4d830c5e16",
-    "docs/EXPERIMENTAL_CONTRACT_v0.2.md": "84080c0cf373bc691fdc68b0aa9a0877db5bccb954ca2c4c21d33d361c99a7ab",
-    "docs/GPU_E0_EXECUTION_ADDENDUM_v0.2.1.md": "fe7e7515d55746f4d2c37fddce5d4206a45379ca8b58a0fbe6081faf015f7d92",
+FROZEN_TEXT_SHA256 = {
+    "docs/FIT_CLEAN_DATA_CONTRACT.md": "5f0684ae4833ad9d94800c7d71f51a9eadcf8c3ad1065379330fdea7e91971d7",
+    "docs/EXPERIMENTAL_CONTRACT_v0.1.md": "b93dc276ed254f9db7a7d4feead750570f13a20e7377411307cc6b2514de6fb5",
+    "docs/EXPERIMENTAL_CONTRACT_v0.2.md": "b12ffef7cd6670f17e461a13c13e2c32caf3a386b774b77060e71c0ea36ffa18",
+    "docs/GPU_E0_EXECUTION_ADDENDUM_v0.2.1.md": "b7ebc46726b178422042927d928f1ee0d1337c386660200c21b03878d6942dd6",
+}
+
+FROZEN_BINARY_SHA256 = {
     "artifacts/fit_clean_schema_v0.1.json": "2b9d315ef7e89825819a18f562a03627f4b06438936b75e88acb980a103e47b1",
     "artifacts/data_engineering_v0.1_fingerprint.json": "8704fe48e2ad8a643522133366243a2c28715908339d19f86c5fca74bb18d917",
     "artifacts/experimental_contract_v0.1.yaml": "8c23fde934ae9cb295555abe26fcbbe7f01de644991eeca1b3c5dadc012a4485",
@@ -22,6 +25,11 @@ FROZEN_SHA256 = {
 
 def test_frozen_legacy_bytes_are_unchanged() -> None:
     """Catches an accidental edit to frozen FIT-Clean or E0 evidence."""
-    for relative_path, expected_sha256 in FROZEN_SHA256.items():
+    for relative_path, expected_sha256 in FROZEN_TEXT_SHA256.items():
+        data = (ROOT / relative_path).read_bytes().replace(b"\r\n", b"\n")
+        actual_sha256 = hashlib.sha256(data).hexdigest()
+        assert actual_sha256 == expected_sha256, relative_path
+
+    for relative_path, expected_sha256 in FROZEN_BINARY_SHA256.items():
         actual_sha256 = hashlib.sha256((ROOT / relative_path).read_bytes()).hexdigest()
         assert actual_sha256 == expected_sha256, relative_path

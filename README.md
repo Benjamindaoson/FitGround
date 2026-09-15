@@ -1,481 +1,444 @@
+<p align="right">
+  <b>中文</b> · <a href="./README_EN.md">English</a>
+</p>
+
 # FitGround
 
-**FitGround predicts how a garment modification will change fit, then recommends the smallest effective correction for the next sample.**
+**样衣不对。下一版改什么、改几厘米、别的地方会不会坏？**
 
-This is a technical-designer workspace, not a consumer virtual try-on.
+FitGround 不是试衣间，也不是聊天机器人。它是给 **技术设计师** 用的下一版修正引擎：改一个具名纸样参数，**测出**几何变化，再看布料–人体物理后果，最后用效用函数排出下一版该怎么改。证据不够时，系统会 **拒答**，而不是编一个厘米数。
 
-![Current sample drape](reports/figures/baseline_render_front.png)
-![Bust +3 cm drape](reports/figures/bust_plus_3cm_render_front.png)
+[![GitHub](https://img.shields.io/badge/GitHub-Benjamindaoson%2FFitGround-111)](https://github.com/Benjamindaoson/FitGround)
+[![Hugging Face](https://img.shields.io/badge/HuggingFace-jlai300%2FFitGround-ffcc00)](https://huggingface.co/datasets/jlai300/FitGround)
 
-| | |
+| 当前样衣 | 胸围 +3 cm 之后 |
 | --- | --- |
-| Problem | Sample is wrong. What changes in the next one? |
-| Intervention | Named pattern parameters with **measured** `realized_delta_cm` |
-| Physics | Warp XPBD on a **static mannequin OBJ** (`SYNTHETIC_BODY_PHYSICS`). SMPL-X weights are absent; pipeline does not stop. |
-| Decision | Enumerated candidates → utility → recommendation, confidence, alternatives |
-| Demo | `studio/` Next.js workspace at port 43187 |
+| ![baseline](reports/figures/baseline_render_front.png) | ![bust+3](reports/figures/bust_plus_3cm_render_front.png) |
 
-| Status | Fact |
+这两张图是静态人台上的 Warp 垂坠证据，**不是**虚拟试穿产品图。
+
+---
+
+## 目录
+
+1. [我们到底要解决什么问题？](#我们到底要解决什么问题)
+2. [怎么解决的？](#怎么解决的)
+3. [六个不容易忘掉的结论](#六个不容易忘掉的结论)
+4. [实验过程：从观测数据走到干预格子](#实验过程从观测数据走到干预格子)
+5. [训练结论：学到了什么，什么不该学](#训练结论学到了什么什么不该学)
+6. [有没有更好的方案？](#有没有更好的方案)
+7. [完整统计图库](#完整统计图库)
+8. [状态矩阵与数据索引](#状态矩阵与数据索引)
+9. [怎么跑](#怎么跑)
+10. [硬限制](#硬限制)
+
+---
+
+## 我们到底要解决什么问题？
+
+发现“胸口紧”通常并不贵。贵的是 **下一刀往哪改**：
+
+```text
+当前样衣有问题
+    → 原因是胸围余量、肩部锁死、袖长，还是面料太硬？
+    → 下一版改 +1 / +2 / +3 cm？
+    → 改完会不会把腰、袖拖坏？
+    → 证据不够时，能不能拒答而不是乱给数字？
+```
+
+成衣开发里，技术设计师真正花钱的环节不是“看一眼合不合体”，而是 **打样循环**：改纸样 → 再打一件 → 再试。每一厘米都有面料、车缝和时间成本。现有工具几乎都停在“看起来怎样”，不停在“下一版改哪一厘米”。
+
+市面上常见方案解决的是另一件事：
+
+| 常见做法 | 它真正回答的问题 | 为什么不够 |
+| --- | --- | --- |
+| 虚拟试穿 / VTO | “这件衣服穿上好不好看？” | 不告诉你下一版纸样改哪一厘米 |
+| VLM / RAG / Agent 评语 | “看起来有点紧” | 没有干预，没有实测 Δ，没有物理后果 |
+| 历史样本回归 | “过去类似的衣服胸围差多少” | 相关不是因果；不能做反事实 |
+| 直接上 MLLM + RLVR | “模型很新” | 在平凡几何上解析法已经是 0 误差，硬吹模型是犯规 |
+
+FitGround 只回答一句：**下一版样衣应该改什么。**
+
+---
+
+## 怎么解决的？
+
+一条工程–研究闭环，每一步都留下 artifact：
+
+```text
+纸样参数干预
+  → 实测二维几何（after − before，禁止把 intended 抄进 realized）
+  → Warp 布料/人体物理（静态 OBJ 人台）
+  → clearance / contact 等合体指标
+  → 反事实候选排序
+  → 决策效用（目标误差 + 改动量 + 副作用 + 不确定度）
+  → 技术设计师工作台
+```
+
+![系统闭环](reports/figures/01_system_architecture.png)
+
+![干预流水线](reports/figures/02_intervention_pipeline.png)
+
+Shirt 胸围由一个具名参数控制：
+
+```text
+shirt.width.v = 目标胸围厘米 / 人体胸围厘米
+```
+
+所以在 **平凡几何体制** 里，要把衣服胸围加大 3 cm，解析逆映射就是把 `width.v` 加上 `3 / body_bust`。这不是模型“学会了”，这是纸样定义。任何把 intended 抄进 realized 的训练，都会得到假的 0 误差——本仓库的测试会拒收这种行。
+
+### 三个必须讲清楚的分层
+
+不要把下面四句话混成一句“GarmentCode physics PASS”：
+
+| 层 | 状态 | 含义 |
+| --- | --- | --- |
+| 参数化纸样几何 | **PASS** | Shirt 面板可序列化，厘米来自测量 |
+| 合成人体物理 `SYNTHETIC_BODY_PHYSICS` | **PASS** | Warp XPBD vs 仓库内静态 OBJ，米→厘米对齐 |
+| SMPL / SMPL-X 人体物理 | **HARD_BLOCKED_LICENSE** | 权重不在，没有盗版，流水线不停 |
+| 真人验证 | **HARD_BLOCKED_LICENSE** | 需要许可资产与知情同意 |
+
+---
+
+## 六个不容易忘掉的结论
+
+### 1. ±3 cm 纸样修改可以校准到亚厘米 / 毫米级
+
+胸围由 `shirt.width.v = 目标厘米 / 人体胸围` 控制。在 −3…+3 cm 网格上，**实测** `realized_delta_cm` 与 intended 相差约 `1e-14` cm；+3 cm 三次重复完全一致。
+
+![胸围校准](reports/figures/03_bust_calibration.png)
+![intended vs realized](reports/figures/bust_intended_vs_realized.png)
+![校准曲线](reports/figures/bust_calibration_curve.png)
+
+袖长：早期用面板 **Y** 测量是错的（GarmentCode 沿 **X** 构造）。改测量定义后 ±2 cm MAE = 0。不能因为旧 bug 给袖长 NO-GO。
+
+肩宽：Shirt **没有独立肩宽自由度**。`sleeve.connecting_width` 扫描：肩宽 Δ = 0 cm，袖长会被带动。正式结论：
+
+`SHOULDER_ACTION = NO_GO_FOR_CURRENT_PATTERN_FAMILY`
+
+副作用是结构性的，不是噪声。`flare=1` 时，±3 cm 胸围修改会 **100%** 带动腰围。决策效用必须给副作用定价，否则系统会永远推荐“改得最大的那一刀”。
+
+![副作用](reports/figures/bust_side_effects.png)
+
+### 2. 修正对真实布料–人体 clearance / contact 有可测影响
+
+同一件 Shirt，静态人台、单位对齐之后：
+
+| 版本 | 胸围 clearance p10 | contact ratio |
+| --- | --- | --- |
+| 当前样衣 | 0.47 cm | 0.027 |
+| +1 cm | 0.48 cm | 0.029 |
+| +2 cm | 0.48 cm | 0.027 |
+| +3 cm | 0.50 cm | 0.022 |
+
+变化是 **毫米级 clearance**，不是试衣大片。但对“改纸样有没有物理后果”这个问题，答案是有。
+
+![物理前后](reports/figures/04_physics_before_after.png)
+![clearance / contact](reports/figures/05_clearance_contact.png)
+![physics_clearance_contact](reports/figures/physics_clearance_contact.png)
+
+| 当前 | +1 cm | +2 cm | +3 cm |
+| --- | --- | --- | --- |
+| ![b0](reports/figures/baseline_render_front.png) | ![b1](reports/figures/bust_plus_1cm_render_front.png) | ![b2](reports/figures/bust_plus_2cm_render_front.png) | ![b3](reports/figures/bust_plus_3cm_render_front.png) |
+
+同测量、不同面料弯曲（default vs stiff）——这是后面视觉必要性实验的物理原料：
+
+| 紧身 default | 紧身 stiff | 宽松 default | 宽松 stiff |
+| --- | --- | --- | --- |
+| ![td](studio/public/evidence/tight_default_render_front.png) | ![ts](studio/public/evidence/tight_stiff_render_front.png) | ![rd](studio/public/evidence/roomy_default_render_front.png) | ![rs](studio/public/evidence/roomy_stiff_render_front.png) |
+
+### 3. 简单几何体制不需要机器学习，解析法最好
+
+| 方法 | 测试 MAE (cm) | 说明 |
+| --- | --- | --- |
+| 解析逆映射 | **~0** | `Δwidth = Δcm / body_bust` |
+| Transition SFT MLP | 0.47 | 88 行格子，test n=16 |
+| 观测 B0 均值余量 | 8.11 | FIT-Clean 104,999 行，**不是**干预 GT |
+| B1 OLS | 8.08 | 人体四围长回归衣胸围 |
+| B1 XGBoost | 7.88 | 同上；相关仍不是因果 |
+| 纸样 Ridge | 3.45 | 192 张生成纸样图 |
+| 纸样 CNN | 6.23 | RTX 4090，40 epoch，没有打过 Ridge |
+| CNN+body | 6.24 | 没有多模态增益 |
+
+![基线梯子](reports/figures/06_baseline_ladder.png)
+![平凡 vs 复杂](reports/figures/09_trivial_vs_complex.png)
+![观测 MAE](reports/figures/observational_baseline_mae.png)
+
+把 intended 抄进 realized 会得到假的 0 误差。本项目禁止这样做。解析法赢，是因为这张 Shirt 胸围映射本来就是恒等几何，不是模型“很强”。
+
+### 4. 材料/垂坠歧义里，视觉必要性还没被统计成立
+
+构造 **33 对** 同规格、不同弯曲刚度的物理样本。其中 **7 对**（21%，bootstrap 95% CI 约 9%–36%）最优修正翻转。
+
+分组切分上：measurement-only 准确率 0.90 [0.70, 1.00]，drape 特征 1.00；**CI 重叠** →
+
+**`VISION_NECESSITY_NOT_ESTABLISHED`**
+
+没有为了 MLLM 故事去调 split。纸样 Ridge 已经打过 CNN，这是同一条诚实原则。
+
+![视觉消歧](reports/figures/07_visual_disambiguation.png)
+![多模态消融](reports/figures/08_multimodal_ablation.png)
+
+Qwen2-VL-2B-Instruct 零样本结构化 JSON：parse rate 100%，动作匹配 83%（n=12，多数类 `no_edit`）。数据太小，不做 LoRA，避免泄漏。匹配率接近多数类，不能写成“视觉模型已经会改纸样”。
+
+### 5. OOD 时系统拒答，而不是乱给厘米
+
+| 切分 | 结果 |
 | --- | --- |
-| Parametric garment geometry | PASS — Shirt panel serialize + after-minus-before cm |
-| SYNTHETIC_BODY_PHYSICS | PASS — Warp XPBD vs static OBJ, body m→cm |
-| SMPL/SMPL-X body physics | HARD_BLOCKED_LICENSE — weights absent, not pirated |
-| Real-human validation | HARD_BLOCKED_LICENSE |
-| Bust calibration | PASS — ±3 cm grid, MAE ~0, 3× repeat exact; waist coupled (`flare=1`) |
-| Sleeve | PASS — panel **X** construction axis; prior Y-span was a measurement bug |
-| Shoulder | NO_GO_WITH_EVIDENCE — Shirt has no independent garment shoulder DoF |
-| Physics metrics | Chest clearance p10 0.47→0.50 cm at +3 cm; contact 0.027→0.022 |
-| Observational B0/B1/XGB | MAE 8.11 / 8.08 / 7.88 cm on FIT-Clean (not intervention GT) |
-| Pattern Ridge vs CNN | Ridge 3.45 cm beats CNN 6.23 cm on 192 drawings |
-| Transition SFT | MAE 0.47 cm; analytic inverse is 0.00 on this grid |
-| Decision SFT / RLVR | Holdout acc 1.0 (n=3); RLVR NOT_JUSTIFIED |
-| Vision necessity | **NOT_ESTABLISHED** — 33 matched material pairs, 7 flips (21%, CI 9–36%); held-out CIs overlap. Ridge 3.45 still beats CNN 6.23 |
+| IID 平凡几何 | 解析 MAE ~0（n=88） |
+| 合成人体 OOD（mean_female / male） | 几何映射仍 ~0（n=402）；**禁止叫真人泛化** |
+| 面料 OOD | 只用尺寸会与 stiff 金标分歧 21% [9%, 36%]（n=33） |
+| 动作超出 ±3 cm | 策略：abstain |
+| flare=1 时 ±3 cm 胸围 | 腰围 100% 跟随（结构性副作用，n=162） |
 
-## Demo / Results
+失败感知（n=633）：OOD 检测 AUROC **0.90**，拒答精确率 **1.0**。分桶里，OOD 人体 / OOD 面料 / 歧义样本全部拒答；分布内简单样本准确率 1.0、拒答率 0。Hero Case 4 明确展示 **AI 拒绝给修正**。
 
-Interactive workspace:
+![OOD](reports/figures/10_ood_results.png)
+![风险–覆盖](reports/figures/11_risk_coverage.png)
+![决策后悔](reports/figures/12_decision_regret.png)
+![失败分桶](reports/figures/14_failure_gallery.png)
+
+### 6. 实验结果直接变成技术设计师的下一版建议
+
+工作台问的是同一句话：**下一版样衣该改什么？** 页面右上角可以一键切换中 / 英。
 
 ```bash
 cd studio && npm install && npm run dev
 # http://127.0.0.1:43187
 ```
 
-GPU completion pipeline:
+五个 Hero Case：胸围过紧 → +3 cm；同尺寸不同面料；腰围副作用让更小修改胜出；OOD 人台拒答；肩 vs 胸由证据裁定为肩宽 NO-GO。
+
+![Hero cases](reports/figures/13_hero_cases.png)
+![候选效用](reports/figures/candidate_utility_ranking.png)
+
+---
+
+## 实验过程：从观测数据走到干预格子
+
+这条路不是“先训一个大模型再找故事”，而是反过来：**先证明干预能不能测出来，再决定学习有没有必要。**
+
+### 第一步：观测数据告诉你相关，不告诉你下一刀
+
+FIT-Clean 来自公开 FIT-100K 测量字段（约 10.5 万行，按人哈希切分）。它可以回答“历史上类似体型的衣服胸围差多少”，但不能构造反事实。B0 中位余量 MAE 8.11 cm，XGBoost 也只能到 7.88 cm——这是观测上限，不是修正系统的失败。
+
+Eval 子集（FIT-Clean eval）人体与服装尺寸：
+
+| 人体胸围 | 人体腰围 | 人体臀围 | 人体身高 |
+| --- | --- | --- | --- |
+| ![eb](reports/figures/eval_hist_body_bust_cm.png) | ![ew](reports/figures/eval_hist_body_waist_cm.png) | ![eh](reports/figures/eval_hist_body_hips_cm.png) | ![eht](reports/figures/eval_hist_body_height_cm.png) |
+
+| 衣胸围 | 衣长 | 袖长 | 胸围余量 |
+| --- | --- | --- | --- |
+| ![gb](reports/figures/eval_hist_garment_bust_cm.png) | ![gl](reports/figures/eval_hist_garment_length_cm.png) | ![gs](reports/figures/eval_hist_garment_sleeve_cm.png) | ![ge](reports/figures/eval_hist_bust_ease_cm.png) |
+
+| 余量比 | 余量比离散化 | 衣长/身高 | 余量散点 |
+| --- | --- | --- | --- |
+| ![er](reports/figures/eval_hist_bust_ease_ratio.png) | ![eq](reports/figures/eval_bust_ease_ratio_quantization.png) | ![elr](reports/figures/eval_hist_garment_length_height_ratio.png) | ![esc](reports/figures/eval_bust_ease_scatter.png) |
+
+全量 FIT 分布审计（同一套字段，确认 eval 不是特例）：
+
+| 人体胸围 | 人体腰围 | 人体臀围 | 人体身高 |
+| --- | --- | --- | --- |
+| ![fb](reports/figures/full_fit_hist_body_bust_cm.png) | ![fw](reports/figures/full_fit_hist_body_waist_cm.png) | ![fh](reports/figures/full_fit_hist_body_hips_cm.png) | ![fht](reports/figures/full_fit_hist_body_height_cm.png) |
+
+| 衣胸围 | 衣长 | 袖长 | 胸围余量 |
+| --- | --- | --- | --- |
+| ![fgb](reports/figures/full_fit_hist_garment_bust_cm.png) | ![fgl](reports/figures/full_fit_hist_garment_length_cm.png) | ![fgs](reports/figures/full_fit_hist_garment_sleeve_cm.png) | ![fge](reports/figures/full_fit_hist_bust_ease_cm.png) |
+
+| 余量比 | 衣长/身高 |
+| --- | --- |
+| ![fer](reports/figures/full_fit_hist_bust_ease_ratio.png) | ![felr](reports/figures/full_fit_hist_garment_length_height_ratio.png) |
+
+数据工程本身也留下了痕迹：分片内存、近重复与泄漏审计都在 `reports/` 里。观测图像字节 **没有** 进本仓（许可与体积）；进仓的是测量字段、schema 和审计图。
+
+![分片内存](reports/figures/memory_by_shard.png)
+
+### 第二步：把纸样参数变成可重复的厘米
+
+GPU 上（RTX 4090，Warp 1.0.0-beta.6，Torch 2.5.1+cu124）对 GarmentCode Shirt 做原子校准：改 `shirt.width.v`，序列化面板，**测量** after−before。得到恒等映射之后，才能谈格子、物理和学习。
+
+早期袖长探针沿面板 Y 得到 Δ=0，这是测量定义错误，不是纸样坏了。肩宽探针证明当前家族没有独立肩宽自由度——这是 **NO-GO 结论**，不是没做完的实验。
+
+### 第三步：把厘米再送进布料物理
+
+人体 OBJ 是米，布料网格是厘米。对齐之后，Warp XPBD 在静态人台上给出 clearance / contact。v0.2 冻结：**636** 条转移（0 重复 state-action，0 条 intended→realized 抄袭），**127** 条物理仿真成功。视觉消歧另有 33 对 / 71 个物理样本。
+
+没有 SMPL-X 权重。流水线没有停，而是打上 `SYNTHETIC_BODY_PHYSICS`，并禁止把合成人台写成真人验证。
+
+### 第四步：只在学习可能赢过解析法的地方训练
+
+平凡几何上解析法已经是 0。我们仍然训练了 Transition SFT、Decision SFT 和 RLVR——目的不是刷榜，而是 **量出学习还有没有残差**。答案：SFT 比解析法差；决策 holdout n=3 后悔已经是 0；RLVR 没有额外收益，正式 `NOT_JUSTIFIED`。
+
+复杂体制（同测量、不同垂坠）里最优修正会翻转，但分组切分 CI 重叠，视觉必要性 **未统计成立**。这才是诚实的停止线。
+
+---
+
+## 训练结论：学到了什么，什么不该学
+
+GPU 训练跑完了：B0、B1、B1-Ridge、B1-XGBoost、生成纸样 B2/B3、Transition SFT、Decision SFT、RLVR。FIT-100K 的 197GB 图像 **没有下载**；视觉基线用的是光栅化纸样图（192 张）。
+
+| 任务 | 状态 | 头条数字 |
+| --- | --- | --- |
+| B0 余量启发式 | PASS | test MAE 8.11 cm（观测，非干预 GT） |
+| B1 OLS | PASS | test MAE 8.08 cm |
+| B1 Ridge | PASS | test MAE 8.08 cm |
+| B1 XGBoost | PASS | test MAE 7.88 cm |
+| B2 FIT-100K 视觉 | NOT_RUN | 图像不在磁盘 |
+| B2 生成纸样 Ridge | PASS | test MAE 3.45 cm（192 张图） |
+| B2 生成纸样 CNN | PASS | test MAE 6.23 cm；Ridge 赢 |
+| B3 CNN+body | PASS | test MAE 6.24 cm；无多模态增益 |
+| Transition SFT MLP | PASS | MAE 0.47 cm；解析法 ~0 |
+| Decision SFT MLP | PASS | holdout 准确率 1.0，后悔 0.0（**n=3，不吹**） |
+| RLVR REINFORCE | NOT_JUSTIFIED | 300 CUDA step，SFT 之后没有残差 |
+| Qwen2-VL-2B 零样本 | PASS | parse 100%，match 83%，n=12，多数类 |
+
+![Transition SFT MLP](reports/figures/transition_sft_mlp_loss.png)
+![Transition SFT LM](reports/figures/transition_sft_lm_loss.png)
+![Decision SFT](reports/figures/decision_sft_mlp_loss.png)
+![RLVR](reports/figures/rlvr_reward.png)
+
+**一句话训练结论：**
+
+- 观测回归再强，也回答不了“下一版改几厘米”。
+- 纸样图上线性模型打过小 CNN，说明这张图的信息几乎是可量测的几何，不是纹理玄学。
+- 干预格子上，解析逆映射是铁基线；SFT 没有赢过它。
+- RLVR 在后悔已经为 0、holdout 只有 3 条时没有研究价值。
+- 视觉 / MLLM 只在「同测量导致不同最优修正」且「分组切分 CI 分离」时才有必要。当前未成立。
+
+更完整的论证见 [`reports/WHEN_IS_LEARNING_NECESSARY.md`](reports/WHEN_IS_LEARNING_NECESSARY.md) 与 [`reports/TRAINING_RUN.md`](reports/TRAINING_RUN.md)。
+
+---
+
+## 有没有更好的方案？
+
+有。我们故意没走那些“更好看”的路，原因如下。
+
+| 看起来更强的方案 | 为什么这次不采用 / 什么时候才值得 |
+| --- | --- |
+| 一上来就微调 Qwen2-VL / GPT-4V | 平凡几何上解析法已经 0 误差；先证明学习有必要 |
+| 用 Agent 自动改纸样 | 没有实测 Δ 和物理后果，只是会说话的试衣间 |
+| RLVR / 强化学习改纸样 | 决策 holdout n=3，后悔已是 0；RLVR `NOT_JUSTIFIED` |
+| 用 FIT-100K 图像硬训 CNN | 未下载 197GB；192 张纸样图上 Ridge > CNN |
+| 把 intended 当 realized | 这是造假，测试会拒 |
+| 没有 SMPL-X 就停工 | 错误。合成人台继续跑，并打上标签 |
+| 为 Shirt 强行做肩宽 PASS | 没有独立自由度；NO-GO 比假 PASS 更有研究能力 |
+| 调 split 让视觉必要性成立 | 7/33 翻转是真的；统计成立是假的。保留后者 |
+| 把毫米级 clearance 写成生产 fit | 人台证据 ≠ 真人试衣 |
+
+**更好的下一步（有许可之后）** 不是换一个更炫的模型名，而是：
+
+1. 在许可的 SMPL-X 上重复同一套格子  
+2. 把解析逆映射继续当平凡体制的铁基线  
+3. 只有当同测量、不同真实垂坠导致最优修正翻转 **且** 分组切分 CI 分离时，才宣称视觉/MLLM 有必要  
+4. 真人 fit session 做验证，而不是把合成人台叫生产系统  
+5. 若要学复杂体制，先把物理金标和分组切分做大，再考虑 LoRA——不要从零样本 n=12 直接跳到“多模态成功”
+
+---
+
+## 完整统计图库
+
+上面正文已经按结论插入了主图。下面是仓库里 **全部** 仍保留的统计图与证据图，按实验阶段归档，避免有图没进故事。
+
+### A. 系统与干预
+
+| 系统架构 | 干预流水线 | Hero cases |
+| --- | --- | --- |
+| ![a1](reports/figures/01_system_architecture.png) | ![a2](reports/figures/02_intervention_pipeline.png) | ![a3](reports/figures/13_hero_cases.png) |
+
+### B. 几何校准
+
+| 胸围校准 | intended vs realized | 校准曲线 | 副作用 |
+| --- | --- | --- | --- |
+| ![b1](reports/figures/03_bust_calibration.png) | ![b2](reports/figures/bust_intended_vs_realized.png) | ![b3](reports/figures/bust_calibration_curve.png) | ![b4](reports/figures/bust_side_effects.png) |
+
+### C. 合成人体物理
+
+| 物理前后 | clearance/contact | 物理指标 | 候选效用 |
+| --- | --- | --- | --- |
+| ![c1](reports/figures/04_physics_before_after.png) | ![c2](reports/figures/05_clearance_contact.png) | ![c3](reports/figures/physics_clearance_contact.png) | ![c4](reports/figures/candidate_utility_ranking.png) |
+
+### D. 基线、视觉、OOD
+
+| 基线梯子 | 视觉消歧 | 多模态消融 | 平凡 vs 复杂 |
+| --- | --- | --- | --- |
+| ![d1](reports/figures/06_baseline_ladder.png) | ![d2](reports/figures/07_visual_disambiguation.png) | ![d3](reports/figures/08_multimodal_ablation.png) | ![d4](reports/figures/09_trivial_vs_complex.png) |
+
+| OOD | 风险–覆盖 | 决策后悔 | 失败分桶 |
+| --- | --- | --- | --- |
+| ![d5](reports/figures/10_ood_results.png) | ![d6](reports/figures/11_risk_coverage.png) | ![d7](reports/figures/12_decision_regret.png) | ![d8](reports/figures/14_failure_gallery.png) |
+
+### E. 训练曲线（负结果也保留）
+
+| Transition MLP | Transition LM | Decision SFT | RLVR |
+| --- | --- | --- | --- |
+| ![e1](reports/figures/transition_sft_mlp_loss.png) | ![e2](reports/figures/transition_sft_lm_loss.png) | ![e3](reports/figures/decision_sft_mlp_loss.png) | ![e4](reports/figures/rlvr_reward.png) |
+
+| 观测 MAE | 分片内存 |
+| --- | --- |
+| ![e5](reports/figures/observational_baseline_mae.png) | ![e6](reports/figures/memory_by_shard.png) |
+
+数字底稿：[`artifacts/FINAL_METRICS.json`](artifacts/FINAL_METRICS.json) · [`artifacts/FINAL_STATUS.json`](artifacts/FINAL_STATUS.json) · [`artifacts/hero/ood_results.json`](artifacts/hero/ood_results.json) · [`artifacts/hero/failure_aware.json`](artifacts/hero/failure_aware.json) · [`artifacts/hero/visual_disambiguation.json`](artifacts/hero/visual_disambiguation.json) · [`artifacts/training/observational_and_vision_baselines.json`](artifacts/training/observational_and_vision_baselines.json) · [`artifacts/hero/mllm_eval.json`](artifacts/hero/mllm_eval.json) · [`artifacts/hero/correction_lattice_v0.2.jsonl`](artifacts/hero/correction_lattice_v0.2.jsonl)
+
+GPU 关机后未能进仓的东西写在 [`artifacts/GPU_SHUTDOWN_ASSET_INVENTORY.md`](artifacts/GPU_SHUTDOWN_ASSET_INVENTORY.md)：约 677 张纸样 PNG、大批 Warp `.obj`、以及 4.2GB 的 Qwen 权重大小。**结论和数字在 JSON 里，不在丢失的 PNG 里。**
+
+---
+
+## 状态矩阵与数据索引
+
+只允许四种词：`PASS` · `NO_GO_WITH_EVIDENCE` · `NOT_JUSTIFIED` · `HARD_BLOCKED_LICENSE`
+
+| 项目 | 状态 |
+| --- | --- |
+| Core / Warp / PyTorch | PASS |
+| 参数化几何 / 合成物理 | PASS |
+| 胸围 / 袖长 / 大格子 | PASS |
+| 肩宽 | NO_GO_WITH_EVIDENCE |
+| 视觉消歧实验 | PASS（结论：必要性未成立） |
+| 经典 / 视觉 / 多模态基线 | PASS |
+| 预训练 MLLM 实验 | PASS（零样本，n=12） |
+| Transition | PASS（解析法更好） |
+| Decision SFT | PASS（n=3，不吹） |
+| RLVR | NOT_JUSTIFIED |
+| OOD / 失败感知 / Demo | PASS |
+| SMPL-X / 真人 | HARD_BLOCKED_LICENSE |
+
+格子：636 条转移，0 重复 state-action，0 条把 intended 抄进 realized。物理仿真 127 条 SIMULATED。
+
+文字报告：[`reports/EXPERIMENT_TABLE.md`](reports/EXPERIMENT_TABLE.md) · [`reports/WHEN_IS_LEARNING_NECESSARY.md`](reports/WHEN_IS_LEARNING_NECESSARY.md) · [`reports/TRAINING_RUN.md`](reports/TRAINING_RUN.md) · [`reports/OOD_REPORT.md`](reports/OOD_REPORT.md) · [`reports/FAILURE_ANALYSIS.md`](reports/FAILURE_ANALYSIS.md) · [`reports/RESUME_CLAIMS.md`](reports/RESUME_CLAIMS.md) · [`reports/TECHNICAL_ARCHITECTURE.md`](reports/TECHNICAL_ARCHITECTURE.md)
+
+镜像：[GitHub](https://github.com/Benjamindaoson/FitGround) · [Hugging Face datasets](https://huggingface.co/datasets/jlai300/FitGround)
+
+---
+
+## 怎么跑
+
+```bash
+make smoke              # pytest
+make benchmark-fast     # 基于已有 artifacts 收口
+cd studio && npm install && npm run dev   # 工作台 :43187 ，页面内中/英切换
+```
+
+GPU（需要 GarmentCodeV2 + Warp + RTX；本云环境没有那台已欠费关机的 4090）：
 
 ```bash
 source scripts/gpu/flux_env.sh
 python scripts/gpu/hero_pipeline.py
-python scripts/train/train_hero_ladder.py
+python scripts/gpu/expand_visual_physics.py
+python scripts/gpu/finalize_closure.py
 ```
-
-
-## Demo / Results / 当前 GPU 结果
-
-This GPU pass implemented a real correction slice, not a tutorial:
-
-1. Warp CUDA kernel smoke PASS (`artifacts/gpu/warp_smoke.json`).
-2. Bust atomic calibration PARTIAL (`artifacts/bust_atomic_calibration.json`): intended vs realized +1/+2/+3 cm match to numerical noise; +3 cm repeat matches exactly.
-3. Physics + render PASS for baseline / +1 / +2 / +3 cm (`artifacts/gpu/physics_lattice/`).
-4. CHEST_CASE utility ranking oracle = bust +3 cm (`artifacts/correction_lattice_chest_case.json`).
-5. Observational B0 MAE 8.11 / B1 OLS 8.08 / B1 XGBoost 7.88 cm on FIT-Clean garment bust (not intervention GT).
-6. Generated-pattern B2 Ridge MAE 3.45 cm; B2 CNN 6.23 cm (CNN does not beat Ridge on 192 drawings).
-7. Transition SFT MLP realized-delta test MAE 0.47 cm on 16 held-out rows (identity map is 0.00 on this calibrated bust/length grid).
-8. Decision SFT MLP action accuracy 1.0 on 3 held-out CHEST_CASE-style states; RLVR REINFORCE ran 300 CUDA steps and did not improve a zero-regret SFT policy.
-
-![Transition SFT MLP val loss](reports/figures/transition_sft_mlp_loss.png)
-
-![Decision SFT MLP CE](reports/figures/decision_sft_mlp_loss.png)
-
-![RLVR measured utility](reports/figures/rlvr_reward.png)
-
-![Intended vs realized bust delta](reports/figures/bust_intended_vs_realized.png)
-
-![Before (baseline) drape](reports/figures/baseline_render_front.png)
-
-![After Bust +3 cm drape](reports/figures/bust_plus_3cm_render_front.png)
-
-![Candidate utility ranking](reports/figures/candidate_utility_ranking.png)
-
-Do not read these renders as virtual try-on product shots. They are physics-draped Shirt patterns on a static mean body, used as correction evidence.
-
-Demo CLIs:
-
-```bash
-python scripts/select_correction.py
-python scripts/predict_transition.py --intended-delta-cm 3
-python scripts/run_fit_correction_smoke.py --case CHEST_CASE --backend garmentcode --output-dir artifacts/gpu/smoke_out
-```
-
-The default smoke runner still preserves `SIMULATION_BACKEND_NOT_CONFIGURED` unless `--backend garmentcode` is set.
-
-
-## Contents / 目录
-
-- [The problem / 要解决什么问题](#the-problem--要解决什么问题)
-- [Who it is for / 服务对象](#who-it-is-for--服务对象)
-- [What FitGround does / 系统做什么](#what-fitground-does--系统做什么)
-- [Decision loop / 决策闭环](#decision-loop--决策闭环)
-- [V0.1 action space / V01 动作空间](#v01-action-space--v01-动作空间)
-- [Research design / 研究设计](#research-design--研究设计)
-- [Architecture and code map / 架构与代码地图](#architecture-and-code-map--架构与代码地图)
-- [Data foundation / 数据基础](#data-foundation--数据基础)
-- [What works today / 当前可运行内容](#what-works-today--当前可运行内容)
-- [Quick start / 快速开始](#quick-start--快速开始)
-- [Validation and roadmap / 验证与路线图](#validation-and-roadmap--验证与路线图)
-- [Scope, contribution, and licensing / 范围、贡献与许可证](#scope-contribution-and-licensing--范围贡献与许可证)
 
 ---
 
-## The problem / 要解决什么问题
-
-### The expensive question is not “tight or loose”
-
-A technical designer can often see that a sample has a problem: chest tension, a diagonal drag line near the armhole, shoulder restriction, an overly long sleeve, or unwanted looseness. The expensive part is deciding what to change next.
-
-在传统 fit session 中，发现“不合身”通常不难；真正昂贵的是依赖专家经验反复试错：这到底是胸围余量、肩部限制、上胸几何、面料刚度，还是其他结构因素？下一版应改 `+1 cm`、`+2 cm` 还是 `+3 cm`？这样做会不会让别的区域变差？
-
-```text
-Current sample has a fit problem
-        ↓
-What likely caused it?
-        ↓
-Which correction should be attempted next?
-        ↓
-How much should change?
-        ↓
-Will it solve the target region without harming another one?
-```
-
-FitGround is built around that decision—not around a binary tight/loose classifier.
-
-FitGround 的目标是提高 **下一版样衣一次改对的概率**，而不只是判断它“紧”还是“松”。
-
-### Why this is hard / 为什么困难
-
-The same visible symptom can have different physical explanations. The same ease measurement can behave differently under another material, body, construction, pose, or fit intent. A measurement-only rule such as `body_bust + garment_bust → delta_bust` therefore cannot be the product.
-
-同一组人体与服装尺寸，可能因为视觉症状不同而需要不同修正；相似的视觉症状，也可能对不同干预动作有不同响应。FitGround 必须保留 visual evidence、material 和 fit intent，避免退化成一个简单的尺寸差公式。
-
-## Who it is for / 服务对象
-
-**Primary user: technical designers** reviewing a physical or simulated sample with a known fit concern.
-
-**主要用户：** 正在审看问题样衣的服装技术设计师。Pattern maker、fit reviewer、开发团队是下游协作者；V0.1 不把他们拆成独立产品 persona。
-
-| Workflow moment / 工作节点 | FitGround's intended contribution / 预期贡献 | It does not claim to do / 不宣称做到 |
-| --- | --- | --- |
-| Pre-fit-session review | Organize body, garment, visual, material, and intent evidence | Replace expert judgment with an opaque score |
-| Fit-comment preparation | Compare a small set of explicit candidate corrections | Automatically issue a production-ready pattern |
-| Sample iteration planning | Predict and rank next-fit outcomes when a verifier exists | Promise a real-world fit result without verification |
-| Pattern-maker handoff | Preserve intended action, measured realization, provenance, and side effects | Copy intended delta into realized delta |
-| Research and QA | Measure regret, side effects, and first-pass correction | Use ordinary classification accuracy as the north star |
-
-## What FitGround does / 系统做什么
-
-FitGround combines five kinds of information about an already-observed sample:
-
-```text
-Current fit image / 3D evidence       I
-Body measurements                     B
-Garment measurements or geometry      G
-Material and garment metadata         M
-Fit intent                            F
-```
-
-Together they form a current state `s = (I, B, G, M, F)`. Given a candidate garment correction `a = ΔG`, FitGround’s central learning target is:
-
-```text
-(s, a) → ŝ'
-```
-
-In plain language: **given the current sample and one candidate modification, predict the next fit state.** Selection happens downstream:
-
-```text
-a* = argmax_a U(ŝ', a)
-```
-
-其中 utility `U` 至少考虑目标区域 fit error、修改幅度与未预期副作用。这个建模选择将项目从“直接预测一个动作”转为“比较多个动作分别会带来什么后果”。
-
-### Intended output / 预期输出
-
-For a future verified run, FitGround is designed to return:
-
-1. A **CauseHypothesis** — a likely explanation with supporting evidence and verification status.
-2. Ranked **CandidateCorrections** — precise, bounded garment changes.
-3. A **PredictedFitOutcome** per candidate — regional before/after state, direction, magnitude, side effects, confidence, and provenance.
-4. A **CorrectionLattice** — competing actions, outcomes, utilities, and an oracle only when simulation exists.
-5. A recommendation only when an available outcome and utility genuinely support one.
-
-模型可以提出 likely cause，但不把 cause label 伪装为绝对物理真值。一个诊断是否可信，主要取决于它能否正确预测干预后果。
-
-## Decision loop / 决策闭环
-
-```mermaid
-flowchart TD
-    A[Current sample has a fit problem<br/>当前样衣出现 fit 问题] --> B[Body + Garment + Visual<br/>Material + Fit Intent]
-    B --> C[Multimodal understanding<br/>多模态理解]
-    C --> D[Likely cause hypothesis<br/>可能原因假设]
-    D --> E[Candidate corrections<br/>候选修正动作]
-    E --> F[Fit transition prediction<br/>(state, action) to next state]
-    F --> G[Physics-based simulated verifier<br/>物理仿真验证]
-    G --> H[Utility, regret, side effects<br/>效用、遗憾值与副作用]
-    H --> I[Lowest-regret correction<br/>最低遗憾修正建议]
-```
-
-The simulator is a **physics-based simulated verifier**, not “real-world ground truth.” Results must preserve backend configuration, artifacts, hashes, and failures rather than presenting a render as fact about a physical production sample.
-
-仿真在 FitGround 中不是“现实世界真值”，而是可追溯的 simulated verifier。任何未运行、未校准或失败的结果必须明确显示为 `NOT_RUN`、`NOT_VERIFIED` 或 `FAILED`。
-
-## V0.1 action space / V0.1 动作空间
-
-FitGround starts small on purpose. V0.1 supports only three explicit action families:
-
-| Action family | Meaning / 含义 | Current status / 当前状态 |
-| --- | --- | --- |
-| `bust_circumference_delta_cm` | Change garment bust circumference by a named centimetre delta | Contract-ready; mapping not calibrated |
-| `shoulder_width_delta_cm` | Change garment shoulder width by a named centimetre delta | Contract-ready; mapping not calibrated |
-| `sleeve_length_delta_cm` | Change garment sleeve length by a named centimetre delta | Contract-ready; mapping not calibrated |
-
-Every candidate records both values below; they are never automatically copied:
-
-```text
-intended_delta_cm  = requested correction, e.g. +3.00 cm
-realized_delta_cm  = physically measured result after a verified operation
-```
-
-`realized_delta_cm` remains `null` until a pattern/backend operation has actually happened and been measured. Ambiguous actions such as “armhole +1 cm” are deliberately excluded until their physical mapping is explicit and calibrated.
-
-## Research design / 研究设计
-
-### Diagnosis is validated by intervention prediction
-
-Suppose a chest symptom leads to the hypothesis **insufficient bust ease**. That hypothesis is useful only if it predicts an ordered response:
-
-```text
-Bust +1 cm  → slight improvement
-Bust +2 cm  → stronger improvement
-Bust +3 cm  → target fit
-
-Shoulder +1 cm control → no comparable improvement, or a different side effect
-```
-
-```text
-Diagnosis credibility ≈ intervention predictive validity
-```
-
-FitGround 因此不依赖一个“看起来物理正确”的固定 cause ontology；它要求 cause hypothesis 在候选干预的相对效果上经得起验证。
-
-### The correction lattice / 反事实修正格
-
-The core data structure is a **Counterfactual Fit Correction Lattice**, not a final TIGHT / REGULAR / LOOSE dataset.
-
-```text
-Current state
-├── Bust +1 cm       → simulated next state
-├── Bust +2 cm       → simulated next state
-├── Bust +3 cm       → simulated next state
-├── Shoulder +1 cm   → control outcome
-└── Sleeve -1 cm     → control outcome
-```
-
-Each lattice preserves current state, visual assets, material, garment type, fit intent, intended action, independently measured realized delta, next state, side effects, utility, source revisions, hashes, and failure artifacts.
-
-旧版 Controlled Fit Ladder 被完整保留，但重新定位为 `LEGACY / SIMULATION SANITY / INTERVENTION FOUNDATION`，不再被误称为产品的最终 hero dataset。
-
-### Visual disambiguation / 视觉消歧
-
-The future data design must include cases a measurement-only baseline cannot solve:
-
-- Same measurements, different visual symptom
-- Similar visual symptom, different intervention response
-- Same ease, different material
-- Same garment, different fit intent
-
-这组原则构成 **Visual-Disambiguation Set**：多模态模型的价值必须来自真正的视觉、材质与意图消歧，而不是从尺寸字段中走捷径。
-
-### Metrics / 指标
-
-The north-star metric is **Simulation-Verified First-Pass Correction Rate**: the share of first-ranked corrections that reach target fit in simulated verification without unacceptable new problems.
-
-Supporting measures are **Intervention Regret** `U(a*) - U(â)`, **Side-Effect Rate**, and **Correction Magnitude Error**. Ordinary classification accuracy can be diagnostic, but is not the business north star.
-
-## Architecture and code map / 架构与代码地图
-
-```text
-┌──────────────────────────────────────────────────────────────────────┐
-│ CurrentFitState                                                       │
-│ body · garment · visual assets · material · garment type · fit intent │
-│ region fit state · provenance                                         │
-└───────────────────────────────┬──────────────────────────────────────┘
-                                ▼
-┌──────────────────────────────────────────────────────────────────────┐
-│ Multimodal Fit Transition Model                                       │
-│              (CurrentFitState, CandidateCorrection) → PredictedFitOutcome │
-└───────────────────────────────┬──────────────────────────────────────┘
-                                ▼
-┌──────────────────────────────────────────────────────────────────────┐
-│ Physics-based simulated verifier                                      │
-│ apply action → measure realized delta → simulate → render → extract   │
-│ outcome → record provenance, side effects, and failures               │
-└──────────────────────────────────────────────────────────────────────┘
-```
-
-The source-evidence-based runtime diagram is available in [docs/architecture/FITGROUND_EXISTING_RUNTIME_ARCHITECTURE.html](docs/architecture/FITGROUND_EXISTING_RUNTIME_ARCHITECTURE.html).
-
-| Path | Responsibility / 职责 |
-| --- | --- |
-| [`src/fitground/correction/`](src/fitground/correction/) | Typed correction contracts, planning API, deterministic lattice builder, validation |
-| [`schemas/fit_correction_v0.1.schema.json`](schemas/fit_correction_v0.1.schema.json) | Machine-readable V0.1 schema |
-| [`scripts/calibrate_correction_action.py`](scripts/calibrate_correction_action.py) | Dry-run framework for intended vs. realized calibration |
-| [`scripts/build_correction_lattice.py`](scripts/build_correction_lattice.py) | Deterministic planned lattice construction |
-| [`scripts/validate_correction_lattice.py`](scripts/validate_correction_lattice.py) | Structural and completeness validation |
-| [`scripts/run_fit_correction_smoke.py`](scripts/run_fit_correction_smoke.py) | Failure-preserving GPU smoke-runner seam |
-| [`tests/`](tests/) | Contract, determinism, failure-preservation, and frozen-history tests |
-| [`docs/`](docs/) and [`reports/`](reports/) | Contracts, architecture, audit, migration, readiness, and evidence |
-| [`openspec/`](openspec/) | Machine-reviewable product and implementation changes |
-
-## Data foundation / 数据基础
-
-Raw external data is **not** committed to this repository. Source IDs, revisions, hashes, roles, and acquisition status live in [`artifacts/FITGROUND_V0_1_P0_SOURCE_ACQUISITION.json`](artifacts/FITGROUND_V0_1_P0_SOURCE_ACQUISITION.json).
-
-| Asset | Role in FitGround | What it is not |
-| --- | --- | --- |
-| FIT-Clean v0.1 | Observational visual/measurement/provenance foundation | A correction-outcome dataset |
-| Legacy counterfactual matching | Analysis of paired FIT observations | Verified garment intervention data |
-| Controlled Fit Ladder / GPU E0 | Simulation sanity and intervention foundation | Calibrated V0.1 action space |
-| [GarmentCode](https://github.com/maria-korosteleva/GarmentCode) | Parametric garment and future calibration substrate | A verified FitGround action mapping today |
-| [FitVTON](https://github.com/ZenoNing/FitVTON) | Candidate GarmentCodeV2 / Warp pipeline bootstrap | A direct correction-label dataset |
-| [GarmentCodeVTONDataset](https://huggingface.co/datasets/ZenoNing/GarmentCodeVTONDataset) | Synthetic visual and pipeline bootstrap | A calibrated intended-to-realized lattice |
-| [FittingEffectDataset](https://huggingface.co/datasets/ZenoNing/FittingEffectDataset) | Lightweight real-visual try-on evaluation/probe | A correction side-effect dataset |
-
-### Data principles / 数据原则
-
-- Public research use is evaluated by product relevance and source terms—not automatically rejected because a dataset is non-commercial.
-- Raw source data, external code snapshots, caches, and logs stay outside Git to keep the repository reproducible and lightweight.
-- A completed download proves byte acquisition, not the semantic existence of V0.1 correction labels.
-- Upstream licenses and redistribution rules remain separate from FitGround code. Do not re-upload an upstream dataset simply because it is publicly downloadable.
-
-Read [Data Foundation](docs/FITGROUND_DATA_FOUNDATION_v0.1.md) and [Matching Dataset Scout](reports/FITGROUND_V0_1_MATCHING_DATASET_SCOUT.md) for exact revisions, storage boundaries, and GPU gates.
-
-## What works today / 当前可运行内容
-
-### Verified locally / 已在本地验证
-
-- `CurrentFitState`, `CauseHypothesis`, `CandidateCorrection`, `PredictedFitOutcome`, and `CorrectionLattice` validate multimodal and provenance fields.
-- Unsupported action families are rejected; candidate and lattice IDs are deterministic.
-- `intended_delta_cm` and `realized_delta_cm` remain separate.
-- The lattice validator detects duplicate actions, missing outcomes, incomplete provenance, and invalid rankings.
-- Calibration and smoke-runner dry runs preserve `NOT_RUN` / `NOT_VERIFIED` semantics.
-- A non-dry-run backend absence becomes a preserved `SIMULATION_BACKEND_NOT_CONFIGURED` artifact rather than a fabricated result.
-- Frozen FIT-Clean / experimental / GPU E0 evidence is protected by hash-based tests.
-
-### Not claimed yet / 当前不作此类声明
-
-- Bust circumference is calibrated for GarmentCode `shirt.width.v`; shoulder remains NOT_VERIFIED. Sleeve length `.v` did not change the current panel-dy measurement (realized 0.0), so that family is still NOT_VERIFIED.
-- Physics + render exist for the CHEST_CASE bust lattice on static `mean_all.obj`, not SMPL-X.
-- Observational B0/B1/B1-XGB are trained. Vision B2/B3 used **generated pattern drawings**, not FIT-100K images.
-- Transition SFT and Decision SFT were trained on a measured 88-row lattice. They are small MLP/char-LM models, not a pretrained MLLM.
-- RLVR ran, but Decision SFT already had zero utility regret on the holdout, so RLVR is `COMPLETED_NOT_JUSTIFIED` as an extra optimizer.
-- No production recommendation model, no real-world first-pass improvement claim.
-
-This evidence boundary is a feature: FitGround is designed to fail visibly before it is allowed to overclaim.
-
-## Quick start / 快速开始
-
-### Install and verify / 安装与验证
-
-```powershell
-# From the repository root / 在仓库根目录执行
-.\.venv\Scripts\python.exe -m pip install --no-deps -e .
-.\.venv\Scripts\python.exe -m pytest -q
-```
-
-Expected current result / 当前预期结果:
-
-```text
-58 passed, 2 skipped
-```
-
-### Plan a smoke run safely / 安全地规划 smoke run
-
-```powershell
-.\.venv\Scripts\python.exe scripts\run_fit_correction_smoke.py `
-  --dry-run `
-  --case CHEST_CASE `
-  --output-dir .\local_runs
-```
-
-The dry run writes a plan without inventing a simulation result. Without `--dry-run`, the local runner currently preserves a failure artifact because no verified simulation backend is configured. This is expected.
-
-不带 `--dry-run` 的本地 runner 会保留失败 artifact，而不是伪造 after-state、render、utility 或 realized delta；这是正确的安全边界。
-
-## Validation and roadmap / 验证与路线图
-
-### Evidence and reproducibility / 证据与可复现性
-
-| Layer | Current mechanism |
-| --- | --- |
-| Schema integrity | JSON Schema plus contract tests |
-| Determinism | Stable candidate/lattice IDs and uniqueness checks |
-| Semantic honesty | Explicit `NOT_RUN`, `NOT_VERIFIED`, `SIMULATED`, and `FAILED` states |
-| Failure semantics | Failure artifacts are retained rather than silently omitted |
-| Provenance | Source revisions, hashes, environment fields, seeds, and artifact paths |
-| Legacy preservation | Hash-based protection for frozen FIT-Clean / contract / GPU E0 files |
-| Publication safety | Git ignores raw data, upstream copies, caches, logs, and local tooling state |
-
-Evidence entry points:
-
-- [Product Contract](docs/FITGROUND_PRODUCT_CONTRACT_v0.1.md)
-- [Technical Contract](docs/FITGROUND_TECHNICAL_CONTRACT_v0.1.md)
-- [File-level Codebase Audit](reports/FITGROUND_V0_1_CODEBASE_AUDIT.md)
-- [Old-to-New Migration Matrix](reports/FITGROUND_V0_1_MIGRATION_MATRIX.md)
-- [Pre-GPU Readiness Review](reports/FITGROUND_V0_1_PRE_GPU_READINESS.md)
-- [Execution Playbook Cross-check](reports/FITGROUND_V0_1_EXECUTION_PLAYBOOK_CROSSCHECK.md)
-
-### Gate-driven roadmap / 按验证门槛推进的路线图
-
-**Phase 0 — correction contracts and evidence boundary ✅**
-
-- Product and technical contracts frozen
-- V0.1 schemas, deterministic lattice, dry-run calibration, and failure-preserving runner implemented
-- Legacy evidence audited and preserved
-
-**Phase 1 — atomic GPU correction calibration ⏳**
-
-1. Map one named V0.1 action to auditable GarmentCode / pattern parameters.
-2. Measure intended versus realized delta and cross-region effects.
-3. Run one before → modification → after simulation/render/outcome path with full provenance.
-4. Only then extend from chest to shoulder and sleeve actions.
-
-**Phase 2 — correction lattice generation ⏳**
-
-- Generate competing intervention candidates and controls.
-- Record visual evidence, affected regions, utility, side effects, and oracle actions only where simulation exists.
-- Build visual-disambiguation splits that defeat measurement-only shortcuts.
-
-**Phase 3 — model baselines and transition learning ✅ (measured lattice, not FIT-100K vision)**
-
-1. Rule/ease heuristic (B0) — test MAE 8.11 cm
-2. Measurement baseline (B1 OLS / Ridge / XGBoost) — best XGB MAE 7.88 cm
-3. Generated-pattern vision (B2 Ridge MAE 3.45 cm beats B2 CNN 6.23 cm)
-4. Counterfactual Transition SFT + Decision SFT on 88 measured `(s,a,s')` rows
-
-**Phase 4 — physics-verified optimization ⚠ completed, not justified**
-
-Physics-Verified RLVR was executed (300 REINFORCE steps, cached measured utilities). Decision SFT already matched the oracle on the holdout (accuracy 1.0, regret 0), so RLVR added no residual gain.
-
-## Scope, contribution, and licensing / 范围、贡献与许可证
-
-### Non-goals / 非目标
-
-FitGround is **not** currently building consumer sizing recommendations, generic virtual try-on, return prediction, merchandising, inventory allocation, PIM, agentic commerce, global sizing, a complete fashion platform, or an unverified action-label training benchmark.
-
-聚焦不是功能缺失。FitGround 的 wedge 是把“下一版样衣该怎么改”从经验驱动的 trial-and-error，逐步变成可比较、可验证、可追溯的 correction decision。
-
-### Contributing / 如何贡献
-
-Contributions are welcome when they preserve the evidence boundary:
-
-1. Read the [Product Contract](docs/FITGROUND_PRODUCT_CONTRACT_v0.1.md) and [Technical Contract](docs/FITGROUND_TECHNICAL_CONTRACT_v0.1.md).
-2. Do not turn `NOT_RUN` into an implied result or copy intended into realized deltas.
-3. Preserve failure artifacts, provenance, and frozen historical evidence.
-4. Add tests for new validation, transition, calibration, or state semantics.
-5. Keep raw datasets, credentials, caches, and heavyweight generated artifacts outside Git.
-
-### License and attribution / 许可证与归属
-
-This repository currently has **no repository-wide code license file**. Public visibility supports inspection and reproducibility, but it does not grant an unstated license to reuse code or upstream assets. A repository-wide license must be chosen explicitly before representing this project as reusable open-source software.
-
-External projects and datasets—including GarmentCode, FitVTON, GarmentCodeVTONDataset, FittingEffectDataset, SMPL/SMPL-X assets, and NVIDIA Warp components—retain their own licenses, notices, and redistribution conditions. Review those terms before downloading, modifying, redistributing, or publishing derivatives.
-
-FitGround’s future simulation foundation builds on public work from the [GarmentCode](https://github.com/maria-korosteleva/GarmentCode) and [FitVTON](https://github.com/ZenoNing/FitVTON) ecosystems. This repository documents how those assets may be evaluated for FitGround; it does not claim ownership of their code, data, weights, or results.
-
----
-
-## Read the evidence, not just the headline / 用证据理解项目
-
-For an honest current-state assessment, start with the [Product Contract](docs/FITGROUND_PRODUCT_CONTRACT_v0.1.md), [Technical Contract](docs/FITGROUND_TECHNICAL_CONTRACT_v0.1.md), [Pre-GPU Readiness Review](reports/FITGROUND_V0_1_PRE_GPU_READINESS.md), [Data Foundation](docs/FITGROUND_DATA_FOUNDATION_v0.1.md), and [Codebase Audit](reports/FITGROUND_V0_1_CODEBASE_AUDIT.md).
-
-> **FitGround’s standard:** reuse what is correct, measure what is claimed, preserve what is frozen, and build only what makes the next sample more likely to fit right.
->
-> **FitGround 的标准：保留正确的基础，测量每一项主张，冻结每一份证据，只构建真正能提高下一版样衣一次改对概率的能力。**
+## 硬限制
+
+- 没有 SMPL-X 权重，没有真人验证。  
+- 目前只有 Shirt / tee 家族。  
+- v0.2 的 677 张纸样 PNG 和大批 `.obj` 留在已停机的 GPU 上，未进本仓；**数字在 JSON 里**。  
+- Qwen2-VL 评测 n=12，匹配率接近多数类。  
+- Decision / RLVR holdout 太小。  
+- 物理 clearance 变化是毫米级人台结果，不是生产 fit session。
+
+<p align="right">
+  <b>中文</b> · <a href="./README_EN.md">English</a>
+</p>

@@ -15,7 +15,7 @@ FitGround 不是通用 virtual try-on、消费者尺码推荐或服装聊天机�
 | Physics verifier | Warp XPBD on static mean_all.obj; smoke PASS; SMPL-X bodies BLOCKED |
 | Bust calibration | PARTIAL: realized_delta measured to 1e-14 cm; waist coupled via shirt.width.v |
 | V0.1 actions | Bust mapped; shoulder/sleeve NOT_VERIFIED |
-| Model training | Observational B0/B1 only; SFT/RLVR NOT_JUSTIFIED |
+| Model training | B0/B1/B1-XGB on FIT-Clean; B2/B3 on generated pattern PNGs; Transition+Decision SFT PASS; RLVR run, no residual gap |
 | Raw external data | Excluded from Git; FIT-100K not downloaded |
 
 ## Demo / Results / 当前 GPU 结果
@@ -26,7 +26,16 @@ This GPU pass implemented a real correction slice, not a tutorial:
 2. Bust atomic calibration PARTIAL (`artifacts/bust_atomic_calibration.json`): intended vs realized +1/+2/+3 cm match to numerical noise; +3 cm repeat matches exactly.
 3. Physics + render PASS for baseline / +1 / +2 / +3 cm (`artifacts/gpu/physics_lattice/`).
 4. CHEST_CASE utility ranking oracle = bust +3 cm (`artifacts/correction_lattice_chest_case.json`).
-5. Observational B0/B1 MAE ~8.1 cm on garment bust (not intervention GT).
+5. Observational B0 MAE 8.11 / B1 OLS 8.08 / B1 XGBoost 7.88 cm on FIT-Clean garment bust (not intervention GT).
+6. Generated-pattern B2 Ridge MAE 3.45 cm; B2 CNN 6.23 cm (CNN does not beat Ridge on 192 drawings).
+7. Transition SFT MLP realized-delta test MAE 0.47 cm on 16 held-out rows (identity map is 0.00 on this calibrated bust/length grid).
+8. Decision SFT MLP action accuracy 1.0 on 3 held-out CHEST_CASE-style states; RLVR REINFORCE ran 300 CUDA steps and did not improve a zero-regret SFT policy.
+
+![Transition SFT MLP val loss](reports/figures/transition_sft_mlp_loss.png)
+
+![Decision SFT MLP CE](reports/figures/decision_sft_mlp_loss.png)
+
+![RLVR measured utility](reports/figures/rlvr_reward.png)
 
 ![Intended vs realized bust delta](reports/figures/bust_intended_vs_realized.png)
 
@@ -311,10 +320,12 @@ Read [Data Foundation](docs/FITGROUND_DATA_FOUNDATION_v0.1.md) and [Matching Dat
 
 ### Not claimed yet / 当前不作此类声明
 
-- No GarmentCode pattern-parameter mapping has been calibrated for the three V0.1 actions.
-- No local physics simulation, render, outcome extractor, or measured `realized_delta_cm` has been executed.
-- No MLLM, SFT, LoRA, DPO, GRPO, RLVR, or production recommendation model has been trained.
-- No simulation-verified correction recommendation is emitted by the current local scaffold.
+- Bust circumference is calibrated for GarmentCode `shirt.width.v`; shoulder remains NOT_VERIFIED. Sleeve length `.v` did not change the current panel-dy measurement (realized 0.0), so that family is still NOT_VERIFIED.
+- Physics + render exist for the CHEST_CASE bust lattice on static `mean_all.obj`, not SMPL-X.
+- Observational B0/B1/B1-XGB are trained. Vision B2/B3 used **generated pattern drawings**, not FIT-100K images.
+- Transition SFT and Decision SFT were trained on a measured 88-row lattice. They are small MLP/char-LM models, not a pretrained MLLM.
+- RLVR ran, but Decision SFT already had zero utility regret on the holdout, so RLVR is `COMPLETED_NOT_JUSTIFIED` as an extra optimizer.
+- No production recommendation model, no real-world first-pass improvement claim.
 
 This evidence boundary is a feature: FitGround is designed to fail visibly before it is allowed to overclaim.
 
@@ -391,16 +402,16 @@ Evidence entry points:
 - Record visual evidence, affected regions, utility, side effects, and oracle actions only where simulation exists.
 - Build visual-disambiguation splits that defeat measurement-only shortcuts.
 
-**Phase 3 — model baselines and transition learning ⏳**
+**Phase 3 — model baselines and transition learning ✅ (measured lattice, not FIT-100K vision)**
 
-1. Rule/ease heuristic
-2. Measurement + metadata baseline
-3. Base multimodal model
-4. Counterfactual SFT only after valid transition data exists
+1. Rule/ease heuristic (B0) — test MAE 8.11 cm
+2. Measurement baseline (B1 OLS / Ridge / XGBoost) — best XGB MAE 7.88 cm
+3. Generated-pattern vision (B2 Ridge MAE 3.45 cm beats B2 CNN 6.23 cm)
+4. Counterfactual Transition SFT + Decision SFT on 88 measured `(s,a,s')` rows
 
-**Phase 4 — physics-verified optimization ⏳**
+**Phase 4 — physics-verified optimization ⚠ completed, not justified**
 
-Physics-Verified RLVR is considered only if counterfactual supervised learning is effective and a verified optimization need remains. It is intentionally not implemented now.
+Physics-Verified RLVR was executed (300 REINFORCE steps, cached measured utilities). Decision SFT already matched the oracle on the holdout (accuracy 1.0, regret 0), so RLVR added no residual gain.
 
 ## Scope, contribution, and licensing / 范围、贡献与许可证
 

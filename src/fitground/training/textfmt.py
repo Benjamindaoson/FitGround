@@ -58,7 +58,5 @@ def format_decision_example(row: Mapping[str, Any], include_target: bool = True)
 
 
 def parse_generated_fields(text: str) -> dict[str, str]:
-    """Parse KEY=value tokens from a generated continuation."""
-    if "->" in text:
-        text = text.split("->", 1)[-1]
+    """Parse KEY=value tokens from a prompt, continuation, or full example."""
     return {k: v for k, v in FIELD_RE.findall(text)}

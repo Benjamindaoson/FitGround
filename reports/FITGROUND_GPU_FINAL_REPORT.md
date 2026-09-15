@@ -8,7 +8,7 @@ shirt.width.v mutation -> 2D panel measurement (realized_delta_cm) -> Warp XPBD 
 
 Oracle on the enumerated CHEST_CASE (target = baseline bust + 3 cm) is bust_plus_3cm. Shoulder/sleeve controls are NOT_VERIFIED. Overall bust gate is PARTIAL because shirt.width.v scales full torso girth (waist tracks bust).
 
-PyTorch CUDA is PARTIAL (NVIDIA CDN). SMPL-X parametric bodies are BLOCKED (licensed files absent). MLLM SFT/RLVR are NOT_JUSTIFIED.
+PyTorch CUDA is PASS (`torch 2.5.1+cu124` + cuDNN 9.1 from download.pytorch.org). SMPL-X parametric bodies remain BLOCKED. Transition/Decision SFT are PASS on a measured 88-row lattice. RLVR ran on CUDA and is COMPLETED_NOT_JUSTIFIED: Decision SFT already had zero holdout regret.
 
 ## Environment
 
@@ -44,19 +44,31 @@ Observational forward prediction of garment_bust_cm (person-grouped split, not i
 
 - B0: test MAE 8.11 cm, RMSE 10.94 cm
 - B1 OLS: test MAE 8.08 cm, RMSE 10.27 cm
-- B2/B3: NOT_RUN (no local images)
+- B1 Ridge: test MAE 8.08 cm
+- B1 XGBoost: test MAE 7.88 cm, RMSE 10.11 cm
+- B2/B3 FIT-100K: NOT_RUN (images not on disk)
+- B2 generated-pattern Ridge: test MAE 3.45 cm (192 GarmentCode drawings, state-grouped split)
+- B2 generated-pattern CNN: test MAE 6.23 cm on CUDA (does not beat Ridge)
+- B3 generated-pattern CNN+body: test MAE 6.24 cm
 
 ## Vision necessity
 
-MLLM NECESSITY NOT ESTABLISHED. No visual-disambiguation experiment with images on disk.
+MLLM NECESSITY NOT ESTABLISHED. Pixel Ridge beats the CNN on this drawing set. Sleeve.length.v produced 0.0 cm in the current panel-dy measurement, so visual/sleeve disambiguation was not trained.
 
-## MLLM / RLVR
+## MLLM / SFT / RLVR
 
-NOT_JUSTIFIED: 3 verified bust actions is not an SFT corpus. Physics verifier exists but residual optimization gap is not characterized.
+Measured lattice: 88 `(s,a,s')` rows, 24 decision cases, 289 unique patterns. `realized_delta_cm` is after-minus-before panel geometry.
+
+- Transition SFT MLP: test realized-delta MAE 0.47 cm (identity map MAE 0.00 on this calibrated grid — MLP does not beat the inverse map).
+- Transition tiny char-LM: trained from scratch on CUDA; parse rate 0.31. Not a pretrained MLLM.
+- Decision SFT MLP: holdout action accuracy 1.0, utility regret 0.0 (3 test cases).
+- RLVR: 300 REINFORCE steps, cached measured utilities, CUDA. Before/after holdout accuracy 1.0 / regret 0.0. Status: COMPLETED_NOT_JUSTIFIED.
+
+See `reports/TRAINING_RUN.md` and `artifacts/training/`.
 
 ## Failure cases
 
-- Torch 2.11+cu126 depends on pypi.nvidia.com (timeout).
+- Torch 2.11+cu126 and naive `nvidia-*` pip still hit pypi.nvidia.com. Worked around with torch 2.5.1+cu124 `--no-deps` plus the cuDNN wheel from download.pytorch.org.
 - FitVTON Cloth assumed SMPL-X body_sequence; patched for static OBJ.
 - libigl 2.6 facet_components API change; patched.
 - 80-step smoke did not fully settle; 300-step lattice did (0 non-static verts).
@@ -67,19 +79,20 @@ NOT_JUSTIFIED: 3 verified bust actions is not an SFT corpus. Physics verifier ex
 - Bust edit is a girth multiplier, not a dart.
 - No SMPL-X body library.
 - Observational table is not counterfactual ground truth.
-- No MLLM.
+- SFT models are small MLPs / from-scratch char LMs on 88 measured rows, not a foundation MLLM.
+- Decision holdout is 3 cases; 100% accuracy is not a production result.
 
 ## VERIFIED
 
-Warp CUDA kernel; pattern bust realized_delta; physics+render for baseline/+1/+2/+3; FitGround core tests; observational B0/B1 numbers.
+Warp CUDA kernel; pattern bust realized_delta; physics+render for baseline/+1/+2/+3; FitGround core tests; observational B0/B1/XGB; generated-pattern B2/B3; Transition SFT; Decision SFT; RLVR loop executed.
 
 ## NOT VERIFIED
 
-Shoulder/sleeve mappings; vision necessity; SFT; real-world first-pass improvement.
+Shoulder mapping; sleeve.length.v (0.0 cm under current panel-dy); vision necessity; real-world first-pass improvement; pretrained MLLM post-training.
 
 ## Blocked
 
-Licensed SMPL/SMPL-X model files; NVIDIA pip CDN for full PyTorch CUDA stack.
+Licensed SMPL/SMPL-X model files; NVIDIA pip CDN (workaround used for cuDNN).
 
 ## Resume claims that are supported
 

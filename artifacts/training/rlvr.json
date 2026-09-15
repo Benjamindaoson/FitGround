@@ -1,0 +1,103 @@
+{
+  "task": "physics_verified_rlvr",
+  "reward_source": "cached_measured_lattice_utility",
+  "sft_test_action_accuracy": 1.0,
+  "sft_test_mean_utility_regret": 0.0,
+  "residual_gap_present": false,
+  "justification": "Decision SFT already matches oracle utility on the reported split; RLVR is run for completeness, not because a large residual gap remains.",
+  "torch": {
+    "torch_imported": true,
+    "version": "2.5.1+cu124",
+    "cuda_compiled": "12.4",
+    "cuda_available": true,
+    "device": "cuda",
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "error": null
+  },
+  "warm_start": "/root/workspace/projects/FitGround/artifacts/training/checkpoints/decision_mlp.pt",
+  "reward_curve": "/root/workspace/projects/FitGround/reports/figures/rlvr_reward.png",
+  "status": "PASS",
+  "algorithm": "REINFORCE_on_cached_measured_utilities",
+  "steps": 300,
+  "seed": 0,
+  "device": "cuda",
+  "n_train_cases": 18,
+  "n_test_cases": 3,
+  "before_test": {
+    "accuracy": 1.0,
+    "mean_utility_regret": 0.0,
+    "n": 3
+  },
+  "after_test": {
+    "accuracy": 1.0,
+    "mean_utility_regret": 0.0,
+    "n": 3
+  },
+  "regret_delta": 0.0,
+  "checkpoint": "/root/workspace/projects/FitGround/artifacts/training/checkpoints/rlvr_policy.pt",
+  "history_tail": [
+    {
+      "step": 290,
+      "reward": -0.2515803572787171,
+      "advantage": 2.257727585811954,
+      "loss": 5.5981559853535146e-05
+    },
+    {
+      "step": 291,
+      "reward": -0.5102521273171299,
+      "advantage": 2.261424600355852,
+      "loss": 0.00024585952633060515
+    },
+    {
+      "step": 292,
+      "reward": -0.5102521273171299,
+      "advantage": 2.261424600355852,
+      "loss": 0.00024585952633060515
+    },
+    {
+      "step": 293,
+      "reward": -0.2515803572787171,
+      "advantage": 2.257727585811954,
+      "loss": 5.5981559853535146e-05
+    },
+    {
+      "step": 294,
+      "reward": -0.4993469660304683,
+      "advantage": 2.2602327536967413,
+      "loss": 4.0954990254249424e-05
+    },
+    {
+      "step": 295,
+      "reward": -0.7795898118814264,
+      "advantage": 2.4901204015775766,
+      "loss": 1.424858328391565e-05
+    },
+    {
+      "step": 296,
+      "reward": -0.7795898118814264,
+      "advantage": 2.4901204015775766,
+      "loss": 1.424858328391565e-05
+    },
+    {
+      "step": 297,
+      "reward": -0.5704702649720492,
+      "advantage": 2.2176539241714632,
+      "loss": 2.5379034923389554e-05
+    },
+    {
+      "step": 298,
+      "reward": -0.26742045664725256,
+      "advantage": 2.254256271025729,
+      "loss": 7.094426837284118e-05
+    },
+    {
+      "step": 299,
+      "reward": -0.7795898118814264,
+      "advantage": 2.4901204015775766,
+      "loss": 1.424858328391565e-05
+    }
+  ],
+  "runtime_s": 2.7102932929992676,
+  "note": "Verifier is the measured lattice, not live Warp during the RL loop. No fabricated rewards.",
+  "matrix_status": "COMPLETED_NOT_JUSTIFIED"
+}

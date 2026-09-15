@@ -1,6 +1,6 @@
 {
   "task": "observational_forward_prediction_of_garment_bust_cm",
-  "warning": "This is NOT a controlled intervention. Images are not local. Do not treat as correction ground truth.",
+  "warning": "FIT-Clean B0/B1 are NOT a controlled intervention and are not correction ground truth.",
   "n_rows_usable": 104999,
   "split": {
     "n_people": 103289,
@@ -25,19 +25,128 @@
       "intercept": 17.837911465794424
     },
     "test_rmse_cm": 10.267039342413137,
-    "test_mae_cm": 8.080634882812333
+    "test_mae_cm": 8.080634882812335
   },
+  "n_train": 73488,
+  "n_val": 15759,
+  "n_test": 15752,
   "B2_vision": {
     "status": "NOT_RUN",
-    "reason": "fit_clean image binaries are not on disk; only path refs to FIT-100K"
+    "reason": "fit_clean image binaries are not on disk; FIT-100K was not downloaded"
   },
   "B3_multimodal": {
     "status": "NOT_RUN",
-    "reason": "no local images; not justified to download FIT-100K"
+    "reason": "no local FIT-100K images"
   },
-  "intervention_regret": "NOT_RUN",
-  "simulation_verified_first_pass_correction_rate": "NOT_RUN",
-  "n_train": 73488,
-  "n_val": 15759,
-  "n_test": 15752
+  "B1_ridge": {
+    "rule": "Ridge(alpha=1) on standardized body measurements",
+    "test_rmse_cm": 10.267021538270091,
+    "test_mae_cm": 8.080669151691398
+  },
+  "B1_xgboost": {
+    "rule": "XGBRegressor on body bust/waist/hips/height",
+    "n_estimators": 200,
+    "test_rmse_cm": 10.107506726908673,
+    "test_mae_cm": 7.875043460716143
+  },
+  "B2_generated_pattern_cnn": {
+    "status": "PASS",
+    "dataset": "generated_garmentcode_pattern_png",
+    "not_fit100k": true,
+    "model": "SmallCNN",
+    "epochs": 40,
+    "batch_size": 16,
+    "seed": 0,
+    "device": "cuda",
+    "torch": {
+      "torch_imported": true,
+      "version": "2.5.1+cu124",
+      "cuda_compiled": "12.4",
+      "cuda_available": true,
+      "device": "cuda",
+      "gpu_name": "NVIDIA GeForce RTX 4090",
+      "error": null
+    },
+    "n_train": 134,
+    "n_val": 29,
+    "n_test": 29,
+    "test_rmse_cm": 7.137265645262104,
+    "test_mae_cm": 6.234292807802393,
+    "final_train_mse": 41.22790230645074,
+    "peak_cuda_bytes": 81435136,
+    "checkpoint": "/root/workspace/projects/FitGround/artifacts/training/checkpoints/b2_cnn.pt",
+    "history_tail": [
+      {
+        "epoch": 35,
+        "train_mse": 41.180383894178604
+      },
+      {
+        "epoch": 36,
+        "train_mse": 47.61184946695963
+      },
+      {
+        "epoch": 37,
+        "train_mse": 47.91983286539713
+      },
+      {
+        "epoch": 38,
+        "train_mse": 44.60149998135037
+      },
+      {
+        "epoch": 39,
+        "train_mse": 41.22790230645074
+      }
+    ],
+    "runtime_s": 8.010847091674805
+  },
+  "B3_generated_pattern_multimodal": {
+    "status": "PASS",
+    "dataset": "generated_garmentcode_pattern_png",
+    "not_fit100k": true,
+    "model": "SmallCNN+body",
+    "epochs": 40,
+    "batch_size": 16,
+    "seed": 0,
+    "device": "cuda",
+    "torch": {
+      "torch_imported": true,
+      "version": "2.5.1+cu124",
+      "cuda_compiled": "12.4",
+      "cuda_available": true,
+      "device": "cuda",
+      "gpu_name": "NVIDIA GeForce RTX 4090",
+      "error": null
+    },
+    "n_train": 134,
+    "n_val": 29,
+    "n_test": 29,
+    "test_rmse_cm": 7.183053975738276,
+    "test_mae_cm": 6.236495861243934,
+    "final_train_mse": 39.91860495673286,
+    "peak_cuda_bytes": 83683840,
+    "checkpoint": "/root/workspace/projects/FitGround/artifacts/training/checkpoints/b3_cnn.pt",
+    "history_tail": [
+      {
+        "epoch": 35,
+        "train_mse": 40.937043295966255
+      },
+      {
+        "epoch": 36,
+        "train_mse": 39.31041124131944
+      },
+      {
+        "epoch": 37,
+        "train_mse": 43.7419056362576
+      },
+      {
+        "epoch": 38,
+        "train_mse": 41.90286064147949
+      },
+      {
+        "epoch": 39,
+        "train_mse": 39.91860495673286
+      }
+    ],
+    "runtime_s": 7.269774436950684
+  }
 }

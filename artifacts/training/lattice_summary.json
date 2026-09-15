@@ -1,0 +1,90 @@
+{
+  "task": "measured_training_lattice",
+  "n_transitions": 88,
+  "n_vision_samples": 192,
+  "n_decision_cases": 24,
+  "n_unique_patterns_generated": 289,
+  "cache_hits": 19,
+  "families": [
+    "bust_circumference_delta_cm",
+    "shirt_length_delta_cm"
+  ],
+  "probes": [
+    {
+      "parameter": "shirt.width",
+      "measure_key": "bust_circumference_cm",
+      "v0": 1.05,
+      "v1": 1.0800478662509378,
+      "before_cm": 104.83273500000001,
+      "after_cm": 107.83273500000001,
+      "realized_delta_cm": 3.0,
+      "cm_per_unit": 99.8406999999998,
+      "body_name": "mean_all"
+    },
+    {
+      "parameter": "sleeve.length",
+      "measure_key": "sleeve_length_cm",
+      "v0": 0.3,
+      "v1": 0.4,
+      "before_cm": 21.06146554666354,
+      "after_cm": 21.06146554666354,
+      "realized_delta_cm": 0.0,
+      "cm_per_unit": 0.0,
+      "body_name": "mean_all"
+    },
+    {
+      "parameter": "shirt.length",
+      "measure_key": "length_cm",
+      "v0": 1.2,
+      "v1": 1.4,
+      "before_cm": 49.94076049824885,
+      "after_cm": 57.319020502922655,
+      "realized_delta_cm": 7.378260004673805,
+      "cm_per_unit": 36.891300023369034,
+      "body_name": "mean_all"
+    },
+    {
+      "parameter": "shirt.width",
+      "measure_key": "bust_circumference_cm",
+      "v0": 1.05,
+      "v1": 1.0800478662509378,
+      "before_cm": 102.27798000000001,
+      "after_cm": 105.20487053662484,
+      "realized_delta_cm": 2.926890536624825,
+      "cm_per_unit": 97.40759999999918,
+      "body_name": "mean_female"
+    },
+    {
+      "parameter": "sleeve.length",
+      "measure_key": "sleeve_length_cm",
+      "v0": 0.3,
+      "v1": 0.4,
+      "before_cm": 21.03115951756412,
+      "after_cm": 21.03115951756412,
+      "realized_delta_cm": 0.0,
+      "cm_per_unit": 0.0,
+      "body_name": "mean_female"
+    },
+    {
+      "parameter": "shirt.length",
+      "measure_key": "length_cm",
+      "v0": 1.2,
+      "v1": 1.4,
+      "before_cm": 48.299235718793796,
+      "after_cm": 55.450215700747265,
+      "realized_delta_cm": 7.150979981953469,
+      "cm_per_unit": 35.75489990976735,
+      "body_name": "mean_female"
+    }
+  ],
+  "max_bust_calibration_error_cm": 2.842170943040401e-14,
+  "realized_source": "panel_geometry_after_minus_before",
+  "note": "FIT-100K images were not downloaded. Vision samples are GarmentCode pattern drawings.",
+  "paths": {
+    "transitions": "/root/workspace/projects/FitGround/artifacts/training/transition_lattice.jsonl",
+    "vision": "/root/workspace/projects/FitGround/artifacts/training/vision_pattern_samples.jsonl",
+    "decisions": "/root/workspace/projects/FitGround/artifacts/training/decision_cases.json",
+    "png_dir": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs"
+  },
+  "runtime_s": 932.5117683410645
+}

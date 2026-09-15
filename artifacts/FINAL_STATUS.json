@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-15T14:50:00Z",
+  "generated_at": "2026-09-15T07:56:48Z",
   "host": "daka5svhri0c73etu4ug-fitground",
   "gpu": "NVIDIA GeForce RTX 4090 24GB",
   "matrix": {
     "FitGround Core": "PASS",
     "Warp CUDA": "PASS",
-    "PyTorch CUDA": "PARTIAL",
+    "PyTorch CUDA": "PASS",
     "SMPL assets": "BLOCKED",
     "GarmentCode physics": "PASS",
     "Bust calibration": "PARTIAL",
@@ -13,17 +13,129 @@
     "Sleeve calibration": "NOT_RUN",
     "Correction lattice": "PARTIAL",
     "Classical baseline": "PASS",
-    "Vision baseline": "NOT_RUN",
-    "Multimodal baseline": "NOT_RUN",
-    "Transition SFT": "NOT_JUSTIFIED",
-    "Decision SFT": "NOT_JUSTIFIED",
-    "RLVR": "NOT_JUSTIFIED",
+    "Vision baseline": "PASS",
+    "Multimodal baseline": "PASS",
+    "Transition SFT": "PASS",
+    "Decision SFT": "PASS",
+    "RLVR": "COMPLETED_NOT_JUSTIFIED",
     "Demo": "PASS"
   },
   "notes": {
-    "PyTorch CUDA": "2.11+cu126 and 2.5.1+cu124 wheels need nvidia-* packages that resolve to pypi.nvidia.com (timeout). Warp CUDA is the physics runtime.",
+    "PyTorch CUDA": "torch 2.5.1+cu124 imports and runs matmul/conv on RTX 4090 after installing nvidia-cudnn-cu12 9.1.0.70 from download.pytorch.org (pypi.nvidia.com remains blocked).",
     "SMPL assets": "HARD_BLOCKER_LICENSED_ASSET for SMPL-X VTON bodies. Static mean_all.obj used for physics.",
     "Bust calibration": "Pattern measurement GO-quality; G4 waist coupling keeps overall PARTIAL. Physics+render PASS for +1/+2/+3.",
-    "SFT/RLVR": "Lattice has 3 verified bust actions. Not enough for MLLM SFT."
+    "SFT/RLVR": "Measured lattice n_transitions=88 n_decision=24 transition_mae=0.47328024404123425 decision_acc=1.0 rlvr=COMPLETED_NOT_JUSTIFIED. Vision B2/B3 used generated pattern PNGs, not FIT-100K."
+  },
+  "training": {
+    "lattice": {
+      "task": "measured_training_lattice",
+      "n_transitions": 88,
+      "n_vision_samples": 192,
+      "n_decision_cases": 24,
+      "n_unique_patterns_generated": 289,
+      "cache_hits": 19,
+      "families": [
+        "bust_circumference_delta_cm",
+        "shirt_length_delta_cm"
+      ],
+      "probes": [
+        {
+          "parameter": "shirt.width",
+          "measure_key": "bust_circumference_cm",
+          "v0": 1.05,
+          "v1": 1.0800478662509378,
+          "before_cm": 104.83273500000001,
+          "after_cm": 107.83273500000001,
+          "realized_delta_cm": 3.0,
+          "cm_per_unit": 99.8406999999998,
+          "body_name": "mean_all"
+        },
+        {
+          "parameter": "sleeve.length",
+          "measure_key": "sleeve_length_cm",
+          "v0": 0.3,
+          "v1": 0.4,
+          "before_cm": 21.06146554666354,
+          "after_cm": 21.06146554666354,
+          "realized_delta_cm": 0.0,
+          "cm_per_unit": 0.0,
+          "body_name": "mean_all"
+        },
+        {
+          "parameter": "shirt.length",
+          "measure_key": "length_cm",
+          "v0": 1.2,
+          "v1": 1.4,
+          "before_cm": 49.94076049824885,
+          "after_cm": 57.319020502922655,
+          "realized_delta_cm": 7.378260004673805,
+          "cm_per_unit": 36.891300023369034,
+          "body_name": "mean_all"
+        },
+        {
+          "parameter": "shirt.width",
+          "measure_key": "bust_circumference_cm",
+          "v0": 1.05,
+          "v1": 1.0800478662509378,
+          "before_cm": 102.27798000000001,
+          "after_cm": 105.20487053662484,
+          "realized_delta_cm": 2.926890536624825,
+          "cm_per_unit": 97.40759999999918,
+          "body_name": "mean_female"
+        },
+        {
+          "parameter": "sleeve.length",
+          "measure_key": "sleeve_length_cm",
+          "v0": 0.3,
+          "v1": 0.4,
+          "before_cm": 21.03115951756412,
+          "after_cm": 21.03115951756412,
+          "realized_delta_cm": 0.0,
+          "cm_per_unit": 0.0,
+          "body_name": "mean_female"
+        },
+        {
+          "parameter": "shirt.length",
+          "measure_key": "length_cm",
+          "v0": 1.2,
+          "v1": 1.4,
+          "before_cm": 48.299235718793796,
+          "after_cm": 55.450215700747265,
+          "realized_delta_cm": 7.150979981953469,
+          "cm_per_unit": 35.75489990976735,
+          "body_name": "mean_female"
+        }
+      ],
+      "max_bust_calibration_error_cm": 2.842170943040401e-14,
+      "realized_source": "panel_geometry_after_minus_before",
+      "note": "FIT-100K images were not downloaded. Vision samples are GarmentCode pattern drawings.",
+      "paths": {
+        "transitions": "/root/workspace/projects/FitGround/artifacts/training/transition_lattice.jsonl",
+        "vision": "/root/workspace/projects/FitGround/artifacts/training/vision_pattern_samples.jsonl",
+        "decisions": "/root/workspace/projects/FitGround/artifacts/training/decision_cases.json",
+        "png_dir": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs"
+      },
+      "runtime_s": 932.5117683410645
+    },
+    "B0_test_mae_cm": 8.110471560302393,
+    "B1_test_mae_cm": 8.080634882812335,
+    "B1_xgboost_test_mae_cm": 7.875043460716143,
+    "B2_cnn_test_mae_cm": 6.234292807802393,
+    "B3_cnn_test_mae_cm": 6.236495861243934,
+    "transition_sft_realized_mae_cm": 0.47328024404123425,
+    "decision_sft_accuracy": 1.0,
+    "rlvr": {
+      "status": "COMPLETED_NOT_JUSTIFIED",
+      "before_test": {
+        "accuracy": 1.0,
+        "mean_utility_regret": 0.0,
+        "n": 3
+      },
+      "after_test": {
+        "accuracy": 1.0,
+        "mean_utility_regret": 0.0,
+        "n": 3
+      }
+    }
   }
 }

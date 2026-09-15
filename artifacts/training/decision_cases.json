@@ -1,0 +1,2210 @@
+[
+  {
+    "case_id": "mean_all_w1.05_l1.20_s0.30__target_plus_1cm",
+    "state_id": "mean_all_w1.05_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 104.83273500000001,
+    "garment_length_cm": 49.94076049824885,
+    "garment_sleeve_cm": 21.06146554666354,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p05000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 105.83273500000001,
+    "target_definition": "increase measured garment bust by 1.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 1.0,
+    "oracle_utility": -0.2515803572787171,
+    "ranking": [
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 0.9999999999999858,
+        "after_bust_cm": 105.832735,
+        "target_error_cm": -1.4210854715202004e-14,
+        "utility": -0.2515803572787171
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 104.83273500000001,
+        "target_error_cm": -1.0,
+        "utility": -1.0
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 1.9999999999999716,
+        "after_bust_cm": 106.83273499999999,
+        "target_error_cm": 0.9999999999999716,
+        "utility": -1.5135591141253955
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 103.83273500000001,
+        "target_error_cm": -2.0,
+        "utility": -2.2828750606110737
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 107.83273500000001,
+        "target_error_cm": 2.0,
+        "utility": -2.74010949259364
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 102.83273500000001,
+        "target_error_cm": -3.0,
+        "utility": -3.5291076183464236
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.999999999999986,
+        "after_bust_cm": 108.832735,
+        "target_error_cm": 2.999999999999986,
+        "utility": -3.9795753845657047
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.000000000000014,
+        "after_bust_cm": 101.832735,
+        "target_error_cm": -4.000000000000014,
+        "utility": -4.777656517204414
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_all_w1.05_l1.20_s0.30__target_plus_2cm",
+    "state_id": "mean_all_w1.05_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 104.83273500000001,
+    "garment_length_cm": 49.94076049824885,
+    "garment_sleeve_cm": 21.06146554666354,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p05000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 106.83273500000001,
+    "target_definition": "increase measured garment bust by 2.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 2.0,
+    "oracle_utility": -0.5135591141254523,
+    "ranking": [
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 1.9999999999999716,
+        "after_bust_cm": 106.83273499999999,
+        "target_error_cm": -2.842170943040401e-14,
+        "utility": -0.5135591141254523
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 0.9999999999999858,
+        "after_bust_cm": 105.832735,
+        "target_error_cm": -1.0000000000000142,
+        "utility": -1.251580357278717
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 107.83273500000001,
+        "target_error_cm": 1.0,
+        "utility": -1.7401094925936398
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 104.83273500000001,
+        "target_error_cm": -2.0,
+        "utility": -2.0
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.999999999999986,
+        "after_bust_cm": 108.832735,
+        "target_error_cm": 1.9999999999999858,
+        "utility": -2.9795753845657047
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 103.83273500000001,
+        "target_error_cm": -3.0,
+        "utility": -3.2828750606110737
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 102.83273500000001,
+        "target_error_cm": -4.0,
+        "utility": -4.529107618346424
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.000000000000014,
+        "after_bust_cm": 101.832735,
+        "target_error_cm": -5.000000000000014,
+        "utility": -5.777656517204414
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_all_w1.05_l1.20_s0.30__target_plus_3cm",
+    "state_id": "mean_all_w1.05_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 104.83273500000001,
+    "garment_length_cm": 49.94076049824885,
+    "garment_sleeve_cm": 21.06146554666354,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p05000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 107.83273500000001,
+    "target_definition": "increase measured garment bust by 3.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 3.0,
+    "oracle_utility": -0.7401094925936398,
+    "ranking": [
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 107.83273500000001,
+        "target_error_cm": 0.0,
+        "utility": -0.7401094925936398
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 1.9999999999999716,
+        "after_bust_cm": 106.83273499999999,
+        "target_error_cm": -1.0000000000000284,
+        "utility": -1.5135591141254523
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.999999999999986,
+        "after_bust_cm": 108.832735,
+        "target_error_cm": 0.9999999999999858,
+        "utility": -1.9795753845657047
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 0.9999999999999858,
+        "after_bust_cm": 105.832735,
+        "target_error_cm": -2.000000000000014,
+        "utility": -2.251580357278717
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 104.83273500000001,
+        "target_error_cm": -3.0,
+        "utility": -3.0
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 103.83273500000001,
+        "target_error_cm": -4.0,
+        "utility": -4.282875060611074
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 102.83273500000001,
+        "target_error_cm": -5.0,
+        "utility": -5.529107618346424
+      },
+      {
+        "action_id": "mean_all_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.000000000000014,
+        "after_bust_cm": 101.832735,
+        "target_error_cm": -6.000000000000014,
+        "utility": -6.777656517204414
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_all_w1.08_l1.20_s0.30__target_plus_1cm",
+    "state_id": "mean_all_w1.08_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 107.827956,
+    "garment_length_cm": 50.23840875553695,
+    "garment_sleeve_cm": 21.38581006436884,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p08000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 108.827956,
+    "target_definition": "increase measured garment bust by 1.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 1.0,
+    "oracle_utility": -0.2689702904282122,
+    "ranking": [
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0000000000000142,
+        "after_bust_cm": 108.82795600000001,
+        "target_error_cm": 1.4210854715202004e-14,
+        "utility": -0.2689702904282122
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 107.827956,
+        "target_error_cm": -1.0,
+        "utility": -1.0
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 109.827956,
+        "target_error_cm": 1.0,
+        "utility": -1.523718004158858
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -0.9999999999999858,
+        "after_bust_cm": 106.82795600000001,
+        "target_error_cm": -1.9999999999999858,
+        "utility": -2.252137707838697
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0000000000000284,
+        "after_bust_cm": 110.82795600000003,
+        "target_error_cm": 2.0000000000000284,
+        "utility": -2.7496636649271844
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -1.9999999999999716,
+        "after_bust_cm": 105.82795600000003,
+        "target_error_cm": -2.9999999999999716,
+        "utility": -3.4936160556965232
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.0,
+        "after_bust_cm": 111.827956,
+        "target_error_cm": 3.0,
+        "utility": -4.032439906467209
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 104.827956,
+        "target_error_cm": -4.0,
+        "utility": -4.769898640987523
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_all_w1.08_l1.20_s0.30__target_plus_2cm",
+    "state_id": "mean_all_w1.08_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 107.827956,
+    "garment_length_cm": 50.23840875553695,
+    "garment_sleeve_cm": 21.38581006436884,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p08000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 109.827956,
+    "target_definition": "increase measured garment bust by 2.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 2.0,
+    "oracle_utility": -0.523718004158858,
+    "ranking": [
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 109.827956,
+        "target_error_cm": 0.0,
+        "utility": -0.523718004158858
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0000000000000142,
+        "after_bust_cm": 108.82795600000001,
+        "target_error_cm": -0.9999999999999858,
+        "utility": -1.2689702904281837
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0000000000000284,
+        "after_bust_cm": 110.82795600000003,
+        "target_error_cm": 1.0000000000000284,
+        "utility": -1.7496636649271842
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 107.827956,
+        "target_error_cm": -2.0,
+        "utility": -2.0
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.0,
+        "after_bust_cm": 111.827956,
+        "target_error_cm": 2.0,
+        "utility": -3.0324399064672094
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -0.9999999999999858,
+        "after_bust_cm": 106.82795600000001,
+        "target_error_cm": -2.999999999999986,
+        "utility": -3.252137707838697
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -1.9999999999999716,
+        "after_bust_cm": 105.82795600000003,
+        "target_error_cm": -3.9999999999999716,
+        "utility": -4.493616055696523
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 104.827956,
+        "target_error_cm": -5.0,
+        "utility": -5.769898640987523
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_all_w1.08_l1.20_s0.30__target_plus_3cm",
+    "state_id": "mean_all_w1.08_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 107.827956,
+    "garment_length_cm": 50.23840875553695,
+    "garment_sleeve_cm": 21.38581006436884,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p08000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 110.827956,
+    "target_definition": "increase measured garment bust by 3.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 3.0,
+    "oracle_utility": -0.7496636649271842,
+    "ranking": [
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0000000000000284,
+        "after_bust_cm": 110.82795600000003,
+        "target_error_cm": 2.842170943040401e-14,
+        "utility": -0.7496636649271842
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 109.827956,
+        "target_error_cm": -1.0,
+        "utility": -1.523718004158858
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.0,
+        "after_bust_cm": 111.827956,
+        "target_error_cm": 1.0,
+        "utility": -2.0324399064672094
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0000000000000142,
+        "after_bust_cm": 108.82795600000001,
+        "target_error_cm": -1.9999999999999858,
+        "utility": -2.2689702904281837
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 107.827956,
+        "target_error_cm": -3.0,
+        "utility": -3.0
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -0.9999999999999858,
+        "after_bust_cm": 106.82795600000001,
+        "target_error_cm": -3.999999999999986,
+        "utility": -4.252137707838697
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -1.9999999999999716,
+        "after_bust_cm": 105.82795600000003,
+        "target_error_cm": -4.999999999999972,
+        "utility": -5.493616055696523
+      },
+      {
+        "action_id": "mean_all_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 104.827956,
+        "target_error_cm": -6.0,
+        "utility": -6.769898640987523
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_all_w1.12_l1.20_s0.30__target_plus_1cm",
+    "state_id": "mean_all_w1.12_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 111.82158400000002,
+    "garment_length_cm": 50.63527310815152,
+    "garment_sleeve_cm": 21.90530461926572,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p12000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 112.82158400000002,
+    "target_definition": "increase measured garment bust by 1.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 1.0,
+    "oracle_utility": -0.26075374370434334,
+    "ranking": [
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 0.9999999999999858,
+        "after_bust_cm": 112.821584,
+        "target_error_cm": -1.4210854715202004e-14,
+        "utility": -0.26075374370434334
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 111.82158400000002,
+        "target_error_cm": -1.0,
+        "utility": -1.0
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 113.82158400000002,
+        "target_error_cm": 1.0,
+        "utility": -1.517303753454214
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -0.9999999999999858,
+        "after_bust_cm": 110.82158400000003,
+        "target_error_cm": -1.9999999999999858,
+        "utility": -2.3045205254415264
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 114.82158400000002,
+        "target_error_cm": 2.0,
+        "utility": -2.793076469887187
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 109.82158400000002,
+        "target_error_cm": -3.0,
+        "utility": -3.5498028513729443
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.000000000000014,
+        "after_bust_cm": 115.82158400000003,
+        "target_error_cm": 3.000000000000014,
+        "utility": -4.03688104721561
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 108.82158400000002,
+        "target_error_cm": -4.0,
+        "utility": -4.8063820680979505
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_all_w1.12_l1.20_s0.30__target_plus_2cm",
+    "state_id": "mean_all_w1.12_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 111.82158400000002,
+    "garment_length_cm": 50.63527310815152,
+    "garment_sleeve_cm": 21.90530461926572,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p12000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 113.82158400000002,
+    "target_definition": "increase measured garment bust by 2.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 2.0,
+    "oracle_utility": -0.517303753454214,
+    "ranking": [
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 113.82158400000002,
+        "target_error_cm": 0.0,
+        "utility": -0.517303753454214
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 0.9999999999999858,
+        "after_bust_cm": 112.821584,
+        "target_error_cm": -1.0000000000000142,
+        "utility": -1.2607537437043432
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 114.82158400000002,
+        "target_error_cm": 1.0,
+        "utility": -1.7930764698871868
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 111.82158400000002,
+        "target_error_cm": -2.0,
+        "utility": -2.0
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.000000000000014,
+        "after_bust_cm": 115.82158400000003,
+        "target_error_cm": 2.000000000000014,
+        "utility": -3.0368810472156107
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -0.9999999999999858,
+        "after_bust_cm": 110.82158400000003,
+        "target_error_cm": -2.999999999999986,
+        "utility": -3.3045205254415264
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 109.82158400000002,
+        "target_error_cm": -4.0,
+        "utility": -4.549802851372944
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 108.82158400000002,
+        "target_error_cm": -5.0,
+        "utility": -5.8063820680979505
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_all_w1.12_l1.20_s0.30__target_plus_3cm",
+    "state_id": "mean_all_w1.12_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 111.82158400000002,
+    "garment_length_cm": 50.63527310815152,
+    "garment_sleeve_cm": 21.90530461926572,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p12000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 114.82158400000002,
+    "target_definition": "increase measured garment bust by 3.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 3.0,
+    "oracle_utility": -0.7930764698871868,
+    "ranking": [
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 114.82158400000002,
+        "target_error_cm": 0.0,
+        "utility": -0.7930764698871868
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 113.82158400000002,
+        "target_error_cm": -1.0,
+        "utility": -1.517303753454214
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.000000000000014,
+        "after_bust_cm": 115.82158400000003,
+        "target_error_cm": 1.0000000000000142,
+        "utility": -2.0368810472156107
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 0.9999999999999858,
+        "after_bust_cm": 112.821584,
+        "target_error_cm": -2.000000000000014,
+        "utility": -2.2607537437043432
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 111.82158400000002,
+        "target_error_cm": -3.0,
+        "utility": -3.0
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -0.9999999999999858,
+        "after_bust_cm": 110.82158400000003,
+        "target_error_cm": -3.999999999999986,
+        "utility": -4.304520525441527
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 109.82158400000002,
+        "target_error_cm": -5.0,
+        "utility": -5.549802851372944
+      },
+      {
+        "action_id": "mean_all_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 108.82158400000002,
+        "target_error_cm": -6.0,
+        "utility": -6.8063820680979505
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_all_w1.18_l1.20_s0.30__target_plus_1cm",
+    "state_id": "mean_all_w1.18_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 117.812026,
+    "garment_length_cm": 51.23056962320473,
+    "garment_sleeve_cm": 22.639632916028866,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p18000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 118.812026,
+    "target_definition": "increase measured garment bust by 1.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 1.0,
+    "oracle_utility": -0.29547271977775014,
+    "ranking": [
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 118.812026,
+        "target_error_cm": 0.0,
+        "utility": -0.29547271977775014
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 117.812026,
+        "target_error_cm": -1.0,
+        "utility": -1.0
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 1.9999999999999858,
+        "after_bust_cm": 119.81202599999999,
+        "target_error_cm": 0.9999999999999858,
+        "utility": -1.5704702649720208
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 116.812026,
+        "target_error_cm": -2.0,
+        "utility": -2.2304833679458134
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.000000000000014,
+        "after_bust_cm": 120.81202600000002,
+        "target_error_cm": 2.000000000000014,
+        "utility": -2.819534997245685
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 115.812026,
+        "target_error_cm": -3.0,
+        "utility": -3.5058652719266155
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.0,
+        "after_bust_cm": 121.812026,
+        "target_error_cm": 3.0,
+        "utility": -4.086107723266286
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.000000000000014,
+        "after_bust_cm": 114.81202599999999,
+        "target_error_cm": -4.000000000000014,
+        "utility": -4.797059168013901
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_all_w1.18_l1.20_s0.30__target_plus_2cm",
+    "state_id": "mean_all_w1.18_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 117.812026,
+    "garment_length_cm": 51.23056962320473,
+    "garment_sleeve_cm": 22.639632916028866,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p18000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 119.812026,
+    "target_definition": "increase measured garment bust by 2.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 2.0,
+    "oracle_utility": -0.5704702649720492,
+    "ranking": [
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 1.9999999999999858,
+        "after_bust_cm": 119.81202599999999,
+        "target_error_cm": -1.4210854715202004e-14,
+        "utility": -0.5704702649720492
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 118.812026,
+        "target_error_cm": -1.0,
+        "utility": -1.29547271977775
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.000000000000014,
+        "after_bust_cm": 120.81202600000002,
+        "target_error_cm": 1.0000000000000142,
+        "utility": -1.819534997245685
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 117.812026,
+        "target_error_cm": -2.0,
+        "utility": -2.0
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.0,
+        "after_bust_cm": 121.812026,
+        "target_error_cm": 2.0,
+        "utility": -3.0861077232662866
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 116.812026,
+        "target_error_cm": -3.0,
+        "utility": -3.2304833679458134
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 115.812026,
+        "target_error_cm": -4.0,
+        "utility": -4.5058652719266155
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.000000000000014,
+        "after_bust_cm": 114.81202599999999,
+        "target_error_cm": -5.000000000000014,
+        "utility": -5.797059168013901
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_all_w1.18_l1.20_s0.30__target_plus_3cm",
+    "state_id": "mean_all_w1.18_l1.20_s0.30",
+    "body_bust_cm": 99.8407,
+    "garment_bust_cm": 117.812026,
+    "garment_length_cm": 51.23056962320473,
+    "garment_sleeve_cm": 22.639632916028866,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_all_1p18000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 120.812026,
+    "target_definition": "increase measured garment bust by 3.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 3.0,
+    "oracle_utility": -0.8195349972456849,
+    "ranking": [
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.000000000000014,
+        "after_bust_cm": 120.81202600000002,
+        "target_error_cm": 1.4210854715202004e-14,
+        "utility": -0.8195349972456849
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 1.9999999999999858,
+        "after_bust_cm": 119.81202599999999,
+        "target_error_cm": -1.0000000000000142,
+        "utility": -1.5704702649720492
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.0,
+        "after_bust_cm": 121.812026,
+        "target_error_cm": 1.0,
+        "utility": -2.0861077232662866
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 118.812026,
+        "target_error_cm": -2.0,
+        "utility": -2.29547271977775
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 117.812026,
+        "target_error_cm": -3.0,
+        "utility": -3.0
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 116.812026,
+        "target_error_cm": -4.0,
+        "utility": -4.230483367945814
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 115.812026,
+        "target_error_cm": -5.0,
+        "utility": -5.5058652719266155
+      },
+      {
+        "action_id": "mean_all_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.000000000000014,
+        "after_bust_cm": 114.81202599999999,
+        "target_error_cm": -6.000000000000014,
+        "utility": -6.797059168013901
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.05_l1.20_s0.30__target_plus_1cm",
+    "state_id": "mean_female_w1.05_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 102.27798000000001,
+    "garment_length_cm": 48.299235718793796,
+    "garment_sleeve_cm": 21.03115951756412,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p05000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 103.27798000000001,
+    "target_definition": "increase measured garment bust by 1.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 1.0,
+    "oracle_utility": -0.27359429094293797,
+    "ranking": [
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 103.27798000000001,
+        "target_error_cm": 0.0,
+        "utility": -0.27359429094293797
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 102.27798000000001,
+        "target_error_cm": -1.0,
+        "utility": -1.0
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 104.27798000000001,
+        "target_error_cm": 1.0,
+        "utility": -1.4993469660304684
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0000000000000142,
+        "after_bust_cm": 101.27798,
+        "target_error_cm": -2.000000000000014,
+        "utility": -2.248837386003181
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 105.27798000000001,
+        "target_error_cm": 2.0,
+        "utility": -2.769867971443092
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0000000000000284,
+        "after_bust_cm": 100.27797999999999,
+        "target_error_cm": -3.0000000000000284,
+        "utility": -3.4972738894774684
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.9999999999999716,
+        "after_bust_cm": 106.27797999999999,
+        "target_error_cm": 2.9999999999999716,
+        "utility": -4.027221112884128
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.000000000000014,
+        "after_bust_cm": 99.27798,
+        "target_error_cm": -4.000000000000014,
+        "utility": -4.7604961410363975
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.05_l1.20_s0.30__target_plus_2cm",
+    "state_id": "mean_female_w1.05_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 102.27798000000001,
+    "garment_length_cm": 48.299235718793796,
+    "garment_sleeve_cm": 21.03115951756412,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p05000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 104.27798000000001,
+    "target_definition": "increase measured garment bust by 2.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 2.0,
+    "oracle_utility": -0.4993469660304683,
+    "ranking": [
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 104.27798000000001,
+        "target_error_cm": 0.0,
+        "utility": -0.4993469660304683
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 103.27798000000001,
+        "target_error_cm": -1.0,
+        "utility": -1.2735942909429379
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 105.27798000000001,
+        "target_error_cm": 1.0,
+        "utility": -1.7698679714430916
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 102.27798000000001,
+        "target_error_cm": -2.0,
+        "utility": -2.0
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.9999999999999716,
+        "after_bust_cm": 106.27797999999999,
+        "target_error_cm": 1.9999999999999716,
+        "utility": -3.027221112884128
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0000000000000142,
+        "after_bust_cm": 101.27798,
+        "target_error_cm": -3.000000000000014,
+        "utility": -3.248837386003181
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0000000000000284,
+        "after_bust_cm": 100.27797999999999,
+        "target_error_cm": -4.000000000000028,
+        "utility": -4.497273889477468
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.000000000000014,
+        "after_bust_cm": 99.27798,
+        "target_error_cm": -5.000000000000014,
+        "utility": -5.7604961410363975
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.05_l1.20_s0.30__target_plus_3cm",
+    "state_id": "mean_female_w1.05_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 102.27798000000001,
+    "garment_length_cm": 48.299235718793796,
+    "garment_sleeve_cm": 21.03115951756412,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p05000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 105.27798000000001,
+    "target_definition": "increase measured garment bust by 3.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 3.0,
+    "oracle_utility": -0.7698679714430916,
+    "ranking": [
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 105.27798000000001,
+        "target_error_cm": 0.0,
+        "utility": -0.7698679714430916
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 104.27798000000001,
+        "target_error_cm": -1.0,
+        "utility": -1.4993469660304684
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.9999999999999716,
+        "after_bust_cm": 106.27797999999999,
+        "target_error_cm": 0.9999999999999716,
+        "utility": -2.027221112884128
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 103.27798000000001,
+        "target_error_cm": -2.0,
+        "utility": -2.273594290942938
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 102.27798000000001,
+        "target_error_cm": -3.0,
+        "utility": -3.0
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0000000000000142,
+        "after_bust_cm": 101.27798,
+        "target_error_cm": -4.000000000000014,
+        "utility": -4.248837386003181
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0000000000000284,
+        "after_bust_cm": 100.27797999999999,
+        "target_error_cm": -5.000000000000028,
+        "utility": -5.497273889477468
+      },
+      {
+        "action_id": "mean_female_w1.05_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.000000000000014,
+        "after_bust_cm": 99.27798,
+        "target_error_cm": -6.000000000000014,
+        "utility": -6.7604961410363975
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.08_l1.20_s0.30__target_plus_1cm",
+    "state_id": "mean_female_w1.08_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 105.200208,
+    "garment_length_cm": 48.578281364040976,
+    "garment_sleeve_cm": 21.38193893374202,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p08000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 106.200208,
+    "target_definition": "increase measured garment bust by 1.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 1.0,
+    "oracle_utility": -0.24737047032267653,
+    "ranking": [
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 106.200208,
+        "target_error_cm": 0.0,
+        "utility": -0.24737047032267653
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 105.200208,
+        "target_error_cm": -1.0,
+        "utility": -1.0
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.000000000000014,
+        "after_bust_cm": 107.20020800000002,
+        "target_error_cm": 1.0000000000000142,
+        "utility": -1.5191196583407163
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 104.200208,
+        "target_error_cm": -2.0,
+        "utility": -2.2657086585379758
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 108.200208,
+        "target_error_cm": 2.0,
+        "utility": -2.7795898118814266
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 103.200208,
+        "target_error_cm": -3.0,
+        "utility": -3.5060887483051344
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.0,
+        "after_bust_cm": 109.200208,
+        "target_error_cm": 3.0,
+        "utility": -4.072160204572084
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 102.200208,
+        "target_error_cm": -4.0,
+        "utility": -4.767644155712039
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.08_l1.20_s0.30__target_plus_2cm",
+    "state_id": "mean_female_w1.08_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 105.200208,
+    "garment_length_cm": 48.578281364040976,
+    "garment_sleeve_cm": 21.38193893374202,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p08000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 107.200208,
+    "target_definition": "increase measured garment bust by 2.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 2.0,
+    "oracle_utility": -0.5191196583407163,
+    "ranking": [
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.000000000000014,
+        "after_bust_cm": 107.20020800000002,
+        "target_error_cm": 1.4210854715202004e-14,
+        "utility": -0.5191196583407163
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 106.200208,
+        "target_error_cm": -1.0,
+        "utility": -1.2473704703226765
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 108.200208,
+        "target_error_cm": 1.0,
+        "utility": -1.7795898118814264
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 105.200208,
+        "target_error_cm": -2.0,
+        "utility": -2.0
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.0,
+        "after_bust_cm": 109.200208,
+        "target_error_cm": 2.0,
+        "utility": -3.0721602045720844
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 104.200208,
+        "target_error_cm": -3.0,
+        "utility": -3.2657086585379758
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 103.200208,
+        "target_error_cm": -4.0,
+        "utility": -4.506088748305134
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 102.200208,
+        "target_error_cm": -5.0,
+        "utility": -5.767644155712039
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.08_l1.20_s0.30__target_plus_3cm",
+    "state_id": "mean_female_w1.08_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 105.200208,
+    "garment_length_cm": 48.578281364040976,
+    "garment_sleeve_cm": 21.38193893374202,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p08000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 108.200208,
+    "target_definition": "increase measured garment bust by 3.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 3.0,
+    "oracle_utility": -0.7795898118814264,
+    "ranking": [
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 108.200208,
+        "target_error_cm": 0.0,
+        "utility": -0.7795898118814264
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.000000000000014,
+        "after_bust_cm": 107.20020800000002,
+        "target_error_cm": -0.9999999999999858,
+        "utility": -1.5191196583406879
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 4.0,
+        "after_bust_cm": 109.200208,
+        "target_error_cm": 1.0,
+        "utility": -2.0721602045720844
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 106.200208,
+        "target_error_cm": -2.0,
+        "utility": -2.2473704703226765
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 105.200208,
+        "target_error_cm": -3.0,
+        "utility": -3.0
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 104.200208,
+        "target_error_cm": -4.0,
+        "utility": -4.265708658537976
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 103.200208,
+        "target_error_cm": -5.0,
+        "utility": -5.506088748305134
+      },
+      {
+        "action_id": "mean_female_w1.08_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 102.200208,
+        "target_error_cm": -6.0,
+        "utility": -6.767644155712039
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.12_l1.20_s0.30__target_plus_1cm",
+    "state_id": "mean_female_w1.12_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 109.09651200000002,
+    "garment_length_cm": 48.95034222171121,
+    "garment_sleeve_cm": 21.907446602861395,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p12000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 110.09651200000002,
+    "target_definition": "increase measured garment bust by 1.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 1.0,
+    "oracle_utility": -0.26742045664725256,
+    "ranking": [
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 110.09651200000002,
+        "target_error_cm": 0.0,
+        "utility": -0.26742045664725256
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 109.09651200000002,
+        "target_error_cm": -1.0,
+        "utility": -1.0
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 111.09651200000002,
+        "target_error_cm": 1.0,
+        "utility": -1.5102521273171299
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0000000000000284,
+        "after_bust_cm": 108.09651199999999,
+        "target_error_cm": -2.0000000000000284,
+        "utility": -2.271850144454161
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 112.09651200000002,
+        "target_error_cm": 2.0,
+        "utility": -2.796481065440177
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0000000000000284,
+        "after_bust_cm": 107.09651199999999,
+        "target_error_cm": -3.0000000000000284,
+        "utility": -3.5400388160553904
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.999999999999986,
+        "after_bust_cm": 113.096512,
+        "target_error_cm": 2.999999999999986,
+        "utility": -4.0105986660098125
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0000000000000284,
+        "after_bust_cm": 106.09651199999999,
+        "target_error_cm": -4.000000000000028,
+        "utility": -4.776772545459928
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.12_l1.20_s0.30__target_plus_2cm",
+    "state_id": "mean_female_w1.12_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 109.09651200000002,
+    "garment_length_cm": 48.95034222171121,
+    "garment_sleeve_cm": 21.907446602861395,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p12000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 111.09651200000002,
+    "target_definition": "increase measured garment bust by 2.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 2.0,
+    "oracle_utility": -0.5102521273171299,
+    "ranking": [
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 111.09651200000002,
+        "target_error_cm": 0.0,
+        "utility": -0.5102521273171299
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 110.09651200000002,
+        "target_error_cm": -1.0,
+        "utility": -1.2674204566472524
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 112.09651200000002,
+        "target_error_cm": 1.0,
+        "utility": -1.7964810654401766
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 109.09651200000002,
+        "target_error_cm": -2.0,
+        "utility": -2.0
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.999999999999986,
+        "after_bust_cm": 113.096512,
+        "target_error_cm": 1.9999999999999858,
+        "utility": -3.010598666009813
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0000000000000284,
+        "after_bust_cm": 108.09651199999999,
+        "target_error_cm": -3.0000000000000284,
+        "utility": -3.271850144454161
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0000000000000284,
+        "after_bust_cm": 107.09651199999999,
+        "target_error_cm": -4.000000000000028,
+        "utility": -4.54003881605539
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0000000000000284,
+        "after_bust_cm": 106.09651199999999,
+        "target_error_cm": -5.000000000000028,
+        "utility": -5.776772545459928
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.12_l1.20_s0.30__target_plus_3cm",
+    "state_id": "mean_female_w1.12_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 109.09651200000002,
+    "garment_length_cm": 48.95034222171121,
+    "garment_sleeve_cm": 21.907446602861395,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p12000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 112.09651200000002,
+    "target_definition": "increase measured garment bust by 3.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 3.0,
+    "oracle_utility": -0.7964810654401766,
+    "ranking": [
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0,
+        "after_bust_cm": 112.09651200000002,
+        "target_error_cm": 0.0,
+        "utility": -0.7964810654401766
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 111.09651200000002,
+        "target_error_cm": -1.0,
+        "utility": -1.5102521273171299
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.999999999999986,
+        "after_bust_cm": 113.096512,
+        "target_error_cm": 0.9999999999999858,
+        "utility": -2.010598666009813
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 110.09651200000002,
+        "target_error_cm": -2.0,
+        "utility": -2.2674204566472524
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 109.09651200000002,
+        "target_error_cm": -3.0,
+        "utility": -3.0
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0000000000000284,
+        "after_bust_cm": 108.09651199999999,
+        "target_error_cm": -4.000000000000028,
+        "utility": -4.271850144454161
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0000000000000284,
+        "after_bust_cm": 107.09651199999999,
+        "target_error_cm": -5.000000000000028,
+        "utility": -5.54003881605539
+      },
+      {
+        "action_id": "mean_female_w1.12_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0000000000000284,
+        "after_bust_cm": 106.09651199999999,
+        "target_error_cm": -6.000000000000028,
+        "utility": -6.776772545459928
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.18_l1.20_s0.30__target_plus_1cm",
+    "state_id": "mean_female_w1.18_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 114.94096799999998,
+    "garment_length_cm": 49.508433505976605,
+    "garment_sleeve_cm": 22.693340755452276,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p18000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 115.94096799999998,
+    "target_definition": "increase measured garment bust by 1.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 1.0,
+    "oracle_utility": -0.27755520417251633,
+    "ranking": [
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 115.94096799999998,
+        "target_error_cm": 0.0,
+        "utility": -0.27755520417251633
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 114.94096799999998,
+        "target_error_cm": -1.0,
+        "utility": -1.0
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 116.94096799999998,
+        "target_error_cm": 1.0,
+        "utility": -1.5277063443143313
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 113.94096799999998,
+        "target_error_cm": -2.0,
+        "utility": -2.2829900003494887
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0000000000000284,
+        "after_bust_cm": 117.94096800000001,
+        "target_error_cm": 2.0000000000000284,
+        "utility": -2.798006755331145
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 112.94096799999998,
+        "target_error_cm": -3.0,
+        "utility": -3.55297116817525
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.999999999999986,
+        "after_bust_cm": 118.94096799999997,
+        "target_error_cm": 2.999999999999986,
+        "utility": -4.0687229442411645
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 111.94096799999998,
+        "target_error_cm": -4.0,
+        "utility": -4.822953888785613
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.18_l1.20_s0.30__target_plus_2cm",
+    "state_id": "mean_female_w1.18_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 114.94096799999998,
+    "garment_length_cm": 49.508433505976605,
+    "garment_sleeve_cm": 22.693340755452276,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p18000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 116.94096799999998,
+    "target_definition": "increase measured garment bust by 2.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 2.0,
+    "oracle_utility": -0.5277063443143313,
+    "ranking": [
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 116.94096799999998,
+        "target_error_cm": 0.0,
+        "utility": -0.5277063443143313
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 115.94096799999998,
+        "target_error_cm": -1.0,
+        "utility": -1.2775552041725162
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0000000000000284,
+        "after_bust_cm": 117.94096800000001,
+        "target_error_cm": 1.0000000000000284,
+        "utility": -1.798006755331145
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 114.94096799999998,
+        "target_error_cm": -2.0,
+        "utility": -2.0
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.999999999999986,
+        "after_bust_cm": 118.94096799999997,
+        "target_error_cm": 1.9999999999999858,
+        "utility": -3.068722944241165
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 113.94096799999998,
+        "target_error_cm": -3.0,
+        "utility": -3.2829900003494887
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 112.94096799999998,
+        "target_error_cm": -4.0,
+        "utility": -4.55297116817525
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 111.94096799999998,
+        "target_error_cm": -5.0,
+        "utility": -5.822953888785613
+      }
+    ],
+    "verification_status": "VERIFIED"
+  },
+  {
+    "case_id": "mean_female_w1.18_l1.20_s0.30__target_plus_3cm",
+    "state_id": "mean_female_w1.18_l1.20_s0.30",
+    "body_bust_cm": 97.4076,
+    "garment_bust_cm": 114.94096799999998,
+    "garment_length_cm": 49.508433505976605,
+    "garment_sleeve_cm": 22.693340755452276,
+    "png": "/root/workspace/projects/FitGround/artifacts/training/pattern_pngs/mean_female_1p18000_1p20000_0p30000.png",
+    "target_garment_bust_cm": 117.94096799999998,
+    "target_definition": "increase measured garment bust by 3.0 cm vs this state's baseline",
+    "oracle_action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+    "oracle_action_family": "bust_circumference_delta_cm",
+    "oracle_intended_delta_cm": 3.0,
+    "oracle_utility": -0.798006755331145,
+    "ranking": [
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+      "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00"
+    ],
+    "candidates": [
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+3.00",
+        "intended_delta_cm": 3.0,
+        "realized_delta_cm": 3.0000000000000284,
+        "after_bust_cm": 117.94096800000001,
+        "target_error_cm": 2.842170943040401e-14,
+        "utility": -0.798006755331145
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+2.00",
+        "intended_delta_cm": 2.0,
+        "realized_delta_cm": 2.0,
+        "after_bust_cm": 116.94096799999998,
+        "target_error_cm": -1.0,
+        "utility": -1.5277063443143313
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+4.00",
+        "intended_delta_cm": 4.0,
+        "realized_delta_cm": 3.999999999999986,
+        "after_bust_cm": 118.94096799999997,
+        "target_error_cm": 0.9999999999999858,
+        "utility": -2.068722944241165
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+1.00",
+        "intended_delta_cm": 1.0,
+        "realized_delta_cm": 1.0,
+        "after_bust_cm": 115.94096799999998,
+        "target_error_cm": -2.0,
+        "utility": -2.2775552041725162
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__+0.00",
+        "intended_delta_cm": 0.0,
+        "realized_delta_cm": 0.0,
+        "after_bust_cm": 114.94096799999998,
+        "target_error_cm": -3.0,
+        "utility": -3.0
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-1.00",
+        "intended_delta_cm": -1.0,
+        "realized_delta_cm": -1.0,
+        "after_bust_cm": 113.94096799999998,
+        "target_error_cm": -4.0,
+        "utility": -4.282990000349489
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-2.00",
+        "intended_delta_cm": -2.0,
+        "realized_delta_cm": -2.0,
+        "after_bust_cm": 112.94096799999998,
+        "target_error_cm": -5.0,
+        "utility": -5.55297116817525
+      },
+      {
+        "action_id": "mean_female_w1.18_l1.20_s0.30__bust_circumference_delta_cm__-3.00",
+        "intended_delta_cm": -3.0,
+        "realized_delta_cm": -3.0,
+        "after_bust_cm": 111.94096799999998,
+        "target_error_cm": -6.0,
+        "utility": -6.822953888785613
+      }
+    ],
+    "verification_status": "VERIFIED"
+  }
+]

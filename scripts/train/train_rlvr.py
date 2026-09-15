@@ -46,9 +46,11 @@ def evaluate_policy(model, mu, sd, cases, vocab, device):
     import torch
 
     index = {float(v): i for i, v in enumerate(vocab)}
-    xs = torch.tensor(np.stack([case_x(c) for c in cases]), dtype=torch.float32)
+    mu = torch.as_tensor(mu, dtype=torch.float32, device=device)
+    sd = torch.as_tensor(sd, dtype=torch.float32, device=device)
+    xs = torch.tensor(np.stack([case_x(c) for c in cases]), dtype=torch.float32, device=device)
     with torch.no_grad():
-        logits = model(((xs - mu) / sd).to(device))
+        logits = model((xs - mu) / sd)
         pred = logits.argmax(-1).cpu().numpy()
     y = np.array([index[float(c["oracle_intended_delta_cm"])] for c in cases])
     regrets = []
@@ -122,6 +124,8 @@ def main() -> int:
             payload["warm_start"] = str(ckpt_path)
         except Exception as exc:
             payload["warm_start_error"] = f"{type(exc).__name__}: {exc}"
+    mu = torch.as_tensor(mu, dtype=torch.float32, device=device)
+    sd = torch.as_tensor(sd, dtype=torch.float32, device=device)
     opt = torch.optim.Adam(model.parameters(), lr=5e-4)
     history = []
     t0 = time.time()
@@ -129,8 +133,8 @@ def main() -> int:
     rng = np.random.default_rng(args.seed)
     for step in range(args.steps):
         case = train[int(rng.integers(0, len(train)))]
-        x = torch.tensor(case_x(case), dtype=torch.float32)
-        logits = model(((x - mu) / sd).to(device))
+        x = torch.tensor(case_x(case), dtype=torch.float32, device=device)
+        logits = model((x - mu) / sd)
         dist = torch.distributions.Categorical(logits=logits)
         action = dist.sample()
         intended = vocab[int(action.item())]

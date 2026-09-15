@@ -74,12 +74,25 @@ def measure_specification(spec_path):
         sleeve_dx.append(dx)
         sleeve_dy.append(dy)
     bust = float(sum(torso_dx)) if torso_dx else None
-    # waist uses same torso x-span for this untapered tee (flare=1)
     waist = bust
     length = float(np.mean(torso_dy)) if torso_dy else None
-    sleeve_length = float(np.mean(sleeve_dy)) if sleeve_dy else None
-    # shoulder: top edge of torso is not equal to body shoulder; use min torso width as proxy of yoke
-    shoulder = float(min(torso_dx) * 2) if torso_dx else None
+    # Sleeve length is constructed along panel X in GarmentCode sleeves.py, not Y.
+    sleeve_length = float(np.mean(sleeve_dx)) if sleeve_dx else None
+    # Shoulder seam proxy: top (max-y) edge span of front torso panels, doubled.
+    shoulder = None
+    top_spans = []
+    for name in ("left_ftorso", "right_ftorso"):
+        if name not in panels:
+            continue
+        verts = np.asarray(panels[name]["vertices"], dtype=float)
+        ymax = verts[:, 1].max()
+        top = verts[np.abs(verts[:, 1] - ymax) < 1e-6]
+        if len(top) >= 2:
+            top_spans.append(float(top[:, 0].max() - top[:, 0].min()))
+        else:
+            top_spans.append(float(verts[:, 0].max() - verts[:, 0].min()))
+    if top_spans:
+        shoulder = float(sum(top_spans))
     return {
         "bust_circumference_cm": bust,
         "waist_cm": waist,
@@ -160,14 +173,14 @@ def generate_pattern(width_v, out_dir, tag, body_path=None, extra_params=None):
     }
 
 
-def run_physics(spec_path, out_dir, tag, max_steps=400, do_render=False):
+def run_physics(spec_path, out_dir, tag, max_steps=400, do_render=False, body_name="mean_all", sim_props_path=None):
     from pygarment.meshgen.boxmeshgen import BoxMesh
     from pygarment.meshgen.simulation import run_sim
     import pygarment.data_config as data_config
     from pygarment.meshgen.sim_config import PathCofig
 
     t0 = time.time()
-    props = data_config.Properties(str(SIM_PROPS))
+    props = data_config.Properties(str(sim_props_path or SIM_PROPS))
     props["sim"]["config"]["max_sim_steps"] = int(max_steps)
     props["sim"]["config"]["optimize_storage"] = True
     props.set_section_stats(
@@ -190,7 +203,7 @@ def run_physics(spec_path, out_dir, tag, max_steps=400, do_render=False):
         out_path=str(out_path),
         in_name=garment_name,
         out_name=tag,
-        body_name="mean_all",
+        body_name=body_name,
         smpl_body=False,
         add_timestamp=False,
         system_path="./system.json",

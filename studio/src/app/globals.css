@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f4efe6;
+  --ink: #1c1915;
+  --rule: #d8d0c4;
+  --accent: #b4472a;
+  --good: #2f6b4f;
+  --warn: #9a6b12;
+}
+
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+}
+
+.mono {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}

@@ -42,6 +42,9 @@ tmp/
 docs/superpowers/
 artifacts/*.log
 
-# OS
-.DS_Store
-Thumbs.db
+studio/node_modules/
+studio/.next/
+artifacts/hero/_pat/
+artifacts/hero/*.log
+*.log
+

@@ -1,0 +1,25 @@
+{
+  "artifacts": {
+    "demo_workspace": "artifacts/demo/workspace.json",
+    "physics_outcomes_existing": "artifacts/hero/existing_physics_outcomes.json",
+    "bust_calibration": "artifacts/bust_atomic_calibration.json",
+    "chest_case_lattice": "artifacts/correction_lattice_chest_case.json",
+    "observational_baselines": "artifacts/training/observational_and_vision_baselines.json",
+    "transition_sft": "artifacts/training/transition_sft.json",
+    "decision_sft": "artifacts/training/decision_sft.json",
+    "rlvr": "artifacts/training/rlvr.json",
+    "hero_pipeline_summary": "artifacts/hero/pipeline_summary.json",
+    "visual_disambiguation": "artifacts/hero/visual_disambiguation.json",
+    "atomic_calibration_v2": "artifacts/hero/atomic_calibration.json",
+    "lattice_v02": "artifacts/hero/correction_lattice_v0.2.jsonl",
+    "resume_claims": "reports/RESUME_CLAIMS.md",
+    "one_pager": "reports/PROJECT_ONE_PAGER.md",
+    "architecture": "reports/TECHNICAL_ARCHITECTURE.md",
+    "experiments": "reports/EXPERIMENT_TABLE.md",
+    "failures": "reports/FAILURE_ANALYSIS.md",
+    "ablation": "reports/ABLATION_REPORT.md",
+    "ood": "reports/OOD_REPORT.md",
+    "interview": "reports/INTERVIEW_DEEP_DIVE.md",
+    "studio": "studio/"
+  }
+}

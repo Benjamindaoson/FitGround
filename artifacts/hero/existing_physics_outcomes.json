@@ -1,0 +1,213 @@
+{
+  "body_kind": "SYNTHETIC_BODY_PHYSICS",
+  "rows": [
+    {
+      "n_cloth_verts": 7143,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.3106143623319115,
+      "clearance_p10_cm": 0.49422755319754097,
+      "clearance_min_cm": 0.34239938200510056,
+      "contact_ratio": 0.026879462410751787,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 8.980932445831707,
+      "bbox_xyz_cm": [
+        67.41061782836914,
+        45.57990264892578,
+        33.28456687927246
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7143,
+          "clearance_mean_cm": 1.3106143623319115,
+          "clearance_p10_cm": 0.49422755319754097,
+          "contact_ratio": 0.026879462410751787
+        },
+        "chest": {
+          "n_verts": 2799,
+          "clearance_mean_cm": 0.9250633248667477,
+          "clearance_p10_cm": 0.47161594818273905,
+          "contact_ratio": 0.031797070382279385
+        },
+        "waist": {
+          "n_verts": 1895,
+          "clearance_mean_cm": 1.3265822803460898,
+          "clearance_p10_cm": 0.5070253280165447,
+          "contact_ratio": 0.025857519788918207
+        },
+        "shoulder": {
+          "n_verts": 952,
+          "clearance_mean_cm": 0.7317876812100785,
+          "clearance_p10_cm": 0.4370645032003135,
+          "contact_ratio": 0.052521008403361345
+        },
+        "sleeve": {
+          "n_verts": 1870,
+          "clearance_mean_cm": 1.037490257834367,
+          "clearance_p10_cm": 0.49570207649167297,
+          "contact_ratio": 0.025668449197860963
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "tag": "baseline"
+    },
+    {
+      "n_cloth_verts": 7254,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.3429967494196775,
+      "clearance_p10_cm": 0.4990009991109045,
+      "clearance_min_cm": 0.3481438992910819,
+      "contact_ratio": 0.028811690102012684,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 9.015147090662145,
+      "bbox_xyz_cm": [
+        68.06185913085938,
+        45.829139709472656,
+        32.37204933166504
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7254,
+          "clearance_mean_cm": 1.3429967494196775,
+          "clearance_p10_cm": 0.4990009991109045,
+          "contact_ratio": 0.028811690102012684
+        },
+        "chest": {
+          "n_verts": 2816,
+          "clearance_mean_cm": 0.9435175063331852,
+          "clearance_p10_cm": 0.4806180307789045,
+          "contact_ratio": 0.03799715909090909
+        },
+        "waist": {
+          "n_verts": 1967,
+          "clearance_mean_cm": 1.3550447844771183,
+          "clearance_p10_cm": 0.5083881502200841,
+          "contact_ratio": 0.026436197254702594
+        },
+        "shoulder": {
+          "n_verts": 961,
+          "clearance_mean_cm": 0.7392161673725969,
+          "clearance_p10_cm": 0.44096182418683005,
+          "contact_ratio": 0.04994797086368366
+        },
+        "sleeve": {
+          "n_verts": 1802,
+          "clearance_mean_cm": 1.0872451052673306,
+          "clearance_p10_cm": 0.5130384761009128,
+          "contact_ratio": 0.025527192008879023
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "tag": "bust_plus_1cm"
+    },
+    {
+      "n_cloth_verts": 7275,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.3487515954110887,
+      "clearance_p10_cm": 0.5011013406498546,
+      "clearance_min_cm": 0.3479250005631738,
+      "contact_ratio": 0.027079037800687284,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 9.045469299647872,
+      "bbox_xyz_cm": [
+        67.90641784667969,
+        45.77613067626953,
+        33.737998962402344
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7275,
+          "clearance_mean_cm": 1.3487515954110887,
+          "clearance_p10_cm": 0.5011013406498546,
+          "contact_ratio": 0.027079037800687284
+        },
+        "chest": {
+          "n_verts": 2829,
+          "clearance_mean_cm": 0.9082455590068123,
+          "clearance_p10_cm": 0.4814280779865431,
+          "contact_ratio": 0.03428773418168964
+        },
+        "waist": {
+          "n_verts": 1962,
+          "clearance_mean_cm": 1.3785574515944152,
+          "clearance_p10_cm": 0.5469482166975117,
+          "contact_ratio": 0.01529051987767584
+        },
+        "shoulder": {
+          "n_verts": 965,
+          "clearance_mean_cm": 0.7334786675300357,
+          "clearance_p10_cm": 0.4323179545056652,
+          "contact_ratio": 0.06010362694300518
+        },
+        "sleeve": {
+          "n_verts": 1878,
+          "clearance_mean_cm": 0.9794410717758414,
+          "clearance_p10_cm": 0.506944349110069,
+          "contact_ratio": 0.027689030883919063
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "tag": "bust_plus_2cm"
+    },
+    {
+      "n_cloth_verts": 7352,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.3795465515746712,
+      "clearance_p10_cm": 0.5175893305395872,
+      "clearance_min_cm": 0.33845453310046164,
+      "contact_ratio": 0.022442872687704025,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 8.98005979490273,
+      "bbox_xyz_cm": [
+        66.80942916870117,
+        45.932518005371094,
+        34.320533752441406
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7352,
+          "clearance_mean_cm": 1.3795465515746712,
+          "clearance_p10_cm": 0.5175893305395872,
+          "contact_ratio": 0.022442872687704025
+        },
+        "chest": {
+          "n_verts": 2867,
+          "clearance_mean_cm": 0.9612790117804538,
+          "clearance_p10_cm": 0.49688593432452194,
+          "contact_ratio": 0.027554935472619464
+        },
+        "waist": {
+          "n_verts": 1960,
+          "clearance_mean_cm": 1.4693130088573683,
+          "clearance_p10_cm": 0.5867080207043222,
+          "contact_ratio": 0.010714285714285714
+        },
+        "shoulder": {
+          "n_verts": 988,
+          "clearance_mean_cm": 0.7555508911304886,
+          "clearance_p10_cm": 0.4350073882848955,
+          "contact_ratio": 0.05263157894736842
+        },
+        "sleeve": {
+          "n_verts": 1976,
+          "clearance_mean_cm": 1.0275181178109265,
+          "clearance_p10_cm": 0.5399573168128057,
+          "contact_ratio": 0.01720647773279352
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "tag": "bust_plus_3cm"
+    }
+  ]
+}

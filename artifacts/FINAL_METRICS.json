@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-09-15T08:20:00Z",
+  "body_kind": "SYNTHETIC_BODY_PHYSICS",
+  "bust_pattern_max_abs_error_cm": 1e-14,
+  "physics_baseline_chest_p10_cm": 0.472,
+  "physics_bust_plus_3_chest_p10_cm": 0.497,
+  "physics_baseline_contact_ratio": 0.0269,
+  "physics_bust_plus_3_contact_ratio": 0.0224,
+  "B0_mae_cm": 8.110471560302393,
+  "B1_ols_mae_cm": 8.080634882812335,
+  "B1_xgboost_mae_cm": 7.875043460716143,
+  "B2_pattern_ridge_mae_cm": 3.4490544006095067,
+  "B2_pattern_cnn_mae_cm": 6.234292807802393,
+  "transition_sft_mae_cm": 0.47328024404123425,
+  "transition_identity_mae_cm": 0.0,
+  "decision_sft_holdout_accuracy": 1.0,
+  "decision_sft_holdout_n": 3,
+  "rlvr": "COMPLETED_NOT_JUSTIFIED"
+}

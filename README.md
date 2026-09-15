@@ -1,22 +1,49 @@
 # FitGround
 
-> **AI-powered multimodal fit correction for technical designers.**
->
-> **面向服装技术设计师的多模态 AI 合体修正系统：当样衣已经出现 fit 问题时，帮助判断下一版该改哪里、改多少，以及会不会引入新的问题。**
+**FitGround predicts how a garment modification will change fit, then recommends the smallest effective correction for the next sample.**
 
-FitGround is an open research and engineering foundation for a costly apparel-development decision: **a current sample has a fit problem—what is the smallest, safest correction to make in the next sample?**
+This is a technical-designer workspace, not a consumer virtual try-on.
 
-FitGround 不是通用 virtual try-on、消费者尺码推荐或服装聊天机器人。它聚焦于技术设计师已经发现问题之后最昂贵的一步：**下一版样衣到底如何修改，为什么这样修改，以及修改后会发生什么。**
+![Current sample drape](reports/figures/baseline_render_front.png)
+![Bust +3 cm drape](reports/figures/bust_plus_3cm_render_front.png)
 
-| Status / 状态 | Current truth / 当前事实 |
+| | |
 | --- | --- |
-| Product contract | Frozen V0.1 contracts; GPU backend added without changing dry-run semantics |
-| Local correction contracts | Implemented, schema-validated, and tested (58 passed, 2 skipped) |
-| Physics verifier | Warp XPBD on static mean_all.obj; smoke PASS; SMPL-X bodies BLOCKED |
-| Bust calibration | PARTIAL: realized_delta measured to 1e-14 cm; waist coupled via shirt.width.v |
-| V0.1 actions | Bust mapped; shoulder/sleeve NOT_VERIFIED |
-| Model training | B0/B1/B1-XGB on FIT-Clean; B2/B3 on generated pattern PNGs; Transition+Decision SFT PASS; RLVR run, no residual gap |
-| Raw external data | Excluded from Git; FIT-100K not downloaded |
+| Problem | Sample is wrong. What changes in the next one? |
+| Intervention | Named pattern parameters with **measured** `realized_delta_cm` |
+| Physics | Warp XPBD on a **static mannequin OBJ** (`SYNTHETIC_BODY_PHYSICS`). SMPL-X weights are absent; pipeline does not stop. |
+| Decision | Enumerated candidates → utility → recommendation, confidence, alternatives |
+| Demo | `studio/` Next.js workspace at port 43187 |
+
+| Status | Fact |
+| --- | --- |
+| Bust calibration | Pattern identity map to ~1e-14 cm; waist coupled (`flare=1`) |
+| Sleeve | Re-measured on panel **X** (GarmentCode construction axis). Prior Y-span was a measurement bug. |
+| Shoulder | No independent `shoulder_w` on Shirt; connecting_width probed (GO only with evidence) |
+| Physics metrics | Body scaled m→cm; chest clearance p10 0.47→0.50 cm at +3 cm; contact 0.027→0.022 |
+| Observational B0/B1/XGB | MAE 8.11 / 8.08 / 7.88 cm on FIT-Clean (not intervention GT) |
+| Pattern Ridge vs CNN | Ridge 3.45 cm beats CNN 6.23 cm on 192 drawings |
+| Transition SFT | MAE 0.47 cm; analytic inverse is 0.00 on this grid |
+| Decision SFT / RLVR | Holdout acc 1.0 (n=3); RLVR no residual gain |
+| Vision necessity | Material-split benchmark running on GPU; not claimed until pairs exist |
+
+## Demo / Results
+
+Interactive workspace:
+
+```bash
+cd studio && npm install && npm run dev
+# http://127.0.0.1:43187
+```
+
+GPU completion pipeline:
+
+```bash
+source scripts/gpu/flux_env.sh
+python scripts/gpu/hero_pipeline.py
+python scripts/train/train_hero_ladder.py
+```
+
 
 ## Demo / Results / 当前 GPU 结果
 

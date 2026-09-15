@@ -1,0 +1,471 @@
+{
+  "n_pattern_transitions": 636,
+  "n_unique_patterns": 677,
+  "n_physics": 15,
+  "n_physics_ok": 15,
+  "n_disambiguation_pairs": 5,
+  "vision_verdict": "VISION_NECESSITY_ESTABLISHED",
+  "calibration_gates": {
+    "bust_circumference_delta_cm": "GO",
+    "sleeve_length_delta_cm": "GO",
+    "shoulder_width_delta_cm": "NO-GO"
+  },
+  "existing_physics_scored": 4,
+  "runtime_s": 2259.564347743988,
+  "body_kind": "SYNTHETIC_BODY_PHYSICS",
+  "closure_validation": {
+    "n_transitions": 636,
+    "n_unique_state_action": 636,
+    "n_duplicate_state_action": 0,
+    "n_failed_validation": 0,
+    "n_valid": 636,
+    "n_bodies": 3,
+    "bodies": [
+      "mean_all",
+      "mean_female",
+      "mean_male"
+    ],
+    "n_action_families": 2,
+    "action_families": {
+      "bust_circumference_delta_cm": 600,
+      "sleeve_length_delta_cm": 36
+    },
+    "action_magnitudes": {
+      "-3.0": 72,
+      "-2.0": 87,
+      "-1.0": 99,
+      "0.0": 90,
+      "1.0": 99,
+      "2.0": 99,
+      "3.0": 90
+    },
+    "failures": [],
+    "ok": true,
+    "n_garments": 1,
+    "n_materials": 3,
+    "n_poses": 1,
+    "pose_note": "static mannequin OBJ only; no SMPL pose library",
+    "n_action_magnitudes": 7,
+    "n_physics_rows": 127,
+    "n_physics_ok": 127,
+    "n_failed": 0,
+    "n_resumed": 0,
+    "calibration_gates": {
+      "bust_circumference_delta_cm": "GO",
+      "sleeve_length_delta_cm": "GO",
+      "shoulder_width_delta_cm": "NO-GO"
+    },
+    "png_count": null,
+    "families": [
+      "bust_circumference_delta_cm",
+      "sleeve_length_delta_cm"
+    ],
+    "probes_n": 15,
+    "pipeline_summary": {
+      "n_pattern_transitions": 636,
+      "n_unique_patterns": 677,
+      "n_physics": 15,
+      "n_physics_ok": 15,
+      "n_disambiguation_pairs": 5,
+      "vision_verdict": "VISION_NECESSITY_ESTABLISHED",
+      "calibration_gates": {
+        "bust_circumference_delta_cm": "GO",
+        "sleeve_length_delta_cm": "GO",
+        "shoulder_width_delta_cm": "NO-GO"
+      },
+      "existing_physics_scored": 4,
+      "runtime_s": 2259.564347743988,
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "closure_validation": {
+        "n_transitions": 636,
+        "n_unique_state_action": 636,
+        "n_duplicate_state_action": 0,
+        "n_failed_validation": 0,
+        "n_valid": 636,
+        "n_bodies": 3,
+        "bodies": [
+          "mean_all",
+          "mean_female",
+          "mean_male"
+        ],
+        "n_action_families": 2,
+        "action_families": {
+          "bust_circumference_delta_cm": 600,
+          "sleeve_length_delta_cm": 36
+        },
+        "action_magnitudes": {
+          "-3.0": 72,
+          "-2.0": 87,
+          "-1.0": 99,
+          "0.0": 90,
+          "1.0": 99,
+          "2.0": 99,
+          "3.0": 90
+        },
+        "failures": [],
+        "ok": true,
+        "n_garments": 1,
+        "n_materials": 3,
+        "n_poses": 1,
+        "pose_note": "static mannequin OBJ only; no SMPL pose library",
+        "n_action_magnitudes": 7,
+        "n_physics_rows": 127,
+        "n_physics_ok": 127,
+        "n_failed": 0,
+        "n_resumed": 0,
+        "calibration_gates": {
+          "bust_circumference_delta_cm": "GO",
+          "sleeve_length_delta_cm": "GO",
+          "shoulder_width_delta_cm": "NO-GO"
+        },
+        "png_count": 677,
+        "families": [
+          "bust_circumference_delta_cm",
+          "sleeve_length_delta_cm"
+        ],
+        "probes_n": 15,
+        "pipeline_summary": {
+          "n_pattern_transitions": 636,
+          "n_unique_patterns": 677,
+          "n_physics": 15,
+          "n_physics_ok": 15,
+          "n_disambiguation_pairs": 5,
+          "vision_verdict": "VISION_NECESSITY_ESTABLISHED",
+          "calibration_gates": {
+            "bust_circumference_delta_cm": "GO",
+            "sleeve_length_delta_cm": "GO",
+            "shoulder_width_delta_cm": "NO-GO"
+          },
+          "existing_physics_scored": 4,
+          "runtime_s": 2259.564347743988,
+          "body_kind": "SYNTHETIC_BODY_PHYSICS",
+          "closure_validation": {
+            "n_transitions": 636,
+            "n_unique_state_action": 636,
+            "n_duplicate_state_action": 0,
+            "n_failed_validation": 0,
+            "n_valid": 636,
+            "n_bodies": 3,
+            "bodies": [
+              "mean_all",
+              "mean_female",
+              "mean_male"
+            ],
+            "n_action_families": 2,
+            "action_families": {
+              "bust_circumference_delta_cm": 600,
+              "sleeve_length_delta_cm": 36
+            },
+            "action_magnitudes": {
+              "-3.0": 72,
+              "-2.0": 87,
+              "-1.0": 99,
+              "0.0": 90,
+              "1.0": 99,
+              "2.0": 99,
+              "3.0": 90
+            },
+            "failures": [],
+            "ok": true,
+            "n_garments": 1,
+            "n_materials": 3,
+            "n_poses": 1,
+            "pose_note": "static mannequin OBJ only; no SMPL pose library",
+            "n_action_magnitudes": 7,
+            "n_physics_rows": 127,
+            "n_physics_ok": 127,
+            "n_failed": 0,
+            "n_resumed": 0,
+            "calibration_gates": {
+              "bust_circumference_delta_cm": "GO",
+              "sleeve_length_delta_cm": "GO",
+              "shoulder_width_delta_cm": "NO-GO"
+            },
+            "png_count": 677,
+            "families": [
+              "bust_circumference_delta_cm",
+              "sleeve_length_delta_cm"
+            ],
+            "probes_n": 15,
+            "pipeline_summary": {
+              "n_pattern_transitions": 636,
+              "n_unique_patterns": 677,
+              "n_physics": 15,
+              "n_physics_ok": 15,
+              "n_disambiguation_pairs": 5,
+              "vision_verdict": "VISION_NECESSITY_ESTABLISHED",
+              "calibration_gates": {
+                "bust_circumference_delta_cm": "GO",
+                "sleeve_length_delta_cm": "GO",
+                "shoulder_width_delta_cm": "NO-GO"
+              },
+              "existing_physics_scored": 4,
+              "runtime_s": 2259.564347743988,
+              "body_kind": "SYNTHETIC_BODY_PHYSICS",
+              "closure_validation": {
+                "n_transitions": 636,
+                "n_unique_state_action": 636,
+                "n_duplicate_state_action": 0,
+                "n_failed_validation": 0,
+                "n_valid": 636,
+                "n_bodies": 3,
+                "bodies": [
+                  "mean_all",
+                  "mean_female",
+                  "mean_male"
+                ],
+                "n_action_families": 2,
+                "action_families": {
+                  "bust_circumference_delta_cm": 600,
+                  "sleeve_length_delta_cm": 36
+                },
+                "action_magnitudes": {
+                  "-3.0": 72,
+                  "-2.0": 87,
+                  "-1.0": 99,
+                  "0.0": 90,
+                  "1.0": 99,
+                  "2.0": 99,
+                  "3.0": 90
+                },
+                "failures": [],
+                "ok": true,
+                "n_garments": 1,
+                "n_materials": 3,
+                "n_poses": 1,
+                "pose_note": "static mannequin OBJ only; no SMPL pose library",
+                "n_action_magnitudes": 7,
+                "n_physics_rows": 127,
+                "n_physics_ok": 127,
+                "n_failed": 0,
+                "n_resumed": 0,
+                "calibration_gates": {
+                  "bust_circumference_delta_cm": "GO",
+                  "sleeve_length_delta_cm": "GO",
+                  "shoulder_width_delta_cm": "NO-GO"
+                },
+                "png_count": 677,
+                "families": [
+                  "bust_circumference_delta_cm",
+                  "sleeve_length_delta_cm"
+                ],
+                "probes_n": 15,
+                "pipeline_summary": {
+                  "n_pattern_transitions": 636,
+                  "n_unique_patterns": 677,
+                  "n_physics": 15,
+                  "n_physics_ok": 15,
+                  "n_disambiguation_pairs": 5,
+                  "vision_verdict": "VISION_NECESSITY_ESTABLISHED",
+                  "calibration_gates": {
+                    "bust_circumference_delta_cm": "GO",
+                    "sleeve_length_delta_cm": "GO",
+                    "shoulder_width_delta_cm": "NO-GO"
+                  },
+                  "existing_physics_scored": 4,
+                  "runtime_s": 2259.564347743988,
+                  "body_kind": "SYNTHETIC_BODY_PHYSICS",
+                  "closure_validation": {
+                    "n_transitions": 636,
+                    "n_unique_state_action": 636,
+                    "n_duplicate_state_action": 0,
+                    "n_failed_validation": 0,
+                    "n_valid": 636,
+                    "n_bodies": 3,
+                    "bodies": [
+                      "mean_all",
+                      "mean_female",
+                      "mean_male"
+                    ],
+                    "n_action_families": 2,
+                    "action_families": {
+                      "bust_circumference_delta_cm": 600,
+                      "sleeve_length_delta_cm": 36
+                    },
+                    "action_magnitudes": {
+                      "-3.0": 72,
+                      "-2.0": 87,
+                      "-1.0": 99,
+                      "0.0": 90,
+                      "1.0": 99,
+                      "2.0": 99,
+                      "3.0": 90
+                    },
+                    "failures": [],
+                    "ok": true,
+                    "n_garments": 1,
+                    "n_materials": 3,
+                    "n_poses": 1,
+                    "pose_note": "static mannequin OBJ only; no SMPL pose library",
+                    "n_action_magnitudes": 7,
+                    "n_physics_rows": 127,
+                    "n_physics_ok": 127,
+                    "n_failed": 0,
+                    "n_resumed": 0,
+                    "calibration_gates": {
+                      "bust_circumference_delta_cm": "GO",
+                      "sleeve_length_delta_cm": "GO",
+                      "shoulder_width_delta_cm": "NO-GO"
+                    },
+                    "png_count": 677,
+                    "families": [
+                      "bust_circumference_delta_cm",
+                      "sleeve_length_delta_cm"
+                    ],
+                    "probes_n": 15,
+                    "pipeline_summary": {
+                      "n_pattern_transitions": 636,
+                      "n_unique_patterns": 677,
+                      "n_physics": 15,
+                      "n_physics_ok": 15,
+                      "n_disambiguation_pairs": 5,
+                      "vision_verdict": "VISION_NECESSITY_ESTABLISHED",
+                      "calibration_gates": {
+                        "bust_circumference_delta_cm": "GO",
+                        "sleeve_length_delta_cm": "GO",
+                        "shoulder_width_delta_cm": "NO-GO"
+                      },
+                      "existing_physics_scored": 4,
+                      "runtime_s": 2259.564347743988,
+                      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+                      "closure_validation": {
+                        "n_transitions": 636,
+                        "n_unique_state_action": 636,
+                        "n_duplicate_state_action": 0,
+                        "n_failed_validation": 0,
+                        "n_valid": 636,
+                        "n_bodies": 3,
+                        "bodies": [
+                          "mean_all",
+                          "mean_female",
+                          "mean_male"
+                        ],
+                        "n_action_families": 2,
+                        "action_families": {
+                          "bust_circumference_delta_cm": 600,
+                          "sleeve_length_delta_cm": 36
+                        },
+                        "action_magnitudes": {
+                          "-3.0": 72,
+                          "-2.0": 87,
+                          "-1.0": 99,
+                          "0.0": 90,
+                          "1.0": 99,
+                          "2.0": 99,
+                          "3.0": 90
+                        },
+                        "failures": [],
+                        "ok": true,
+                        "n_garments": 1,
+                        "n_materials": 3,
+                        "n_poses": 1,
+                        "pose_note": "static mannequin OBJ only; no SMPL pose library",
+                        "n_action_magnitudes": 7,
+                        "n_physics_rows": 127,
+                        "n_physics_ok": 127,
+                        "n_failed": 0,
+                        "n_resumed": 0,
+                        "calibration_gates": {
+                          "bust_circumference_delta_cm": "GO",
+                          "sleeve_length_delta_cm": "GO",
+                          "shoulder_width_delta_cm": "NO-GO"
+                        },
+                        "png_count": 677,
+                        "families": [
+                          "bust_circumference_delta_cm",
+                          "sleeve_length_delta_cm"
+                        ],
+                        "probes_n": 15,
+                        "pipeline_summary": {
+                          "n_pattern_transitions": 636,
+                          "n_unique_patterns": 677,
+                          "n_physics": 15,
+                          "n_physics_ok": 15,
+                          "n_disambiguation_pairs": 5,
+                          "vision_verdict": "VISION_NECESSITY_ESTABLISHED",
+                          "calibration_gates": {
+                            "bust_circumference_delta_cm": "GO",
+                            "sleeve_length_delta_cm": "GO",
+                            "shoulder_width_delta_cm": "NO-GO"
+                          },
+                          "existing_physics_scored": 4,
+                          "runtime_s": 2259.564347743988,
+                          "body_kind": "SYNTHETIC_BODY_PHYSICS",
+                          "closure_validation": {
+                            "n_transitions": 636,
+                            "n_unique_state_action": 636,
+                            "n_duplicate_state_action": 0,
+                            "n_failed_validation": 0,
+                            "n_valid": 636,
+                            "n_bodies": 3,
+                            "bodies": [
+                              "mean_all",
+                              "mean_female",
+                              "mean_male"
+                            ],
+                            "n_action_families": 2,
+                            "action_families": {
+                              "bust_circumference_delta_cm": 600,
+                              "sleeve_length_delta_cm": 36
+                            },
+                            "action_magnitudes": {
+                              "-3.0": 72,
+                              "-2.0": 87,
+                              "-1.0": 99,
+                              "0.0": 90,
+                              "1.0": 99,
+                              "2.0": 99,
+                              "3.0": 90
+                            },
+                            "failures": [],
+                            "ok": true,
+                            "n_garments": 1,
+                            "n_materials": 3,
+                            "n_poses": 1,
+                            "pose_note": "static mannequin OBJ only; no SMPL pose library",
+                            "n_action_magnitudes": 7,
+                            "n_physics_rows": 127,
+                            "n_physics_ok": 127,
+                            "n_failed": 0,
+                            "n_resumed": 0,
+                            "calibration_gates": {
+                              "bust_circumference_delta_cm": "GO",
+                              "sleeve_length_delta_cm": "GO",
+                              "shoulder_width_delta_cm": "NO-GO"
+                            },
+                            "png_count": 677,
+                            "families": [
+                              "bust_circumference_delta_cm",
+                              "sleeve_length_delta_cm"
+                            ],
+                            "probes_n": 15,
+                            "pipeline_summary": {
+                              "n_pattern_transitions": 636,
+                              "n_unique_patterns": 677,
+                              "n_physics": 15,
+                              "n_physics_ok": 15,
+                              "n_disambiguation_pairs": 5,
+                              "vision_verdict": "VISION_NECESSITY_ESTABLISHED",
+                              "calibration_gates": {
+                                "bust_circumference_delta_cm": "GO",
+                                "sleeve_length_delta_cm": "GO",
+                                "shoulder_width_delta_cm": "NO-GO"
+                              },
+                              "existing_physics_scored": 4,
+                              "runtime_s": 2259.564347743988,
+                              "body_kind": "SYNTHETIC_BODY_PHYSICS"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

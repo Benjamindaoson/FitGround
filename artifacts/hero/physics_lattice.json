@@ -1,0 +1,1757 @@
+[
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 13.168002128601074,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/baseline_default/baseline_default",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/baseline_default/baseline_default/baseline_default_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/baseline_default/baseline_default/baseline_default_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/baseline_default/baseline_default/baseline_default_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/baseline_default/baseline_default/baseline_default_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/baseline_default/baseline_default/baseline_default_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/baseline_default/baseline_default/baseline_default_render_front_bodymask.png"
+    ],
+    "sim_mesh_sha256": "8a678b388510fe9fe6a94261f5c7c3795094a15361739741ad07f05aefbc09f4",
+    "box_mesh_sha256": "5acd558f4af5e327e13e75d2dab3abc2f60bd3120039e3e499130d27ad320f89",
+    "fit_outcomes": {
+      "n_cloth_verts": 7143,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.3121721496458938,
+      "clearance_p10_cm": 0.4894418019148814,
+      "clearance_min_cm": 0.33960936913282597,
+      "contact_ratio": 0.029259414811703768,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.11134726005336272,
+      "bbox_xyz_cm": [
+        67.08724212646484,
+        45.549659729003906,
+        33.881473541259766
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7143,
+          "clearance_mean_cm": 1.3121721496458938,
+          "clearance_p10_cm": 0.4894418019148814,
+          "contact_ratio": 0.029259414811703768
+        },
+        "chest": {
+          "n_verts": 2794,
+          "clearance_mean_cm": 0.900084199613012,
+          "clearance_p10_cm": 0.48486131837193175,
+          "contact_ratio": 0.033285612025769504
+        },
+        "waist": {
+          "n_verts": 1898,
+          "clearance_mean_cm": 1.2782984172031715,
+          "clearance_p10_cm": 0.476869503137365,
+          "contact_ratio": 0.026870389884088516
+        },
+        "shoulder": {
+          "n_verts": 949,
+          "clearance_mean_cm": 0.7291710003851054,
+          "clearance_p10_cm": 0.4355489157770368,
+          "contact_ratio": 0.05795574288724974
+        },
+        "sleeve": {
+          "n_verts": 1886,
+          "clearance_mean_cm": 0.9827599971180878,
+          "clearance_p10_cm": 0.4969255485360419,
+          "contact_ratio": 0.02863202545068929
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "default",
+      "body_name": "mean_all"
+    },
+    "material": "default",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "baseline_default",
+    "intended_delta_cm": 0.0,
+    "action_family": "none",
+    "state_id": "mean_all_w1.050_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p99b5177b1fb4.png",
+    "measurements": {
+      "bust_circumference_cm": 104.83273500000001,
+      "waist_cm": 104.83273500000001,
+      "length_cm": 49.94076049824885,
+      "sleeve_length_cm": 22.047172678731982,
+      "shoulder_width_cm": 54.772830000000006,
+      "torso_panel_dx": {
+        "left_ftorso": 27.386415000000003,
+        "right_ftorso": 27.386415000000003,
+        "left_btorso": 25.0299525,
+        "right_btorso": 25.0299525
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 49.96306251835827,
+        "right_ftorso": 49.96306251835827,
+        "left_btorso": 49.918458478139435,
+        "right_btorso": 49.918458478139435
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 21.061465546663545,
+        "left_sleeve_b": 21.061465546663538,
+        "right_sleeve_f": 21.061465546663545,
+        "right_sleeve_b": 21.061465546663538
+      },
+      "panel_names": [
+        "left_ftorso",
+        "left_btorso",
+        "left_sleeve_f",
+        "left_sleeve_b",
+        "right_sleeve_f",
+        "right_sleeve_b",
+        "right_btorso",
+        "right_ftorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "c1b193e4dba5999a7f08a2045a3eef050b2a81c80ce6a534503852224eef275c"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 11.801084756851196,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+2_default/bust_+2_default",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+2_default/bust_+2_default/bust_+2_default_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+2_default/bust_+2_default/bust_+2_default_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+2_default/bust_+2_default/bust_+2_default_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+2_default/bust_+2_default/bust_+2_default_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+2_default/bust_+2_default/bust_+2_default_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+2_default/bust_+2_default/bust_+2_default_render_front.png"
+    ],
+    "sim_mesh_sha256": "4cb1f38c6f0ab61e2469def61fae7c8c91b45553b5b23113d106d3b9ab191372",
+    "box_mesh_sha256": "ac49c93193ae569526410eb62a2f5ea4b92ec7cd06b5bf8a39ab660cde5ee2d1",
+    "fit_outcomes": {
+      "n_cloth_verts": 7275,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.3840246736888568,
+      "clearance_p10_cm": 0.5157648352354847,
+      "clearance_min_cm": 0.3494387104522881,
+      "contact_ratio": 0.024467353951890033,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.11740768821126459,
+      "bbox_xyz_cm": [
+        67.87033081054688,
+        45.786102294921875,
+        34.8726863861084
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7275,
+          "clearance_mean_cm": 1.3840246736888568,
+          "clearance_p10_cm": 0.5157648352354847,
+          "contact_ratio": 0.024467353951890033
+        },
+        "chest": {
+          "n_verts": 2825,
+          "clearance_mean_cm": 0.9553766682986491,
+          "clearance_p10_cm": 0.48657958470221535,
+          "contact_ratio": 0.02938053097345133
+        },
+        "waist": {
+          "n_verts": 1972,
+          "clearance_mean_cm": 1.407924445764848,
+          "clearance_p10_cm": 0.5624771764636823,
+          "contact_ratio": 0.012170385395537525
+        },
+        "shoulder": {
+          "n_verts": 965,
+          "clearance_mean_cm": 0.7338486698650917,
+          "clearance_p10_cm": 0.4359579420728944,
+          "contact_ratio": 0.06321243523316063
+        },
+        "sleeve": {
+          "n_verts": 1886,
+          "clearance_mean_cm": 1.0528254848017466,
+          "clearance_p10_cm": 0.5332651408088079,
+          "contact_ratio": 0.020678685047720042
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "default",
+      "body_name": "mean_all"
+    },
+    "material": "default",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "bust_+2_default",
+    "intended_delta_cm": 2.0,
+    "action_family": "bust_circumference_delta_cm",
+    "state_id": "mean_all_w1.070_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/pa8787dd3d4e6.png",
+    "measurements": {
+      "bust_circumference_cm": 106.83273499999999,
+      "waist_cm": 106.83273499999999,
+      "length_cm": 50.139509281711966,
+      "sleeve_length_cm": 22.10840819485798,
+      "shoulder_width_cm": 55.81778661588911,
+      "torso_panel_dx": {
+        "left_ftorso": 27.908893307944556,
+        "right_ftorso": 27.908893307944556,
+        "left_btorso": 25.50747419205544,
+        "right_btorso": 25.50747419205544
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 50.17074637370763,
+        "right_ftorso": 50.17074637370763,
+        "left_btorso": 50.1082721897163,
+        "right_btorso": 50.1082721897163
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 21.289834991451265,
+        "left_sleeve_b": 21.289834991451276,
+        "right_sleeve_f": 21.289834991451265,
+        "right_sleeve_b": 21.289834991451276
+      },
+      "panel_names": [
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_f",
+        "right_sleeve_b",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "left_ftorso",
+        "left_btorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "24568fcb11f866ad4e7f6c9d0a9304c3ee1e736b6931103ab4526c16bf050861"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 12.203018426895142,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+3_default/bust_+3_default",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+3_default/bust_+3_default/bust_+3_default_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+3_default/bust_+3_default/bust_+3_default_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+3_default/bust_+3_default/bust_+3_default_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+3_default/bust_+3_default/bust_+3_default_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+3_default/bust_+3_default/bust_+3_default_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/bust_+3_default/bust_+3_default/bust_+3_default_render_front_mask.png"
+    ],
+    "sim_mesh_sha256": "51cc4ba40a650d0d2e3ee447790fa8d361633458560cdcb3431772e6cd1c81d2",
+    "box_mesh_sha256": "3038d1e097ac150cd75b7d8b1b2d11976f72a9a5dc5c0b631a93699b982dac34",
+    "fit_outcomes": {
+      "n_cloth_verts": 7352,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.3894261230240226,
+      "clearance_p10_cm": 0.5185732479355815,
+      "clearance_min_cm": 0.34072302888448774,
+      "contact_ratio": 0.024483133841131665,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.11662850584789308,
+      "bbox_xyz_cm": [
+        67.5292854309082,
+        45.878089904785156,
+        35.01392364501953
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7352,
+          "clearance_mean_cm": 1.3894261230240226,
+          "clearance_p10_cm": 0.5185732479355815,
+          "contact_ratio": 0.024483133841131665
+        },
+        "chest": {
+          "n_verts": 2853,
+          "clearance_mean_cm": 1.003432857734875,
+          "clearance_p10_cm": 0.49555050984878896,
+          "contact_ratio": 0.030143708377146864
+        },
+        "waist": {
+          "n_verts": 1979,
+          "clearance_mean_cm": 1.424185298507521,
+          "clearance_p10_cm": 0.5750533957387782,
+          "contact_ratio": 0.012632642748863061
+        },
+        "shoulder": {
+          "n_verts": 987,
+          "clearance_mean_cm": 0.7546211033918149,
+          "clearance_p10_cm": 0.43465251508953723,
+          "contact_ratio": 0.057750759878419454
+        },
+        "sleeve": {
+          "n_verts": 1938,
+          "clearance_mean_cm": 1.068739813801349,
+          "clearance_p10_cm": 0.5234784670998861,
+          "contact_ratio": 0.024251805985552117
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "default",
+      "body_name": "mean_all"
+    },
+    "material": "default",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "bust_+3_default",
+    "intended_delta_cm": 3.0,
+    "action_family": "bust_circumference_delta_cm",
+    "state_id": "mean_all_w1.080_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p04ba8a3a39a8.png",
+    "measurements": {
+      "bust_circumference_cm": 107.83273500000001,
+      "waist_cm": 107.83273500000001,
+      "length_cm": 50.238883669180446,
+      "sleeve_length_cm": 22.12534597473409,
+      "shoulder_width_cm": 56.34026492383368,
+      "torso_panel_dx": {
+        "left_ftorso": 28.17013246191684,
+        "right_ftorso": 28.17013246191684,
+        "left_btorso": 25.74623503808317,
+        "right_btorso": 25.74623503808317
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 50.274588295356914,
+        "right_ftorso": 50.274588295356914,
+        "left_btorso": 50.20317904300398,
+        "right_btorso": 50.20317904300398
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 21.343561360919228,
+        "left_sleeve_b": 21.343561360919225,
+        "right_sleeve_f": 21.343561360919228,
+        "right_sleeve_b": 21.343561360919225
+      },
+      "panel_names": [
+        "left_sleeve_f",
+        "left_sleeve_b",
+        "left_ftorso",
+        "left_btorso",
+        "right_sleeve_f",
+        "right_sleeve_b",
+        "right_btorso",
+        "right_ftorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "dfc8e4e68417004274b08b4234484c8f9029ac43a8107950a547fe5e185440c6"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 11.72192645072937,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+2_stiff/bust_+2_stiff",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+2_stiff/bust_+2_stiff/bust_+2_stiff_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+2_stiff/bust_+2_stiff/bust_+2_stiff_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+2_stiff/bust_+2_stiff/bust_+2_stiff_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+2_stiff/bust_+2_stiff/bust_+2_stiff_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+2_stiff/bust_+2_stiff/bust_+2_stiff_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+2_stiff/bust_+2_stiff/bust_+2_stiff_render_front_mask.png"
+    ],
+    "sim_mesh_sha256": "9fe71ea39ae7bcd20d4f9c415e9f4b78f3ee6fc09e6f452dfd61f507ba1377f1",
+    "box_mesh_sha256": "db91cd0776ec916d50701deaffe63d8e6f8e158c909065034322b5d188e2503c",
+    "fit_outcomes": {
+      "n_cloth_verts": 7275,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.5904566443878714,
+      "clearance_p10_cm": 0.5109730438281139,
+      "clearance_min_cm": 0.34881391777729276,
+      "contact_ratio": 0.02570446735395189,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.07552014657445379,
+      "bbox_xyz_cm": [
+        72.74020385742188,
+        46.15968322753906,
+        37.68875312805176
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7275,
+          "clearance_mean_cm": 1.5904566443878714,
+          "clearance_p10_cm": 0.5109730438281139,
+          "contact_ratio": 0.02570446735395189
+        },
+        "chest": {
+          "n_verts": 2855,
+          "clearance_mean_cm": 1.1192374977950321,
+          "clearance_p10_cm": 0.48826958081158156,
+          "contact_ratio": 0.03117338003502627
+        },
+        "waist": {
+          "n_verts": 1954,
+          "clearance_mean_cm": 1.610980189913435,
+          "clearance_p10_cm": 0.5375193390619043,
+          "contact_ratio": 0.014841351074718526
+        },
+        "shoulder": {
+          "n_verts": 987,
+          "clearance_mean_cm": 0.7952170253887868,
+          "clearance_p10_cm": 0.44402126348814436,
+          "contact_ratio": 0.06180344478216818
+        },
+        "sleeve": {
+          "n_verts": 1690,
+          "clearance_mean_cm": 1.2921773868942124,
+          "clearance_p10_cm": 0.5267788863064936,
+          "contact_ratio": 0.01775147928994083
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "stiff",
+      "body_name": "mean_all"
+    },
+    "material": "stiff",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "bust_+2_stiff",
+    "intended_delta_cm": 2.0,
+    "action_family": "bust_circumference_delta_cm",
+    "state_id": "mean_all_w1.070_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/pa8787dd3d4e6.png",
+    "measurements": {
+      "bust_circumference_cm": 106.83273499999999,
+      "waist_cm": 106.83273499999999,
+      "length_cm": 50.139509281711966,
+      "sleeve_length_cm": 22.10840819485798,
+      "shoulder_width_cm": 55.81778661588911,
+      "torso_panel_dx": {
+        "left_ftorso": 27.908893307944556,
+        "right_ftorso": 27.908893307944556,
+        "left_btorso": 25.50747419205544,
+        "right_btorso": 25.50747419205544
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 50.17074637370763,
+        "right_ftorso": 50.17074637370763,
+        "left_btorso": 50.1082721897163,
+        "right_btorso": 50.1082721897163
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 21.289834991451265,
+        "left_sleeve_b": 21.289834991451276,
+        "right_sleeve_f": 21.289834991451265,
+        "right_sleeve_b": 21.289834991451276
+      },
+      "panel_names": [
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_f",
+        "right_sleeve_b",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "left_ftorso",
+        "left_btorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "24568fcb11f866ad4e7f6c9d0a9304c3ee1e736b6931103ab4526c16bf050861"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 12.396137952804565,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+3_stiff/bust_+3_stiff",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+3_stiff/bust_+3_stiff/bust_+3_stiff_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+3_stiff/bust_+3_stiff/bust_+3_stiff_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+3_stiff/bust_+3_stiff/bust_+3_stiff_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+3_stiff/bust_+3_stiff/bust_+3_stiff_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+3_stiff/bust_+3_stiff/bust_+3_stiff_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/bust_+3_stiff/bust_+3_stiff/bust_+3_stiff_render_front.png"
+    ],
+    "sim_mesh_sha256": "09f0c9b0e7a94838449131aa981dd461e0bed778a7dd07845b055e48446472f9",
+    "box_mesh_sha256": "3da641e0aeb94cdbb18466b5b6284797d0b105b1f15ee9cb44cbe23748809082",
+    "fit_outcomes": {
+      "n_cloth_verts": 7352,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.6253091583236434,
+      "clearance_p10_cm": 0.5254739560609124,
+      "clearance_min_cm": 0.33987245088585505,
+      "contact_ratio": 0.0220348204570185,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.0811791389628946,
+      "bbox_xyz_cm": [
+        73.11489486694336,
+        46.10487365722656,
+        37.39719200134277
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7352,
+          "clearance_mean_cm": 1.6253091583236434,
+          "clearance_p10_cm": 0.5254739560609124,
+          "contact_ratio": 0.0220348204570185
+        },
+        "chest": {
+          "n_verts": 2864,
+          "clearance_mean_cm": 1.1490811231833757,
+          "clearance_p10_cm": 0.5024210665210367,
+          "contact_ratio": 0.026187150837988827
+        },
+        "waist": {
+          "n_verts": 1973,
+          "clearance_mean_cm": 1.6467583586831676,
+          "clearance_p10_cm": 0.5567740239985264,
+          "contact_ratio": 0.017232640648758235
+        },
+        "shoulder": {
+          "n_verts": 1005,
+          "clearance_mean_cm": 0.8005139271139132,
+          "clearance_p10_cm": 0.4434304067806308,
+          "contact_ratio": 0.046766169154228855
+        },
+        "sleeve": {
+          "n_verts": 1725,
+          "clearance_mean_cm": 1.3236103334406868,
+          "clearance_p10_cm": 0.5276108764026904,
+          "contact_ratio": 0.02318840579710145
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "stiff",
+      "body_name": "mean_all"
+    },
+    "material": "stiff",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "bust_+3_stiff",
+    "intended_delta_cm": 3.0,
+    "action_family": "bust_circumference_delta_cm",
+    "state_id": "mean_all_w1.080_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p04ba8a3a39a8.png",
+    "measurements": {
+      "bust_circumference_cm": 107.83273500000001,
+      "waist_cm": 107.83273500000001,
+      "length_cm": 50.238883669180446,
+      "sleeve_length_cm": 22.12534597473409,
+      "shoulder_width_cm": 56.34026492383368,
+      "torso_panel_dx": {
+        "left_ftorso": 28.17013246191684,
+        "right_ftorso": 28.17013246191684,
+        "left_btorso": 25.74623503808317,
+        "right_btorso": 25.74623503808317
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 50.274588295356914,
+        "right_ftorso": 50.274588295356914,
+        "left_btorso": 50.20317904300398,
+        "right_btorso": 50.20317904300398
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 21.343561360919228,
+        "left_sleeve_b": 21.343561360919225,
+        "right_sleeve_f": 21.343561360919228,
+        "right_sleeve_b": 21.343561360919225
+      },
+      "panel_names": [
+        "left_sleeve_f",
+        "left_sleeve_b",
+        "left_ftorso",
+        "left_btorso",
+        "right_sleeve_f",
+        "right_sleeve_b",
+        "right_btorso",
+        "right_ftorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "dfc8e4e68417004274b08b4234484c8f9029ac43a8107950a547fe5e185440c6"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 11.546398878097534,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/soft/bust_+2_soft/bust_+2_soft",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/soft/bust_+2_soft/bust_+2_soft/bust_+2_soft_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/soft/bust_+2_soft/bust_+2_soft/bust_+2_soft_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/soft/bust_+2_soft/bust_+2_soft/bust_+2_soft_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/soft/bust_+2_soft/bust_+2_soft/bust_+2_soft_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/soft/bust_+2_soft/bust_+2_soft/bust_+2_soft_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/soft/bust_+2_soft/bust_+2_soft/bust_+2_soft_render_back.png"
+    ],
+    "sim_mesh_sha256": "298ba3f0e69e7f084daa07a6c16e2b0af312f866250ed0adf718ef49292250df",
+    "box_mesh_sha256": "33602a403aef061e474d6c03fd7aa367a458728223d8507260345583a48db7cc",
+    "fit_outcomes": {
+      "n_cloth_verts": 7275,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.7400099706855376,
+      "clearance_p10_cm": 0.5169752181263821,
+      "clearance_min_cm": 0.3441593947960522,
+      "contact_ratio": 0.024192439862542957,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.05087945949849139,
+      "bbox_xyz_cm": [
+        75.11083221435547,
+        46.50157165527344,
+        38.29127502441406
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7275,
+          "clearance_mean_cm": 1.7400099706855376,
+          "clearance_p10_cm": 0.5169752181263821,
+          "contact_ratio": 0.024192439862542957
+        },
+        "chest": {
+          "n_verts": 2880,
+          "clearance_mean_cm": 1.413142320560202,
+          "clearance_p10_cm": 0.5020681423889128,
+          "contact_ratio": 0.025694444444444443
+        },
+        "waist": {
+          "n_verts": 1934,
+          "clearance_mean_cm": 1.7615020879576027,
+          "clearance_p10_cm": 0.5230809433361454,
+          "contact_ratio": 0.025853154084798345
+        },
+        "shoulder": {
+          "n_verts": 1028,
+          "clearance_mean_cm": 0.9644738017299359,
+          "clearance_p10_cm": 0.45772899951744406,
+          "contact_ratio": 0.042801556420233464
+        },
+        "sleeve": {
+          "n_verts": 1615,
+          "clearance_mean_cm": 1.7074898072067257,
+          "clearance_p10_cm": 0.5035462678686553,
+          "contact_ratio": 0.030340557275541795
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "soft",
+      "body_name": "mean_all"
+    },
+    "material": "soft",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "bust_+2_soft",
+    "intended_delta_cm": 2.0,
+    "action_family": "bust_circumference_delta_cm",
+    "state_id": "mean_all_w1.070_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/pa8787dd3d4e6.png",
+    "measurements": {
+      "bust_circumference_cm": 106.83273499999999,
+      "waist_cm": 106.83273499999999,
+      "length_cm": 50.139509281711966,
+      "sleeve_length_cm": 22.10840819485798,
+      "shoulder_width_cm": 55.81778661588911,
+      "torso_panel_dx": {
+        "left_ftorso": 27.908893307944556,
+        "right_ftorso": 27.908893307944556,
+        "left_btorso": 25.50747419205544,
+        "right_btorso": 25.50747419205544
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 50.17074637370763,
+        "right_ftorso": 50.17074637370763,
+        "left_btorso": 50.1082721897163,
+        "right_btorso": 50.1082721897163
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 21.289834991451265,
+        "left_sleeve_b": 21.289834991451276,
+        "right_sleeve_f": 21.289834991451265,
+        "right_sleeve_b": 21.289834991451276
+      },
+      "panel_names": [
+        "right_btorso",
+        "right_ftorso",
+        "right_sleeve_f",
+        "right_sleeve_b",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "left_ftorso",
+        "left_btorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "24568fcb11f866ad4e7f6c9d0a9304c3ee1e736b6931103ab4526c16bf050861"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 11.70306396484375,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_baseline/female_baseline",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_baseline/female_baseline/female_baseline_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_baseline/female_baseline/female_baseline_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_baseline/female_baseline/female_baseline_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_baseline/female_baseline/female_baseline_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_baseline/female_baseline/female_baseline_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_baseline/female_baseline/female_baseline_render_front_bodymask.png"
+    ],
+    "sim_mesh_sha256": "15c0335dd2301daf64359a1fb819ac5c205b0add828abd355d4f6bf326e45c00",
+    "box_mesh_sha256": "c42ac611465a890120cca04ff062213e1544d094a8c254aab36f2c4f6a77095a",
+    "fit_outcomes": {
+      "n_cloth_verts": 6758,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.410014946772328,
+      "clearance_p10_cm": 0.48603830301900347,
+      "clearance_min_cm": 0.3490681768932263,
+      "contact_ratio": 0.030926309559041135,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.1117679916570121,
+      "bbox_xyz_cm": [
+        64.28500366210938,
+        43.540069580078125,
+        32.89409351348877
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 6758,
+          "clearance_mean_cm": 1.410014946772328,
+          "clearance_p10_cm": 0.48603830301900347,
+          "contact_ratio": 0.030926309559041135
+        },
+        "chest": {
+          "n_verts": 2633,
+          "clearance_mean_cm": 0.9670624155786883,
+          "clearance_p10_cm": 0.47970592494672626,
+          "contact_ratio": 0.03304215723509305
+        },
+        "waist": {
+          "n_verts": 1791,
+          "clearance_mean_cm": 1.3231795577063412,
+          "clearance_p10_cm": 0.47571753332103006,
+          "contact_ratio": 0.03126744835287549
+        },
+        "shoulder": {
+          "n_verts": 888,
+          "clearance_mean_cm": 0.7406078978301568,
+          "clearance_p10_cm": 0.4324095934117789,
+          "contact_ratio": 0.057432432432432436
+        },
+        "sleeve": {
+          "n_verts": 1777,
+          "clearance_mean_cm": 1.0191916256429492,
+          "clearance_p10_cm": 0.4860112770215252,
+          "contact_ratio": 0.030951041080472707
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "default",
+      "body_name": "mean_female"
+    },
+    "material": "default",
+    "body_name": "mean_female",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "female_baseline",
+    "intended_delta_cm": 0.0,
+    "action_family": "none",
+    "state_id": "mean_female_w1.050_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p6ec137b65582.png",
+    "measurements": {
+      "bust_circumference_cm": 102.27798000000001,
+      "waist_cm": 102.27798000000001,
+      "length_cm": 48.299235718793796,
+      "sleeve_length_cm": 21.0956886543366,
+      "shoulder_width_cm": 53.804520000000004,
+      "torso_panel_dx": {
+        "left_ftorso": 26.902260000000002,
+        "right_ftorso": 26.902260000000002,
+        "left_btorso": 24.23673,
+        "right_btorso": 24.23673
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 48.3234769180836,
+        "right_ftorso": 48.3234769180836,
+        "left_btorso": 48.274994519504,
+        "right_btorso": 48.274994519504
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 21.03115951756411,
+        "left_sleeve_b": 21.031159517564127,
+        "right_sleeve_f": 21.03115951756411,
+        "right_sleeve_b": 21.031159517564127
+      },
+      "panel_names": [
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "right_btorso",
+        "right_ftorso",
+        "left_btorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "left_ftorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "7481c325f23376134d6875bb6d359e1a335199d4eb57c4b74743b7885d27e8af"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 11.802930116653442,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_bust+2/female_bust+2",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_bust+2/female_bust+2/female_bust+2_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_bust+2/female_bust+2/female_bust+2_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_bust+2/female_bust+2/female_bust+2_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_bust+2/female_bust+2/female_bust+2_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_bust+2/female_bust+2/female_bust+2_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/female_bust+2/female_bust+2/female_bust+2_render_front_mask.png"
+    ],
+    "sim_mesh_sha256": "d4aa55d25f769b310c0ee8c1e84d3d4754ffabb28f4e0942a2576a184788fae2",
+    "box_mesh_sha256": "9da02c05666b66dd675fdc5e63cc57428f4161f6ae4d427e786a7918b1b22985",
+    "fit_outcomes": {
+      "n_cloth_verts": 6859,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.4535236682582757,
+      "clearance_p10_cm": 0.505441277433521,
+      "clearance_min_cm": 0.3470825714752776,
+      "contact_ratio": 0.02376439714244059,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.12112824592941274,
+      "bbox_xyz_cm": [
+        62.96293640136719,
+        43.76220703125,
+        32.56370162963867
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 6859,
+          "clearance_mean_cm": 1.4535236682582757,
+          "clearance_p10_cm": 0.505441277433521,
+          "contact_ratio": 0.02376439714244059
+        },
+        "chest": {
+          "n_verts": 2669,
+          "clearance_mean_cm": 0.9691197541251242,
+          "clearance_p10_cm": 0.4985111486428509,
+          "contact_ratio": 0.020232296740352193
+        },
+        "waist": {
+          "n_verts": 1821,
+          "clearance_mean_cm": 1.3939104543791097,
+          "clearance_p10_cm": 0.513569034607434,
+          "contact_ratio": 0.023064250411861616
+        },
+        "shoulder": {
+          "n_verts": 916,
+          "clearance_mean_cm": 0.7469383853335055,
+          "clearance_p10_cm": 0.4278986145802348,
+          "contact_ratio": 0.06222707423580786
+        },
+        "sleeve": {
+          "n_verts": 1827,
+          "clearance_mean_cm": 1.0276531201370616,
+          "clearance_p10_cm": 0.5277392061803251,
+          "contact_ratio": 0.019704433497536946
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "default",
+      "body_name": "mean_female"
+    },
+    "material": "default",
+    "body_name": "mean_female",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "female_bust+2",
+    "intended_delta_cm": 2.0,
+    "action_family": "bust_circumference_delta_cm",
+    "state_id": "mean_female_w1.071_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/pe7e238711c13.png",
+    "measurements": {
+      "bust_circumference_cm": 104.27798000000001,
+      "waist_cm": 104.27798000000001,
+      "length_cm": 48.49021715383704,
+      "sleeve_length_cm": 21.15568871054806,
+      "shoulder_width_cm": 54.85664324295025,
+      "torso_panel_dx": {
+        "left_ftorso": 27.428321621475124,
+        "right_ftorso": 27.428321621475124,
+        "left_btorso": 24.71066837852488,
+        "right_btorso": 24.71066837852488
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 48.52441292572283,
+        "right_ftorso": 48.52441292572283,
+        "left_btorso": 48.45602138195125,
+        "right_btorso": 48.45602138195125
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 21.238872014581833,
+        "left_sleeve_b": 21.2388720145818,
+        "right_sleeve_f": 21.238872014581833,
+        "right_sleeve_b": 21.2388720145818
+      },
+      "panel_names": [
+        "left_btorso",
+        "left_sleeve_f",
+        "left_sleeve_b",
+        "left_ftorso",
+        "right_sleeve_f",
+        "right_sleeve_b",
+        "right_ftorso",
+        "right_btorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "f5409d35fcc9cd09da4ff86723d77a051e2c583e36a4c34ef2153cbb7652b87a"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 12.012984275817871,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/male_baseline/male_baseline",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/male_baseline/male_baseline/male_baseline_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/male_baseline/male_baseline/male_baseline_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/male_baseline/male_baseline/male_baseline_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/male_baseline/male_baseline/male_baseline_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/male_baseline/male_baseline/male_baseline_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/male_baseline/male_baseline/male_baseline_render_back.png"
+    ],
+    "sim_mesh_sha256": "4bf0ea6ae3e1a0aac0b9a696ec16dc87852320fd688a7264b225085bf8032599",
+    "box_mesh_sha256": "fb6bf0e9e5e88ada586ecbdbba3d5f84fd20df098c4d2915a0b823638341e557",
+    "fit_outcomes": {
+      "n_cloth_verts": 7716,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.257893225117482,
+      "clearance_p10_cm": 0.48290483215753754,
+      "clearance_min_cm": 0.3470683304903255,
+      "contact_ratio": 0.03006739243131156,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.1031543507871367,
+      "bbox_xyz_cm": [
+        71.06602478027344,
+        48.16188049316406,
+        35.637136459350586
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7716,
+          "clearance_mean_cm": 1.257893225117482,
+          "clearance_p10_cm": 0.48290483215753754,
+          "contact_ratio": 0.03006739243131156
+        },
+        "chest": {
+          "n_verts": 3034,
+          "clearance_mean_cm": 0.8974558349265787,
+          "clearance_p10_cm": 0.46333953526866734,
+          "contact_ratio": 0.04218852999340804
+        },
+        "waist": {
+          "n_verts": 2072,
+          "clearance_mean_cm": 1.1981889204118605,
+          "clearance_p10_cm": 0.5006122748704358,
+          "contact_ratio": 0.017857142857142856
+        },
+        "shoulder": {
+          "n_verts": 1052,
+          "clearance_mean_cm": 0.7587687723492327,
+          "clearance_p10_cm": 0.45472065197243206,
+          "contact_ratio": 0.03802281368821293
+        },
+        "sleeve": {
+          "n_verts": 1966,
+          "clearance_mean_cm": 0.9950511409349491,
+          "clearance_p10_cm": 0.5016884898303903,
+          "contact_ratio": 0.028484231943031537
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "default",
+      "body_name": "mean_male"
+    },
+    "material": "default",
+    "body_name": "mean_male",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "male_baseline",
+    "intended_delta_cm": 0.0,
+    "action_family": "none",
+    "state_id": "mean_male_w1.050_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p5273ae7ddf07.png",
+    "measurements": {
+      "bust_circumference_cm": 107.92635000000001,
+      "waist_cm": 107.92635000000001,
+      "length_cm": 52.257416413544796,
+      "sleeve_length_cm": 23.150451331425895,
+      "shoulder_width_cm": 54.67297500000001,
+      "torso_panel_dx": {
+        "left_ftorso": 27.336487500000004,
+        "right_ftorso": 27.336487500000004,
+        "left_btorso": 26.626687500000003,
+        "right_btorso": 26.626687500000003
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 52.264418583871425,
+        "right_ftorso": 52.264418583871425,
+        "left_btorso": 52.25041424321816,
+        "right_btorso": 52.25041424321816
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 21.219771989198982,
+        "left_sleeve_b": 20.90510562373395,
+        "right_sleeve_f": 21.219771989198982,
+        "right_sleeve_b": 20.90510562373395
+      },
+      "panel_names": [
+        "left_btorso",
+        "left_ftorso",
+        "left_sleeve_f",
+        "left_sleeve_b",
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "right_ftorso",
+        "right_btorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "e3b2b0dec8d1299edff9ee1ce3c9328708bc60599b2a6da472aeb13c0d77df77"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 12.75550627708435,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/sleeve+2_default/sleeve+2_default",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/sleeve+2_default/sleeve+2_default/sleeve+2_default_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/sleeve+2_default/sleeve+2_default/sleeve+2_default_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/sleeve+2_default/sleeve+2_default/sleeve+2_default_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/sleeve+2_default/sleeve+2_default/sleeve+2_default_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/sleeve+2_default/sleeve+2_default/sleeve+2_default_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/sleeve+2_default/sleeve+2_default/sleeve+2_default_render_front_mask.png"
+    ],
+    "sim_mesh_sha256": "31125b8b607d7faaea48457617d03d59745a785898f41d1a2cab9f32e60c364e",
+    "box_mesh_sha256": "a8cffc95ef92a91b491a7b7e43a6149045a65812fc84bf8e8e15e36acb4e119a",
+    "fit_outcomes": {
+      "n_cloth_verts": 7323,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.3257228559738823,
+      "clearance_p10_cm": 0.49203360156673936,
+      "clearance_min_cm": 0.34287085202079615,
+      "contact_ratio": 0.027584323364741228,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.117260684732658,
+      "bbox_xyz_cm": [
+        71.05046081542969,
+        45.51158142089844,
+        34.02409744262695
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7323,
+          "clearance_mean_cm": 1.3257228559738823,
+          "clearance_p10_cm": 0.49203360156673936,
+          "contact_ratio": 0.027584323364741228
+        },
+        "chest": {
+          "n_verts": 2829,
+          "clearance_mean_cm": 0.9263937385435506,
+          "clearance_p10_cm": 0.48016767763467527,
+          "contact_ratio": 0.032873806998939555
+        },
+        "waist": {
+          "n_verts": 2051,
+          "clearance_mean_cm": 1.3195534086063636,
+          "clearance_p10_cm": 0.503575067929742,
+          "contact_ratio": 0.02145294978059483
+        },
+        "shoulder": {
+          "n_verts": 954,
+          "clearance_mean_cm": 0.7241546448313452,
+          "clearance_p10_cm": 0.44105840652254547,
+          "contact_ratio": 0.05660377358490566
+        },
+        "sleeve": {
+          "n_verts": 1894,
+          "clearance_mean_cm": 1.0872561354509533,
+          "clearance_p10_cm": 0.5219154761302689,
+          "contact_ratio": 0.02164730728616684
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "default",
+      "body_name": "mean_all"
+    },
+    "material": "default",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "sleeve+2_default",
+    "intended_delta_cm": 2.0,
+    "action_family": "sleeve_length_delta_cm",
+    "state_id": "mean_all_w1.050_l1.20_sl0.34_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p92cdb0c34965.png",
+    "measurements": {
+      "bust_circumference_cm": 104.83273500000001,
+      "waist_cm": 104.83273500000001,
+      "length_cm": 49.94076049824885,
+      "sleeve_length_cm": 24.047172678731982,
+      "shoulder_width_cm": 54.772830000000006,
+      "torso_panel_dx": {
+        "left_ftorso": 27.386415000000003,
+        "right_ftorso": 27.386415000000003,
+        "left_btorso": 25.0299525,
+        "right_btorso": 25.0299525
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 49.96306251835827,
+        "right_ftorso": 49.96306251835827,
+        "left_btorso": 49.918458478139435,
+        "right_btorso": 49.918458478139435
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 21.061465546663545,
+        "left_sleeve_b": 21.061465546663538,
+        "right_sleeve_f": 21.061465546663545,
+        "right_sleeve_b": 21.061465546663538
+      },
+      "panel_names": [
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "right_ftorso",
+        "right_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "left_btorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "91d89e98c5b5e713f1f988f457df44550bd2558d3b7f0fd6ce1cdf43817d48fe"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 12.325777053833008,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/sleeve+2_stiff/sleeve+2_stiff",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/sleeve+2_stiff/sleeve+2_stiff/sleeve+2_stiff_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/sleeve+2_stiff/sleeve+2_stiff/sleeve+2_stiff_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/sleeve+2_stiff/sleeve+2_stiff/sleeve+2_stiff_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/sleeve+2_stiff/sleeve+2_stiff/sleeve+2_stiff_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/sleeve+2_stiff/sleeve+2_stiff/sleeve+2_stiff_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/sleeve+2_stiff/sleeve+2_stiff/sleeve+2_stiff_render_back.png"
+    ],
+    "sim_mesh_sha256": "aa04652a825b121afdfb57c0ea13a789adbe4386ea84c110d13f89645aff3345",
+    "box_mesh_sha256": "0d6fffd917482598ff1d4702fdbbf403943394c79edc2a7eb764f244c09edeb4",
+    "fit_outcomes": {
+      "n_cloth_verts": 7323,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.475945469748802,
+      "clearance_p10_cm": 0.4993888951901782,
+      "clearance_min_cm": 0.3469086543817894,
+      "contact_ratio": 0.027584323364741228,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.07695030585014608,
+      "bbox_xyz_cm": [
+        74.09514236450195,
+        45.801055908203125,
+        35.50005912780762
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7323,
+          "clearance_mean_cm": 1.475945469748802,
+          "clearance_p10_cm": 0.4993888951901782,
+          "contact_ratio": 0.027584323364741228
+        },
+        "chest": {
+          "n_verts": 2856,
+          "clearance_mean_cm": 1.1208346247302958,
+          "clearance_p10_cm": 0.4898426585275705,
+          "contact_ratio": 0.032563025210084036
+        },
+        "waist": {
+          "n_verts": 2027,
+          "clearance_mean_cm": 1.3664678847841443,
+          "clearance_p10_cm": 0.48983878787584034,
+          "contact_ratio": 0.02713369511593488
+        },
+        "shoulder": {
+          "n_verts": 963,
+          "clearance_mean_cm": 0.765702072241862,
+          "clearance_p10_cm": 0.44616633235824593,
+          "contact_ratio": 0.04880581516095535
+        },
+        "sleeve": {
+          "n_verts": 1826,
+          "clearance_mean_cm": 1.3401361340968494,
+          "clearance_p10_cm": 0.5212827773676012,
+          "contact_ratio": 0.024096385542168676
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "stiff",
+      "body_name": "mean_all"
+    },
+    "material": "stiff",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "sleeve+2_stiff",
+    "intended_delta_cm": 2.0,
+    "action_family": "sleeve_length_delta_cm",
+    "state_id": "mean_all_w1.050_l1.20_sl0.34_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p92cdb0c34965.png",
+    "measurements": {
+      "bust_circumference_cm": 104.83273500000001,
+      "waist_cm": 104.83273500000001,
+      "length_cm": 49.94076049824885,
+      "sleeve_length_cm": 24.047172678731982,
+      "shoulder_width_cm": 54.772830000000006,
+      "torso_panel_dx": {
+        "left_ftorso": 27.386415000000003,
+        "right_ftorso": 27.386415000000003,
+        "left_btorso": 25.0299525,
+        "right_btorso": 25.0299525
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 49.96306251835827,
+        "right_ftorso": 49.96306251835827,
+        "left_btorso": 49.918458478139435,
+        "right_btorso": 49.918458478139435
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 21.061465546663545,
+        "left_sleeve_b": 21.061465546663538,
+        "right_sleeve_f": 21.061465546663545,
+        "right_sleeve_b": 21.061465546663538
+      },
+      "panel_names": [
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "right_ftorso",
+        "right_btorso",
+        "left_ftorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "left_btorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "91d89e98c5b5e713f1f988f457df44550bd2558d3b7f0fd6ce1cdf43817d48fe"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 12.23820972442627,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/tight_default/tight_default",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/tight_default/tight_default/tight_default_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/tight_default/tight_default/tight_default_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/tight_default/tight_default/tight_default_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/tight_default/tight_default/tight_default_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/tight_default/tight_default/tight_default_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/tight_default/tight_default/tight_default_render_front.png"
+    ],
+    "sim_mesh_sha256": "4cc5a18bfc87c462e01aff13d2bb4b67e51ff1809467d4e13f3d0fc2da012c10",
+    "box_mesh_sha256": "bedaf309acbc6b7363372f7682b0d992a1cac143f72474c31523f8ed8731eb3d",
+    "fit_outcomes": {
+      "n_cloth_verts": 6986,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.213371080311976,
+      "clearance_p10_cm": 0.46877326931155855,
+      "clearance_min_cm": 0.34109324228493076,
+      "contact_ratio": 0.035929000858860576,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.10269985195778392,
+      "bbox_xyz_cm": [
+        68.13029098510742,
+        45.310523986816406,
+        33.34334182739258
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 6986,
+          "clearance_mean_cm": 1.213371080311976,
+          "clearance_p10_cm": 0.46877326931155855,
+          "contact_ratio": 0.035929000858860576
+        },
+        "chest": {
+          "n_verts": 2733,
+          "clearance_mean_cm": 0.8974394230766972,
+          "clearance_p10_cm": 0.4615742317001044,
+          "contact_ratio": 0.04171240395170143
+        },
+        "waist": {
+          "n_verts": 1837,
+          "clearance_mean_cm": 1.1244826236612393,
+          "clearance_p10_cm": 0.44815741638081896,
+          "contact_ratio": 0.04137180185084377
+        },
+        "shoulder": {
+          "n_verts": 975,
+          "clearance_mean_cm": 0.724369296525614,
+          "clearance_p10_cm": 0.4405358663525495,
+          "contact_ratio": 0.04923076923076923
+        },
+        "sleeve": {
+          "n_verts": 1744,
+          "clearance_mean_cm": 0.9819931816140323,
+          "clearance_p10_cm": 0.47471918485432874,
+          "contact_ratio": 0.03612385321100917
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "default",
+      "body_name": "mean_all"
+    },
+    "material": "default",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "tight_default",
+    "intended_delta_cm": 0.0,
+    "action_family": "none",
+    "state_id": "mean_all_w1.020_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p7e9e832e3495.png",
+    "measurements": {
+      "bust_circumference_cm": 101.837514,
+      "waist_cm": 101.837514,
+      "length_cm": 49.643112241777914,
+      "sleeve_length_cm": 21.949784664042163,
+      "shoulder_width_cm": 53.20789200000001,
+      "torso_panel_dx": {
+        "left_ftorso": 26.603946000000004,
+        "right_ftorso": 26.603946000000004,
+        "left_btorso": 24.314811,
+        "right_btorso": 24.314811
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 49.65203300525741,
+        "right_ftorso": 49.65203300525741,
+        "left_btorso": 49.634191478298405,
+        "right_btorso": 49.634191478298405
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 20.710465773379894,
+        "left_sleeve_b": 20.710465773379884,
+        "right_sleeve_f": 20.710465773379894,
+        "right_sleeve_b": 20.710465773379884
+      },
+      "panel_names": [
+        "right_btorso",
+        "right_sleeve_f",
+        "right_sleeve_b",
+        "right_ftorso",
+        "left_sleeve_f",
+        "left_sleeve_b",
+        "left_ftorso",
+        "left_btorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "296d77f57fce791955191df59cd32a90ae08203b38dd2c4ac6caf23da3a83bd4"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 12.012363910675049,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/tight_stiff/tight_stiff",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/tight_stiff/tight_stiff/tight_stiff_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/tight_stiff/tight_stiff/tight_stiff_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/tight_stiff/tight_stiff/tight_stiff_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/tight_stiff/tight_stiff/tight_stiff_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/tight_stiff/tight_stiff/tight_stiff_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/tight_stiff/tight_stiff/tight_stiff_render_front_bodymask.png"
+    ],
+    "sim_mesh_sha256": "d5e9eeb28024a42460526ac60bf3f8efe7f69aae73b0e325df0da513bcf04354",
+    "box_mesh_sha256": "ed4bde8742eaec19ca80ab714304be411f273d825fdd08432e868566512d5f0f",
+    "fit_outcomes": {
+      "n_cloth_verts": 6986,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.3656367560303588,
+      "clearance_p10_cm": 0.4700594439034932,
+      "clearance_min_cm": 0.3398991806862509,
+      "contact_ratio": 0.036072144288577156,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.06698232576038068,
+      "bbox_xyz_cm": [
+        71.6119613647461,
+        45.471275329589844,
+        34.36334419250488
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 6986,
+          "clearance_mean_cm": 1.3656367560303588,
+          "clearance_p10_cm": 0.4700594439034932,
+          "contact_ratio": 0.036072144288577156
+        },
+        "chest": {
+          "n_verts": 2735,
+          "clearance_mean_cm": 1.0720634594754914,
+          "clearance_p10_cm": 0.4633712778323654,
+          "contact_ratio": 0.041681901279707494
+        },
+        "waist": {
+          "n_verts": 1835,
+          "clearance_mean_cm": 1.2487055129148283,
+          "clearance_p10_cm": 0.44673711674220323,
+          "contact_ratio": 0.04141689373297003
+        },
+        "shoulder": {
+          "n_verts": 991,
+          "clearance_mean_cm": 0.7758888735054399,
+          "clearance_p10_cm": 0.45056797978396657,
+          "contact_ratio": 0.04944500504540868
+        },
+        "sleeve": {
+          "n_verts": 1626,
+          "clearance_mean_cm": 1.2596979430283748,
+          "clearance_p10_cm": 0.47638963900267634,
+          "contact_ratio": 0.032595325953259535
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "stiff",
+      "body_name": "mean_all"
+    },
+    "material": "stiff",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "tight_stiff",
+    "intended_delta_cm": 0.0,
+    "action_family": "none",
+    "state_id": "mean_all_w1.020_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p7e9e832e3495.png",
+    "measurements": {
+      "bust_circumference_cm": 101.837514,
+      "waist_cm": 101.837514,
+      "length_cm": 49.643112241777914,
+      "sleeve_length_cm": 21.949784664042163,
+      "shoulder_width_cm": 53.20789200000001,
+      "torso_panel_dx": {
+        "left_ftorso": 26.603946000000004,
+        "right_ftorso": 26.603946000000004,
+        "left_btorso": 24.314811,
+        "right_btorso": 24.314811
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 49.65203300525741,
+        "right_ftorso": 49.65203300525741,
+        "left_btorso": 49.634191478298405,
+        "right_btorso": 49.634191478298405
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 20.710465773379894,
+        "left_sleeve_b": 20.710465773379884,
+        "right_sleeve_f": 20.710465773379894,
+        "right_sleeve_b": 20.710465773379884
+      },
+      "panel_names": [
+        "right_btorso",
+        "right_sleeve_f",
+        "right_sleeve_b",
+        "right_ftorso",
+        "left_sleeve_f",
+        "left_sleeve_b",
+        "left_ftorso",
+        "left_btorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "296d77f57fce791955191df59cd32a90ae08203b38dd2c4ac6caf23da3a83bd4"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 12.189326286315918,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/roomy_default/roomy_default",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/roomy_default/roomy_default/roomy_default_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/default/roomy_default/roomy_default/roomy_default_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/roomy_default/roomy_default/roomy_default_render_front_mask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/roomy_default/roomy_default/roomy_default_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/roomy_default/roomy_default/roomy_default_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/default/roomy_default/roomy_default/roomy_default_render_front_bodymask.png"
+    ],
+    "sim_mesh_sha256": "52f5ce94c3a0615de4f468062f07478a27856145447b1dac8095e912ddf6cd4c",
+    "box_mesh_sha256": "59d3bae8b9b302e22a2e13c1ffedf87422662b9cac5d7dc024ae7d35921c4f21",
+    "fit_outcomes": {
+      "n_cloth_verts": 7895,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 1.714215754427812,
+      "clearance_p10_cm": 0.5543062252594341,
+      "clearance_min_cm": 0.3450192531453621,
+      "contact_ratio": 0.01735275490816973,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.12730411626754187,
+      "bbox_xyz_cm": [
+        69.47493362426758,
+        47.18424987792969,
+        36.605302810668945
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7895,
+          "clearance_mean_cm": 1.714215754427812,
+          "clearance_p10_cm": 0.5543062252594341,
+          "contact_ratio": 0.01735275490816973
+        },
+        "chest": {
+          "n_verts": 3025,
+          "clearance_mean_cm": 1.0583821566738167,
+          "clearance_p10_cm": 0.5081509566359742,
+          "contact_ratio": 0.027768595041322314
+        },
+        "waist": {
+          "n_verts": 2222,
+          "clearance_mean_cm": 2.0819788067338303,
+          "clearance_p10_cm": 0.7940905362165838,
+          "contact_ratio": 0.0036003600360036
+        },
+        "shoulder": {
+          "n_verts": 1006,
+          "clearance_mean_cm": 0.7793807218778686,
+          "clearance_p10_cm": 0.4533825588506365,
+          "contact_ratio": 0.0437375745526839
+        },
+        "sleeve": {
+          "n_verts": 1992,
+          "clearance_mean_cm": 1.23109985756338,
+          "clearance_p10_cm": 0.5810600131241948,
+          "contact_ratio": 0.014056224899598393
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "default",
+      "body_name": "mean_all"
+    },
+    "material": "default",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "roomy_default",
+    "intended_delta_cm": 0.0,
+    "action_family": "none",
+    "state_id": "mean_all_w1.160_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/pd91a52ea12a2.png",
+    "measurements": {
+      "bust_circumference_cm": 115.81521199999999,
+      "waist_cm": 115.81521199999999,
+      "length_cm": 51.03213744954096,
+      "sleeve_length_cm": 22.41310006581392,
+      "shoulder_width_cm": 60.510936,
+      "torso_panel_dx": {
+        "left_ftorso": 30.255468,
+        "right_ftorso": 30.255468,
+        "left_btorso": 27.652137999999997,
+        "right_btorso": 27.652137999999997
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 51.103504081371554,
+        "right_ftorso": 51.103504081371554,
+        "left_btorso": 50.96077081771036,
+        "right_btorso": 50.96077081771036
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 22.386901017735997,
+        "left_sleeve_b": 22.386901017735994,
+        "right_sleeve_f": 22.386901017735997,
+        "right_sleeve_b": 22.386901017735994
+      },
+      "panel_names": [
+        "left_ftorso",
+        "left_btorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "right_btorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "11eecf5f0ffcd5abb6b01f127e26d3e2aae0489ac1ed7ce7f8ecf6c4e9743efd"
+    }
+  },
+  {
+    "simulation_status": "SIMULATED",
+    "render_status": "RENDERED",
+    "sim_error": null,
+    "render_error": null,
+    "runtime_s": 11.833184719085693,
+    "max_sim_steps": 260,
+    "output_dir": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/roomy_stiff/roomy_stiff",
+    "sim_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/roomy_stiff/roomy_stiff/roomy_stiff_sim.obj",
+    "box_mesh": "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/roomy_stiff/roomy_stiff/roomy_stiff_boxmesh.obj",
+    "render_files": [
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/roomy_stiff/roomy_stiff/roomy_stiff_render_front_bodymask.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/roomy_stiff/roomy_stiff/roomy_stiff_render_front.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/roomy_stiff/roomy_stiff/roomy_stiff_render_back.png",
+      "/root/workspace/projects/FitGround/artifacts/hero/sim/stiff/roomy_stiff/roomy_stiff/roomy_stiff_render_front_mask.png"
+    ],
+    "sim_mesh_sha256": "57f9d978c9a952bd18c2d4adb76a9c52a655a30079dda9bd29ad322fe43d5254",
+    "box_mesh_sha256": "1cac3b4f31c0d3c2b0804fb0fbeca9e5be62a5a1fe5fae21251a712cd882ce2d",
+    "fit_outcomes": {
+      "n_cloth_verts": 7895,
+      "n_body_verts": 23752,
+      "clearance_mean_cm": 2.0729076425600397,
+      "clearance_p10_cm": 0.5636791571953715,
+      "clearance_min_cm": 0.34932274554223713,
+      "contact_ratio": 0.014946168461051299,
+      "tight_vertex_ratio": 0.0,
+      "wrinkle_proxy_cm": 0.0801521717603506,
+      "bbox_xyz_cm": [
+        74.68498611450195,
+        47.91790008544922,
+        39.376522064208984
+      ],
+      "regional": {
+        "length": {
+          "n_verts": 7895,
+          "clearance_mean_cm": 2.0729076425600397,
+          "clearance_p10_cm": 0.5636791571953715,
+          "contact_ratio": 0.014946168461051299
+        },
+        "chest": {
+          "n_verts": 3023,
+          "clearance_mean_cm": 1.3006701083389143,
+          "clearance_p10_cm": 0.5051315297439064,
+          "contact_ratio": 0.025802183261660602
+        },
+        "waist": {
+          "n_verts": 2282,
+          "clearance_mean_cm": 2.3809809594734013,
+          "clearance_p10_cm": 0.7019204720024501,
+          "contact_ratio": 0.006134969325153374
+        },
+        "shoulder": {
+          "n_verts": 966,
+          "clearance_mean_cm": 0.8640366696389925,
+          "clearance_p10_cm": 0.4713511342445983,
+          "contact_ratio": 0.031055900621118012
+        },
+        "sleeve": {
+          "n_verts": 1795,
+          "clearance_mean_cm": 1.5068789707013084,
+          "clearance_p10_cm": 0.5622656456114736,
+          "contact_ratio": 0.013370473537604457
+        }
+      },
+      "body_kind": "SYNTHETIC_BODY_PHYSICS",
+      "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
+      "contact_threshold_cm": 0.4,
+      "unit_alignment": "body_m_to_cm_x100",
+      "material": "stiff",
+      "body_name": "mean_all"
+    },
+    "material": "stiff",
+    "body_name": "mean_all",
+    "body_kind": "SYNTHETIC_BODY_PHYSICS",
+    "tag": "roomy_stiff",
+    "intended_delta_cm": 0.0,
+    "action_family": "none",
+    "state_id": "mean_all_w1.160_l1.20_sl0.30_cdef",
+    "pattern_png": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/pd91a52ea12a2.png",
+    "measurements": {
+      "bust_circumference_cm": 115.81521199999999,
+      "waist_cm": 115.81521199999999,
+      "length_cm": 51.03213744954096,
+      "sleeve_length_cm": 22.41310006581392,
+      "shoulder_width_cm": 60.510936,
+      "torso_panel_dx": {
+        "left_ftorso": 30.255468,
+        "right_ftorso": 30.255468,
+        "left_btorso": 27.652137999999997,
+        "right_btorso": 27.652137999999997
+      },
+      "torso_panel_dy": {
+        "left_ftorso": 51.103504081371554,
+        "right_ftorso": 51.103504081371554,
+        "left_btorso": 50.96077081771036,
+        "right_btorso": 50.96077081771036
+      },
+      "sleeve_panel_dy": {
+        "left_sleeve_f": 22.386901017735997,
+        "left_sleeve_b": 22.386901017735994,
+        "right_sleeve_f": 22.386901017735997,
+        "right_sleeve_b": 22.386901017735994
+      },
+      "panel_names": [
+        "left_ftorso",
+        "left_btorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "right_ftorso",
+        "right_sleeve_b",
+        "right_sleeve_f",
+        "right_btorso"
+      ],
+      "missing_torso_panels": [],
+      "spec_sha256": "11eecf5f0ffcd5abb6b01f127e26d3e2aae0489ac1ed7ce7f8ecf6c4e9743efd"
+    }
+  }
+]

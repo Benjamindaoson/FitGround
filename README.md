@@ -17,15 +17,19 @@ This is a technical-designer workspace, not a consumer virtual try-on.
 
 | Status | Fact |
 | --- | --- |
-| Bust calibration | Pattern identity map to ~1e-14 cm; waist coupled (`flare=1`) |
-| Sleeve | Re-measured on panel **X** (GarmentCode construction axis). Prior Y-span was a measurement bug. |
-| Shoulder | No independent `shoulder_w` on Shirt; connecting_width probed (GO only with evidence) |
-| Physics metrics | Body scaled m→cm; chest clearance p10 0.47→0.50 cm at +3 cm; contact 0.027→0.022 |
+| Parametric garment geometry | PASS — Shirt panel serialize + after-minus-before cm |
+| SYNTHETIC_BODY_PHYSICS | PASS — Warp XPBD vs static OBJ, body m→cm |
+| SMPL/SMPL-X body physics | HARD_BLOCKED_LICENSE — weights absent, not pirated |
+| Real-human validation | HARD_BLOCKED_LICENSE |
+| Bust calibration | PASS — ±3 cm grid, MAE ~0, 3× repeat exact; waist coupled (`flare=1`) |
+| Sleeve | PASS — panel **X** construction axis; prior Y-span was a measurement bug |
+| Shoulder | NO_GO_WITH_EVIDENCE — Shirt has no independent garment shoulder DoF |
+| Physics metrics | Chest clearance p10 0.47→0.50 cm at +3 cm; contact 0.027→0.022 |
 | Observational B0/B1/XGB | MAE 8.11 / 8.08 / 7.88 cm on FIT-Clean (not intervention GT) |
 | Pattern Ridge vs CNN | Ridge 3.45 cm beats CNN 6.23 cm on 192 drawings |
 | Transition SFT | MAE 0.47 cm; analytic inverse is 0.00 on this grid |
-| Decision SFT / RLVR | Holdout acc 1.0 (n=3); RLVR no residual gain |
-| Vision necessity | Material-split benchmark running on GPU; not claimed until pairs exist |
+| Decision SFT / RLVR | Holdout acc 1.0 (n=3); RLVR NOT_JUSTIFIED |
+| Vision necessity | **NOT_ESTABLISHED** — 33 matched material pairs, 7 flips (21%, CI 9–36%); held-out CIs overlap. Ridge 3.45 still beats CNN 6.23 |
 
 ## Demo / Results
 

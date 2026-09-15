@@ -1,0 +1,47 @@
+{
+  "pattern_family": "GarmentCode Shirt / t-shirt.yaml",
+  "available_design_yamls": [
+    "default.yaml",
+    "default_new.yaml",
+    "design_used.yaml",
+    "t-shirt.yaml"
+  ],
+  "probes": [
+    {
+      "parameter": "sleeve.connecting_width",
+      "v0": 0.05,
+      "v1": 0.9,
+      "measure_key": "shoulder_width_cm",
+      "before_cm": 54.772830000000006,
+      "after_cm": 54.772830000000006,
+      "realized_delta_cm": 0.0,
+      "cross": {
+        "bust": 0.0,
+        "sleeve": 3.355565991633071,
+        "length": -4.385640295367921e-09,
+        "shoulder": 0.0
+      },
+      "panel_names": [
+        "right_sleeve_f",
+        "right_sleeve_b",
+        "right_ftorso",
+        "right_btorso",
+        "left_sleeve_b",
+        "left_sleeve_f",
+        "left_ftorso",
+        "left_btorso"
+      ]
+    },
+    {
+      "parameter": "collar.standing_shoulder_len",
+      "error": "KeyError: 'standing_shoulder_len'"
+    },
+    {
+      "parameter": "collar.standing_shoulder",
+      "error": "KeyError: 'standing_shoulder'"
+    }
+  ],
+  "independent_shoulder_parameters": [],
+  "verdict": "SHOULDER_ACTION = NO_GO_FOR_CURRENT_PATTERN_FAMILY",
+  "note": "Body shoulder_w is not an action. sleeve.connecting_width moves sleeve length, not the torso top-edge shoulder proxy. default.yaml standing_shoulder is a collar stand, not a centimetre garment shoulder width. No FittedShirt-style independent shoulder DoF is exposed in the available design_params for this worker."
+}

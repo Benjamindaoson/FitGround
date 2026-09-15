@@ -15,7 +15,10 @@ def _write_obj(path: Path, verts: np.ndarray) -> None:
 
 
 def test_body_metres_are_scaled_to_cloth_centimetres(tmp_path: Path) -> None:
-    cloth = np.array([[0.0, 100.0, 0.0], [1.0, 101.0, 0.0], [0.0, 100.0, 1.0]], dtype=float)
+    cloth = np.array(
+        [[0.0, 100.0, 0.0], [40.0, 145.0, 12.0], [-35.0, 102.0, 8.0], [5.0, 130.0, -4.0]],
+        dtype=float,
+    )
     body_m = cloth / 100.0  # same shape in metres
     cpath = tmp_path / "c.obj"
     bpath = tmp_path / "b.obj"

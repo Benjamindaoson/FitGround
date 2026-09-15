@@ -1,0 +1,17 @@
+{
+  "seed": 0,
+  "python_path_scripts": [
+    "scripts/gpu/hero_pipeline.py",
+    "scripts/gpu/expand_visual_physics.py",
+    "scripts/gpu/finalize_closure.py"
+  ],
+  "body_kind": "SYNTHETIC_BODY_PHYSICS",
+  "smpl_x": "HARD_BLOCKED_LICENSE",
+  "lattice": "/workspace/artifacts/hero/verified_transition_lattice.jsonl",
+  "commands": {
+    "smoke": "make smoke",
+    "benchmark-fast": "make benchmark-fast",
+    "benchmark-full": "make benchmark-full",
+    "demo": "make demo"
+  }
+}

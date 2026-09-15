@@ -105,6 +105,7 @@ def cloth_body_outcomes(
             "clearance_p10_cm": float(np.percentile(d, 10)),
             "contact_ratio": float((d < contact_cm).mean()),
         }
+    chest = regional.get("chest") or {}
     return {
         "n_cloth_verts": int(len(cloth)),
         "n_body_verts": int(len(body)),
@@ -116,6 +117,7 @@ def cloth_body_outcomes(
         "wrinkle_proxy_cm": wrinkle_proxy(cloth),
         "bbox_xyz_cm": [float(x) for x in (cloth.max(0) - cloth.min(0))],
         "regional": regional,
+        "chest_clearance_p10_cm": chest.get("clearance_p10_cm"),
         "body_kind": "SYNTHETIC_BODY_PHYSICS",
         "note": "Nearest-vertex clearance to a static mannequin OBJ. Not SMPL-X parametric, not real-world GT.",
         "contact_threshold_cm": contact_cm,

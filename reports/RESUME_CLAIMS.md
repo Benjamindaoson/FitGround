@@ -1,37 +1,69 @@
 # Resume claims (evidence-linked)
 
-Every bullet below is allowed only with the linked artifact. Do not upgrade wording.
+Every bullet is allowed only with the linked artifact. Status words are only
+`PASS`, `NO_GO_WITH_EVIDENCE`, `NOT_JUSTIFIED`, `HARD_BLOCKED_LICENSE`.
 
-## 中文 · 可以说
+Do not say “GarmentCode physics PASS”. Split:
 
-1. 构建了面向技术设计师的合体修正流水线：样衣 fit 问题 → 可执行服装参数干预 → **实测** `realized_delta_cm`（二维样板几何）→ Warp XPBD 静态人台碰撞 → 区域 clearance/contact 指标 → 效用排序推荐下一版修改；胸围 `shirt.width.v` 在 +1/+2/+3 cm 上实测误差约 1e-14 cm（`artifacts/bust_atomic_calibration.json`，`artifacts/hero/existing_physics_outcomes.json`）。
-2. 在缺失 SMPL-X 权重时没有停机：使用 GarmentCode 仓库内静态 OBJ 人台（米制缩放为厘米），标记 `SYNTHETIC_BODY_PHYSICS`，并完成 before/after 模拟与渲染（`src/fitground/physics/outcomes.py`）。
-3. 训练并对比了观测基线与干预学习：FIT-Clean B0/B1/XGB MAE 8.11/8.08/7.88 cm；纸样 Ridge 3.45 cm 优于 CNN 6.23 cm；Transition SFT 在恒等校准格子上 **未能打过解析逆映射**（0.47 vs 0.00 MAE），并据此把任务升级为物理 next-state（`artifacts/training/`，`reports/TRAINING_RUN.md`）。
+| Layer | Status |
+| --- | --- |
+| Parametric garment geometry | PASS |
+| Warp synthetic-body physics | PASS (`SYNTHETIC_BODY_PHYSICS`) |
+| SMPL/SMPL-X body physics | HARD_BLOCKED_LICENSE |
+| Real-human validation | HARD_BLOCKED_LICENSE |
 
-## English · allowed
+## 中文简历 3 bullet
 
-1. Built a physics-grounded counterfactual fit-correction pipeline: named garment edits → measured panel `realized_delta_cm` → Warp XPBD on a static mannequin → regional clearance/contact → utility-ranked next-sample recommendation (`artifacts/correction_lattice_chest_case.json`).
-2. Did not halt on missing SMPL-X weights; shipped a documented `SYNTHETIC_BODY_PHYSICS` fallback using in-repo OBJ mannequins with metre-to-centimetre alignment (`src/fitground/physics/outcomes.py`).
-3. Showed that a learned transition model loses to the analytic inverse on the calibrated bust grid (0.47 vs 0.00 cm MAE), and that pixel Ridge beats a small CNN on 192 pattern drawings — negative results that forced a harder physics/material split (`artifacts/training/transition_sft.json`).
+1. 从纸样参数干预做到可测几何与可测物理后果：修改 `shirt.width.v` 后用二维样板 **after−before** 得到 `realized_delta_cm`（胸围 ±3 cm 网格 MAE≈0、三次重复完全一致），再跑 Warp XPBD 静态人台，胸围 clearance p10 从 0.47 cm 升到 0.50 cm，contact 从 0.027 降到 0.022（`artifacts/hero/atomic_calibration.json`，`artifacts/hero/existing_physics_outcomes.json`）。
+2. 用对照实验画出学习边界：在平凡几何格子上解析逆映射 MAE=0，Transition SFT 为 0.47 cm；纸样 Ridge 3.45 cm 优于 CNN 6.23 cm。结论是 trivial geometry 不需要学习，而不是“模型都很好看”（`reports/WHEN_IS_LEARNING_NECESSARY.md`）。
+3. 做成技术设计师工作台而不是 chatbot：候选修正按效用排序，OOD/人台外推时 **拒答并升级人工**；当前 Shirt 肩宽动作为 `NO_GO_WITH_EVIDENCE`（`connecting_width` 只带动袖长、肩宽 Δ=0 cm）。SMPL-X 权重未获取，未停机，未盗版。
 
-## 不能说 / not allowed
+## English resume 3 bullets
 
-- Production-ready, deployed, or used by brands
-- Real-world first-pass sample reduction or return-rate impact
-- “Vision is necessary” until the material-pair disambiguation set has `vision_needed >= 1` with hashes
-- Pretrained MLLM LoRA success (download/train must exist in `artifacts/hero/mllm_status.json`)
-- Shoulder centimetre GO without G2 PASS
-- RLVR improved decisions (holdout regret was already 0)
-- FIT-100K image training
+1. Built a physics-grounded counterfactual correction loop: named pattern intervention → measured panel `realized_delta_cm` (bust ±3 cm identity map, MAE ~0) → Warp XPBD on a static mannequin → regional clearance/contact → utility-ranked next-sample edit (`artifacts/hero/`).
+2. Showed when learning is unnecessary: analytic inverse MAE 0.00 cm vs Transition SFT 0.47 cm on the trivial Shirt grid; pattern Ridge 3.45 cm beats a CNN 6.23 cm on 192 drawings. Vision necessity is reported only from a grouped-split material-pair experiment, not assumed (`reports/WHEN_IS_LEARNING_NECESSARY.md`).
+3. Shipped a Technical Designer workspace that recommends the next sample change, abstains on OOD bodies, and records shoulder as `NO_GO_WITH_EVIDENCE` for this pattern family. SMPL-X remains `HARD_BLOCKED_LICENSE`; physics continues as `SYNTHETIC_BODY_PHYSICS`.
 
 ## 30-second pitch
 
-FitGround answers: the sample is wrong — what do we change next, by how many centimetres, and what else moves? It is a correction engine with measured interventions and a static-body cloth sim, not a dressing-room VTO.
+FitGround answers: the sample is wrong — what do we change next, by how many centimetres, and what else moves? It is a measured intervention + cloth-body physics engine for technical designers, not a dressing-room VTO and not a chatbot.
 
 ## 2-minute pitch
 
-Technical designers already see tightness. The expensive part is the next pattern edit. FitGround enumerates bust/sleeve candidates, measures realized geometry instead of trusting intended deltas, drapes on a legal static mannequin when SMPL-X files are missing, scores chest clearance and contact, and ranks corrections with an explicit utility. Simple rules win on the trivial calibrated grid; the research claim is to push the task into material and body regimes where measurements collide.
+Technical designers already see tightness. The expensive question is the next pattern edit. FitGround enumerates centimetre actions, measures realized geometry instead of trusting intended deltas, drapes on a legal static mannequin when SMPL-X files are missing, scores chest clearance and contact, and ranks corrections with an explicit utility. On this Shirt, bust and sleeve maps are millimetre-class; shoulder is a documented NO-GO. Simple analytic rules win on the trivial grid. The research question is when material and drape actually change the best correction — and the system is allowed to abstain.
 
 ## 5-minute deep dive
 
-Start from `shirt.width.v = desired_cm / body_bust`. Show identity calibration, waist coupling, physics clearance table, the measurement-bug on sleeve Y vs X, why shoulder is NO-GO on Shirt, why SFT < identity, why RLVR was not justified, then the hero workspace recommending Bust +3 cm for CHEST_CASE with alternatives and provenance.
+1. Product sentence: next-sample correction, not try-on.
+2. Intervention: `shirt.width.v = desired_cm / body_bust`; realized = after−before; never copy intended.
+3. Bust gate PASS; waist coupling PARTIAL (`flare=1`); sleeve PASS on panel X; shoulder NO-GO (`connecting_width` Δshoulder=0, Δsleeve≠0).
+4. Physics: static OBJ, m→cm, clearance/contact table for baseline/+1/+2/+3.
+5. Learning ladder: observational MAE ~8 cm is not intervention GT; Ridge > CNN; analytic > SFT; RLVR NOT_JUSTIFIED (n=3).
+6. Visual disambiguation: same measurements, different bending; grouped split; verdict is whatever the numbers say.
+7. OOD: synthetic-body numbers only; abstain on unseen body/material/unstable sim.
+8. Demo: `studio/` — “What should change in the next sample?”
+9. Limitations: no SMPL-X, no real humans, Shirt family only, physics n is a subset of the 636-row lattice.
+
+## 10 interview questions + answers
+
+1. **Why isn’t this a VLM demo?** Because the unit of work is a centimetre pattern intervention with a measured realized delta and a cloth-body sim. A VLM is one optional ranker, not the product.
+2. **How do you know realized_delta is real?** It is panel after-minus-before with provenance `panel_geometry_after_minus_before`. Tests reject intended-copy.
+3. **Why did the sleeve probe first look dead?** Length is constructed along panel X in `sleeves.py`. Measuring mean dy was a bug. After switching to dx, ±2 cm is exact.
+4. **Why NO-GO the shoulder instead of forcing a model?** Shirt has no independent garment shoulder width. `connecting_width` moves sleeve length. Body `shoulder_w` is not an action.
+5. **When is ML necessary?** Not on the calibrated bust identity map. Possibly when material/drape changes next-state utility at matched measurements. That is an experiment, not a slogan.
+6. **Did vision win?** Only if `visual_disambiguation.json` says `VISION_NECESSITY_ESTABLISHED` with n, CI, and a grouped split. Ridge beating CNN is evidence against naive visual necessity.
+7. **What happens on a new body?** The failure-aware policy abstains if `body_name` is outside support. Those numbers are `SYNTHETIC_BODY_OOD`, not real-human generalization.
+8. **Why not SMPL-X?** Licensed weights are absent. We did not pirate them. Physics continued on in-repo OBJ mannequins.
+9. **Did RLVR help?** No. Holdout regret was already 0 with n=3. Status: `NOT_JUSTIFIED`.
+10. **What would you do next with a licensed body?** Re-run the same lattice on SMPL-X, keep the analytic inverse as the trivial-regime baseline, and only then test whether a pretrained VLM beats drape-evidence on the complex split.
+
+## Not allowed
+
+- Production-ready, brand-deployed, return-rate impact
+- Real-world first-pass sample reduction
+- “Vision is necessary” without the ESTABLISHED verdict
+- Pretrained MLLM LoRA success without `artifacts/hero/mllm_eval.json`
+- Shoulder centimetre GO
+- RLVR improved decisions
+- FIT-100K image training
+- Calling synthetic mannequin results real-human generalization

@@ -1,0 +1,6 @@
+{
+  "status": "DOWNLOADED",
+  "model": "Qwen/Qwen2-VL-2B-Instruct",
+  "n_params": 2208985600,
+  "transformers": "5.17.0"
+}

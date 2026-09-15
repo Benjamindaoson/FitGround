@@ -1,0 +1,68 @@
+{
+  "IID_trivial_geometry": {
+    "n": 88,
+    "mean": 9.85070610940139e-15,
+    "std": 1.0413410181229966e-14,
+    "lo": 7.751375299201092e-15,
+    "hi": 1.1954074094236682e-14,
+    "mae": 9.85070610940139e-15,
+    "model": "analytic_inverse"
+  },
+  "OOD_body_SYNTHETIC": {
+    "n": 402,
+    "mean": 8.271990058102659e-15,
+    "std": 9.879042759756583e-15,
+    "lo": 7.282179281919435e-15,
+    "hi": 9.262684593907475e-15,
+    "mae": 8.271990058102659e-15,
+    "split": "SYNTHETIC_BODY_OOD",
+    "claim": "Not real-human generalization. Static mannequin OBJs only."
+  },
+  "OOD_garment_sleeve_family": {
+    "n": 36,
+    "mean": 0.0041775303869670604,
+    "std": 0.001441673557365757,
+    "lo": 0.0037271863900235525,
+    "hi": 0.004626574296004045,
+    "mae": 0.0041775303869670604,
+    "note": "Sleeve X-axis map is still analytic on this Shirt; this is OOD vs a bust-only policy."
+  },
+  "OOD_material": {
+    "n": 33,
+    "mean": 0.21212121212121213,
+    "std": 0.41514875026728054,
+    "lo": 0.09090909090909091,
+    "hi": 0.36363636363636365,
+    "metric": "measurement_only_disagreement_rate_on_stiff",
+    "split": "OOD_MATERIAL"
+  },
+  "OOD_action_magnitude": {
+    "n": 600,
+    "support": [
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3
+    ],
+    "outside_support_policy": "abstain",
+    "note": "width.v is clamped to [1.0, 1.3]; |\u0394| > 3 cm is OOD_ACTION_MAGNITUDE.",
+    "side_effect_rate_on_pm3": {
+      "n": 162,
+      "mean": 1.0,
+      "std": 0.0,
+      "lo": 1.0,
+      "hi": 1.0
+    }
+  },
+  "decision_regret_analytic": {
+    "n": 160,
+    "mean": 0.0,
+    "std": 0.0,
+    "lo": 0.0,
+    "hi": 0.0
+  },
+  "warning": "SYNTHETIC_BODY_OOD is not real-human generalization."
+}

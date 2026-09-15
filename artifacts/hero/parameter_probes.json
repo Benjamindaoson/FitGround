@@ -1,0 +1,257 @@
+[
+  {
+    "parameter": "shirt.width",
+    "measure_key": "bust_circumference_cm",
+    "v0": 1.05,
+    "v1": 1.08,
+    "before_cm": 104.83273500000001,
+    "after_cm": 107.827956,
+    "realized_delta_cm": 2.9952209999999866,
+    "cm_per_unit": 99.84069999999946,
+    "cross": {
+      "bust": 2.9952209999999866,
+      "sleeve": 0.08703613207132932,
+      "length": 0.2976482572881025,
+      "shoulder": 1.564937999999998
+    },
+    "body_name": "mean_all"
+  },
+  {
+    "parameter": "sleeve.length",
+    "measure_key": "sleeve_length_cm",
+    "v0": 0.25,
+    "v1": 0.45,
+    "before_cm": 19.766915448441672,
+    "after_cm": 28.8879443696029,
+    "realized_delta_cm": 9.121028921161226,
+    "cm_per_unit": 45.60514460580613,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 9.121028921161226,
+      "length": 0.0,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_all"
+  },
+  {
+    "parameter": "shirt.length",
+    "measure_key": "length_cm",
+    "v0": 1.1,
+    "v1": 1.4,
+    "before_cm": 46.251630508338025,
+    "after_cm": 57.319020502922655,
+    "realized_delta_cm": 11.06738999458463,
+    "cm_per_unit": 36.89129998194879,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 0.0,
+      "length": 11.06738999458463,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_all"
+  },
+  {
+    "parameter": "sleeve.connecting_width",
+    "measure_key": "shoulder_width_cm",
+    "v0": 0.1,
+    "v1": 0.6,
+    "before_cm": 54.772830000000006,
+    "after_cm": 54.772830000000006,
+    "realized_delta_cm": 0.0,
+    "cm_per_unit": 0.0,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 1.9899293009854802,
+      "length": -9.634888442633383e-10,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_all"
+  },
+  {
+    "parameter": "sleeve.connecting_width",
+    "measure_key": "sleeve_length_cm",
+    "v0": 0.1,
+    "v1": 0.6,
+    "before_cm": 21.639327498732413,
+    "after_cm": 23.629256799717894,
+    "realized_delta_cm": 1.9899293009854802,
+    "cm_per_unit": 3.9798586019709603,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 1.9899293009854802,
+      "length": -9.634888442633383e-10,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_all"
+  },
+  {
+    "parameter": "shirt.width",
+    "measure_key": "bust_circumference_cm",
+    "v0": 1.05,
+    "v1": 1.08,
+    "before_cm": 102.27798000000001,
+    "after_cm": 105.200208,
+    "realized_delta_cm": 2.92222799999999,
+    "cm_per_unit": 97.40759999999958,
+    "cross": {
+      "bust": 2.92222799999999,
+      "sleeve": 0.09275006765397364,
+      "length": 0.2790456452471801,
+      "shoulder": 1.5372719999999944
+    },
+    "body_name": "mean_female"
+  },
+  {
+    "parameter": "sleeve.length",
+    "measure_key": "sleeve_length_cm",
+    "v0": 0.25,
+    "v1": 0.45,
+    "before_cm": 18.917192485390693,
+    "after_cm": 27.631177161174314,
+    "realized_delta_cm": 8.713984675783621,
+    "cm_per_unit": 43.569923378918105,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 8.713984675783621,
+      "length": 0.0,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_female"
+  },
+  {
+    "parameter": "shirt.length",
+    "measure_key": "length_cm",
+    "v0": 1.1,
+    "v1": 1.4,
+    "before_cm": 44.723745722830785,
+    "after_cm": 55.450215700747265,
+    "realized_delta_cm": 10.72646997791648,
+    "cm_per_unit": 35.75489992638829,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 0.0,
+      "length": 10.72646997791648,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_female"
+  },
+  {
+    "parameter": "sleeve.connecting_width",
+    "measure_key": "shoulder_width_cm",
+    "v0": 0.1,
+    "v1": 0.6,
+    "before_cm": 53.804520000000004,
+    "after_cm": 53.804520000000004,
+    "realized_delta_cm": 0.0,
+    "cm_per_unit": 0.0,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 1.8791507504937996,
+      "length": 3.771184253764659e-09,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_female"
+  },
+  {
+    "parameter": "sleeve.connecting_width",
+    "measure_key": "sleeve_length_cm",
+    "v0": 0.1,
+    "v1": 0.6,
+    "before_cm": 20.730969096351224,
+    "after_cm": 22.610119846845024,
+    "realized_delta_cm": 1.8791507504937996,
+    "cm_per_unit": 3.7583015009875993,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 1.8791507504937996,
+      "length": 3.771184253764659e-09,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_female"
+  },
+  {
+    "parameter": "shirt.width",
+    "measure_key": "bust_circumference_cm",
+    "v0": 1.05,
+    "v1": 1.08,
+    "before_cm": 107.92635000000001,
+    "after_cm": 111.00996000000002,
+    "realized_delta_cm": 3.0836100000000073,
+    "cm_per_unit": 102.78700000000015,
+    "cross": {
+      "bust": 3.0836100000000073,
+      "sleeve": 0.08862441926962461,
+      "length": 0.31941127765049515,
+      "shoulder": 1.5620850000000033
+    },
+    "body_name": "mean_male"
+  },
+  {
+    "parameter": "sleeve.length",
+    "measure_key": "sleeve_length_cm",
+    "v0": 0.25,
+    "v1": 0.45,
+    "before_cm": 20.746454997956317,
+    "after_cm": 30.36244033183463,
+    "realized_delta_cm": 9.615985333878314,
+    "cm_per_unit": 48.07992666939157,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 9.615985333878314,
+      "length": 0.0,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_male"
+  },
+  {
+    "parameter": "shirt.length",
+    "measure_key": "length_cm",
+    "v0": 1.1,
+    "v1": 1.4,
+    "before_cm": 48.422496392675406,
+    "after_cm": 59.92725641272162,
+    "realized_delta_cm": 11.504760020046213,
+    "cm_per_unit": 38.349200066820735,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 0.0,
+      "length": 11.504760020046213,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_male"
+  },
+  {
+    "parameter": "sleeve.connecting_width",
+    "measure_key": "shoulder_width_cm",
+    "v0": 0.1,
+    "v1": 0.6,
+    "before_cm": 54.67297500000001,
+    "after_cm": 54.67297500000001,
+    "realized_delta_cm": 0.0,
+    "cm_per_unit": 0.0,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 2.0738360833766905,
+      "length": -1.3107452900840144e-08,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_male"
+  },
+  {
+    "parameter": "sleeve.connecting_width",
+    "measure_key": "sleeve_length_cm",
+    "v0": 0.1,
+    "v1": 0.6,
+    "before_cm": 22.73903766533097,
+    "after_cm": 24.81287374870766,
+    "realized_delta_cm": 2.0738360833766905,
+    "cm_per_unit": 4.147672166753381,
+    "cross": {
+      "bust": 0.0,
+      "sleeve": 2.0738360833766905,
+      "length": -1.3107452900840144e-08,
+      "shoulder": 0.0
+    },
+    "body_name": "mean_male"
+  }
+]

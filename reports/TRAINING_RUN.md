@@ -140,7 +140,10 @@ No `intended_delta_cm` was copied into `realized_delta_cm`.
 - Warp CUDA: PASS
 - PyTorch CUDA: PASS
 - SMPL assets: BLOCKED
-- GarmentCode physics: PASS
+- Parametric garment geometry: PASS
+- Warp synthetic-body physics: PASS (`SYNTHETIC_BODY_PHYSICS`)
+- SMPL/SMPL-X body physics: HARD_BLOCKED_LICENSE
+- Real-human validation: HARD_BLOCKED_LICENSE
 - Bust calibration: PARTIAL
 - Shoulder calibration: NOT_RUN
 - Sleeve calibration: NOT_RUN

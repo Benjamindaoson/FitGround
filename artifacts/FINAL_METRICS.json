@@ -1,19 +1,198 @@
 {
-  "generated_at": "2026-09-15T08:20:00Z",
-  "body_kind": "SYNTHETIC_BODY_PHYSICS",
-  "bust_pattern_max_abs_error_cm": 1e-14,
-  "physics_baseline_chest_p10_cm": 0.472,
-  "physics_bust_plus_3_chest_p10_cm": 0.497,
-  "physics_baseline_contact_ratio": 0.0269,
-  "physics_bust_plus_3_contact_ratio": 0.0224,
-  "B0_mae_cm": 8.110471560302393,
-  "B1_ols_mae_cm": 8.080634882812335,
-  "B1_xgboost_mae_cm": 7.875043460716143,
-  "B2_pattern_ridge_mae_cm": 3.4490544006095067,
-  "B2_pattern_cnn_mae_cm": 6.234292807802393,
+  "n_transitions": 636,
+  "n_physics_ok": 127,
+  "bust_mae_cm": 0.0,
+  "sleeve_mae_cm": 0.0,
+  "analytic_trivial_mae_cm": 9.85070610940139e-15,
   "transition_sft_mae_cm": 0.47328024404123425,
-  "transition_identity_mae_cm": 0.0,
-  "decision_sft_holdout_accuracy": 1.0,
-  "decision_sft_holdout_n": 3,
-  "rlvr": "COMPLETED_NOT_JUSTIFIED"
+  "pattern_ridge_mae_cm": 3.45,
+  "cnn_mae_cm": 6.23,
+  "visual_verdict": "VISION_NECESSITY_NOT_ESTABLISHED",
+  "visual_n_pairs": 33,
+  "visual_n_cases": 71,
+  "visual_flip_rate": 0.21212121212121213,
+  "ood_synthetic_body_mae_cm": 8.271990058102659e-15,
+  "failure_auroc": 0.9005524861878452,
+  "abstention_precision": 1.0,
+  "mllm": {
+    "status": "PASS",
+    "model": "Qwen/Qwen2-VL-2B-Instruct",
+    "n": 12,
+    "parse_rate": 1.0,
+    "action_match_rate": 0.8333333333333334,
+    "limitation": "Zero-shot pretrained VLM on SYNTHETIC_BODY_PHYSICS renders. n is small; LoRA/QLoRA omitted to avoid leakage. Structured JSON parse_rate is the primary metric.",
+    "results": [
+      {
+        "case_id": "mean_female_w1.120_l1.05_sl0.22_cdef__default",
+        "gold": "no_edit",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "No contact detected"
+        },
+        "raw": ",\nbest_correction (one of: no_edit, bust+2cm, bust+3cm, abstain),\nconfidence (0-1), reason (short string).\nDo not copy answers from file names. Use the measurements and the drape image.\nbody_bust_cm=97.41\ngarment_bust_cm=109.10\nmaterial=default\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.0,\n  \"predicted_clearance_p10_cm\": 0.0,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.0,\n  \"reason\": \"No contact detected\"\n}\n```",
+        "match": true
+      },
+      {
+        "case_id": "mean_all_w1.160_l1.05_sl0.22_cdef__stiff",
+        "gold": "no_edit",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "The garment is not suitable for a bust correction as it is too tight and does not have enough clearance."
+        },
+        "raw": " reason (short string).\nDo not copy answers from file names. Use the measurements and the drape image.\nbody_bust_cm=99.84\ngarment_bust_cm=115.82\nmaterial=stiff\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.0,\n  \"predicted_clearance_p10_cm\": 0.0,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.0,\n  \"reason\": \"The garment is not suitable for a bust correction as it is too tight and does not have enough clearance.\"\n}\n```",
+        "match": true
+      },
+      {
+        "case_id": "mean_all_w1.080_l1.05_sl0.50_cdef__stiff",
+        "gold": "no_edit",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "The image does not contain any clothing or body parts that can be used to determine a correction."
+        },
+        "raw": " (0-1), reason (short string).\nDo not copy answers from file names. Use the measurements and the drape image.\nbody_bust_cm=99.84\ngarment_bust_cm=107.83\nmaterial=stiff\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.0,\n  \"predicted_clearance_p10_cm\": 0.0,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.0,\n  \"reason\": \"The image does not contain any clothing or body parts that can be used to determine a correction.\"\n}\n```",
+        "match": true
+      },
+      {
+        "case_id": "mean_female_w1.080_l1.05_sl0.22_cdef__default",
+        "gold": "no_edit",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "The image does not contain any clothing or body measurements to determine a correction."
+        },
+        "raw": "nfidence (0-1), reason (short string).\nDo not copy answers from file names. Use the measurements and the drape image.\nbody_bust_cm=97.41\ngarment_bust_cm=105.20\nmaterial=default\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.0,\n  \"predicted_clearance_p10_cm\": 0.0,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.0,\n  \"reason\": \"The image does not contain any clothing or body measurements to determine a correction.\"\n}\n```",
+        "match": true
+      },
+      {
+        "case_id": "mean_all_w1.080_l1.25_sl0.22_cdef__default",
+        "gold": "no_edit",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "The image does not provide enough information to determine the contact ratio or clearance. The garment and body measurements are not sufficient to make a prediction."
+        },
+        "raw": "e the measurements and the drape image.\nbody_bust_cm=99.84\ngarment_bust_cm=107.83\nmaterial=default\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.0,\n  \"predicted_clearance_p10_cm\": 0.0,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.0,\n  \"reason\": \"The image does not provide enough information to determine the contact ratio or clearance. The garment and body measurements are not sufficient to make a prediction.\"\n}\n```",
+        "match": true
+      },
+      {
+        "case_id": "mean_male_w1.120_l1.05_sl0.22_cdef__stiff",
+        "gold": "no_edit",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "The image does not provide enough information to determine the contact ratio or clearance. The garment and body measurements are not sufficient to make a prediction."
+        },
+        "raw": "se the measurements and the drape image.\nbody_bust_cm=102.79\ngarment_bust_cm=115.12\nmaterial=stiff\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.0,\n  \"predicted_clearance_p10_cm\": 0.0,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.0,\n  \"reason\": \"The image does not provide enough information to determine the contact ratio or clearance. The garment and body measurements are not sufficient to make a prediction.\"\n}\n```",
+        "match": true
+      },
+      {
+        "case_id": "mean_all_w1.020_l1.05_sl0.35_cdef__stiff",
+        "gold": "bust+2cm",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "The image does not contain any clothing or body parts that can be used to determine a correction."
+        },
+        "raw": " (0-1), reason (short string).\nDo not copy answers from file names. Use the measurements and the drape image.\nbody_bust_cm=99.84\ngarment_bust_cm=101.84\nmaterial=stiff\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.0,\n  \"predicted_clearance_p10_cm\": 0.0,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.0,\n  \"reason\": \"The image does not contain any clothing or body parts that can be used to determine a correction.\"\n}\n```",
+        "match": false
+      },
+      {
+        "case_id": "mean_female_w1.020_l1.05_sl0.22_cdef__stiff",
+        "gold": "bust+2cm",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "The image does not provide enough information to determine the contact ratio or clearance. The garment and body measurements are not sufficient to make a prediction."
+        },
+        "raw": " Use the measurements and the drape image.\nbody_bust_cm=97.41\ngarment_bust_cm=99.36\nmaterial=stiff\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.0,\n  \"predicted_clearance_p10_cm\": 0.0,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.0,\n  \"reason\": \"The image does not provide enough information to determine the contact ratio or clearance. The garment and body measurements are not sufficient to make a prediction.\"\n}\n```",
+        "match": false
+      },
+      {
+        "case_id": "mean_all_w1.020_l1.25_sl0.50_cdef__stiff",
+        "gold": "no_edit",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "The image does not contain any clothing or body parts that can be used to determine a correction."
+        },
+        "raw": " (0-1), reason (short string).\nDo not copy answers from file names. Use the measurements and the drape image.\nbody_bust_cm=99.84\ngarment_bust_cm=101.84\nmaterial=stiff\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.0,\n  \"predicted_clearance_p10_cm\": 0.0,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.0,\n  \"reason\": \"The image does not contain any clothing or body parts that can be used to determine a correction.\"\n}\n```",
+        "match": true
+      },
+      {
+        "case_id": "mean_all_w1.160_l1.20_sl0.30_cdef__stiff",
+        "gold": "no_edit",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "No contact detected"
+        },
+        "raw": ",\nbest_correction (one of: no_edit, bust+2cm, bust+3cm, abstain),\nconfidence (0-1), reason (short string).\nDo not copy answers from file names. Use the measurements and the drape image.\nbody_bust_cm=0.00\ngarment_bust_cm=115.82\nmaterial=stiff\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.00,\n  \"predicted_clearance_p10_cm\": 0.00,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.00,\n  \"reason\": \"No contact detected\"\n}\n```",
+        "match": true
+      },
+      {
+        "case_id": "mean_all_w1.020_l1.05_sl0.50_cdef__default",
+        "gold": "no_edit",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "The image does not contain any objects that can be measured or corrected."
+        },
+        "raw": ", abstain),\nconfidence (0-1), reason (short string).\nDo not copy answers from file names. Use the measurements and the drape image.\nbody_bust_cm=99.84\ngarment_bust_cm=101.84\nmaterial=default\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.0,\n  \"predicted_clearance_p10_cm\": 0.0,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.0,\n  \"reason\": \"The image does not contain any objects that can be measured or corrected.\"\n}\n```",
+        "match": true
+      },
+      {
+        "case_id": "mean_all_w1.070_l1.20_sl0.30_cdef__stiff",
+        "gold": "no_edit",
+        "pred": "no_edit",
+        "parsed": {
+          "predicted_contact_ratio": 0.0,
+          "predicted_clearance_p10_cm": 0.0,
+          "best_correction": "no_edit",
+          "confidence": 0.0,
+          "reason": "The image does not provide enough information to determine the best correction for contact ratio or clearance."
+        },
+        "raw": "on (short string).\nDo not copy answers from file names. Use the measurements and the drape image.\nbody_bust_cm=0.00\ngarment_bust_cm=106.83\nmaterial=stiff\nfit_intent=regular\ncandidate_actions=no_edit|bust+2cm|bust+3cm|abstain\n\nassistant\n```json\n{\n  \"predicted_contact_ratio\": 0.0,\n  \"predicted_clearance_p10_cm\": 0.0,\n  \"best_correction\": \"no_edit\",\n  \"confidence\": 0.0,\n  \"reason\": \"The image does not provide enough information to determine the best correction for contact ratio or clearance.\"\n}\n```",
+        "match": true
+      }
+    ],
+    "body_kind": "SYNTHETIC_BODY_PHYSICS"
+  },
+  "shoulder": "SHOULDER_ACTION = NO_GO_FOR_CURRENT_PATTERN_FAMILY",
+  "body_kind": "SYNTHETIC_BODY_PHYSICS"
 }

@@ -25,6 +25,17 @@ type PhysicsRow = {
   render: string;
 };
 
+type Overlay = {
+  recommendation?: {
+    action_id: string;
+    summary: string;
+    confidence: number;
+    abstain: boolean;
+    alternatives: string[];
+    why_not_plus2: string;
+  };
+};
+
 type Workspace = {
   tagline: string;
   current_sample: Record<string, unknown>;
@@ -39,9 +50,11 @@ type Workspace = {
     alternatives: string[];
     why_not_plus2: string;
   };
-  hero_cases: { id: string; title: string; problem: string; best: string; evidence: string }[];
+  hero_cases: { id: string; title: string; problem: string; best: string; evidence: string; abstain?: boolean }[];
   metrics: Record<string, number | string>;
   audit: Record<string, unknown>;
+  case_overlays?: Record<string, Overlay>;
+  visual_disambiguation?: { verdict?: string; n_pairs?: number; n_vision_needed?: number };
 };
 
 function fmt(value: unknown, digits = 2) {
@@ -87,7 +100,10 @@ export default function WorkspacePage() {
   }
 
   const sample = data.current_sample;
+  const overlay = data.case_overlays?.[caseId];
+  const recommendation = overlay?.recommendation ?? data.recommendation;
   const rec = data.candidates.find((c) => c.recommended) ?? data.candidates[0];
+  const abstain = Boolean(recommendation.abstain || selectedCase?.abstain);
 
   return (
     <main className="min-h-screen">
@@ -194,15 +210,17 @@ export default function WorkspacePage() {
 
         <section className="lg:col-span-3 p-6">
           <h2 className="mono text-[11px] tracking-[0.2em]">03 · RECOMMENDATION</h2>
-          <div className="mt-3 border border-[#2f6b4f] bg-[#e7efe8] p-4">
-            <p className="mono text-[11px] text-[#2f6b4f]">NEXT SAMPLE</p>
-            <p className="text-2xl mt-1">{data.recommendation.action_id}</p>
-            <p className="text-sm mt-2">{data.recommendation.summary}</p>
+          <div className={`mt-3 border p-4 ${abstain ? "border-[#b4472a] bg-[#f8e6e0]" : "border-[#2f6b4f] bg-[#e7efe8]"}`}>
+            <p className={`mono text-[11px] ${abstain ? "text-[#b4472a]" : "text-[#2f6b4f]"}`}>
+              {abstain ? "NO RECOMMENDATION — ESCALATE" : "NEXT SAMPLE"}
+            </p>
+            <p className="text-2xl mt-1">{recommendation.action_id}</p>
+            <p className="text-sm mt-2">{recommendation.summary}</p>
             <p className="mono text-xs mt-3">
-              confidence {fmt(data.recommendation.confidence)} · abstain {String(data.recommendation.abstain)}
+              confidence {fmt(recommendation.confidence)} · abstain {String(recommendation.abstain)}
             </p>
           </div>
-          <p className="text-xs mt-3 opacity-70">{data.recommendation.why_not_plus2}</p>
+          <p className="text-xs mt-3 opacity-70">{recommendation.why_not_plus2}</p>
           <h3 className="mono text-[11px] tracking-[0.2em] mt-6">COUNTERFACTUAL PREVIEW</h3>
           <div className="mt-2 grid grid-cols-2 gap-2">
             {data.physics_outcomes
@@ -215,11 +233,15 @@ export default function WorkspacePage() {
                 </figure>
               ))}
           </div>
-          <h3 className="mono text-[11px] tracking-[0.2em] mt-6">AUDIT</h3>
+          <h3 className="mono text-[11px] tracking-[0.2em] mt-6">AUDIT / PROVENANCE</h3>
           <ul className="mt-2 mono text-[11px] space-y-1">
             <li>realized source: {String(data.audit.realized_source)}</li>
+            <li>geometry: {String(data.audit.parametric_garment_geometry ?? "PASS")}</li>
+            <li>synthetic physics: {String(data.audit.synthetic_body_physics ?? "PASS")}</li>
             <li>SMPL-X: {String(data.audit.smpl_x_weights)}</li>
+            <li>real-human: {String(data.audit.real_human_validation ?? "HARD_BLOCKED_LICENSE")}</li>
             <li>collision: {String(data.audit.body_collision)}</li>
+            <li>vision: {String(data.visual_disambiguation?.verdict ?? "—")}</li>
           </ul>
         </section>
       </div>

@@ -4,16 +4,17 @@
 
 **Who.** Technical designers / 3D pattern engineers, not shoppers.
 
-**Loop.** Evidence → cause hypothesis → candidate correction → counterfactual outcome → selection.
+**Loop.** Pattern parameter → measured geometry → Warp cloth/body physics → fit metrics → counterfactual correction → decision utility → designer workspace.
 
-**What is real today.**
+**Six claims that are allowed only with artifacts.**
 
-- Controllable bust intervention with measured realized Δcm
-- Warp XPBD drape on static OBJ mannequins (`SYNTHETIC_BODY_PHYSICS`)
-- Regional clearance / contact after unit alignment (body metres → cm)
-- Observational and generated-pattern baselines, with negative results
-- Next.js technical-designer workspace driven by artifacts, not mock chat
+1. ±3 cm Shirt bust edits are millimetre-class calibratable (MAE ~0, 3× repeats exact).
+2. Those edits change measurable cloth-body clearance/contact on a static mannequin.
+3. On the trivial geometry regime, analytic inverse beats Transition SFT (0.00 vs 0.47 cm).
+4. Vision/MLLM gain is an experiment on matched measurements + different drape, not a slogan.
+5. OOD support is explicit: unseen body/material/unstable sim → abstain, labelled `SYNTHETIC_BODY_OOD`.
+6. The Next.js workspace turns those results into “what should change in the next sample?”
 
-**What is explicitly not real.** SMPL-X parametric bodies, FIT-100K pixels, production deployment, proven vision necessity, MLLM LoRA until the download artifact says otherwise.
+**Split, always.** Parametric geometry PASS · `SYNTHETIC_BODY_PHYSICS` PASS · SMPL-X HARD_BLOCKED_LICENSE · real-human HARD_BLOCKED_LICENSE.
 
-**How to run.** `make smoke` · `cd studio && npm run dev` · GPU: `python scripts/gpu/hero_pipeline.py`
+**How to run.** `make smoke` · `make benchmark-fast` · `cd studio && npm run dev -- -p 43187` · GPU: `bash scripts/gpu/run_closure.sh`

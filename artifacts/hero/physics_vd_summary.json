@@ -1,0 +1,11 @@
+{
+  "n_states": 28,
+  "n_plan": 112,
+  "n_rows": 112,
+  "n_ok": 112,
+  "n_failed": 0,
+  "n_resumed": 0,
+  "n_new": 112,
+  "runtime_s": 1351.6277348995209,
+  "body_kind": "SYNTHETIC_BODY_PHYSICS"
+}

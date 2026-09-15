@@ -1,204 +1,949 @@
 {
-  "product": "FitGround Technical Designer Workspace",
   "tagline": "What should change in the next sample?",
-  "body_kind": "SYNTHETIC_BODY_PHYSICS",
-  "provenance": {
-    "lattice": "artifacts/correction_lattice_chest_case.json",
-    "physics": "artifacts/hero/existing_physics_outcomes.json",
-    "calibration": "artifacts/bust_atomic_calibration.json",
-    "training": "artifacts/training/observational_and_vision_baselines.json"
-  },
-  "current_sample": {
-    "state_id": "tshirt_mean_all_baseline",
-    "garment_type": "GarmentCode Shirt / t-shirt.yaml",
-    "fit_intent": "regular",
-    "material": "default_sim_props (static mannequin drape)",
-    "body_name": "mean_all",
-    "body_bust_cm": 99.8407,
-    "baseline_garment_bust_cm": 104.832735,
-    "target_garment_bust_cm": 107.832735,
-    "target_definition": "CHEST_CASE: increase measured garment bust by 3 cm",
-    "region_fit_state": {
-      "chest": "tight / insufficient ease",
-      "shoulder": "not independently verified",
-      "sleeve": "side-effect watch",
-      "waist": "coupled to bust when flare=1",
-      "length": "stable"
-    }
-  },
-  "physics_outcomes": [
-    {
-      "tag": "baseline",
-      "label": "Current sample",
-      "clearance_p10_cm": 0.494,
-      "clearance_min_cm": 0.342,
-      "contact_ratio": 0.0269,
-      "chest_clearance_p10_cm": 0.472,
-      "wrinkle_proxy_cm": 8.981,
-      "render": "/evidence/baseline_render_front.png"
-    },
-    {
-      "tag": "bust_plus_1cm",
-      "label": "Bust +1 cm",
-      "clearance_p10_cm": 0.499,
-      "clearance_min_cm": 0.348,
-      "contact_ratio": 0.0288,
-      "chest_clearance_p10_cm": 0.481,
-      "wrinkle_proxy_cm": 9.015,
-      "render": "/evidence/bust_plus_1cm_render_front.png"
-    },
-    {
-      "tag": "bust_plus_2cm",
-      "label": "Bust +2 cm",
-      "clearance_p10_cm": 0.501,
-      "clearance_min_cm": 0.348,
-      "contact_ratio": 0.0271,
-      "chest_clearance_p10_cm": 0.481,
-      "wrinkle_proxy_cm": 9.045,
-      "render": "/evidence/bust_plus_2cm_render_front.png"
-    },
-    {
-      "tag": "bust_plus_3cm",
-      "label": "Bust +3 cm",
-      "clearance_p10_cm": 0.518,
-      "clearance_min_cm": 0.338,
-      "contact_ratio": 0.0224,
-      "chest_clearance_p10_cm": 0.497,
-      "wrinkle_proxy_cm": 8.98,
-      "render": "/evidence/bust_plus_3cm_render_front.png"
-    }
-  ],
-  "hypotheses": [
-    {
-      "id": "H1",
-      "text": "Chest tightness is insufficient garment bust ease, not a shoulder lock.",
-      "support": "shirt.width.v maps 1:1 onto measured bust; chest clearance p10 rises from 0.47 to 0.50 cm at +3 cm.",
-      "confidence": 0.82
-    },
-    {
-      "id": "H2",
-      "text": "Waist will track the bust edit on this untapered Shirt (flare=1.0).",
-      "support": "Atomic calibration G4 PARTIAL: waist_delta equals bust_delta.",
-      "confidence": 0.91
-    },
-    {
-      "id": "H3",
-      "text": "Sleeve.length.v was previously mis-measured on panel Y; panel X is the construction axis.",
-      "support": "sleeves.py places length along X; connecting_width is the shoulder-region candidate, not body shoulder_w.",
-      "confidence": 0.7
-    }
-  ],
-  "candidates": [
-    {
-      "action_id": "bust_plus_1cm",
-      "family": "bust_circumference_delta_cm",
-      "intended_delta_cm": 1,
-      "realized_delta_cm": 1.0,
-      "target_error_cm": 2.0,
-      "utility": -2.252,
-      "side_effects": {"waist_cm": 1.0, "sleeve_cm": 0.20, "length_cm": 0.1},
-      "simulation_status": "SIMULATED",
-      "recommended": false
-    },
-    {
-      "action_id": "bust_plus_2cm",
-      "family": "bust_circumference_delta_cm",
-      "intended_delta_cm": 2,
-      "realized_delta_cm": 2.0,
-      "target_error_cm": 1.0,
-      "utility": -1.514,
-      "side_effects": {"waist_cm": 2.0, "sleeve_cm": 0.43, "length_cm": 0.1},
-      "simulation_status": "SIMULATED",
-      "recommended": false
-    },
-    {
-      "action_id": "bust_plus_3cm",
-      "family": "bust_circumference_delta_cm",
-      "intended_delta_cm": 3,
-      "realized_delta_cm": 3.0,
-      "target_error_cm": 0.0,
-      "utility": -0.74,
-      "side_effects": {"waist_cm": 3.0, "sleeve_cm": 0.58, "length_cm": 0.1},
-      "simulation_status": "SIMULATED",
-      "recommended": true
-    },
-    {
-      "action_id": "shoulder_plus_1cm",
-      "family": "shoulder_width_delta_cm",
-      "intended_delta_cm": 1,
-      "realized_delta_cm": null,
-      "utility": null,
-      "simulation_status": "NOT_RUN",
-      "verification_status": "NOT_VERIFIED",
-      "note": "Shirt program has no independent garment shoulder_w. Probe connecting_width in hero pipeline."
-    },
-    {
-      "action_id": "sleeve_minus_1cm",
-      "family": "sleeve_length_delta_cm",
-      "intended_delta_cm": -1,
-      "realized_delta_cm": null,
-      "note": "Re-measured on sleeve panel X in the completion pipeline."
-    }
-  ],
-  "recommendation": {
-    "action_id": "bust_plus_3cm",
-    "summary": "Bust +3 cm via shirt.width.v. Hits the CHEST_CASE target. Expect waist to follow 1:1.",
-    "confidence": 0.78,
-    "abstain": false,
-    "escalate": false,
-    "uncertainty_penalty": 0.12,
-    "alternatives": ["bust_plus_2cm"],
-    "why_not_plus2": "Leaves 1 cm target error. Utility ranking prefers +3 even after the 0.15*|edit| penalty."
-  },
   "hero_cases": [
     {
       "id": "case-1-chest-tight",
-      "title": "Chest too tight → Bust +3 cm",
-      "problem": "Sample reads tight across the chest on mean_all. Target is baseline bust + 3 cm.",
-      "best": "bust_plus_3cm",
-      "evidence": "Pattern realized_delta = 3.000 cm. Chest clearance p10 0.47 → 0.50 cm. Contact ratio 0.027 → 0.022."
+      "title": "Chest too tight \u2192 Bust +3 cm",
+      "problem": "Chest too tight \u2192 Bust +3 cm",
+      "best": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+3.00",
+      "evidence": "{\"id\": \"case-1-chest-tight\", \"title\": \"Chest too tight \\u2192 Bust +3 cm\", \"abstain\": false, \"best\": \"mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+3.00\", \"physics_tags\": [\"baseline_default\", \"bust_+2_default\", \"bust_+3_default\"]}",
+      "abstain": false
     },
     {
       "id": "case-2-same-meas-material",
       "title": "Same measurements, different cloth bending",
-      "problem": "Identical 2D specs; default vs mid_bending materials. Measurement-only cannot split them.",
-      "best": "pending_hero_pipeline",
-      "evidence": "Hero physics pair (tight_default vs tight_stiff) is the disambiguation test."
+      "problem": "Same measurements, different cloth bending",
+      "best": "default=no_edit stiff=bust+2cm",
+      "evidence": "{\"id\": \"case-2-same-meas-material\", \"title\": \"Same measurements, different cloth bending\", \"abstain\": false, \"best\": \"default=no_edit stiff=bust+2cm\"}",
+      "abstain": false
     },
     {
       "id": "case-3-waist-side-effect",
-      "title": "Bust edit drags waist",
-      "problem": "flare=1 Shirt: waist_delta tracks bust_delta. A smaller edit can be preferred if waist risk is priced in.",
-      "best": "depends_on_utility_weights",
-      "evidence": "G4 PARTIAL locality. Utility uses 0.5*(|sleeve|+|length|) but waist coupling is structural."
+      "title": "Side-effect priced in: smaller bust edit can win",
+      "problem": "Waist coupling weight 0.8. flare=1 Shirt.",
+      "best": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+3.00",
+      "evidence": "{\"id\": \"case-3-waist-side-effect\", \"title\": \"Side-effect priced in: smaller bust edit can win\", \"abstain\": false, \"best\": \"mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+3.00\", \"note\": \"Waist coupling weight 0.8. flare=1 Shirt.\"}",
+      "abstain": false
     },
     {
       "id": "case-4-ood-body",
-      "title": "OOD body → abstain / escalate",
-      "problem": "mean_female / mean_male held out of a mean_all-trained selector.",
-      "best": "abstain if body not in support",
-      "evidence": "Failure-aware rule: unseen body_name => escalate-to-human."
+      "title": "OOD body \u2192 abstain",
+      "problem": "SYNTHETIC_BODY_OOD. Not real-human generalization.",
+      "best": "ABSTAIN_ESCALATE_HUMAN",
+      "evidence": "{\"id\": \"case-4-ood-body\", \"title\": \"OOD body \\u2192 abstain\", \"abstain\": true, \"best\": \"ABSTAIN_ESCALATE_HUMAN\", \"reasons\": [\"OOD_BODY\"], \"body_name\": \"mean_female\", \"note\": \"SYNTHETIC_BODY_OOD. Not real-human generalization.\"}",
+      "abstain": true
     },
     {
       "id": "case-5-shoulder-vs-bust",
-      "title": "Shoulder vs bust competition",
-      "problem": "No calibrated garment shoulder map on this Shirt. Do not recommend a fake shoulder +1.",
-      "best": "bust family only; shoulder NO-GO unless connecting_width probe GO",
-      "evidence": "shoulder_plus_1cm remains NOT_VERIFIED on the CHEST_CASE lattice."
+      "title": "Bust vs shoulder: shoulder has no independent DoF",
+      "problem": "SHOULDER_ACTION = NO_GO_FOR_CURRENT_PATTERN_FAMILY",
+      "best": "bust family only",
+      "evidence": "{\"id\": \"case-5-shoulder-vs-bust\", \"title\": \"Bust vs shoulder: shoulder has no independent DoF\", \"abstain\": false, \"best\": \"bust family only\", \"shoulder_verdict\": \"NO-GO\", \"note\": \"SHOULDER_ACTION = NO_GO_FOR_CURRENT_PATTERN_FAMILY\"}",
+      "abstain": false
+    }
+  ],
+  "decision_cases": [
+    {
+      "id": "case-1-chest-tight",
+      "title": "Chest too tight \u2192 Bust +3 cm",
+      "abstain": false,
+      "best": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+3.00",
+      "ranking": [
+        {
+          "state_id": "mean_all_w1.080_l1.05_sl0.22_cdef",
+          "action_id": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+3.00",
+          "action_family": "bust_circumference_delta_cm",
+          "intended_delta_cm": 3.0,
+          "realized_delta_cm": 3.0000000000000284,
+          "realized_source": "panel_geometry_after_minus_before",
+          "realized_measurement_key": "bust_circumference_cm",
+          "parameter_name": "shirt.width.v",
+          "body_name": "mean_all",
+          "body_bust_cm": 99.8407,
+          "named_pattern_parameters_before": {
+            "shirt.width.v": 1.08,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "named_pattern_parameters_after": {
+            "shirt.width.v": 1.1100478662509379,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "garment_measurement_before": {
+            "bust_circumference_cm": 107.827956,
+            "waist_cm": 107.827956,
+            "length_cm": 44.70471376466374,
+            "sleeve_length_cm": 18.495585569200667,
+            "shoulder_width_cm": 56.337768000000004,
+            "torso_panel_dx": {
+              "left_ftorso": 28.168884000000002,
+              "right_ftorso": 28.168884000000002,
+              "left_btorso": 25.745093999999998,
+              "right_btorso": 25.745093999999998
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 44.740397061847986,
+              "right_ftorso": 44.740397061847986,
+              "left_btorso": 44.66903046747949,
+              "right_btorso": 44.66903046747949
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.38581006436885,
+              "left_sleeve_b": 21.385810064368833,
+              "right_sleeve_f": 21.38581006436885,
+              "right_sleeve_b": 21.385810064368833
+            },
+            "panel_names": [
+              "right_ftorso",
+              "right_btorso",
+              "right_sleeve_f",
+              "right_sleeve_b",
+              "left_btorso",
+              "left_sleeve_f",
+              "left_sleeve_b",
+              "left_ftorso"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "202f7a6e4f4b23134d9221473df70d7258986579e20037a7cc5e1a65b01b1c31"
+          },
+          "garment_measurement_after": {
+            "bust_circumference_cm": 110.82795600000003,
+            "waist_cm": 110.82795600000003,
+            "length_cm": 45.002836910899035,
+            "sleeve_length_cm": 18.590734578179323,
+            "shoulder_width_cm": 57.905202923833684,
+            "torso_panel_dx": {
+              "left_ftorso": 28.952601461916842,
+              "right_ftorso": 28.952601461916842,
+              "left_btorso": 26.46137653808317,
+              "right_btorso": 26.46137653808317
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 45.05192283395142,
+              "right_ftorso": 45.05192283395142,
+              "left_btorso": 44.95375098784665,
+              "right_btorso": 44.95375098784665
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.687014221861222,
+              "left_sleeve_b": 21.687014221861205,
+              "right_sleeve_f": 21.687014221861222,
+              "right_sleeve_b": 21.687014221861205
+            },
+            "panel_names": [
+              "right_btorso",
+              "right_ftorso",
+              "right_sleeve_f",
+              "right_sleeve_b",
+              "left_ftorso",
+              "left_sleeve_f",
+              "left_sleeve_b",
+              "left_btorso"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "98d6c6c8d350f7046332d5a49cf73888ec73e7aa5b211fc4afdd881ae0a74713"
+          },
+          "png_before": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p4af104d88910.png",
+          "png_after": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p16bec9eeaa38.png",
+          "spec_before": "/root/workspace/projects/FitGround/artifacts/hero/_pat/p4af104d88910/t-shirt__p4af104d88910/t-shirt__p4af104d88910_specification.json",
+          "spec_after": "/root/workspace/projects/FitGround/artifacts/hero/_pat/p16bec9eeaa38/t-shirt__p16bec9eeaa38/t-shirt__p16bec9eeaa38_specification.json",
+          "bust_delta_cm": 3.0000000000000284,
+          "waist_delta_cm": 3.0000000000000284,
+          "shoulder_delta_cm": 1.5674349238336802,
+          "sleeve_delta_cm": 0.0951490089786553,
+          "length_delta_cm": 0.298123146235298,
+          "calibration_error_cm": 2.842170943040401e-14,
+          "verification_status": "VERIFIED",
+          "simulation_status": "NOT_RUN",
+          "render_status": "NOT_RUN",
+          "body_kind": "SYNTHETIC_BODY_PHYSICS",
+          "utility": -0.646636077607005,
+          "target_error_cm": 2.842170943040401e-14,
+          "rank": 1,
+          "recommended": true
+        },
+        {
+          "state_id": "mean_all_w1.080_l1.05_sl0.22_cdef",
+          "action_id": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+2.00",
+          "action_family": "bust_circumference_delta_cm",
+          "intended_delta_cm": 2.0,
+          "realized_delta_cm": 2.0,
+          "realized_source": "panel_geometry_after_minus_before",
+          "realized_measurement_key": "bust_circumference_cm",
+          "parameter_name": "shirt.width.v",
+          "body_name": "mean_all",
+          "body_bust_cm": 99.8407,
+          "named_pattern_parameters_before": {
+            "shirt.width.v": 1.08,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "named_pattern_parameters_after": {
+            "shirt.width.v": 1.1000319108339585,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "garment_measurement_before": {
+            "bust_circumference_cm": 107.827956,
+            "waist_cm": 107.827956,
+            "length_cm": 44.70471376466374,
+            "sleeve_length_cm": 18.495585569200667,
+            "shoulder_width_cm": 56.337768000000004,
+            "torso_panel_dx": {
+              "left_ftorso": 28.168884000000002,
+              "right_ftorso": 28.168884000000002,
+              "left_btorso": 25.745093999999998,
+              "right_btorso": 25.745093999999998
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 44.740397061847986,
+              "right_ftorso": 44.740397061847986,
+              "left_btorso": 44.66903046747949,
+              "right_btorso": 44.66903046747949
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.38581006436885,
+              "left_sleeve_b": 21.385810064368833,
+              "right_sleeve_f": 21.38581006436885,
+              "right_sleeve_b": 21.385810064368833
+            },
+            "panel_names": [
+              "right_ftorso",
+              "right_btorso",
+              "right_sleeve_f",
+              "right_sleeve_b",
+              "left_btorso",
+              "left_sleeve_f",
+              "left_sleeve_b",
+              "left_ftorso"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "202f7a6e4f4b23134d9221473df70d7258986579e20037a7cc5e1a65b01b1c31"
+          },
+          "garment_measurement_after": {
+            "bust_circumference_cm": 109.827956,
+            "waist_cm": 109.827956,
+            "length_cm": 44.90346253181217,
+            "sleeve_length_cm": 18.572104051352447,
+            "shoulder_width_cm": 57.38272461588912,
+            "torso_panel_dx": {
+              "left_ftorso": 28.69136230794456,
+              "right_ftorso": 28.69136230794456,
+              "left_btorso": 26.222615692055445,
+              "right_btorso": 26.222615692055445
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 44.948080914254234,
+              "right_ftorso": 44.948080914254234,
+              "left_btorso": 44.858844149370114,
+              "right_btorso": 44.858844149370114
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.63449728723386,
+              "left_sleeve_b": 21.63449728723387,
+              "right_sleeve_f": 21.63449728723386,
+              "right_sleeve_b": 21.63449728723387
+            },
+            "panel_names": [
+              "left_sleeve_f",
+              "left_sleeve_b",
+              "left_btorso",
+              "left_ftorso",
+              "right_btorso",
+              "right_sleeve_f",
+              "right_sleeve_b",
+              "right_ftorso"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "a86d67f0238eeda55046f344c70c15cb7bc9fd27c6abed90948bde88c6ef392c"
+          },
+          "png_before": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p4af104d88910.png",
+          "png_after": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/pd61b76159887.png",
+          "spec_before": "/root/workspace/projects/FitGround/artifacts/hero/_pat/p4af104d88910/t-shirt__p4af104d88910/t-shirt__p4af104d88910_specification.json",
+          "spec_after": "/root/workspace/projects/FitGround/artifacts/hero/_pat/pd61b76159887/t-shirt__pd61b76159887/t-shirt__pd61b76159887_specification.json",
+          "bust_delta_cm": 2.0,
+          "waist_delta_cm": 2.0,
+          "shoulder_delta_cm": 1.044956615889113,
+          "sleeve_delta_cm": 0.07651848215177992,
+          "length_delta_cm": 0.19874876714843026,
+          "calibration_error_cm": 0.0,
+          "verification_status": "VERIFIED",
+          "simulation_status": "NOT_RUN",
+          "render_status": "NOT_RUN",
+          "body_kind": "SYNTHETIC_BODY_PHYSICS",
+          "utility": -1.4376336246501051,
+          "target_error_cm": -1.0,
+          "rank": 2,
+          "recommended": false
+        },
+        {
+          "state_id": "mean_all_w1.080_l1.05_sl0.22_cdef",
+          "action_id": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+1.00",
+          "action_family": "bust_circumference_delta_cm",
+          "intended_delta_cm": 1.0,
+          "realized_delta_cm": 1.0000000000000142,
+          "realized_source": "panel_geometry_after_minus_before",
+          "realized_measurement_key": "bust_circumference_cm",
+          "parameter_name": "shirt.width.v",
+          "body_name": "mean_all",
+          "body_bust_cm": 99.8407,
+          "named_pattern_parameters_before": {
+            "shirt.width.v": 1.08,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "named_pattern_parameters_after": {
+            "shirt.width.v": 1.0900159554169793,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "garment_measurement_before": {
+            "bust_circumference_cm": 107.827956,
+            "waist_cm": 107.827956,
+            "length_cm": 44.70471376466374,
+            "sleeve_length_cm": 18.495585569200667,
+            "shoulder_width_cm": 56.337768000000004,
+            "torso_panel_dx": {
+              "left_ftorso": 28.168884000000002,
+              "right_ftorso": 28.168884000000002,
+              "left_btorso": 25.745093999999998,
+              "right_btorso": 25.745093999999998
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 44.740397061847986,
+              "right_ftorso": 44.740397061847986,
+              "left_btorso": 44.66903046747949,
+              "right_btorso": 44.66903046747949
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.38581006436885,
+              "left_sleeve_b": 21.385810064368833,
+              "right_sleeve_f": 21.38581006436885,
+              "right_sleeve_b": 21.385810064368833
+            },
+            "panel_names": [
+              "right_ftorso",
+              "right_btorso",
+              "right_sleeve_f",
+              "right_sleeve_b",
+              "left_btorso",
+              "left_sleeve_f",
+              "left_sleeve_b",
+              "left_ftorso"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "202f7a6e4f4b23134d9221473df70d7258986579e20037a7cc5e1a65b01b1c31"
+          },
+          "garment_measurement_after": {
+            "bust_circumference_cm": 108.82795600000001,
+            "waist_cm": 108.82795600000001,
+            "length_cm": 44.80408817073959,
+            "sleeve_length_cm": 18.539454508492604,
+            "shoulder_width_cm": 56.860246307944564,
+            "torso_panel_dx": {
+              "left_ftorso": 28.430123153972282,
+              "right_ftorso": 28.430123153972282,
+              "left_btorso": 25.98385484602772,
+              "right_btorso": 25.98385484602772
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 44.84423897751796,
+              "right_ftorso": 44.84423897751796,
+              "left_btorso": 44.763937363961226,
+              "right_btorso": 44.763937363961226
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.52437625254704,
+              "left_sleeve_b": 21.52437625254703,
+              "right_sleeve_f": 21.52437625254704,
+              "right_sleeve_b": 21.52437625254703
+            },
+            "panel_names": [
+              "right_ftorso",
+              "right_sleeve_b",
+              "right_sleeve_f",
+              "right_btorso",
+              "left_btorso",
+              "left_sleeve_b",
+              "left_sleeve_f",
+              "left_ftorso"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "87c16571300f6ccd17ac5aacc1770387505425c800d48d540fc78a6580dd133b"
+          },
+          "png_before": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p4af104d88910.png",
+          "png_after": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p5ea6f6303b3e.png",
+          "spec_before": "/root/workspace/projects/FitGround/artifacts/hero/_pat/p4af104d88910/t-shirt__p4af104d88910/t-shirt__p4af104d88910_specification.json",
+          "spec_after": "/root/workspace/projects/FitGround/artifacts/hero/_pat/p5ea6f6303b3e/t-shirt__p5ea6f6303b3e/t-shirt__p5ea6f6303b3e_specification.json",
+          "bust_delta_cm": 1.0000000000000142,
+          "waist_delta_cm": 1.0000000000000142,
+          "shoulder_delta_cm": 0.5224783079445601,
+          "sleeve_delta_cm": 0.04386893929193647,
+          "length_delta_cm": 0.09937440607585302,
+          "calibration_error_cm": 1.4210854715202004e-14,
+          "verification_status": "VERIFIED",
+          "simulation_status": "NOT_RUN",
+          "render_status": "NOT_RUN",
+          "body_kind": "SYNTHETIC_BODY_PHYSICS",
+          "utility": -2.2216216726838804,
+          "target_error_cm": -1.9999999999999858,
+          "rank": 3,
+          "recommended": false
+        },
+        {
+          "state_id": "mean_all_w1.080_l1.05_sl0.22_cdef",
+          "action_id": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+0.00",
+          "action_family": "bust_circumference_delta_cm",
+          "intended_delta_cm": 0.0,
+          "realized_delta_cm": 0.0,
+          "realized_source": "panel_geometry_after_minus_before",
+          "realized_measurement_key": "bust_circumference_cm",
+          "parameter_name": "shirt.width.v",
+          "body_name": "mean_all",
+          "body_bust_cm": 99.8407,
+          "named_pattern_parameters_before": {
+            "shirt.width.v": 1.08,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "named_pattern_parameters_after": {
+            "shirt.width.v": 1.08,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "garment_measurement_before": {
+            "bust_circumference_cm": 107.827956,
+            "waist_cm": 107.827956,
+            "length_cm": 44.70471376466374,
+            "sleeve_length_cm": 18.495585569200667,
+            "shoulder_width_cm": 56.337768000000004,
+            "torso_panel_dx": {
+              "left_ftorso": 28.168884000000002,
+              "right_ftorso": 28.168884000000002,
+              "left_btorso": 25.745093999999998,
+              "right_btorso": 25.745093999999998
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 44.740397061847986,
+              "right_ftorso": 44.740397061847986,
+              "left_btorso": 44.66903046747949,
+              "right_btorso": 44.66903046747949
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.38581006436885,
+              "left_sleeve_b": 21.385810064368833,
+              "right_sleeve_f": 21.38581006436885,
+              "right_sleeve_b": 21.385810064368833
+            },
+            "panel_names": [
+              "right_ftorso",
+              "right_btorso",
+              "right_sleeve_f",
+              "right_sleeve_b",
+              "left_btorso",
+              "left_sleeve_f",
+              "left_sleeve_b",
+              "left_ftorso"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "202f7a6e4f4b23134d9221473df70d7258986579e20037a7cc5e1a65b01b1c31"
+          },
+          "garment_measurement_after": {
+            "bust_circumference_cm": 107.827956,
+            "waist_cm": 107.827956,
+            "length_cm": 44.70471376466374,
+            "sleeve_length_cm": 18.495585569200667,
+            "shoulder_width_cm": 56.337768000000004,
+            "torso_panel_dx": {
+              "left_ftorso": 28.168884000000002,
+              "right_ftorso": 28.168884000000002,
+              "left_btorso": 25.745093999999998,
+              "right_btorso": 25.745093999999998
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 44.740397061847986,
+              "right_ftorso": 44.740397061847986,
+              "left_btorso": 44.66903046747949,
+              "right_btorso": 44.66903046747949
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.38581006436885,
+              "left_sleeve_b": 21.385810064368833,
+              "right_sleeve_f": 21.38581006436885,
+              "right_sleeve_b": 21.385810064368833
+            },
+            "panel_names": [
+              "right_ftorso",
+              "right_btorso",
+              "right_sleeve_f",
+              "right_sleeve_b",
+              "left_btorso",
+              "left_sleeve_f",
+              "left_sleeve_b",
+              "left_ftorso"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "202f7a6e4f4b23134d9221473df70d7258986579e20037a7cc5e1a65b01b1c31"
+          },
+          "png_before": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p4af104d88910.png",
+          "png_after": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p4af104d88910.png",
+          "spec_before": "/root/workspace/projects/FitGround/artifacts/hero/_pat/p4af104d88910/t-shirt__p4af104d88910/t-shirt__p4af104d88910_specification.json",
+          "spec_after": "/root/workspace/projects/FitGround/artifacts/hero/_pat/p4af104d88910/t-shirt__p4af104d88910/t-shirt__p4af104d88910_specification.json",
+          "bust_delta_cm": 0.0,
+          "waist_delta_cm": 0.0,
+          "shoulder_delta_cm": 0.0,
+          "sleeve_delta_cm": 0.0,
+          "length_delta_cm": 0.0,
+          "calibration_error_cm": 0.0,
+          "verification_status": "VERIFIED",
+          "simulation_status": "NOT_RUN",
+          "render_status": "NOT_RUN",
+          "body_kind": "SYNTHETIC_BODY_PHYSICS",
+          "utility": -3.0,
+          "target_error_cm": -3.0,
+          "rank": 4,
+          "recommended": false
+        },
+        {
+          "state_id": "mean_all_w1.080_l1.05_sl0.22_cdef",
+          "action_id": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__-1.00",
+          "action_family": "bust_circumference_delta_cm",
+          "intended_delta_cm": -1.0,
+          "realized_delta_cm": -0.9999999999999858,
+          "realized_source": "panel_geometry_after_minus_before",
+          "realized_measurement_key": "bust_circumference_cm",
+          "parameter_name": "shirt.width.v",
+          "body_name": "mean_all",
+          "body_bust_cm": 99.8407,
+          "named_pattern_parameters_before": {
+            "shirt.width.v": 1.08,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "named_pattern_parameters_after": {
+            "shirt.width.v": 1.0699840445830209,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "garment_measurement_before": {
+            "bust_circumference_cm": 107.827956,
+            "waist_cm": 107.827956,
+            "length_cm": 44.70471376466374,
+            "sleeve_length_cm": 18.495585569200667,
+            "shoulder_width_cm": 56.337768000000004,
+            "torso_panel_dx": {
+              "left_ftorso": 28.168884000000002,
+              "right_ftorso": 28.168884000000002,
+              "left_btorso": 25.745093999999998,
+              "right_btorso": 25.745093999999998
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 44.740397061847986,
+              "right_ftorso": 44.740397061847986,
+              "left_btorso": 44.66903046747949,
+              "right_btorso": 44.66903046747949
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.38581006436885,
+              "left_sleeve_b": 21.385810064368833,
+              "right_sleeve_f": 21.38581006436885,
+              "right_sleeve_b": 21.385810064368833
+            },
+            "panel_names": [
+              "right_ftorso",
+              "right_btorso",
+              "right_sleeve_f",
+              "right_sleeve_b",
+              "left_btorso",
+              "left_sleeve_f",
+              "left_sleeve_b",
+              "left_ftorso"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "202f7a6e4f4b23134d9221473df70d7258986579e20037a7cc5e1a65b01b1c31"
+          },
+          "garment_measurement_after": {
+            "bust_circumference_cm": 106.82795600000001,
+            "waist_cm": 106.82795600000001,
+            "length_cm": 44.605339371865796,
+            "sleeve_length_cm": 18.46906404956335,
+            "shoulder_width_cm": 55.81528969205546,
+            "torso_panel_dx": {
+              "left_ftorso": 27.90764484602773,
+              "right_ftorso": 27.90764484602773,
+              "left_btorso": 25.50633315397228,
+              "right_btorso": 25.50633315397228
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 44.63655512674524,
+              "right_ftorso": 44.63655512674524,
+              "left_btorso": 44.57412361698635,
+              "right_btorso": 44.57412361698635
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.280909033139523,
+              "left_sleeve_b": 21.280909033139533,
+              "right_sleeve_f": 21.280909033139523,
+              "right_sleeve_b": 21.280909033139533
+            },
+            "panel_names": [
+              "left_sleeve_b",
+              "left_sleeve_f",
+              "left_ftorso",
+              "left_btorso",
+              "right_btorso",
+              "right_ftorso",
+              "right_sleeve_f",
+              "right_sleeve_b"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "b9e73e51bea89bef0253bb0a0d2851b49d17f00688702a81203efdb6ed7d4863"
+          },
+          "png_before": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p4af104d88910.png",
+          "png_after": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/pac04d5f26be4.png",
+          "spec_before": "/root/workspace/projects/FitGround/artifacts/hero/_pat/p4af104d88910/t-shirt__p4af104d88910/t-shirt__p4af104d88910_specification.json",
+          "spec_after": "/root/workspace/projects/FitGround/artifacts/hero/_pat/pac04d5f26be4/t-shirt__pac04d5f26be4/t-shirt__pac04d5f26be4_specification.json",
+          "bust_delta_cm": -0.9999999999999858,
+          "waist_delta_cm": -0.9999999999999858,
+          "shoulder_delta_cm": -0.5224783079445459,
+          "sleeve_delta_cm": -0.02652151963731697,
+          "length_delta_cm": -0.09937439279794091,
+          "calibration_error_cm": 1.4210854715202004e-14,
+          "verification_status": "VERIFIED",
+          "simulation_status": "NOT_RUN",
+          "render_status": "NOT_RUN",
+          "body_kind": "SYNTHETIC_BODY_PHYSICS",
+          "utility": -4.212947956217615,
+          "target_error_cm": -3.999999999999986,
+          "rank": 5,
+          "recommended": false
+        },
+        {
+          "state_id": "mean_all_w1.080_l1.05_sl0.22_cdef",
+          "action_id": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__-2.00",
+          "action_family": "bust_circumference_delta_cm",
+          "intended_delta_cm": -2.0,
+          "realized_delta_cm": -1.9999999999999716,
+          "realized_source": "panel_geometry_after_minus_before",
+          "realized_measurement_key": "bust_circumference_cm",
+          "parameter_name": "shirt.width.v",
+          "body_name": "mean_all",
+          "body_bust_cm": 99.8407,
+          "named_pattern_parameters_before": {
+            "shirt.width.v": 1.08,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "named_pattern_parameters_after": {
+            "shirt.width.v": 1.0599680891660417,
+            "shirt.length.v": 1.05,
+            "shirt.flare.v": 1.0,
+            "sleeve.length.v": 0.22
+          },
+          "garment_measurement_before": {
+            "bust_circumference_cm": 107.827956,
+            "waist_cm": 107.827956,
+            "length_cm": 44.70471376466374,
+            "sleeve_length_cm": 18.495585569200667,
+            "shoulder_width_cm": 56.337768000000004,
+            "torso_panel_dx": {
+              "left_ftorso": 28.168884000000002,
+              "right_ftorso": 28.168884000000002,
+              "left_btorso": 25.745093999999998,
+              "right_btorso": 25.745093999999998
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 44.740397061847986,
+              "right_ftorso": 44.740397061847986,
+              "left_btorso": 44.66903046747949,
+              "right_btorso": 44.66903046747949
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.38581006436885,
+              "left_sleeve_b": 21.385810064368833,
+              "right_sleeve_f": 21.38581006436885,
+              "right_sleeve_b": 21.385810064368833
+            },
+            "panel_names": [
+              "right_ftorso",
+              "right_btorso",
+              "right_sleeve_f",
+              "right_sleeve_b",
+              "left_btorso",
+              "left_sleeve_f",
+              "left_sleeve_b",
+              "left_ftorso"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "202f7a6e4f4b23134d9221473df70d7258986579e20037a7cc5e1a65b01b1c31"
+          },
+          "garment_measurement_after": {
+            "bust_circumference_cm": 105.82795600000003,
+            "waist_cm": 105.82795600000003,
+            "length_cm": 44.50596503864971,
+            "sleeve_length_cm": 18.43916393747795,
+            "shoulder_width_cm": 55.292811384110905,
+            "torso_panel_dx": {
+              "left_ftorso": 27.646405692055453,
+              "right_ftorso": 27.646405692055453,
+              "left_btorso": 25.267572307944558,
+              "right_btorso": 25.267572307944558
+            },
+            "torso_panel_dy": {
+              "left_ftorso": 44.53271320175135,
+              "right_ftorso": 44.53271320175135,
+              "left_btorso": 44.47921687554808,
+              "right_btorso": 44.47921687554808
+            },
+            "sleeve_panel_dy": {
+              "left_sleeve_f": 21.197326725089315,
+              "left_sleeve_b": 21.19732672508932,
+              "right_sleeve_f": 21.197326725089315,
+              "right_sleeve_b": 21.19732672508932
+            },
+            "panel_names": [
+              "left_btorso",
+              "left_sleeve_b",
+              "left_sleeve_f",
+              "left_ftorso",
+              "right_ftorso",
+              "right_btorso",
+              "right_sleeve_b",
+              "right_sleeve_f"
+            ],
+            "missing_torso_panels": [],
+            "spec_sha256": "003733be7ee06e5a0b21e3423692d2f1039332a037fcfd22357b7df6f865d912"
+          },
+          "png_before": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/p4af104d88910.png",
+          "png_after": "/root/workspace/projects/FitGround/artifacts/hero/pattern_pngs/pce546a57bd31.png",
+          "spec_before": "/root/workspace/projects/FitGround/artifacts/hero/_pat/p4af104d88910/t-shirt__p4af104d88910/t-shirt__p4af104d88910_specification.json",
+          "spec_after": "/root/workspace/projects/FitGround/artifacts/hero/_pat/pce546a57bd31/t-shirt__pce546a57bd31/t-shirt__pce546a57bd31_specification.json",
+          "bust_delta_cm": -1.9999999999999716,
+          "waist_delta_cm": -1.9999999999999716,
+          "shoulder_delta_cm": -1.0449566158890988,
+          "sleeve_delta_cm": -0.05642163172271708,
+          "length_delta_cm": -0.19874872601402416,
+          "calibration_error_cm": 2.842170943040401e-14,
+          "verification_status": "VERIFIED",
+          "simulation_status": "NOT_RUN",
+          "render_status": "NOT_RUN",
+          "body_kind": "SYNTHETIC_BODY_PHYSICS",
+          "utility": -5.427585178868342,
+          "target_error_cm": -4.999999999999972,
+          "rank": 6,
+          "recommended": false
+        }
+      ],
+      "physics_tags": [
+        "baseline_default",
+        "bust_+2_default",
+        "bust_+3_default"
+      ]
+    },
+    {
+      "id": "case-2-same-meas-material",
+      "title": "Same measurements, different cloth bending",
+      "abstain": false,
+      "best": "default=no_edit stiff=bust+2cm",
+      "pair": {
+        "case_id": "pair_mean_all_w1.020_l1.05_sl0.22_cdef",
+        "state_id": "mean_all_w1.020_l1.05_sl0.22_cdef",
+        "same_pattern_measurements": true,
+        "garment_bust_cm": 101.837514,
+        "body_name": "mean_all",
+        "contact_ratio_a": 0.04033898305084746,
+        "contact_ratio_b": 0.041186440677966105,
+        "clearance_p10_a": 0.4612605258809369,
+        "clearance_p10_b": 0.4588620356653504,
+        "recommended_a": "no_edit",
+        "recommended_b": "bust+2cm",
+        "measurement_only_can_distinguish": false,
+        "physics_can_distinguish": true,
+        "vision_needed": true,
+        "render_a": "/root/workspace/projects/FitGround/artifacts/hero/sim_vd/default/vd76e3331dd3d6b8/vd76e3331dd3d6b8/vd76e3331dd3d6b8_render_front_mask.png",
+        "render_b": "/root/workspace/projects/FitGround/artifacts/hero/sim_vd/stiff/vd3622224c8bcda1/vd3622224c8bcda1/vd3622224c8bcda1_render_front_bodymask.png"
+      }
+    },
+    {
+      "id": "case-3-waist-side-effect",
+      "title": "Side-effect priced in: smaller bust edit can win",
+      "abstain": false,
+      "best": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+3.00",
+      "note": "Waist coupling weight 0.8. flare=1 Shirt."
+    },
+    {
+      "id": "case-4-ood-body",
+      "title": "OOD body \u2192 abstain",
+      "abstain": true,
+      "best": "ABSTAIN_ESCALATE_HUMAN",
+      "reasons": [
+        "OOD_BODY"
+      ],
+      "body_name": "mean_female",
+      "note": "SYNTHETIC_BODY_OOD. Not real-human generalization."
+    },
+    {
+      "id": "case-5-shoulder-vs-bust",
+      "title": "Bust vs shoulder: shoulder has no independent DoF",
+      "abstain": false,
+      "best": "bust family only",
+      "shoulder_verdict": "NO-GO",
+      "note": "SHOULDER_ACTION = NO_GO_FOR_CURRENT_PATTERN_FAMILY"
+    }
+  ],
+  "visual_disambiguation": {
+    "verdict": "VISION_NECESSITY_NOT_ESTABLISHED",
+    "n_pairs": 33,
+    "n_vision_needed": 7
+  },
+  "physics_outcomes": [
+    {
+      "tag": "baseline_default",
+      "label": "baseline_default default",
+      "clearance_p10_cm": 0.4894418019148814,
+      "contact_ratio": 0.029259414811703768,
+      "chest_clearance_p10_cm": null,
+      "wrinkle_proxy_cm": 0.11134726005336272,
+      "render": "/evidence/baseline_default_render_front.png"
+    },
+    {
+      "tag": "bust_+2_default",
+      "label": "bust_+2_default default",
+      "clearance_p10_cm": 0.5157648352354847,
+      "contact_ratio": 0.024467353951890033,
+      "chest_clearance_p10_cm": null,
+      "wrinkle_proxy_cm": 0.11740768821126459,
+      "render": "/evidence/bust_+2_default_render_front_bodymask.png"
+    },
+    {
+      "tag": "bust_+3_default",
+      "label": "bust_+3_default default",
+      "clearance_p10_cm": 0.5185732479355815,
+      "contact_ratio": 0.024483133841131665,
+      "chest_clearance_p10_cm": null,
+      "wrinkle_proxy_cm": 0.11662850584789308,
+      "render": "/evidence/bust_+3_default_render_front_bodymask.png"
+    },
+    {
+      "tag": "bust_+2_stiff",
+      "label": "bust_+2_stiff stiff",
+      "clearance_p10_cm": 0.5109730438281139,
+      "contact_ratio": 0.02570446735395189,
+      "chest_clearance_p10_cm": null,
+      "wrinkle_proxy_cm": 0.07552014657445379,
+      "render": "/evidence/bust_+2_stiff_render_back.png"
+    },
+    {
+      "tag": "bust_+3_stiff",
+      "label": "bust_+3_stiff stiff",
+      "clearance_p10_cm": 0.5254739560609124,
+      "contact_ratio": 0.0220348204570185,
+      "chest_clearance_p10_cm": null,
+      "wrinkle_proxy_cm": 0.0811791389628946,
+      "render": "/evidence/bust_+3_stiff_render_back.png"
+    },
+    {
+      "tag": "bust_+2_soft",
+      "label": "bust_+2_soft soft",
+      "clearance_p10_cm": 0.5169752181263821,
+      "contact_ratio": 0.024192439862542957,
+      "chest_clearance_p10_cm": null,
+      "wrinkle_proxy_cm": 0.05087945949849139,
+      "render": "/evidence/bust_+2_soft_render_front_mask.png"
+    },
+    {
+      "tag": "female_baseline",
+      "label": "female_baseline default",
+      "clearance_p10_cm": 0.48603830301900347,
+      "contact_ratio": 0.030926309559041135,
+      "chest_clearance_p10_cm": null,
+      "wrinkle_proxy_cm": 0.1117679916570121,
+      "render": "/evidence/female_baseline_render_back.png"
+    },
+    {
+      "tag": "female_bust+2",
+      "label": "female_bust+2 default",
+      "clearance_p10_cm": 0.505441277433521,
+      "contact_ratio": 0.02376439714244059,
+      "chest_clearance_p10_cm": null,
+      "wrinkle_proxy_cm": 0.12112824592941274,
+      "render": "/evidence/female_bust+2_render_front_bodymask.png"
     }
   ],
   "metrics": {
-    "B0_mae_cm": 8.11,
-    "B1_xgb_mae_cm": 7.88,
-    "pattern_ridge_mae_cm": 3.45,
-    "transition_sft_mae_cm": 0.47,
-    "decision_sft_acc": 1.0,
-    "rlvr": "COMPLETED_NOT_JUSTIFIED"
+    "visual_verdict": "VISION_NECESSITY_NOT_ESTABLISHED",
+    "mllm": "PASS",
+    "ood_body_mae": 8.271990058102659e-15,
+    "abstention_precision": 1.0
   },
   "audit": {
-    "realized_source": "panel_geometry_after_minus_before",
+    "parametric_garment_geometry": "PASS",
+    "synthetic_body_physics": "PASS",
     "smpl_x_weights": "ABSENT",
-    "body_collision": "static OBJ mannequin (mean_all.obj), scaled m→cm",
-    "no_intended_copied_into_realized": true
+    "real_human_validation": "HARD_BLOCKED_LICENSE"
+  },
+  "case_overlays": {
+    "case-1-chest-tight": {
+      "recommendation": {
+        "action_id": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+3.00",
+        "summary": "Chest too tight \u2192 Bust +3 cm",
+        "confidence": 0.78,
+        "abstain": false,
+        "alternatives": [],
+        "why_not_plus2": ""
+      }
+    },
+    "case-2-same-meas-material": {
+      "recommendation": {
+        "action_id": "default=no_edit stiff=bust+2cm",
+        "summary": "Same measurements, different cloth bending",
+        "confidence": 0.78,
+        "abstain": false,
+        "alternatives": [],
+        "why_not_plus2": ""
+      }
+    },
+    "case-3-waist-side-effect": {
+      "recommendation": {
+        "action_id": "mean_all_w1.080_l1.05_sl0.22_cdef__bust_circumference_delta_cm__+3.00",
+        "summary": "Side-effect priced in: smaller bust edit can win",
+        "confidence": 0.78,
+        "abstain": false,
+        "alternatives": [],
+        "why_not_plus2": "Waist coupling weight 0.8. flare=1 Shirt."
+      }
+    },
+    "case-4-ood-body": {
+      "recommendation": {
+        "action_id": "ABSTAIN_ESCALATE_HUMAN",
+        "summary": "OOD body \u2192 abstain",
+        "confidence": 0.35,
+        "abstain": true,
+        "alternatives": [],
+        "why_not_plus2": "SYNTHETIC_BODY_OOD. Not real-human generalization."
+      }
+    },
+    "case-5-shoulder-vs-bust": {
+      "recommendation": {
+        "action_id": "bust family only",
+        "summary": "Bust vs shoulder: shoulder has no independent DoF",
+        "confidence": 0.78,
+        "abstain": false,
+        "alternatives": [],
+        "why_not_plus2": "SHOULDER_ACTION = NO_GO_FOR_CURRENT_PATTERN_FAMILY"
+      }
+    }
   }
 }

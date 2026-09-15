@@ -1,17 +1,27 @@
 # Experiment table
 
-| Experiment | n | Split | Metric | Result | Artifact |
-| --- | --- | --- | --- | --- | --- |
-| B0 ease heuristic | 15752 test rows | person_sha256 | MAE cm | 8.11 | artifacts/training/observational_and_vision_baselines.json |
-| B1 OLS | same | person | MAE cm | 8.08 | same |
-| B1 XGBoost | same | person | MAE cm | 7.88 | same |
-| B2 pattern Ridge | 29 test drawings | state_id | MAE cm | 3.45 | same |
-| B2 pattern CNN | 29 | state_id | MAE cm | 6.23 | same |
-| B3 CNN+body | 29 | state_id | MAE cm | 6.24 | same |
-| Transition SFT MLP | 16 test | state_id | realized MAE | 0.47 vs identity 0.00 | artifacts/training/transition_sft.json |
-| Decision SFT MLP | 3 test | state_id | accuracy | 1.0 | artifacts/training/decision_sft.json |
-| RLVR REINFORCE | 3 test | state_id | regret | 0 → 0 | artifacts/training/rlvr.json |
-| Bust pattern calibration | +1/+2/+3 + repeat | — | max abs error | ~1e-14 cm | artifacts/bust_atomic_calibration.json |
-| Physics clearance (unit-fixed) | 4 drapes | — | chest p10 cm | 0.47 → 0.50 at +3 | artifacts/hero/existing_physics_outcomes.json |
-| FIT-100K B2/B3 | 0 images | — | — | NOT_RUN | same observational json |
-| Shoulder GO | probes | — | — | pending/NO-GO unless connecting_width maps | artifacts/hero/atomic_calibration.json |
+| Track | Status | Evidence |
+| --- | --- | --- |
+| Core | PASS | pytest |
+| Warp CUDA | PASS | artifacts/gpu/warp_smoke.json |
+| PyTorch CUDA | PASS | torch 2.5.1+cu124 on RTX 4090 |
+| Parametric garment geometry | PASS | GarmentCode Shirt serialize + panel measures |
+| SYNTHETIC_BODY_PHYSICS | PASS | Warp XPBD vs static OBJ, m→cm |
+| SMPL/SMPL-X body physics | HARD_BLOCKED_LICENSE | weights absent, not pirated |
+| Real-human validation | HARD_BLOCKED_LICENSE | requires licensed/consented capture |
+| Bust | PASS | MAE ~0, monotonic, 3× repeat exact |
+| Shoulder | NO_GO_WITH_EVIDENCE | SHOULDER_ACTION = NO_GO_FOR_CURRENT_PATTERN_FAMILY |
+| Sleeve | PASS | panel X geodesic/construction axis, MAE 0 on ±2 cm |
+| Large lattice | PASS | 636 transitions, dup=0 |
+| Visual disambiguation | PASS | VISION_NECESSITY_NOT_ESTABLISHED n_pairs=33 |
+| Classical baselines | PASS | B0/B1/XGB on FIT-Clean |
+| Vision baseline | PASS | Ridge 3.45 < CNN 6.23 on 192 drawings |
+| Multimodal baseline | PASS | CNN+body 6.24, no gain |
+| Pretrained MLLM | PASS | Qwen/Qwen2-VL-2B-Instruct |
+| Transition | PASS | SFT 0.47 cm; analytic better |
+| Decision | PASS | analytic ranking; SFT n=3 too small to boast |
+| OOD | PASS | artifacts/hero/ood_results.json |
+| Failure-aware | PASS | artifacts/hero/failure_aware.json |
+| RLVR | NOT_JUSTIFIED | no residual gain, n=3 |
+| Demo | PASS | studio/ |
+| Reproducibility | PASS | artifacts/REPRODUCIBILITY.json |

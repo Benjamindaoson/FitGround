@@ -1,3 +1,6 @@
+> **Portfolio status / 作品集状态：FLAGSHIP · Physical AI**
+> Canonical independent flagship repository for physics-grounded decision systems.
+
 <p align="right">
   <b>中文</b> · <a href="./README_EN.md">English</a>
 </p>
